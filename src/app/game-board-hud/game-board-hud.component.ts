@@ -10,8 +10,10 @@ import {GameControlAction, GameControlActionAware} from './game-control-action';
   templateUrl: './game-board-hud.component.html',
   styleUrls: ['./game-board-hud.component.css']
 })
-@GameControlActionAware
+@GameControlActionAware // TODO: This doesn't seem to work
 export class GameBoardHudComponent implements OnInit, OnDestroy {
+
+  GCA = GameControlAction;
 
   private menuHidden = false;
   private gameBoardConfig: GameBoardConfig;

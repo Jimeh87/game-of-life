@@ -1,40 +1,40 @@
 <button type="button"
-        title="{{ actionTitle[GameControlAction.UP] }}"
+        title="{{ actionTitle[GCA.UP] }}"
         class="btn-sm btn-secondary"
         style="position: absolute; top: 0px; left: calc(50% - 17px)"
-        (click)="action(GameControlAction.UP)"
+        (click)="action(GCA.UP)"
 >
   <i class="fa fa-chevron-up" aria-hidden="true"></i>
 </button>
 <button type="button"
-        title="{{ actionTitle[GameControlAction.DOWN] }}"
+        title="{{ actionTitle[GCA.DOWN] }}"
         class="btn-sm btn-secondary"
         style="position: absolute; bottom: 0px; left: calc(50% - 17px)"
-        (click)="action(GameControlAction.DOWN)"
+        (click)="action(GCA.DOWN)"
 >
   <i class="fa fa-chevron-down" aria-hidden="true"></i>
 </button>
 <button type="button"
-        title="{{ actionTitle[GameControlAction.LEFT] }}"
+        title="{{ actionTitle[GCA.LEFT] }}"
         class="btn-sm btn-secondary"
         style="position: absolute; top: calc(50% - 11px); left: 0px"
-        (click)="action(GameControlAction.LEFT)"
+        (click)="action(GCA.LEFT)"
 >
   <i class="fa fa-chevron-left" aria-hidden="true"></i>
 </button>
 <button type="button"
-        title="{{ actionTitle[GameControlAction.RIGHT] }}"
+        title="{{ actionTitle[GCA.RIGHT] }}"
         class="btn-sm btn-secondary"
         style="position: absolute; top: calc(50% - 11px); right: 0px"
-        (click)="action(GameControlAction.RIGHT)"
+        (click)="action(GCA.RIGHT)"
 >
   <i class="fa fa-chevron-right" aria-hidden="true"></i>
 </button>
 <button type="button"
-        title="{{ isFullScreen() ? actionTitle[GameControlAction.RESTORE_SCREEN] : actionTitle[GameControlAction.FULL_SCREEN]}}"
+        title="{{ isFullScreen() ? actionTitle[GCA.RESTORE_SCREEN] : actionTitle[GCA.FULL_SCREEN]}}"
         class="btn-sm btn-secondary"
         style="position: absolute; top: 0px; right: 0px"
-        (click)="action(isFullScreen() ? GameControlAction.RESTORE_SCREEN : GameControlAction.FULL_SCREEN)"
+        (click)="action(isFullScreen() ? GCA.RESTORE_SCREEN : GCA.FULL_SCREEN)"
 >
   <i class="fa" aria-hidden="true"
      [ngClass]="{'fa-window-maximize': !isFullScreen(), 'fa-window-restore': isFullScreen()}"></i>
@@ -49,42 +49,42 @@
     <i class="fa fa-bars" aria-hidden="true"></i>
   </button>
   <button type="button"
-          title="{{ isGameStarted() ? actionTitle[GameControlAction.STOP_GAME] : actionTitle[GameControlAction.START_GAME]}}"
+          title="{{ isGameStarted() ? actionTitle[GCA.STOP_GAME] : actionTitle[GCA.START_GAME]}}"
           class="btn btn-secondary"
           [ngbCollapse]="isMenuHidden()"
-          (click)="action(isGameStarted() ? GameControlAction.STOP_GAME : GameControlAction.START_GAME)"
+          (click)="action(isGameStarted() ? GCA.STOP_GAME : GCA.START_GAME)"
   >
     <i class="fa" aria-hidden="true" [ngClass]="{'fa-play': !isGameStarted(), 'fa-pause': isGameStarted()}"></i>
   </button>
   <button type="button"
-          title="{{ actionTitle[GameControlAction.STEP] }}"
+          title="{{ actionTitle[GCA.STEP] }}"
           class="btn btn-secondary"
           [ngbCollapse]="isMenuHidden()"
-          (click)="action(GameControlAction.STEP)"
+          (click)="action(GCA.STEP)"
   >
     <i class="fa fa-step-forward" aria-hidden="true"></i>
   </button>
   <button type="button"
-          title="{{ actionTitle[GameControlAction.ERASE] }}"
+          title="{{ actionTitle[GCA.ERASE] }}"
           class="btn btn-secondary"
           [ngbCollapse]="isMenuHidden()"
-          (click)="action(GameControlAction.ERASE)"
+          (click)="action(GCA.ERASE)"
   >
     <i class="fa fa-eraser" aria-hidden="true"></i>
   </button>
   <button type="button"
-          title="{{ actionTitle[GameControlAction.ZOOM_IN] }}"
+          title="{{ actionTitle[GCA.ZOOM_IN] }}"
           class="btn btn-secondary"
           [ngbCollapse]="isMenuHidden()"
-          (click)="action(GameControlAction.ZOOM_IN)"
+          (click)="action(GCA.ZOOM_IN)"
   >
     <i class="fa fa-search-plus" aria-hidden="true"></i>
   </button>
   <button type="button"
-          title="{{ actionTitle[GameControlAction.ZOOM_OUT] }}"
+          title="{{ actionTitle[GCA.ZOOM_OUT] }}"
           class="btn btn-secondary"
           [ngbCollapse]="isMenuHidden()"
-          (click)="action(GameControlAction.ZOOM_OUT)"
+          (click)="action(GCA.ZOOM_OUT)"
   >
     <i class="fa fa-search-minus" aria-hidden="true"></i>
   </button>
@@ -97,20 +97,20 @@
       <i class="fa fa-clock-o" aria-hidden="true"></i>
     </button>
     <div class="dropdown-menu">
-      <a class="dropdown-item" style="cursor:pointer;" (click)=action(GameControlAction.SPEED_VERY_SLOW)>
-        {{ actionTitle[GameControlAction.SPEED_VERY_SLOW] }}
+      <a class="dropdown-item" style="cursor:pointer;" (click)=action(GCA.SPEED_VERY_SLOW)>
+        {{ actionTitle[GCA.SPEED_VERY_SLOW] }}
       </a>
-      <a class="dropdown-item" style="cursor:pointer;" (click)=action(GameControlAction.SPEED_SLOW)>
-        {{ actionTitle[GameControlAction.SPEED_SLOW] }}
+      <a class="dropdown-item" style="cursor:pointer;" (click)=action(GCA.SPEED_SLOW)>
+        {{ actionTitle[GCA.SPEED_SLOW] }}
       </a>
-      <a class="dropdown-item" style="cursor:pointer;" (click)=action(GameControlAction.SPEED_NORMAL)>
-        {{ actionTitle[GameControlAction.SPEED_NORMAL] }}
+      <a class="dropdown-item" style="cursor:pointer;" (click)=action(GCA.SPEED_NORMAL)>
+        {{ actionTitle[GCA.SPEED_NORMAL] }}
       </a>
-      <a class="dropdown-item" style="cursor:pointer;" (click)=action(GameControlAction.SPEED_FAST)>
-        {{ actionTitle[GameControlAction.SPEED_FAST] }}
+      <a class="dropdown-item" style="cursor:pointer;" (click)=action(GCA.SPEED_FAST)>
+        {{ actionTitle[GCA.SPEED_FAST] }}
       </a>
-      <a class="dropdown-item" style="cursor:pointer;" (click)=action(GameControlAction.SPEED_VERY_FAST)>
-        {{ actionTitle[GameControlAction.SPEED_VERY_FAST] }}
+      <a class="dropdown-item" style="cursor:pointer;" (click)=action(GCA.SPEED_VERY_FAST)>
+        {{ actionTitle[GCA.SPEED_VERY_FAST] }}
       </a>
     </div>
   </div>
