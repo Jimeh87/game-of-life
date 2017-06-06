@@ -12,10 +12,6 @@
     "postinstall": "ng build --aot -prod",
     "deploy": "git push origin master && git push heroku master"
   },
-  "engines": {
-    "node": "6.9.5",
-    "npm": "3.10.10"
-  },
   "private": true,
   "dependencies": {
     "@angular/cli": "1.0.0",
@@ -59,5 +55,9 @@
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
     "typescript": "~2.2.0"
+  },
+  "engines": {
+    "node": "6.9.5",
+    "npm": "3.10.10"
   }
 }
