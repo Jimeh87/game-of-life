@@ -1,0 +1,28 @@
+<div class="card text-left" style="overflow-wrap: break-word; border: 0">
+  <div class="card-block">
+    <h6 class="card-title">Rule</h6>
+    <p class="card-text">{{ template.getRule().getFormattedRuleString() }}</p>
+  </div>
+  <div class="card-block" *ngIf="template.getComments() != null">
+    <h6 class="card-title">Notes</h6>
+    <p class="card-text" [innerHtml]="template.getComments().join(' ') | linkify"></p>
+  </div>
+  <div class="card-block" *ngIf="template.getAuthor() != null">
+    <h6 class="card-title">Author</h6>
+    <p class="card-text">{{ template.getAuthor() }}</p>
+  </div>
+  <div class="card-block">
+    <h6 class="card-title">Bounding box</h6>
+    <p class="card-text">x = {{ template.getBoundingBox().x }}, y = {{ template.getBoundingBox().y }}</p>
+  </div>
+  <div class="card-block">
+    <h6 class="card-title">File name</h6>
+    <p class="card-text">{{ template.getFileName() }}</p>
+  </div>
+  <div class="card-block">
+    <h6 class="card-title">Pattern</h6>
+    <p class="card-text" [innerHtml]="template.getPattern()"></p>
+  </div>
+</div>
+
+

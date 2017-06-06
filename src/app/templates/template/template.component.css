@@ -1,0 +1,6 @@
+div.fixed-content {
+  overflow-y: auto;
+}
+div.template-card {
+  height: 18em;
+}
