@@ -24,6 +24,7 @@ import {AboutComponent} from './about/about.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {TemplateFilterPipe} from './template-filter.pipe';
 import { SpinnerComponent } from './spinner/spinner.component';
+import {Ng2PageScrollModule, PageScrollConfig, PageScrollService} from 'ng2-page-scroll';
 
 
 const appRoutes: Routes = [
@@ -89,10 +90,13 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
-    NgxPaginationModule
+    NgxPaginationModule,
+    Ng2PageScrollModule.forRoot()
   ],
-  providers: [RleService, GameOfLifeService, TemplatesService, ConfigService],
+  providers: [RleService, GameOfLifeService, TemplatesService, ConfigService, PageScrollService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+  constructor() {
+  }
 }

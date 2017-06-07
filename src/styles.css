@@ -5,3 +5,7 @@
 .bottom-buffer {
   margin-bottom: 15px;
 }
+
+.clickable {
+  cursor: pointer;
+}

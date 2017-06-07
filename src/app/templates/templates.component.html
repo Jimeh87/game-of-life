@@ -1,4 +1,4 @@
-<div class="row">
+<div id="templatesTop" class="row">
   <div class="col-12">
     <label class="sr-only" for="inlineFormInputGroup">Filter</label>
     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
@@ -12,7 +12,7 @@
     <app-spinner></app-spinner>
   </div>
 </div>
-<div id="top" class="row" *ngIf="!loading">
+<div class="row" *ngIf="!loading">
   <div class="col-lg-6 col-md-12 top-buffer bottom-buffer"
        *ngFor="let template of getTemplates() | templateFilter:filter | paginate: { itemsPerPage: 12,
                                                                                     currentPage: page
@@ -20,7 +20,30 @@
   >
     <app-template [template]="template"></app-template>
   </div>
-  <div class="col-12 top-buffer bottom-buffer text-center">
-    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  <div class="col-12 top-buffer bottom-buffer">
+    <pagination-template #p="paginationApi"
+                         (pageChange)="page = $event">
+      <nav aria-label="Page navigation">
+        <ul class="pagination pagination-lg justify-content-center">
+          <li class="page-item" [ngClass]="{'disabled': p.isFirstPage()}">
+            <a class="page-link clickable" (click)="p.previous();toTemplatesTop()" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          <li *ngFor="let pagination of p.pages"
+              class="page-item"
+              [ngClass]="{'active': p.getCurrent() === pagination.value, 'disabled': pagination.label === '...'}">
+            <a class="page-link clickable" (click)="p.setCurrent(pagination.value);toTemplatesTop()">{{ pagination.label }}</a>
+          </li>
+          <li class="page-item" [ngClass]="{'disabled': p.isLastPage()}">
+            <a class="page-link clickable" (click)="p.next();toTemplatesTop()" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </pagination-template>
   </div>
 </div>

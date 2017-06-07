@@ -1,7 +1,9 @@
-import {Component, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, ElementRef, Inject, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {TemplatesService} from './templates.service';
 import {Template} from './template';
 import {Subscription} from 'rxjs/Subscription';
+import {PageScrollInstance, PageScrollService} from 'ng2-page-scroll';
+import {DOCUMENT} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-templates',
@@ -10,19 +12,16 @@ import {Subscription} from 'rxjs/Subscription';
 })
 export class TemplatesComponent implements OnInit, OnChanges, OnDestroy {
 
-  // TODO: This is wrong.. use https://stackoverflow.com/questions/36101756/angular2-routing-with-hashtag-to-page-anchor
-  @ViewChild('')
-  private window: Window;
-
   loading = true;
 
   private templates: Template[];
   private subscription: Subscription;
 
   private _filter = '';
-  private resetPage = false;
 
-  constructor(private templatesService: TemplatesService) {
+  constructor(private templatesService: TemplatesService,
+              private pageScrollService: PageScrollService,
+              @Inject(DOCUMENT) private document: any) {
   }
 
   ngOnInit() {
@@ -35,9 +34,12 @@ export class TemplatesComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['_filter'] != null && changes['_filter'].currentValue !== changes['_filter'].previousValue) {
-      // this.resetPage = true;
-      // this.templatesService.page = 1;
     }
+  }
+
+  toTemplatesTop() {
+    const pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#templatesTop');
+    this.pageScrollService.start(pageScrollInstance);
   }
 
   getTemplates() {
@@ -49,11 +51,6 @@ export class TemplatesComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   set page(value) {
-    if (!this.resetPage) {
-      window.location.hash = 'top';
-      window.location.hash = '';
-    }
-    this.resetPage = false;
     this.templatesService.page = value;
   }
 
