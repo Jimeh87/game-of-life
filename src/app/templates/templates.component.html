@@ -7,6 +7,11 @@
     </div>
   </div>
 </div>
+<div class="row" *ngIf="loading" style="height: 50vh; display: flex; align-items: center;">
+  <div class="col">
+    <app-spinner></app-spinner>
+  </div>
+</div>
 <div id="top" class="row" *ngIf="!loading">
   <div class="col-lg-6 col-md-12 top-buffer bottom-buffer"
        *ngFor="let template of getTemplates() | templateFilter:filter | paginate: { itemsPerPage: 12,

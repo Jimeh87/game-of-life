@@ -23,6 +23,7 @@ import {ConfigService} from './config/config.service';
 import {AboutComponent} from './about/about.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {TemplateFilterPipe} from './template-filter.pipe';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 const appRoutes: Routes = [
@@ -79,7 +80,8 @@ const appRoutes: Routes = [
     GameBoardHudComponent,
     ConfigComponent,
     AboutComponent,
-    TemplateFilterPipe
+    TemplateFilterPipe,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

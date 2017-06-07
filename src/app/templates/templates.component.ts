@@ -20,6 +20,7 @@ export class TemplatesComponent implements OnInit, OnChanges, OnDestroy {
   private subscription: Subscription;
 
   private _filter = '';
+  private resetPage = false;
 
   constructor(private templatesService: TemplatesService) {
   }
@@ -34,7 +35,8 @@ export class TemplatesComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['_filter'] != null && changes['_filter'].currentValue !== changes['_filter'].previousValue) {
-      this.templatesService.page = 1;
+      // this.resetPage = true;
+      // this.templatesService.page = 1;
     }
   }
 
@@ -47,8 +49,11 @@ export class TemplatesComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   set page(value) {
-    window.location.hash = '';
-    window.location.hash = 'top';
+    if (!this.resetPage) {
+      window.location.hash = 'top';
+      window.location.hash = '';
+    }
+    this.resetPage = false;
     this.templatesService.page = value;
   }
 
