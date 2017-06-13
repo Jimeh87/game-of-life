@@ -190,11 +190,19 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
       return;
     }
     this.gameOfLifeService.startGame();
+
+    return false;
   }
 
-  onCanvasMouseUp() {
+  onCanvasClick() {
+    return false;
+  }
+
+  onCanvasMouseUp(event: MouseEvent) {
     this.mouseDown = false;
     this.lastSelectedCell = null;
+
+    return false;
   }
 
   onCanvasExited() {
@@ -206,6 +214,8 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     this.template.then((template: Template) => {
       this.gameOfLifeService.applyTemplate(template, this.gbConfig.columns, this.gbConfig.rows);
     });
+
+    return false;
   }
 
   onCanvasMouseDown(event: MouseEvent) {
@@ -216,6 +226,8 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     this.toggleCell(cell.x + this.gbConfig.xScreenOffset, cell.y + this.gbConfig.yScreenOffset);
     this.lastSelectedCell = cell;
     this.mouseDown = true;
+
+    return false;
   }
 
   onCanvasMouseMove(event: MouseEvent) {
@@ -227,6 +239,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
       }
     }
 
+    return false;
   }
 
   private getSelectedCell(event: MouseEvent): {x: number, y: number} {
