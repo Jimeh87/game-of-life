@@ -26,7 +26,7 @@ import {ConfigType} from '../config/config-type';
 export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
 
   @Input()
-  private backgroundColor = 'darkgrey';
+  private backgroundColor = 'white';
 
   @Input()
   private aliveCellColor = 'forestgreen';

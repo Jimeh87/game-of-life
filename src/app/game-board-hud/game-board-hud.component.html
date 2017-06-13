@@ -2,6 +2,7 @@
   <div id="up-control">
     <i class="fa fa-chevron-up control"
        title="{{ actionTitle[GCA.UP] }}"
+       (click)="action(GCA.UP)"
        (mousedown)="holdAction(GCA.UP, true)"
        (mouseup)="holdAction(GCA.UP, false)"
        (mouseleave)="holdAction(GCA.UP, false)">
@@ -10,6 +11,7 @@
   <div id="down-control">
     <i class="fa fa-chevron-down control"
        title="{{ actionTitle[GCA.DOWN] }}"
+       (click)="action(GCA.DOWN)"
        (mousedown)="holdAction(GCA.DOWN, true)"
        (mouseup)="holdAction(GCA.DOWN, false)"
        (mouseleave)="holdAction(GCA.DOWN, false)">
@@ -18,6 +20,7 @@
   <div id="left-control">
     <i class="fa fa-chevron-left control"
        title="{{ actionTitle[GCA.LEFT] }}"
+       (click)="action(GCA.LEFT)"
        (mousedown)="holdAction(GCA.LEFT, true)"
        (mouseup)="holdAction(GCA.LEFT, false)"
        (mouseleave)="holdAction(GCA.LEFT, false)">
@@ -26,6 +29,7 @@
   <div id="right-control">
     <i class="fa fa-chevron-right control"
        title="{{ actionTitle[GCA.RIGHT] }}"
+       (click)="action(GCA.RIGHT)"
        (mousedown)="holdAction(GCA.RIGHT, true)"
        (mouseup)="holdAction(GCA.RIGHT, false)"
        (mouseleave)="holdAction(GCA.RIGHT, false)">
