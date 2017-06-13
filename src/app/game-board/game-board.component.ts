@@ -47,10 +47,8 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
   private canvas: HTMLCanvasElement;
   private ctx: CanvasRenderingContext2D;
 
-  // TODO: Add mouse down stuff
   private mouseDown = false;
-  private lastX = -1;
-  private lastY = -1;
+  private lastSelectedCell: {x: number, y: number} = null;
 
   private gbConfig: GameBoardConfig;
 
@@ -194,8 +192,14 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     this.gameOfLifeService.startGame();
   }
 
+  onCanvasMouseUp() {
+    this.mouseDown = false;
+    this.lastSelectedCell = null;
+  }
+
   onCanvasExited() {
     if (!this.preview) {
+      this.mouseDown = false;
       return;
     }
     this.gameOfLifeService.clear();
@@ -204,11 +208,28 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     });
   }
 
-  onCanvasClicked(event: MouseEvent) {
+  onCanvasMouseDown(event: MouseEvent) {
     if (this.preview) {
       return;
     }
+    const cell: {x: number, y: number} = this.getSelectedCell(event);
+    this.toggleCell(cell.x + this.gbConfig.xScreenOffset, cell.y + this.gbConfig.yScreenOffset);
+    this.lastSelectedCell = cell;
+    this.mouseDown = true;
+  }
 
+  onCanvasMouseMove(event: MouseEvent) {
+    if (this.mouseDown) {
+      const cell: {x: number, y: number} = this.getSelectedCell(event);
+      if (cell.x !== this.lastSelectedCell.x || cell.y !== this.lastSelectedCell.y) {
+        this.toggleCell(cell.x + this.gbConfig.xScreenOffset, cell.y + this.gbConfig.yScreenOffset);
+        this.lastSelectedCell = cell;
+      }
+    }
+
+  }
+
+  private getSelectedCell(event: MouseEvent): {x: number, y: number} {
     let posX = 0;
     let posY = 0;
 
@@ -232,8 +253,8 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     const x = Math.ceil(((posX - left) / (this.gbConfig.cellSize + this.gbConfig.cellSpace)) - 1);
     const y = Math.ceil(((posY - top) / (this.gbConfig.cellSize + this.gbConfig.cellSpace)) - 1);
 
-    this.toggleCell(x + this.gbConfig.xScreenOffset, y + this.gbConfig.yScreenOffset);
-  }
+    return {x: x, y: y};
+  };
 
   ngOnDestroy(): void {
     if (this.cellStateSubscription != null) {

@@ -4,6 +4,9 @@ import {ConfigService} from '../config/config.service';
 import {GameBoardConfig} from '../config/game-board-config';
 import {ConfigType} from '../config/config-type';
 import {GameControlAction, GameControlActionAware} from './game-control-action';
+import {Ticker} from '../algorithm/ticker';
+import {Observable} from 'rxjs/Observable';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-game-board-hud',
@@ -14,6 +17,10 @@ import {GameControlAction, GameControlActionAware} from './game-control-action';
 export class GameBoardHudComponent implements OnInit, OnDestroy {
 
   GCA = GameControlAction;
+
+  private ticker: Ticker = new Ticker(50);
+  private currentAction: GameControlAction = null;
+  private subscription: Subscription;
 
   private menuHidden = false;
   private gameBoardConfig: GameBoardConfig;
@@ -43,6 +50,10 @@ export class GameBoardHudComponent implements OnInit, OnDestroy {
     this._actionTitle[GameControlAction.SPEED_NORMAL] = 'Normal';
     this._actionTitle[GameControlAction.SPEED_SLOW] = 'Slow';
     this._actionTitle[GameControlAction.SPEED_VERY_SLOW] = 'Very Slow';
+
+    this.subscription = this.ticker.getObservable().subscribe(() => {
+      this.action(this.currentAction);
+    });
 
   }
 
@@ -113,6 +124,16 @@ export class GameBoardHudComponent implements OnInit, OnDestroy {
     }
   }
 
+  holdAction(gca: GameControlAction, active: boolean) {
+    if (active) {
+      this.currentAction = gca;
+      this.ticker.start();
+    } else {
+      this.ticker.stop();
+      this.currentAction = null;
+    }
+  }
+
   getCurrentSpeed(): GameControlAction {
     return this.currentSpeed;
   }
@@ -137,6 +158,7 @@ export class GameBoardHudComponent implements OnInit, OnDestroy {
     this.action(GameControlAction.STOP_GAME);
     this.action(GameControlAction.SPEED_NORMAL);
     this.action(GameControlAction.RESTORE_SCREEN);
+    this.subscription.unsubscribe();
   }
 
 }

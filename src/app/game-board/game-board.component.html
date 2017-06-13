@@ -1,5 +1,7 @@
 <canvas #golCanvas
-        (click)="onCanvasClicked($event)"
         (mouseenter)="onCanvasEntered()"
         (mouseleave)="onCanvasExited()"
+        (mousedown)="onCanvasMouseDown($event)"
+        (mouseup)="onCanvasMouseUp()"
+        (mousemove)="onCanvasMouseMove($event)"
 ></canvas>
