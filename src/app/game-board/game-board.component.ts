@@ -6,7 +6,7 @@ import {
   NgZone,
   OnChanges,
   OnDestroy,
-  OnInit,
+  OnInit, Output,
   SimpleChanges,
   ViewChild
 } from '@angular/core';
@@ -26,7 +26,7 @@ import {ConfigType} from '../config/config-type';
 export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
 
   @Input()
-  private backgroundColor = 'white';
+  private backgroundColor = 'rgb(173, 184, 184)';
 
   @Input()
   private aliveCellColor = 'forestgreen';
