@@ -17,6 +17,7 @@ export class GameBoardHudComponent implements OnInit, OnDestroy {
 
   private menuHidden = false;
   private gameBoardConfig: GameBoardConfig;
+  private currentSpeed = GameControlAction.SPEED_NORMAL;
   private _actionTitle = {};
 
   constructor(private gameOfLifeService: GameOfLifeService, private configService: ConfigService) {
@@ -91,20 +92,29 @@ export class GameBoardHudComponent implements OnInit, OnDestroy {
         break;
       case GameControlAction.SPEED_VERY_SLOW:
         this.gameOfLifeService.delay = 400;
+        this.currentSpeed = gca;
         break;
       case GameControlAction.SPEED_SLOW:
         this.gameOfLifeService.delay = 120;
+        this.currentSpeed = gca;
         break;
       case GameControlAction.SPEED_NORMAL:
         this.gameOfLifeService.delay = 50;
+        this.currentSpeed = gca;
         break;
       case GameControlAction.SPEED_FAST:
         this.gameOfLifeService.delay = 30;
+        this.currentSpeed = gca;
         break;
       case GameControlAction.SPEED_VERY_FAST:
         this.gameOfLifeService.delay = 1;
+        this.currentSpeed = gca;
         break;
     }
+  }
+
+  getCurrentSpeed(): GameControlAction {
+    return this.currentSpeed;
   }
 
   isGameStarted() {
@@ -125,6 +135,7 @@ export class GameBoardHudComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.action(GameControlAction.STOP_GAME);
+    this.action(GameControlAction.SPEED_NORMAL);
     this.action(GameControlAction.RESTORE_SCREEN);
   }
 

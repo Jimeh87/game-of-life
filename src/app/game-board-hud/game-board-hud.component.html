@@ -1,117 +1,80 @@
-<button type="button"
-        title="{{ actionTitle[GCA.UP] }}"
-        class="btn-sm btn-secondary"
-        style="position: absolute; top: 0px; left: calc(50% - 17px)"
-        (click)="action(GCA.UP)"
->
-  <i class="fa fa-chevron-up" aria-hidden="true"></i>
-</button>
-<button type="button"
-        title="{{ actionTitle[GCA.DOWN] }}"
-        class="btn-sm btn-secondary"
-        style="position: absolute; bottom: 0px; left: calc(50% - 17px)"
-        (click)="action(GCA.DOWN)"
->
-  <i class="fa fa-chevron-down" aria-hidden="true"></i>
-</button>
-<button type="button"
-        title="{{ actionTitle[GCA.LEFT] }}"
-        class="btn-sm btn-secondary"
-        style="position: absolute; top: calc(50% - 11px); left: 0px"
-        (click)="action(GCA.LEFT)"
->
-  <i class="fa fa-chevron-left" aria-hidden="true"></i>
-</button>
-<button type="button"
-        title="{{ actionTitle[GCA.RIGHT] }}"
-        class="btn-sm btn-secondary"
-        style="position: absolute; top: calc(50% - 11px); right: 0px"
-        (click)="action(GCA.RIGHT)"
->
-  <i class="fa fa-chevron-right" aria-hidden="true"></i>
-</button>
-<button type="button"
-        title="{{ isFullScreen() ? actionTitle[GCA.RESTORE_SCREEN] : actionTitle[GCA.FULL_SCREEN]}}"
-        class="btn-sm btn-secondary"
-        style="position: absolute; top: 0px; right: 0px"
-        (click)="action(isFullScreen() ? GCA.RESTORE_SCREEN : GCA.FULL_SCREEN)"
->
-  <i class="fa" aria-hidden="true"
+<div id="pan-controls" style="position: absolute; top: 10px; left: 10px;">
+  <div id="up-control">
+    <i class="fa fa-chevron-up control"
+       title="{{ actionTitle[GCA.UP] }}"
+       (click)="action(GCA.UP)"></i>
+  </div>
+  <div id="down-control">
+    <i class="fa fa-chevron-down control"
+       title="{{ actionTitle[GCA.DOWN] }}"
+       (click)="action(GCA.DOWN)"></i>
+  </div>
+  <div id="left-control">
+    <i class="fa fa-chevron-left control"
+       title="{{ actionTitle[GCA.LEFT] }}"
+       (click)="action(GCA.LEFT)"></i>
+  </div>
+  <div id="right-control">
+    <i class="fa fa-chevron-right control"
+       title="{{ actionTitle[GCA.RIGHT] }}"
+       (click)="action(GCA.RIGHT)"></i>
+  </div>
+</div>
+
+<div class="controls">
+  <i class="fa control float-left"
+     title="{{ isGameStarted() ? actionTitle[GCA.STOP_GAME] : actionTitle[GCA.START_GAME]}}"
+     (click)="action(isGameStarted() ? GCA.STOP_GAME : GCA.START_GAME)"
+     [ngClass]="{'fa-play': !isGameStarted(), 'fa-pause': isGameStarted()}"></i>
+  <i class="fa fa-step-forward control float-left"
+     title="{{ actionTitle[GCA.STEP] }}"
+     (click)="action(GCA.STEP)"></i>
+  <i class="fa control float-right"
+     title="{{ isFullScreen() ? actionTitle[GCA.RESTORE_SCREEN] : actionTitle[GCA.FULL_SCREEN]}}"
+     (click)="action(isFullScreen() ? GCA.RESTORE_SCREEN : GCA.FULL_SCREEN)"
      [ngClass]="{'fa-window-maximize': !isFullScreen(), 'fa-window-restore': isFullScreen()}"></i>
-</button>
-<div class="btn-group-sm btn-group-vertical" role="group" aria-label="controls"
-     style="position: absolute; top: 0px; left: 0px" ngbDropdown>
-  <button type="button"
-          title="Show/Hide Menu"
-          class="btn btn-secondary"
-          (click)="toggleMenu()"
-  >
-    <i class="fa fa-bars" aria-hidden="true"></i>
-  </button>
-  <button type="button"
-          title="{{ isGameStarted() ? actionTitle[GCA.STOP_GAME] : actionTitle[GCA.START_GAME]}}"
-          class="btn btn-secondary"
-          [ngbCollapse]="isMenuHidden()"
-          (click)="action(isGameStarted() ? GCA.STOP_GAME : GCA.START_GAME)"
-  >
-    <i class="fa" aria-hidden="true" [ngClass]="{'fa-play': !isGameStarted(), 'fa-pause': isGameStarted()}"></i>
-  </button>
-  <button type="button"
-          title="{{ actionTitle[GCA.STEP] }}"
-          class="btn btn-secondary"
-          [ngbCollapse]="isMenuHidden()"
-          (click)="action(GCA.STEP)"
-  >
-    <i class="fa fa-step-forward" aria-hidden="true"></i>
-  </button>
-  <button type="button"
-          title="{{ actionTitle[GCA.ERASE] }}"
-          class="btn btn-secondary"
-          [ngbCollapse]="isMenuHidden()"
-          (click)="action(GCA.ERASE)"
-  >
-    <i class="fa fa-eraser" aria-hidden="true"></i>
-  </button>
-  <button type="button"
-          title="{{ actionTitle[GCA.ZOOM_IN] }}"
-          class="btn btn-secondary"
-          [ngbCollapse]="isMenuHidden()"
-          (click)="action(GCA.ZOOM_IN)"
-  >
-    <i class="fa fa-search-plus" aria-hidden="true"></i>
-  </button>
-  <button type="button"
-          title="{{ actionTitle[GCA.ZOOM_OUT] }}"
-          class="btn btn-secondary"
-          [ngbCollapse]="isMenuHidden()"
-          (click)="action(GCA.ZOOM_OUT)"
-  >
-    <i class="fa fa-search-minus" aria-hidden="true"></i>
-  </button>
-  <div class="btn-group-sm btn-group-vertical" role="group" ngbDropdown>
-    <button type="button"
-            title="Game Speed"
-            class="btn btn-secondary"
-            ngbDropdownToggle
-    >
-      <i class="fa fa-clock-o" aria-hidden="true"></i>
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" style="cursor:pointer;" (click)=action(GCA.SPEED_VERY_SLOW)>
+  <i class="fa fa-search-minus control float-right"
+     title="{{ actionTitle[GCA.ZOOM_OUT] }}"
+     (click)="action(GCA.ZOOM_OUT)"></i>
+  <i class="fa fa-search-plus control float-right"
+     title="{{ actionTitle[GCA.ZOOM_IN] }}"
+     (click)="action(GCA.ZOOM_IN)"></i>
+  <div class="float-left" ngbDropdown [up]="true">
+    <i class="fa fa-clock-o control" aria-hidden="true" title="Speed ({{ actionTitle[getCurrentSpeed()] }})" ngbDropdownToggle></i>
+    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownBasic2">
+      <a class="dropdown-item clickable" (click)=action(GCA.SPEED_VERY_SLOW)>
+        <i class="fa"
+           [ngClass]="{'fa-circle-o': getCurrentSpeed() !== GCA.SPEED_VERY_SLOW, 'fa-check-circle-o': getCurrentSpeed() === GCA.SPEED_VERY_SLOW}">
+        </i>
         {{ actionTitle[GCA.SPEED_VERY_SLOW] }}
       </a>
-      <a class="dropdown-item" style="cursor:pointer;" (click)=action(GCA.SPEED_SLOW)>
+      <a class="dropdown-item clickable" (click)=action(GCA.SPEED_SLOW)>
+        <i class="fa"
+           [ngClass]="{'fa-circle-o': getCurrentSpeed() !== GCA.SPEED_SLOW, 'fa-check-circle-o': getCurrentSpeed() === GCA.SPEED_SLOW}">
+        </i>
         {{ actionTitle[GCA.SPEED_SLOW] }}
       </a>
-      <a class="dropdown-item" style="cursor:pointer;" (click)=action(GCA.SPEED_NORMAL)>
+      <a class="dropdown-item clickable" (click)=action(GCA.SPEED_NORMAL)>
+        <i class="fa"
+           [ngClass]="{'fa-circle-o': getCurrentSpeed() !== GCA.SPEED_NORMAL, 'fa-check-circle-o': getCurrentSpeed() === GCA.SPEED_NORMAL}">
+        </i>
         {{ actionTitle[GCA.SPEED_NORMAL] }}
       </a>
-      <a class="dropdown-item" style="cursor:pointer;" (click)=action(GCA.SPEED_FAST)>
-        {{ actionTitle[GCA.SPEED_FAST] }}
+      <a class="dropdown-item clickable" (click)=action(GCA.SPEED_FAST)>
+        <i class="fa"
+           [ngClass]="{'fa-circle-o': getCurrentSpeed() !== GCA.SPEED_FAST, 'fa-check-circle-o': getCurrentSpeed() === GCA.SPEED_FAST}">
+        </i> {{ actionTitle[GCA.SPEED_FAST] }}
       </a>
-      <a class="dropdown-item" style="cursor:pointer;" (click)=action(GCA.SPEED_VERY_FAST)>
+      <a class="dropdown-item clickable" (click)=action(GCA.SPEED_VERY_FAST)>
+        <i class="fa"
+           [ngClass]="{'fa-circle-o': getCurrentSpeed() !== GCA.SPEED_VERY_FAST, 'fa-check-circle-o': getCurrentSpeed() === GCA.SPEED_VERY_FAST}">
+        </i>
         {{ actionTitle[GCA.SPEED_VERY_FAST] }}
       </a>
     </div>
   </div>
+  <i class="fa fa-eraser control float-left"
+     title="{{ actionTitle[GCA.ERASE] }}"
+     (click)="action(GCA.ERASE)"></i>
+
 </div>
