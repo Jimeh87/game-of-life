@@ -21,8 +21,4 @@ export class ConfigComponent implements OnInit {
     this.gbConfig = <GameBoardConfig> this.configService.getConfig(ConfigType.GAME_BOARD);
   }
 
-  test() {
-    console.log('pong is dum');
-  }
-
 }

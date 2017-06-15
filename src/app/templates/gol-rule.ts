@@ -14,7 +14,7 @@ export class GolRule {
     {name: '2x2', rule: 'B36/S125'},
     {name: 'HighLife', rule: 'B36/S23'},
     {name: 'Move', rule: 'B368/S245'},
-    {name: 'Day & Night', rule: 'B3678/34678'}
+    {name: 'Day & Night', rule: 'B3678/S34678'}
   ];
 
   survival: SortedSet<number> = new SortedSet((a: number, b: number) => { return a - b; });
@@ -48,8 +48,8 @@ export class GolRule {
 
   public getName() {
     const ruleString = this.getFormattedRuleString();
-    const name = GolRule.COMMON_RULES.find(r => r.rule === ruleString).name;
-    return name;
+    const rule = GolRule.COMMON_RULES.find(r => r.rule === ruleString);
+    return rule != null ? rule.name : null;
   }
 
   public getFormattedRuleString() {

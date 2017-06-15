@@ -35,17 +35,17 @@
     <h2>
       Border
       <div class="btn-group btn-group-sm" data-toggle="buttons">
-        <label class="btn btn-outline-secondary" [ngClass]="{ 'active': gbConfig.cellSpace == 1 }">
+        <label class="btn btn-outline-primary" [ngClass]="{ 'active': gbConfig.cellSpace == 1 }">
           <input type="radio" name="options" autocomplete="off" [checked]="gbConfig.cellSpace == 1"
                  (click)="gbConfig.cellSpace = 1">On
         </label>
-        <label class="btn btn-outline-secondary" [ngClass]="{ 'active': gbConfig.cellSpace == 0 }">
+        <label class="btn btn-outline-primary" [ngClass]="{ 'active': gbConfig.cellSpace == 0 }">
           <input type="radio" name="options" autocomplete="off" [checked]="gbConfig.cellSpace == 0"
                  (click)="gbConfig.cellSpace = 0">Off
         </label>
       </div>
     </h2>
-    <hr>
+    <hr *ngIf="gbConfig.cellSpace == 1">
   </div>
 </div>
 <div class="form-group row" *ngIf="gbConfig.cellSpace == 1">
