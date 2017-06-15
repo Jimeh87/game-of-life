@@ -23,9 +23,9 @@ import {ConfigService} from './config/config.service';
 import {AboutComponent} from './about/about.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {TemplateFilterPipe} from './template-filter.pipe';
-import { SpinnerComponent } from './spinner/spinner.component';
-import {Ng2PageScrollModule, PageScrollConfig, PageScrollService} from 'ng2-page-scroll';
-import {ColorPickerModule} from 'angular2-color-picker';
+import {SpinnerComponent} from './spinner/spinner.component';
+import {Ng2PageScrollModule, PageScrollService} from 'ng2-page-scroll';
+import {ColorPickerModule} from 'angular4-color-picker';
 
 
 const appRoutes: Routes = [
