@@ -5,8 +5,8 @@ import {GameBoardConfig} from '../config/game-board-config';
 import {ConfigType} from '../config/config-type';
 import {GameControlAction, GameControlActionAware} from './game-control-action';
 import {Ticker} from '../algorithm/ticker';
-import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
+import {GolRule} from '../templates/gol-rule';
 
 @Component({
   selector: 'app-game-board-hud',
@@ -37,6 +37,7 @@ export class GameBoardHudComponent implements OnInit, OnDestroy {
     this._actionTitle[GameControlAction.STOP_GAME] = 'Stop Game';
     this._actionTitle[GameControlAction.STEP] = 'Step';
     this._actionTitle[GameControlAction.ERASE] = 'Erase';
+    this._actionTitle[GameControlAction.RESET] = 'Reset';
     this._actionTitle[GameControlAction.ZOOM_IN] = 'Zoom In';
     this._actionTitle[GameControlAction.ZOOM_OUT] = 'Zoom Out';
     this._actionTitle[GameControlAction.FULL_SCREEN] = 'Full Screen';
@@ -76,6 +77,12 @@ export class GameBoardHudComponent implements OnInit, OnDestroy {
       case GameControlAction.ERASE:
         this.gameOfLifeService.stopGame();
         this.gameOfLifeService.clear();
+        break;
+      case GameControlAction.RESET:
+        this.gameOfLifeService.stopGame();
+        this.gameBoardConfig.yScreenOffset = 0;
+        this.gameBoardConfig.xScreenOffset = 0;
+        this.gameOfLifeService.refresh(this.gameBoardConfig.columns, this.gameBoardConfig.rows);
         break;
       case GameControlAction.ZOOM_IN:
         this.gameBoardConfig.zoom += 1;
@@ -152,6 +159,22 @@ export class GameBoardHudComponent implements OnInit, OnDestroy {
 
   toggleMenu() {
     this.menuHidden = !this.menuHidden;
+  }
+
+  isRefreshable() {
+    return this.gameOfLifeService.isRefreshable();
+  }
+
+  getRule(): GolRule {
+    return this.gameOfLifeService.getRule();
+  }
+
+  setRule(ruleString: string) {
+    this.gameOfLifeService.setRule(new GolRule(ruleString));
+  }
+
+  rules() {
+    return GolRule.COMMON_RULES;
   }
 
   ngOnDestroy() {

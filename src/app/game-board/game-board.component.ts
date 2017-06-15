@@ -17,6 +17,7 @@ import {Observable} from 'rxjs/Observable';
 import {ConfigService} from '../config/config.service';
 import {GameBoardConfig} from '../config/game-board-config';
 import {ConfigType} from '../config/config-type';
+import {GameBoardStyleConfig} from '../config/game-board-style-config';
 
 @Component({
   selector: 'app-game-board',
@@ -24,15 +25,6 @@ import {ConfigType} from '../config/config-type';
   styleUrls: ['./game-board.component.css']
 })
 export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
-
-  @Input()
-  private backgroundColor = 'rgb(173, 184, 184)';
-
-  @Input()
-  private aliveCellColor = 'forestgreen';
-
-  @Input()
-  private deadCellColor = 'black';
 
   @Input()
   private preview = false;
@@ -51,6 +43,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
   private lastSelectedCell: {x: number, y: number} = null;
 
   private gbConfig: GameBoardConfig;
+  private gbStyleConfig: GameBoardStyleConfig;
 
   private cellStateSubscription: Subscription;
 
@@ -63,6 +56,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
 
   ngOnInit() {
     this.gbConfig = <GameBoardConfig> this.configService.getConfig(ConfigType.GAME_BOARD);
+    this.gbStyleConfig = <GameBoardStyleConfig> this.configService.getConfig(ConfigType.GAME_BOARD_STYLE);
   }
 
   ngAfterViewInit() {
@@ -78,6 +72,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
       }
     );
 
+    this.gbConfig.refreshable = false;
     if (this.template != null) {
       this.template.then((template: Template) => {
         this.canvasFillContainer();
@@ -88,7 +83,10 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
           this.gbConfig.columns,
           this.gbConfig.rows
         );
+        this.gbConfig.refreshable = true;
       });
+    } else {
+      this.gameOfLifeService.clearTemplate();
     }
 
     this.gameBoardConfigSubscription = this.gbConfig.observe.subscribe(() => {
@@ -155,7 +153,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     this.gbConfig.silent = true;
 
     // Fill background
-    this.ctx.fillStyle = this.backgroundColor;
+    this.ctx.fillStyle = this.gbStyleConfig.borderColour;
     this.ctx.fillRect(0, 0, this.gbConfig.width, this.gbConfig.height);
 
     for (let x = 0; x < this.gbConfig.columns; x++) {
@@ -168,11 +166,17 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
 
   drawCell(x: number, y: number, alive: boolean) {
     if (alive) {
-      this.ctx.fillStyle = this.aliveCellColor;
+      this.ctx.fillStyle = this.gbStyleConfig.aliveCellColour;
     } else {
-      this.ctx.fillStyle = this.deadCellColor;
+      this.ctx.fillStyle = this.gbStyleConfig.deadCellColour;
     }
 
+    this.ctx.clearRect(
+      this.gbConfig.cellSpace + (this.gbConfig.cellSpace * x) + (this.gbConfig.cellSize * x),
+      this.gbConfig.cellSpace + (this.gbConfig.cellSpace * y) + (this.gbConfig.cellSize * y),
+      this.gbConfig.cellSize,
+      this.gbConfig.cellSize
+    );
     this.ctx.fillRect(
       this.gbConfig.cellSpace + (this.gbConfig.cellSpace * x) + (this.gbConfig.cellSize * x),
       this.gbConfig.cellSpace + (this.gbConfig.cellSpace * y) + (this.gbConfig.cellSize * y),

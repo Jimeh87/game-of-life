@@ -34,7 +34,7 @@ export class ListLife implements OnDestroy {
     this.rule = rule;
   }
 
-  public getRule() {
+  public getRule(): GolRule {
     return this.rule;
   }
 

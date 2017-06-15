@@ -5,6 +5,8 @@ import {Subscription} from 'rxjs/Subscription';
 import {GameOfLifeService} from '../../game-of-life.service';
 import {Router} from '@angular/router';
 import {ConfigService} from '../../config/config.service';
+import {ConfigType} from '../../config/config-type';
+import {GameBoardStyleConfig} from '../../config/game-board-style-config';
 
 @Component({
   selector: 'app-template',
@@ -20,9 +22,14 @@ export class TemplateComponent implements OnInit {
   private showDetails = false;
 
   constructor(private gol: GameOfLifeService,
-              private router: Router) { }
+              private router: Router,
+              private configService: ConfigService) { }
 
   ngOnInit(): void {
+    const gbStyle: GameBoardStyleConfig = <GameBoardStyleConfig> this.configService.getConfig(ConfigType.GAME_BOARD_STYLE);
+    gbStyle.aliveCellColour = '#5bc0de';
+    gbStyle.deadCellColour = '#ffffff';
+    gbStyle.borderColour = '#ffffff';
   }
 
   public isShowDetails(): boolean {

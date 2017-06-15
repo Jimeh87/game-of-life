@@ -3,8 +3,7 @@
     <h4 class="card-title">{{ getTemplate().getName()}}</h4>
   </div>
   <div class="card-block template-card" *ngIf="!isShowDetails()" style="padding: 0">
-      <app-game-board [template]="getTemplatePromise()" aliveCellColor="#5bc0de" deadCellColor='white'
-                      backgroundColor='white' [preview]="true" class="w-100 h-100"></app-game-board>
+      <app-game-board [template]="getTemplatePromise()" [preview]="true" class="w-100 h-100"></app-game-board>
   </div>
   <div class="card-block template-card" *ngIf="isShowDetails()" style="overflow-y: auto;">
     <app-template-detail [template]="getTemplate()"></app-template-detail>

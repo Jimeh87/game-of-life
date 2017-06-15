@@ -3,6 +3,7 @@ export enum GameControlAction {
   STOP_GAME,
   STEP,
   ERASE,
+  RESET,
   ZOOM_IN,
   ZOOM_OUT,
   FULL_SCREEN,

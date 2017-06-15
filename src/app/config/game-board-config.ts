@@ -1,5 +1,6 @@
 import {Config} from './config';
 import {ConfigType} from './config-type';
+
 export class GameBoardConfig extends Config {
 
   private _height: number;
@@ -14,6 +15,7 @@ export class GameBoardConfig extends Config {
   private _cellSpace = this.baseCellSpace;
   private _zoom = this.baseCellSize;
   private _fullScreen = false;
+  private _refreshable = false;
 
 
   constructor() {
@@ -27,7 +29,13 @@ export class GameBoardConfig extends Config {
   screenSize(width: number, height: number) {
     this._width = width;
     this._height = height;
+    const oldColumns = this.columns;
+    const oldRows = this.rows;
     this.determineColumnsAndRows();
+    if (oldColumns != null && oldRows != null) {
+      this._xScreenOffset = this._xScreenOffset + Math.round((oldColumns - this.columns) / 2);
+      this._yScreenOffset = this._yScreenOffset + Math.round((oldRows - this.rows) / 2);
+    }
     this.emitChange();
   }
 
@@ -74,6 +82,18 @@ export class GameBoardConfig extends Config {
     return this._cellSpace;
   }
 
+  set cellSpace(value: number) {
+    this._cellSpace = value;
+    const oldColumns = this.columns;
+    const oldRows = this.rows;
+    if (oldColumns != null && oldRows != null) {
+      this.determineColumnsAndRows();
+      this._xScreenOffset = this._xScreenOffset + Math.round((oldColumns - this.columns) / 2);
+      this._yScreenOffset = this._yScreenOffset + Math.round((oldRows - this.rows) / 2);
+    }
+    this.emitChange();
+  }
+
   get zoom(): number {
     return this._zoom;
   }
@@ -96,6 +116,15 @@ export class GameBoardConfig extends Config {
 
   set fullScreen(value: boolean) {
     this._fullScreen = value;
+    this.emitChange();
+  }
+
+  get refreshable(): boolean {
+    return this._refreshable;
+  }
+
+  set refreshable(value: boolean) {
+    this._refreshable = value;
     this.emitChange();
   }
 

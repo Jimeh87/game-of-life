@@ -1,6 +1,22 @@
 import {SortedSet} from '../algorithm/sorted-set';
 export class GolRule {
 
+  static COMMON_RULES: {name: string, rule: string}[] = [
+    {name: 'Replicator', rule: 'B1357/S1357'},
+    {name: 'Fredkin', rule: 'B1357/S02468'},
+    {name: 'Seeds', rule: 'B2/S'},
+    {name: 'Live Free or Die', rule: 'B2/S0'},
+    {name: 'Life without death', rule: 'B3/S012345678'},
+    {name: 'Flock', rule: 'B3/S12'},
+    {name: 'Mazectric', rule: 'B3/S1234'},
+    {name: 'Maze', rule: 'B3/S12345'},
+    {name: 'Conway\'s Life', rule: 'B3/S23'},
+    {name: '2x2', rule: 'B36/S125'},
+    {name: 'HighLife', rule: 'B36/S23'},
+    {name: 'Move', rule: 'B368/S245'},
+    {name: 'Day & Night', rule: 'B3678/34678'}
+  ];
+
   survival: SortedSet<number> = new SortedSet((a: number, b: number) => { return a - b; });
   birth: SortedSet<number> = new SortedSet((a: number, b: number) => { return a - b; });
 
@@ -28,6 +44,12 @@ export class GolRule {
 
   public getRuleString() {
     return this.ruleString;
+  }
+
+  public getName() {
+    const ruleString = this.getFormattedRuleString();
+    const name = GolRule.COMMON_RULES.find(r => r.rule === ruleString).name;
+    return name;
   }
 
   public getFormattedRuleString() {

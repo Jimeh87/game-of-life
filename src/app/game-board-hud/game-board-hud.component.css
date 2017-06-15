@@ -4,6 +4,7 @@
   width: 100%;
   height: auto;
   background-color: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
 }
 
 .control {
@@ -21,7 +22,7 @@
   width: 60px;
   height: 60px;
   display: block;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 #up-control {
