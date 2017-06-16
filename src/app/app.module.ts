@@ -83,10 +83,7 @@ const appRoutes: Routes = [
     ConfigComponent,
     AboutComponent,
     TemplateFilterPipe,
-    SpinnerComponent,
-    TextDirective,
-    SliderDirective,
-    DialogComponent
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +93,7 @@ const appRoutes: Routes = [
     NgbModule.forRoot(),
     NgxPaginationModule,
     Ng2PageScrollModule.forRoot(),
-    ColorPickerModule
+    ColorPickerModule.forRoot()
   ],
   providers: [RleService, GameOfLifeService, TemplatesService, ConfigService, PageScrollService],
   bootstrap: [AppComponent]
