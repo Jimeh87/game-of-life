@@ -25,7 +25,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {TemplateFilterPipe} from './template-filter.pipe';
 import {SpinnerComponent} from './spinner/spinner.component';
 import {Ng2PageScrollModule, PageScrollService} from 'ng2-page-scroll';
-import {ColorPickerModule, DialogComponent, SliderDirective, TextDirective} from 'angular4-color-picker';
+import {ColorPickerModule} from 'ngx-color-picker';
 
 
 const appRoutes: Routes = [
@@ -93,7 +93,7 @@ const appRoutes: Routes = [
     NgbModule.forRoot(),
     NgxPaginationModule,
     Ng2PageScrollModule.forRoot(),
-    ColorPickerModule.forRoot()
+    ColorPickerModule
   ],
   providers: [RleService, GameOfLifeService, TemplatesService, ConfigService, PageScrollService],
   bootstrap: [AppComponent]
