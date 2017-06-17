@@ -19,7 +19,7 @@
         <button *ngIf="isFirst"
                 class="btn btn-outline-success"
                 type="button"
-                (click)="gbStyleConfig.aliveCellColors.push('#000000')"
+                (click)="gbStyleConfig.aliveCellColors.push(gbStyleConfig.aliveCellColors[i])"
         >
           <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
