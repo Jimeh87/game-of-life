@@ -68,10 +68,12 @@
 <div class="form-group row" *ngIf="gbConfig.cellSpace == 1">
   <label class="col-md-1 col-form-label">Color</label>
   <div class="col-sm-11">
-    <!--<input type="text"-->
-           <!--class="form-control"-->
-           <!--[style.border-color]="gbStyleConfig.borderColor"-->
-           <!--[(ngModel)]="gbStyleConfig.borderColor">-->
-    <app-color-selector [(colorSelection)]="gbStyleConfig.borderColor"></app-color-selector>
+    <input type="text"
+           class="form-control"
+           [colorPicker]="gbStyleConfig.borderColor"
+           (colorPickerChange)="gbStyleConfig.borderColor = $event"
+           [cpPosition]="'bottom'"
+           [style.border-color]="gbStyleConfig.borderColor"
+           [value]="gbStyleConfig.borderColor">
   </div>
 </div>
