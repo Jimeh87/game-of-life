@@ -165,18 +165,25 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
   }
 
   drawCell(x: number, y: number, alive: boolean) {
-    if (alive) {
-      this.ctx.fillStyle = this.gbStyleConfig.nextAliveCellColor;
-    } else {
-      this.ctx.fillStyle = this.gbStyleConfig.deadCellColor;
-    }
-
     this.ctx.clearRect(
       this.gbConfig.cellSpace + (this.gbConfig.cellSpace * x) + (this.gbConfig.cellSize * x),
       this.gbConfig.cellSpace + (this.gbConfig.cellSpace * y) + (this.gbConfig.cellSize * y),
       this.gbConfig.cellSize,
       this.gbConfig.cellSize
     );
+    if (alive) {
+      this.ctx.fillStyle = this.gbStyleConfig.deadCellColor;
+      this.ctx.fillRect(
+        this.gbConfig.cellSpace + (this.gbConfig.cellSpace * x) + (this.gbConfig.cellSize * x),
+        this.gbConfig.cellSpace + (this.gbConfig.cellSpace * y) + (this.gbConfig.cellSize * y),
+        this.gbConfig.cellSize,
+        this.gbConfig.cellSize
+      );
+      this.ctx.fillStyle = this.gbStyleConfig.nextAliveCellColor;
+    } else {
+      this.ctx.fillStyle = this.gbStyleConfig.deadCellColor;
+    }
+
     this.ctx.fillRect(
       this.gbConfig.cellSpace + (this.gbConfig.cellSpace * x) + (this.gbConfig.cellSize * x),
       this.gbConfig.cellSpace + (this.gbConfig.cellSpace * y) + (this.gbConfig.cellSize * y),

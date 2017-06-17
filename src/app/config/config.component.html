@@ -13,18 +13,18 @@
              [colorPicker]="gbStyleConfig.aliveCellColors[i]"
              (colorPickerChange)="gbStyleConfig.aliveCellColors[i] = $event"
              [cpPosition]="'bottom'"
-             [style.border-color]="gbStyleConfig.aliveCellColors[i]"
+             [style.background-color]="gbStyleConfig.aliveCellColors[i]"
              [value]="gbStyleConfig.aliveCellColors[i]">
       <span class="input-group-btn">
         <button *ngIf="isLast"
-                class="btn btn-success"
+                class="btn btn-outline-success"
                 type="button"
                 (click)="gbStyleConfig.aliveCellColors.push('#000')"
         >
           <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
         <button *ngIf="!isLast"
-                class="btn btn-danger"
+                class="btn btn-outline-danger"
                 type="button"
                 (click)="gbStyleConfig.aliveCellColors.splice(i, 1)"
         >
@@ -42,7 +42,7 @@
            [colorPicker]="gbStyleConfig.deadCellColor"
            (colorPickerChange)="gbStyleConfig.deadCellColor = $event"
            [cpPosition]="'bottom'"
-           [style.border-color]="gbStyleConfig.deadCellColor"
+           [style.background-color]="gbStyleConfig.deadCellColor"
            [value]="gbStyleConfig.deadCellColor">
   </div>
 </div>
@@ -73,7 +73,7 @@
            [colorPicker]="gbStyleConfig.borderColor"
            (colorPickerChange)="gbStyleConfig.borderColor = $event"
            [cpPosition]="'bottom'"
-           [style.border-color]="gbStyleConfig.borderColor"
+           [style.background-color]="gbStyleConfig.borderColor"
            [value]="gbStyleConfig.borderColor">
   </div>
 </div>
