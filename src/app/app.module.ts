@@ -27,7 +27,6 @@ import {SpinnerComponent} from './spinner/spinner.component';
 import {Ng2PageScrollModule, PageScrollService} from 'ng2-page-scroll';
 import {ColorPickerModule} from 'ngx-color-picker';
 
-
 const appRoutes: Routes = [
     {
       path: '',

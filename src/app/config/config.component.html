@@ -4,32 +4,49 @@
     <hr>
   </div>
 </div>
-<div class="form-group row">
-  <label class="col-md-1 col-form-label" for="aliveCellColor">Alive</label>
-  <div class="col-md-11">
-    <input type="text"
-           class="form-control color-input"
-           id="aliveCellColor"
-           [(colorPicker)]="gbStyleConfig.aliveCellColour"
-           [style.background]="gbStyleConfig.aliveCellColour"
-           [cpOutputFormat]="'rgba'"
-           [cpPosition]="'bottom'"
-           [value]="gbStyleConfig.aliveCellColour">
+<div *ngFor="let aliveCellColor of gbStyleConfig.aliveCellColors; index as i; first as isFirst; last as isLast; trackBy: trackBy" class="form-group row">
+  <label class="col-md-1 col-form-label">{{ isFirst ? 'Alive' : '' }}</label>
+  <div class="col-sm-11">
+    <div class="input-group">
+      <input type="text"
+             class="form-control"
+             [colorPicker]="gbStyleConfig.aliveCellColors[i]"
+             (colorPickerChange)="gbStyleConfig.aliveCellColors[i] = $event"
+             [cpPosition]="'bottom'"
+             [style.border-color]="gbStyleConfig.aliveCellColors[i]"
+             [value]="gbStyleConfig.aliveCellColors[i]">
+      <span class="input-group-btn">
+        <button *ngIf="isLast"
+                class="btn btn-success"
+                type="button"
+                (click)="gbStyleConfig.aliveCellColors.push('#000')"
+        >
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+        <button *ngIf="!isLast"
+                class="btn btn-danger"
+                type="button"
+                (click)="gbStyleConfig.aliveCellColors.splice(i, 1)"
+        >
+          <i class="fa fa-minus" aria-hidden="true"></i>
+        </button>
+      </span>
+    </div>
   </div>
 </div>
 <div class="form-group row">
-  <label class="col-md-1 col-form-label" for="deadCellColor">Dead</label>
-  <div class="col-md-11">
+  <label class="col-md-1 col-form-label">Dead</label>
+  <div class="col-sm-11">
     <input type="text"
-           class="form-control color-input"
-           id="deadCellColor"
-           [(colorPicker)]="gbStyleConfig.deadCellColour"
-           [style.background]="gbStyleConfig.deadCellColour"
-           [cpOutputFormat]="'rgba'"
+           class="form-control"
+           [colorPicker]="gbStyleConfig.deadCellColor"
+           (colorPickerChange)="gbStyleConfig.deadCellColor = $event"
            [cpPosition]="'bottom'"
-           [value]="gbStyleConfig.deadCellColour">
+           [style.border-color]="gbStyleConfig.deadCellColor"
+           [value]="gbStyleConfig.deadCellColor">
   </div>
 </div>
+
 <div class="row top-buffer">
   <div class="col">
     <h2>
@@ -49,15 +66,12 @@
   </div>
 </div>
 <div class="form-group row" *ngIf="gbConfig.cellSpace == 1">
-  <label class="col-md-1 col-form-label" for="borderColor">Color</label>
-  <div class="col-md-11">
-    <input type="text"
-           class="form-control color-input"
-           id="borderColor"
-           [(colorPicker)]="gbStyleConfig.borderColour"
-           [style.background]="gbStyleConfig.borderColour"
-           [cpOutputFormat]="'rgba'"
-           [cpPosition]="'bottom'"
-           [value]="gbStyleConfig.borderColour">
+  <label class="col-md-1 col-form-label">Color</label>
+  <div class="col-sm-11">
+    <!--<input type="text"-->
+           <!--class="form-control"-->
+           <!--[style.border-color]="gbStyleConfig.borderColor"-->
+           <!--[(ngModel)]="gbStyleConfig.borderColor">-->
+    <app-color-selector [(colorSelection)]="gbStyleConfig.borderColor"></app-color-selector>
   </div>
 </div>

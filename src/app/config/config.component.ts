@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {ConfigService} from './config.service';
 import {GameBoardStyleConfig} from './game-board-style-config';
 import {ConfigType} from './config-type';
@@ -20,6 +20,10 @@ export class ConfigComponent implements OnInit {
   ngOnInit() {
     this.gbStyleConfig = <GameBoardStyleConfig> this.configService.getConfig(ConfigType.GAME_BOARD_STYLE);
     this.gbConfig = <GameBoardConfig> this.configService.getConfig(ConfigType.GAME_BOARD);
+  }
+
+  trackBy(index, item) {
+    return index;
   }
 
 }

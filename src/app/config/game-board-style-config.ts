@@ -3,40 +3,47 @@ import {ConfigType} from './config-type';
 
 export class GameBoardStyleConfig extends Config {
 
-  private _borderColour = '#bbc4c4';
+  private _borderColor = '#bbc4c4';
 
-  private _aliveCellColour = '#5cb85c';
+  private _aliveCellColors: string[] = ['#5cb85c'];// ['#5cb85c', 'pink'];
+  private aliveCellColorIndex = 0;
 
-  private _deadCellColour = '#f1f3f3';
+  private _deadCellColor = '#f1f3f3';
 
   constructor() {
     super(ConfigType.GAME_BOARD_STYLE);
   }
 
-  get borderColour(): string {
-    return this._borderColour;
+  get borderColor(): string {
+    return this._borderColor;
   }
 
-  set borderColour(value: string) {
-    this._borderColour = value;
+  set borderColor(value: string) {
+    this._borderColor = value;
     this.emitChange();
   }
 
-  get aliveCellColour(): string {
-    return this._aliveCellColour;
+  get aliveCellColors(): string[] {
+    return this._aliveCellColors;
   }
 
-  set aliveCellColour(value: string) {
-    this._aliveCellColour = value;
+  set aliveCellColors(value: string[]) {
+    this._aliveCellColors = value;
     this.emitChange();
   }
 
-  get deadCellColour(): string {
-    return this._deadCellColour;
+  get nextAliveCellColor(): string {
+    const nextColor = this._aliveCellColors[this.aliveCellColorIndex];
+    this.aliveCellColorIndex = (this.aliveCellColorIndex + 1) % this._aliveCellColors.length;
+    return nextColor;
   }
 
-  set deadCellColour(value: string) {
-    this._deadCellColour = value;
+  get deadCellColor(): string {
+    return this._deadCellColor;
+  }
+
+  set deadCellColor(value: string) {
+    this._deadCellColor = value;
     this.emitChange();
   }
 }

@@ -153,7 +153,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     this.gbConfig.silent = true;
 
     // Fill background
-    this.ctx.fillStyle = this.gbStyleConfig.borderColour;
+    this.ctx.fillStyle = this.gbStyleConfig.borderColor;
     this.ctx.fillRect(0, 0, this.gbConfig.width, this.gbConfig.height);
 
     for (let x = 0; x < this.gbConfig.columns; x++) {
@@ -166,9 +166,9 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
 
   drawCell(x: number, y: number, alive: boolean) {
     if (alive) {
-      this.ctx.fillStyle = this.gbStyleConfig.aliveCellColour;
+      this.ctx.fillStyle = this.gbStyleConfig.nextAliveCellColor;
     } else {
-      this.ctx.fillStyle = this.gbStyleConfig.deadCellColour;
+      this.ctx.fillStyle = this.gbStyleConfig.deadCellColor;
     }
 
     this.ctx.clearRect(
