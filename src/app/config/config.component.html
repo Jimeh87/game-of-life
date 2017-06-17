@@ -16,14 +16,14 @@
              [style.background-color]="gbStyleConfig.aliveCellColors[i]"
              [value]="gbStyleConfig.aliveCellColors[i]">
       <span class="input-group-btn">
-        <button *ngIf="isLast"
+        <button *ngIf="isFirst"
                 class="btn btn-outline-success"
                 type="button"
-                (click)="gbStyleConfig.aliveCellColors.push('#000')"
+                (click)="gbStyleConfig.aliveCellColors.push('#000000')"
         >
           <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
-        <button *ngIf="!isLast"
+        <button *ngIf="!isFirst"
                 class="btn btn-outline-danger"
                 type="button"
                 (click)="gbStyleConfig.aliveCellColors.splice(i, 1)"
