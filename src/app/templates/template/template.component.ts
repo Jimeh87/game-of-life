@@ -27,9 +27,7 @@ export class TemplateComponent implements OnInit {
 
   ngOnInit(): void {
     const gbStyle: GameBoardStyleConfig = <GameBoardStyleConfig> this.configService.getConfig(ConfigType.GAME_BOARD_STYLE);
-    gbStyle.aliveCellColors = ['#5bc0de'];
-    gbStyle.deadCellColor = '#ffffff';
-    gbStyle.borderColor = '#ffffff';
+    this.configService.applyTheme(this.configService.findTheme('Preview'));
   }
 
   public isShowDetails(): boolean {

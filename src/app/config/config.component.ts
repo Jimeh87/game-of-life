@@ -47,21 +47,18 @@ export class ConfigComponent implements OnInit, AfterViewInit {
   }
 
   setAlive(index: number, value: string) {
-    console.log('set alive');
     this.cloneIfNotMutable();
     this.configService.theme.alive[index] = value;
     this.configService.applyCurrentTheme();
   }
 
   set pushAlive(value: string) {
-    console.log('push alive');
     this.cloneIfNotMutable();
     this.configService.theme.alive.push(value);
     this.configService.applyCurrentTheme();
   }
 
   set removeAlive(index: number) {
-    console.log('remove alive');
     this.cloneIfNotMutable();
     this.configService.theme.alive.splice(index, 1);
     this.configService.applyCurrentTheme();
@@ -72,7 +69,6 @@ export class ConfigComponent implements OnInit, AfterViewInit {
   }
 
   set dead(value: string) {
-    console.log('set dead');
     this.cloneIfNotMutable();
     this.configService.theme.dead = value;
     this.configService.applyCurrentTheme();
@@ -83,7 +79,6 @@ export class ConfigComponent implements OnInit, AfterViewInit {
   }
 
   set border(value: boolean) {
-    console.log('set border');
     this.cloneIfNotMutable();
     this.configService.theme.border = value;
     this.configService.applyCurrentTheme();
@@ -94,7 +89,6 @@ export class ConfigComponent implements OnInit, AfterViewInit {
   }
 
   set borderColor(value: string) {
-    console.log('set border color');
     this.cloneIfNotMutable();
     this.configService.theme.borderColor = value;
     this.configService.applyCurrentTheme();
