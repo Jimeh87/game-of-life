@@ -5,7 +5,7 @@ export class GameBoardStyleConfig extends Config {
 
   private _borderColor = '#bbc4c4';
 
-  private _aliveCellColors: string[] = ['#5cb85c'];// ['#5cb85c', 'pink'];
+  private _aliveCellColors: string[] = ['#5cb85c'];
   private aliveCellColorIndex = 0;
 
   private _deadCellColor = '#f1f3f3';

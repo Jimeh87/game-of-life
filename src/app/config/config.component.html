@@ -1,32 +1,41 @@
+<div class="form-group row">
+  <label class="col-md-1 col-form-label">Theme</label>
+  <div class="col-md-11">
+    <select class="form-control" [(ngModel)]="name">
+      <option *ngFor="let theme of themes;" [value]="theme.name">{{ theme.name }}</option>
+    </select>
+  </div>
+</div>
+
 <div class="row">
   <div class="col">
     <h2>Cells</h2>
     <hr>
   </div>
 </div>
-<div *ngFor="let aliveCellColor of gbStyleConfig.aliveCellColors; index as i; first as isFirst; last as isLast; trackBy: trackBy" class="form-group row">
+<div *ngFor="let aliveColor of alive; index as i; first as isFirst; last as isLast; trackBy: trackBy" class="form-group row">
   <label class="col-md-1 col-form-label">{{ isFirst ? 'Alive' : '' }}</label>
   <div class="col-sm-11">
     <div class="input-group">
       <input type="text"
              class="form-control"
-             [colorPicker]="gbStyleConfig.aliveCellColors[i]"
-             (colorPickerChange)="gbStyleConfig.aliveCellColors[i] = $event"
+             [colorPicker]="alive[i]"
+             (colorPickerChange)="setAlive(i, $event)"
              [cpPosition]="'bottom'"
-             [style.background-color]="gbStyleConfig.aliveCellColors[i]"
-             [value]="gbStyleConfig.aliveCellColors[i]">
+             [style.background-color]="alive[i]"
+             [value]="alive[i]">
       <span class="input-group-btn">
         <button *ngIf="isFirst"
-                class="btn btn-outline-success"
+                class="btn btn-outline-primary"
                 type="button"
-                (click)="gbStyleConfig.aliveCellColors.push(gbStyleConfig.aliveCellColors[i])"
+                (click)="pushAlive(alive[i])"
         >
           <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
         <button *ngIf="!isFirst"
                 class="btn btn-outline-danger"
                 type="button"
-                (click)="gbStyleConfig.aliveCellColors.splice(i, 1)"
+                (click)="removeAlive(i, 1)"
         >
           <i class="fa fa-minus" aria-hidden="true"></i>
         </button>
@@ -39,11 +48,11 @@
   <div class="col-sm-11">
     <input type="text"
            class="form-control"
-           [colorPicker]="gbStyleConfig.deadCellColor"
-           (colorPickerChange)="gbStyleConfig.deadCellColor = $event"
+           [colorPicker]="dead"
+           (colorPickerChange)="dead = $event"
            [cpPosition]="'bottom'"
-           [style.background-color]="gbStyleConfig.deadCellColor"
-           [value]="gbStyleConfig.deadCellColor">
+           [style.background-color]="dead"
+           [value]="dead">
   </div>
 </div>
 
@@ -52,28 +61,28 @@
     <h2>
       Border
       <div class="btn-group btn-group-sm" data-toggle="buttons">
-        <label class="btn btn-outline-primary" [ngClass]="{ 'active': gbConfig.cellSpace == 1 }">
-          <input type="radio" name="options" autocomplete="off" [checked]="gbConfig.cellSpace == 1"
-                 (click)="gbConfig.cellSpace = 1">On
+        <label class="btn btn-outline-primary" [ngClass]="{ 'active': border }">
+          <input type="radio" name="options" autocomplete="off" [checked]="border"
+                 (click)="border = true">On
         </label>
-        <label class="btn btn-outline-primary" [ngClass]="{ 'active': gbConfig.cellSpace == 0 }">
-          <input type="radio" name="options" autocomplete="off" [checked]="gbConfig.cellSpace == 0"
-                 (click)="gbConfig.cellSpace = 0">Off
+        <label class="btn btn-outline-primary" [ngClass]="{ 'active': !border }">
+          <input type="radio" name="options" autocomplete="off" [checked]="!border"
+                 (click)="border = false">Off
         </label>
       </div>
     </h2>
     <hr *ngIf="gbConfig.cellSpace == 1">
   </div>
 </div>
-<div class="form-group row" *ngIf="gbConfig.cellSpace == 1">
+<div class="form-group row" *ngIf="border">
   <label class="col-md-1 col-form-label">Color</label>
   <div class="col-sm-11">
     <input type="text"
            class="form-control"
-           [colorPicker]="gbStyleConfig.borderColor"
-           (colorPickerChange)="gbStyleConfig.borderColor = $event"
+           [colorPicker]="borderColor"
+           (colorPickerChange)="borderColor = $event"
            [cpPosition]="'bottom'"
-           [style.background-color]="gbStyleConfig.borderColor"
-           [value]="gbStyleConfig.borderColor">
+           [style.background-color]="borderColor"
+           [value]="borderColor">
   </div>
 </div>
