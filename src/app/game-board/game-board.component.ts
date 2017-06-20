@@ -6,7 +6,7 @@ import {
   NgZone,
   OnChanges,
   OnDestroy,
-  OnInit, Output,
+  OnInit,
   SimpleChanges,
   ViewChild
 } from '@angular/core';
@@ -18,6 +18,7 @@ import {ConfigService} from '../config/config.service';
 import {GameBoardConfig} from '../config/game-board-config';
 import {ConfigType} from '../config/config-type';
 import {GameBoardStyleConfig} from '../config/game-board-style-config';
+import {Coordinate} from '../algorithm/coordinate';
 
 @Component({
   selector: 'app-game-board',
@@ -46,7 +47,6 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
   private gbStyleConfig: GameBoardStyleConfig;
 
   private cellStateSubscription: Subscription;
-
   private gameBoardConfigSubscription: Subscription;
 
   constructor(private gameOfLifeService: GameOfLifeService,
@@ -65,9 +65,9 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
 
     this.drawWorld();
     this.cellStateSubscription = this.gameOfLifeService.getCellStateObservable().subscribe(
-      (cell: { x: number, y: number, state: boolean }) => {
+      (cell: Coordinate<boolean>) => {
         if (cell.x < this.gbConfig.columns + this.gbConfig.xScreenOffset && cell.y < this.gbConfig.rows + this.gbConfig.yScreenOffset) {
-          this.drawCell(cell.x - this.gbConfig.xScreenOffset, cell.y - this.gbConfig.yScreenOffset, cell.state);
+          this.drawCell(cell.x - this.gbConfig.xScreenOffset, cell.y - this.gbConfig.yScreenOffset, cell.value);
         }
       }
     );
@@ -165,31 +165,19 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
   }
 
   drawCell(x: number, y: number, alive: boolean) {
-    this.ctx.clearRect(
-      this.gbConfig.cellSpace + (this.gbConfig.cellSpace * x) + (this.gbConfig.cellSize * x),
-      this.gbConfig.cellSpace + (this.gbConfig.cellSpace * y) + (this.gbConfig.cellSize * y),
-      this.gbConfig.cellSize,
-      this.gbConfig.cellSize
-    );
+    const rectX = this.gbConfig.cellSpace + (this.gbConfig.cellSpace * x) + (this.gbConfig.cellSize * x);
+    const rectY = this.gbConfig.cellSpace + (this.gbConfig.cellSpace * y) + (this.gbConfig.cellSize * y);
+    const rectW = this.gbConfig.cellSize;
+    const rectH = this.gbConfig.cellSize;
+    this.ctx.clearRect(rectX, rectY, rectW, rectH);
     if (alive) {
       this.ctx.fillStyle = this.gbStyleConfig.deadCellColor;
-      this.ctx.fillRect(
-        this.gbConfig.cellSpace + (this.gbConfig.cellSpace * x) + (this.gbConfig.cellSize * x),
-        this.gbConfig.cellSpace + (this.gbConfig.cellSpace * y) + (this.gbConfig.cellSize * y),
-        this.gbConfig.cellSize,
-        this.gbConfig.cellSize
-      );
+      this.ctx.fillRect(rectX, rectY, rectW, rectH);
       this.ctx.fillStyle = this.gbStyleConfig.nextAliveCellColor;
     } else {
       this.ctx.fillStyle = this.gbStyleConfig.deadCellColor;
     }
-
-    this.ctx.fillRect(
-      this.gbConfig.cellSpace + (this.gbConfig.cellSpace * x) + (this.gbConfig.cellSize * x),
-      this.gbConfig.cellSpace + (this.gbConfig.cellSpace * y) + (this.gbConfig.cellSize * y),
-      this.gbConfig.cellSize,
-      this.gbConfig.cellSize
-    );
+    this.ctx.fillRect(rectX, rectY, rectW, rectH);
   }
 
   toggleCell(x: number, y: number) {

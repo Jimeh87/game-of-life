@@ -7,12 +7,13 @@ import {Subscription} from 'rxjs/Subscription';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
 import {GolRule} from '../templates/gol-rule';
+import {Coordinate} from './coordinate';
 
 export class ListLife implements OnDestroy {
 
   private tickerSubscription: Subscription;
-  private cellStateSubject: Subject<{x: number, y: number, state: boolean}> = new Subject();
-  private cellStateObservable: Observable<{x: number, y: number, state: boolean}> = this.cellStateSubject.asObservable();
+  private cellStateSubject: Subject<Coordinate<boolean>> = new Subject();
+  private cellStateObservable: Observable<Coordinate<boolean>> = this.cellStateSubject.asObservable();
 
   // key is y, set is list of alive values
   private cellDictionary: SortedDictionary<number, SortedSet<number>> =
@@ -38,11 +39,11 @@ export class ListLife implements OnDestroy {
     return this.rule;
   }
 
-  public getCellStateObservable(): Observable<{x: number, y: number, state: boolean}> {
+  public getCellStateObservable(): Observable<Coordinate<boolean>> {
     return this.cellStateObservable;
   }
 
-  public setCells(offsetX: number, offsetY: number, ...blueprint: {x: number, y: number}[]): void {
+  public setCells(offsetX: number, offsetY: number, blueprint: {x: number, y: number}[]): void {
     blueprint.forEach((cell: {x: number, y: number}) => {
       const x = cell.x + offsetX;
       const y = cell.y + offsetY;
@@ -51,14 +52,14 @@ export class ListLife implements OnDestroy {
         this.cellDictionary.setValue(y, set);
         return set;
       }).add(x);
-      this.cellStateSubject.next({x: x, y: y, state: true});
+      this.cellStateSubject.next(new Coordinate(x, y, true));
     });
   }
 
   public reset(): void {
     this.cellDictionary.forEach((y: number, xCells: SortedSet<number>) => {
       xCells.forEach((x: number) => {
-        this.cellStateSubject.next({x: x, y: y, state: false});
+        this.cellStateSubject.next(new Coordinate(x, y, false));
       });
       this.cellDictionary.remove(y);
     });
@@ -71,7 +72,7 @@ export class ListLife implements OnDestroy {
       return set;
     });
     xCells.has(x) ? xCells.remove(x) : xCells.add(x);
-    this.cellStateSubject.next({x: x, y: y, state: xCells.has(x)});
+    this.cellStateSubject.next(new Coordinate(x, y, xCells.has(x)));
   }
 
   public isAlive(x: number, y: number): boolean {
@@ -158,7 +159,7 @@ export class ListLife implements OnDestroy {
           }
 
           if (alive !== currCells.has(x)) {
-            this.cellStateSubject.next({x: x, y: y, state: alive});
+            this.cellStateSubject.next(new Coordinate(x, y, alive));
           }
         }
       }
@@ -175,7 +176,7 @@ export class ListLife implements OnDestroy {
       nextToDictionary = null;
     }
 
-    // TODO: This should be more advanced
+    // TODO: This might be faster if removed in a lot of cases
     // Garbage collection
     this.cellDictionary.removeIf((cells: SortedSet<number>) => {
       return cells.size() === 0;

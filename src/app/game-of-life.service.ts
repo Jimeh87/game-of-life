@@ -4,6 +4,7 @@ import {Ticker} from './algorithm/ticker';
 import {ListLife} from './algorithm/list-life';
 import {Observable} from 'rxjs/Observable';
 import {GolRule} from './templates/gol-rule';
+import {Coordinate} from './algorithm/coordinate';
 
 @Injectable()
 export class GameOfLifeService implements OnDestroy {
@@ -56,8 +57,12 @@ export class GameOfLifeService implements OnDestroy {
     this.listLife.toggleCell(x, y);
   }
 
-  public getCellStateObservable(): Observable<{x: number, y: number, state: boolean}> {
+  public getCellStateObservable(): Observable<Coordinate<boolean>> {
     return this.listLife.getCellStateObservable();
+  }
+
+  public getTurnObservable(): Observable<any> {
+    return this.ticker.getObservable();
   }
 
   applyTemplate(template: Template, gameboardX: number, gameboardY: number) {
@@ -66,7 +71,7 @@ export class GameOfLifeService implements OnDestroy {
     this.listLife.setRule(template.getRule());
     const offsetX = Math.floor((gameboardX - template.getWidth()) / 2);
     const offsetY = Math.floor((gameboardY - template.getHeight()) / 2);
-    this.listLife.setCells(offsetX, offsetY, ...template.getBlueprint());
+    this.listLife.setCells(offsetX, offsetY, template.getBlueprint());
     this.template = template;
   }
 
