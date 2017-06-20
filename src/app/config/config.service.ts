@@ -15,24 +15,36 @@ export class ConfigService {
     this.themes = [
       new Theme({
         name: 'Default',
+        generations: false,
         alive: ['#5cb85c'],
-        dead: '#f1f3f3',
+        dead: ['#f1f3f3'],
         border: true,
         borderColor: '#bbc4c4',
         mutable: false
       }),
       new Theme({
         name: 'Matrix',
-        alive: ['#325843', '#325843', '#325843', '#5e9177'],
-        dead: '#0b180d',
+        generations: true,
+        alive: ['#325843'],
+        dead: ['#5e9177', '#0b180d'],
         border: true,
         borderColor: '#000000',
         mutable: false
       }),
       new Theme({
+        name: 'Fire & Smoke',
+        generations: true,
+        alive: ['#f99407', '#f25806', '#cf3d04', '#f97104', '#a52802', '#f8e564', '#f6c82b', '#fcf793', '#6d1305'],
+        dead: ['#150f16', '#5a585d', '#2f2f36', '#a5a6a4', '#3a0703'],
+        border: true,
+        borderColor: '#2f0501',
+        mutable: false
+      }),
+      new Theme({
         name: 'Preview',
+        generations: false,
         alive: ['#5bc0de'],
-        dead: '#ffffff',
+        dead: ['#ffffff'],
         border: true,
         borderColor: '#ffffff',
         mutable: false
@@ -65,8 +77,9 @@ export class ConfigService {
 
   applyTheme(theme: Theme) {
     const gbStyle = <GameBoardStyleConfig> this.getConfig(ConfigType.GAME_BOARD_STYLE);
+    gbStyle.generations = theme.generations;
     gbStyle.aliveCellColors = theme.alive;
-    gbStyle.deadCellColor = theme.dead;
+    gbStyle.deadCellColors = theme.dead;
     gbStyle.borderColor = theme.borderColor;
 
     const gb = <GameBoardConfig> this.getConfig(ConfigType.GAME_BOARD);

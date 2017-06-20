@@ -1,4 +1,9 @@
 export class Coordinate<T> {
+
+  public static makeHash(x: number, y: number): string {
+    return x + ',' + y;
+  }
+
   constructor(private _x: number, private _y: number, private _value: T) {
   }
 
@@ -19,6 +24,6 @@ export class Coordinate<T> {
   }
 
   public hash(): string {
-    return this.x + ',' + this.y;
+    return Coordinate.makeHash(this.x, this.y);
   }
 }

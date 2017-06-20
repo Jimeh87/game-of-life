@@ -1,14 +1,24 @@
 export class Theme {
 
   private _name: string;
+  private _generations: boolean;
   private _alive: string[];
-  private _dead: string;
+  private _dead: string[];
   private _border: boolean;
   private _borderColor: string;
   private _mutable: boolean;
 
-  constructor(theme: {name: string, alive: string[], dead: string, border: boolean, borderColor: string, mutable: boolean}) {
+  constructor(theme: {
+    name: string,
+    generations: boolean,
+    alive: string[],
+    dead: string[],
+    border: boolean,
+    borderColor: string,
+    mutable: boolean}) {
+
     this._name = theme.name;
+    this._generations = theme.generations;
     this._alive = theme.alive;
     this._dead = theme.dead;
     this._border = theme.border;
@@ -24,6 +34,14 @@ export class Theme {
     this._name = value;
   }
 
+  get generations(): boolean {
+    return this._generations;
+  }
+
+  set generations(value: boolean) {
+    this._generations = value;
+  }
+
   get alive(): string[] {
     return this._alive;
   }
@@ -32,11 +50,11 @@ export class Theme {
     this._alive = value;
   }
 
-  get dead(): string {
+  get dead(): string[] {
     return this._dead;
   }
 
-  set dead(value: string) {
+  set dead(value: string[]) {
     this._dead = value;
   }
 
@@ -73,6 +91,7 @@ export class Theme {
   clone(name: string, mutable: boolean): Theme {
     return new Theme({
       name: name,
+      generations: this.generations,
       alive: this.alive.slice(),
       dead: this.dead,
       border: this.border,

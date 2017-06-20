@@ -19,6 +19,7 @@ import {GameBoardConfig} from '../config/game-board-config';
 import {ConfigType} from '../config/config-type';
 import {GameBoardStyleConfig} from '../config/game-board-style-config';
 import {Coordinate} from '../algorithm/coordinate';
+import {Generation} from '../algorithm/generation';
 
 @Component({
   selector: 'app-game-board',
@@ -65,9 +66,23 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
 
     this.drawWorld();
     this.cellStateSubscription = this.gameOfLifeService.getCellStateObservable().subscribe(
-      (cell: Coordinate<boolean>) => {
+      (cell: Coordinate<boolean | Generation<boolean>>) => {
         if (cell.x < this.gbConfig.columns + this.gbConfig.xScreenOffset && cell.y < this.gbConfig.rows + this.gbConfig.yScreenOffset) {
-          this.drawCell(cell.x - this.gbConfig.xScreenOffset, cell.y - this.gbConfig.yScreenOffset, cell.value);
+          let alive: boolean;
+          let generation: number;
+          if (typeof(cell.value) ===  'boolean') {
+            alive = cell.value;
+            generation = null;
+          } else {
+            alive = cell.value.value;
+            generation = cell.value.generation;
+          }
+          this.drawCell(
+            cell.x - this.gbConfig.xScreenOffset,
+            cell.y - this.gbConfig.yScreenOffset,
+            alive,
+            generation
+          );
         }
       }
     );
@@ -158,24 +173,41 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
 
     for (let x = 0; x < this.gbConfig.columns; x++) {
       for (let y = 0; y < this.gbConfig.rows; y++) {
-        this.drawCell(x, y, this.gameOfLifeService.isAlive(x + this.gbConfig.xScreenOffset, y + this.gbConfig.yScreenOffset));
+        const cellState: boolean|Generation<boolean> = this.gameOfLifeService.state(
+          x + this.gbConfig.xScreenOffset,
+          y + this.gbConfig.yScreenOffset
+        );
+        if (typeof(cellState) ===  'boolean') {
+          this.drawCell(x, y, cellState, null);
+        } else {
+          this.drawCell(x, y, cellState.value, cellState.generation);
+        }
       }
     }
     this.gbConfig.silent = false;
   }
 
-  drawCell(x: number, y: number, alive: boolean) {
+  drawCell(x: number, y: number, alive: boolean, generation: number) {
     const rectX = this.gbConfig.cellSpace + (this.gbConfig.cellSpace * x) + (this.gbConfig.cellSize * x);
     const rectY = this.gbConfig.cellSpace + (this.gbConfig.cellSpace * y) + (this.gbConfig.cellSize * y);
     const rectW = this.gbConfig.cellSize;
     const rectH = this.gbConfig.cellSize;
+    const aliveColor = this.gbStyleConfig.aliveCellColors[
+      Math.min(generation == null ? this.gbStyleConfig.aliveCellColors.length - 1 : generation,
+                this.gbStyleConfig.aliveCellColors.length - 1)
+    ];
+    const baseDeadColor = this.gbStyleConfig.deadCellColors[this.gbStyleConfig.deadCellColors.length - 1];
+    const deadColor = this.gbStyleConfig.deadCellColors[
+      Math.min(generation == null ? this.gbStyleConfig.deadCellColors.length - 1 : generation,
+                this.gbStyleConfig.deadCellColors.length - 1)
+    ];
     this.ctx.clearRect(rectX, rectY, rectW, rectH);
+    this.ctx.fillStyle = baseDeadColor;
+    this.ctx.fillRect(rectX, rectY, rectW, rectH);
     if (alive) {
-      this.ctx.fillStyle = this.gbStyleConfig.deadCellColor;
-      this.ctx.fillRect(rectX, rectY, rectW, rectH);
-      this.ctx.fillStyle = this.gbStyleConfig.nextAliveCellColor;
+      this.ctx.fillStyle = aliveColor;
     } else {
-      this.ctx.fillStyle = this.gbStyleConfig.deadCellColor;
+      this.ctx.fillStyle = deadColor;
     }
     this.ctx.fillRect(rectX, rectY, rectW, rectH);
   }

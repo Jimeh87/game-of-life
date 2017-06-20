@@ -59,6 +59,14 @@ export class SortedDictionary<K, V> extends Dictionary<K, V> {
     }
   }
 
+  getValueByHash(hash: string) {
+    const pair: IDictionaryPair<K, V> = this.table['$' + hash];
+    if (Util.isUndefined(pair)) {
+      return undefined;
+    }
+    return pair.value;
+  }
+
   iterator(): Iterator<IDictionaryPair<K, V>> {
     return new ArrayIterator(this.entries());
   }

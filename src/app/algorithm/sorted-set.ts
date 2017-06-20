@@ -10,10 +10,10 @@ export class SortedSet<T> {
   private dictionary: SortedDictionary<T, T>;
 
   constructor(compareFn?: (a: T, b: T) => number, toStringFunction?: (item: T) => string) {
-    this.dictionary = new SortedDictionary<T, T>(
+    this.dictionary = new SortedDictionary<T, T>(compareFn != null ?
       (a: IDictionaryPair<T, T>, b: IDictionaryPair<T, T>) => {
         return compareFn(a.key, b.key);
-      },
+      } : null,
       toStringFunction);
   }
 
@@ -23,6 +23,10 @@ export class SortedSet<T> {
 
   get(element: T): T {
     return this.dictionary.getValue(element);
+  }
+
+  getByHash(hash: string) {
+    return this.dictionary.getValueByHash(hash);
   }
 
   getOptionalValue(element: T): Optional<T> {

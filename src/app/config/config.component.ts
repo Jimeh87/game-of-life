@@ -8,7 +8,6 @@ import {Theme} from './theme';
 @Component({
   selector: 'app-config',
   templateUrl: './config.component.html',
-
   styleUrls: ['./config.component.css']
 })
 export class ConfigComponent implements OnInit, AfterViewInit {
@@ -25,7 +24,7 @@ export class ConfigComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // The color picker will change invalid values sometimes causing additional themes to be created
+    // The color picker will change "invalid values" sometimes causing additional themes to be created
     // Disabling custom change detection prevents this.
     this.changeDetectionEnabled = true;
   }
@@ -42,6 +41,16 @@ export class ConfigComponent implements OnInit, AfterViewInit {
     this.configService.theme = this.configService.findTheme(value);
   }
 
+  get generations(): boolean {
+    return this.configService.theme.generations;
+  }
+
+  set generations(value: boolean) {
+    this.cloneIfNotMutable();
+    this.configService.theme.generations = value;
+    this.configService.applyCurrentTheme();
+  }
+
   get alive(): string[] {
     return this.configService.theme.alive;
   }
@@ -52,25 +61,37 @@ export class ConfigComponent implements OnInit, AfterViewInit {
     this.configService.applyCurrentTheme();
   }
 
-  set pushAlive(value: string) {
+  pushAlive(value: string) {
     this.cloneIfNotMutable();
     this.configService.theme.alive.push(value);
     this.configService.applyCurrentTheme();
   }
 
-  set removeAlive(index: number) {
+  removeAlive(index: number) {
     this.cloneIfNotMutable();
     this.configService.theme.alive.splice(index, 1);
     this.configService.applyCurrentTheme();
   }
 
-  get dead(): string {
+  get dead(): string[] {
     return this.configService.theme.dead;
   }
 
-  set dead(value: string) {
+  setDead(index: number, value: string) {
     this.cloneIfNotMutable();
-    this.configService.theme.dead = value;
+    this.configService.theme.dead[index] = value;
+    this.configService.applyCurrentTheme();
+  }
+
+  pushDead(value: string) {
+    this.cloneIfNotMutable();
+    this.configService.theme.dead.push(value);
+    this.configService.applyCurrentTheme();
+  }
+
+  removeDead(index: number) {
+    this.cloneIfNotMutable();
+    this.configService.theme.dead.splice(index, 1);
     this.configService.applyCurrentTheme();
   }
 

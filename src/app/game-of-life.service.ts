@@ -5,6 +5,12 @@ import {ListLife} from './algorithm/list-life';
 import {Observable} from 'rxjs/Observable';
 import {GolRule} from './templates/gol-rule';
 import {Coordinate} from './algorithm/coordinate';
+import {SortedSet} from './algorithm/sorted-set';
+import {Generation} from './algorithm/generation';
+import {Subscription} from 'rxjs/Subscription';
+import {ConfigService} from './config/config.service';
+import {GameBoardStyleConfig} from './config/game-board-style-config';
+import {ConfigType} from './config/config-type';
 
 @Injectable()
 export class GameOfLifeService implements OnDestroy {
@@ -14,10 +20,16 @@ export class GameOfLifeService implements OnDestroy {
 
   private ticker: Ticker;
   private listLife: ListLife;
+  private gbStyle: GameBoardStyleConfig;
+  private gbStyleSubscription: Subscription;
 
-  constructor() {
+  constructor(configService: ConfigService) {
     this.ticker = new Ticker(50);
-    this.listLife = new ListLife(this.defaultRule, this.ticker);
+    this.gbStyle = <GameBoardStyleConfig> configService.getConfig(ConfigType.GAME_BOARD_STYLE);
+    this.listLife = new ListLife(this.defaultRule, this.ticker, this.gbStyle.maxGenerations);
+    this.gbStyleSubscription = this.gbStyle.observe.subscribe(() => {
+      this.listLife.setMaxGenerations(this.gbStyle.maxGenerations);
+    });
   }
 
   public isGameStarted(): boolean {
@@ -49,20 +61,16 @@ export class GameOfLifeService implements OnDestroy {
     this.ticker.delay = value;
   }
 
-  isAlive(x: number, y: number): boolean {
-    return this.listLife.isAlive(x, y);
+  state(x: number, y: number): boolean|Generation<boolean> {
+    return this.listLife.state(x, y);
   }
 
   toggleCell(x: number, y: number) {
     this.listLife.toggleCell(x, y);
   }
 
-  public getCellStateObservable(): Observable<Coordinate<boolean>> {
+  getCellStateObservable() {
     return this.listLife.getCellStateObservable();
-  }
-
-  public getTurnObservable(): Observable<any> {
-    return this.ticker.getObservable();
   }
 
   applyTemplate(template: Template, gameboardX: number, gameboardY: number) {
@@ -98,5 +106,6 @@ export class GameOfLifeService implements OnDestroy {
   }
 
   ngOnDestroy() {
+    this.gbStyleSubscription.unsubscribe();
   }
 }

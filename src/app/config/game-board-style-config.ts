@@ -3,15 +3,31 @@ import {ConfigType} from './config-type';
 
 export class GameBoardStyleConfig extends Config {
 
+  private _generations = false;
   private _borderColor = '#bbc4c4';
-
   private _aliveCellColors: string[] = ['#5cb85c'];
-  private aliveCellColorIndex = 0;
-
-  private _deadCellColor = '#f1f3f3';
+  private _deadCellColor: string[] = ['#f1f3f3'];
 
   constructor() {
     super(ConfigType.GAME_BOARD_STYLE);
+  }
+
+  get generations(): boolean {
+    return this._generations;
+  }
+
+  set generations(value: boolean) {
+    this._generations = value;
+    this.emitChange();
+  }
+
+  get deadCellColor(): string[] {
+    return this._deadCellColor;
+  }
+
+  set deadCellColor(value: string[]) {
+    this._deadCellColor = value;
+    this.emitChange();
   }
 
   get borderColor(): string {
@@ -32,18 +48,19 @@ export class GameBoardStyleConfig extends Config {
     this.emitChange();
   }
 
-  get nextAliveCellColor(): string {
-    const nextColor = this._aliveCellColors[this.aliveCellColorIndex];
-    this.aliveCellColorIndex = (this.aliveCellColorIndex + 1) % this._aliveCellColors.length;
-    return nextColor;
-  }
-
-  get deadCellColor(): string {
+  get deadCellColors(): string[] {
     return this._deadCellColor;
   }
 
-  set deadCellColor(value: string) {
+  set deadCellColors(value: string[]) {
     this._deadCellColor = value;
     this.emitChange();
+  }
+
+  get maxGenerations(): number {
+    if (this.generations) {
+      return Math.max(this.aliveCellColors.length, this.deadCellColors.length) - 1;
+    }
+    return 0;
   }
 }

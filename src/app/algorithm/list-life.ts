@@ -8,12 +8,13 @@ import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
 import {GolRule} from '../templates/gol-rule';
 import {Coordinate} from './coordinate';
+import {Generation} from './generation';
 
 export class ListLife implements OnDestroy {
 
   private tickerSubscription: Subscription;
-  private cellStateSubject: Subject<Coordinate<boolean>> = new Subject();
-  private cellStateObservable: Observable<Coordinate<boolean>> = this.cellStateSubject.asObservable();
+  private cellStateSubject: Subject<Coordinate<boolean | Generation<boolean>>> = new Subject();
+  private cellStateObservable: Observable<Coordinate<boolean | Generation<boolean>>> = this.cellStateSubject.asObservable();
 
   // key is y, set is list of alive values
   private cellDictionary: SortedDictionary<number, SortedSet<number>> =
@@ -21,12 +22,19 @@ export class ListLife implements OnDestroy {
       return a.key - b.key;
   });
 
+  private generations: SortedSet<Coordinate<Generation<boolean>>> =
+    new SortedSet<Coordinate<Generation<boolean>>>(null, (c: Coordinate<any>) => {
+        return c.hash();
+      }
+  );
+
   private compareSetFn = (a: number, b: number) => {
     return a - b;
   }
 
-  constructor(private rule: GolRule, private ticker: Ticker) {
+  constructor(private rule: GolRule, private ticker: Ticker, private maxGenerations) {
     this.tickerSubscription = ticker.getObservable().subscribe(() => {
+      this.incrementGenerations();
       this.step();
     });
   }
@@ -39,7 +47,25 @@ export class ListLife implements OnDestroy {
     return this.rule;
   }
 
-  public getCellStateObservable(): Observable<Coordinate<boolean>> {
+  public setMaxGenerations(maxGenerations: number) {
+    if (this.maxGenerations !== maxGenerations) {
+      if (maxGenerations === 0) {
+        this.generations.forEach((genCoordinate: Coordinate<Generation<boolean>>) => {
+          this.cellStateSubject.next(new Coordinate(genCoordinate.x, genCoordinate.y, false));
+          this.generations.remove(genCoordinate);
+        });
+      } else if (this.maxGenerations === 0) {
+        this.cellDictionary.forEach((y: number, xCells: SortedSet<number>) => {
+          xCells.forEach((x: number) => {
+            this.generations.add(new Coordinate(x, y, new Generation(true)));
+          });
+        });
+      }
+    }
+    this.maxGenerations = maxGenerations;
+  }
+
+  public getCellStateObservable(): Observable<Coordinate<boolean | Generation<boolean>>> {
     return this.cellStateObservable;
   }
 
@@ -52,7 +78,7 @@ export class ListLife implements OnDestroy {
         this.cellDictionary.setValue(y, set);
         return set;
       }).add(x);
-      this.cellStateSubject.next(new Coordinate(x, y, true));
+      this.emitChange(x, y, true);
     });
   }
 
@@ -63,6 +89,10 @@ export class ListLife implements OnDestroy {
       });
       this.cellDictionary.remove(y);
     });
+    this.generations.forEach((genCoordinate: Coordinate<Generation<boolean>>) => {
+      this.cellStateSubject.next(new Coordinate(genCoordinate.x, genCoordinate.y, false));
+      this.generations.remove(genCoordinate);
+    });
   }
 
   public toggleCell(x: number, y: number): void {
@@ -72,16 +102,24 @@ export class ListLife implements OnDestroy {
       return set;
     });
     xCells.has(x) ? xCells.remove(x) : xCells.add(x);
-    this.cellStateSubject.next(new Coordinate(x, y, xCells.has(x)));
+    this.emitChange(x, y, xCells.has(x));
   }
 
-  public isAlive(x: number, y: number): boolean {
+  public state(x: number, y: number): boolean|Generation<boolean> {
+    if (this.maxGenerations > 0) {
+      const genState = this.generations.getByHash(Coordinate.makeHash(x, y));
+      if (genState != null) {
+        return genState.value;
+      }
+    }
+
     let alive = false;
     const xCells: SortedSet<number> = this.cellDictionary.getValue(y);
     if (xCells != null) {
       alive = xCells.has(x);
     }
     return alive;
+
   }
 
   private step(): void {
@@ -159,7 +197,7 @@ export class ListLife implements OnDestroy {
           }
 
           if (alive !== currCells.has(x)) {
-            this.cellStateSubject.next(new Coordinate(x, y, alive));
+            this.emitChange(x, y, alive);
           }
         }
       }
@@ -180,6 +218,28 @@ export class ListLife implements OnDestroy {
     // Garbage collection
     this.cellDictionary.removeIf((cells: SortedSet<number>) => {
       return cells.size() === 0;
+    });
+  }
+
+  private emitChange(x: number, y: number, alive: boolean) {
+    if (this.maxGenerations > 0) {
+      let genCoordinate = this.generations.getByHash(Coordinate.makeHash(x, y));
+      if (genCoordinate == null) {
+        genCoordinate = new Coordinate<Generation<boolean>>(x, y, new Generation(alive));
+        this.generations.add(genCoordinate);
+      } else {
+        genCoordinate.value.value = alive;
+      }
+      this.cellStateSubject.next(genCoordinate);
+    } else {
+      this.cellStateSubject.next(new Coordinate<boolean>(x, y, alive));
+    }
+  }
+
+  private incrementGenerations(): void {
+    this.generations.forEach((genCoordinate: Coordinate<Generation<boolean>>) => {
+      genCoordinate.value.increment();
+      this.cellStateSubject.next(genCoordinate);
     });
   }
 
