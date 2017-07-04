@@ -2,15 +2,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 import {Template} from './templates/template';
 
 @Pipe({
-  name: 'templateFilter',
-  pure: false
+  name: 'templateFilter'
 })
 export class TemplateFilterPipe implements PipeTransform {
 
   transform(templates: Template[], filter: string): any {
-    if (!templates || !filter) {
+
+    if (!templates || !filter || filter.length < 4) {
       return templates;
     }
+
     filter = filter.trim();
     const regex: RegExp = new RegExp(filter, 'i');
     return templates.filter((template: Template) => {

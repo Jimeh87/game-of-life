@@ -25,10 +25,10 @@ export class ConfigService {
       new Theme({
         name: 'Matrix',
         generations: true,
-        alive: ['#325843'],
-        dead: ['#5e9177', '#0b180d'],
+        alive: ['#1da31a', '#1e8117', '#186f15', '#104d0f'],
+        dead: ['#092f0a', '#031200', '#000'],
         border: true,
-        borderColor: '#000000',
+        borderColor: '#031200',
         mutable: false
       }),
       new Theme({
@@ -44,9 +44,72 @@ export class ConfigService {
         name: 'Preview',
         generations: false,
         alive: ['#5bc0de'],
-        dead: ['#ffffff'],
+        dead: ['#fff'],
         border: true,
-        borderColor: '#ffffff',
+        borderColor: '#fff',
+        mutable: false
+      }),
+      new Theme({
+        name: 'K-A',
+        generations: true,
+        alive: ['#ee6aff', '#de00ff', '#a20cb6', '#5c0668'],
+        dead: ['#2e8a8a', '#0e5353', '#000a0a'],
+        border: true,
+        borderColor: '#032121',
+        mutable: false
+      }),
+      new Theme({
+        name: 'Stars',
+        generations: false,
+        alive: ['#acb3be'],
+        dead: ['#242b3a'],
+        border: true,
+        borderColor: '#2b3345',
+        mutable: false
+      }),
+      new Theme({
+        name: 'Psychedelic',
+        generations: true,
+        alive: ['#616fc7', '#3997ba', '#2fb6a0', '#27cc73', '#68dd27'],
+        dead: ['#df577f', '#d7359f', '#f06a4a', '#9941d0'],
+        border: false,
+        borderColor: '#8a3abc',
+        mutable: false
+      }),
+      new Theme({
+        name: 'Canada 150',
+        generations: false,
+        alive: ['#fb0100'],
+        dead: ['#fefefe'],
+        border: true,
+        borderColor: '#edc8ca',
+        mutable: false
+      }),
+      new Theme({
+        name: 'Snow Storm',
+        generations: true,
+        alive: ['#e9e9e8'],
+        dead: ['#86a1af', '#274758'],
+        border: true,
+        borderColor: '#e9e9e8',
+        mutable: false
+      }),
+      new Theme({
+        name: 'Heat Map',
+        generations: true,
+        alive: ['#00E136', '#0CDD00', '#4DD900', '#8CD500', '#C8D200', '#CE9900', '#CA5900', '#C61C00', '#C2001E', '#bf0056'],
+        dead: ['#0900D2'],
+        border: true,
+        borderColor: '#0700af',
+        mutable: false
+      }),
+      new Theme({
+        name: 'Water',
+        generations: true,
+        alive: ['#0275d8', '#022ad8', '#041892'],
+        dead: ['rgba(1,21,146,0.85)', 'rgba(1,21,146,0.56)', 'rgba(1,21,146,0.24)', 'rgba(1,21,146,0)'],
+        border: true,
+        borderColor: 'rgba(1,21,146,0)',
         mutable: false
       })
     ];

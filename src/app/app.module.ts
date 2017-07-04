@@ -26,6 +26,11 @@ import {TemplateFilterPipe} from './template-filter.pipe';
 import {SpinnerComponent} from './spinner/spinner.component';
 import {Ng2PageScrollModule, PageScrollService} from 'ng2-page-scroll';
 import {ColorPickerModule} from 'ngx-color-picker';
+import { AboutMenuComponent } from './about/about-menu/about-menu.component';
+import { AboutGameOfLifeComponent } from './about/about-game-of-life/about-game-of-life.component';
+import { AboutTheSiteComponent } from './about/about-the-site/about-the-site.component';
+import { AboutLinksComponent } from './about/about-links/about-links.component';
+import { SortPipe } from './sort.pipe';
 
 const appRoutes: Routes = [
     {
@@ -46,12 +51,31 @@ const appRoutes: Routes = [
       component: TemplatesComponent
     },
     {
-      path: 'config',
+      path: 'themes',
       component: ConfigComponent
     },
     {
       path: 'about',
-      component: AboutComponent
+      component: AboutComponent,
+      children: [
+        {
+          path: '',
+          redirectTo: 'site',
+          pathMatch: 'full'
+        },
+        {
+          path: 'game-of-life',
+          component: AboutGameOfLifeComponent
+        },
+        {
+          path: 'site',
+          component: AboutTheSiteComponent
+        },
+        {
+          path: 'links',
+          component: AboutLinksComponent
+        },
+      ]
     },
     {
       path: 'not-found',
@@ -82,7 +106,12 @@ const appRoutes: Routes = [
     ConfigComponent,
     AboutComponent,
     TemplateFilterPipe,
-    SpinnerComponent
+    SpinnerComponent,
+    AboutMenuComponent,
+    AboutGameOfLifeComponent,
+    AboutTheSiteComponent,
+    AboutLinksComponent,
+    SortPipe
   ],
   imports: [
     BrowserModule,

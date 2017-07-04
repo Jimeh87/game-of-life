@@ -240,6 +240,9 @@ export class ListLife implements OnDestroy {
     this.generations.forEach((genCoordinate: Coordinate<Generation<boolean>>) => {
       genCoordinate.value.increment();
       this.cellStateSubject.next(genCoordinate);
+      if (!genCoordinate.value.value && genCoordinate.value.generation > this.maxGenerations) {
+        this.generations.remove(genCoordinate);
+      }
     });
   }
 

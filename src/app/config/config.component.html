@@ -1,8 +1,8 @@
 <div class="form-group row">
-  <label class="col-md-1 col-form-label">Theme</label>
-  <div class="col-md-11">
+  <label class="col-md-2 col-form-label"><b>Theme</b></label>
+  <div class="col-md-10">
     <select class="form-control" [(ngModel)]="name">
-      <option *ngFor="let theme of themes;" [value]="theme.name">{{ theme.name }}</option>
+      <option *ngFor="let theme of themes | sort:'name';" [value]="theme.name">{{ theme.name }}</option>
     </select>
   </div>
 </div>

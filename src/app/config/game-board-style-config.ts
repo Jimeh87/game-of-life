@@ -21,15 +21,6 @@ export class GameBoardStyleConfig extends Config {
     this.emitChange();
   }
 
-  get deadCellColor(): string[] {
-    return this._deadCellColor;
-  }
-
-  set deadCellColor(value: string[]) {
-    this._deadCellColor = value;
-    this.emitChange();
-  }
-
   get borderColor(): string {
     return this._borderColor;
   }

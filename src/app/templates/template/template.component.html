@@ -1,19 +1,28 @@
-<div class="card text-center">
-  <div class="card-header">
-    <h4 class="card-title">{{ getTemplate().getName()}}</h4>
+<div class="card text-center" *ngIf='templateWrapper'>
+  <div class="card-block" *ngIf="template == null">
+    <h4 class="card-title">{{ loadingText }}</h4>
   </div>
-  <div class="card-block template-card" *ngIf="!isShowDetails()" style="padding: 0">
+  <ng-container *ngIf="template != null">
+    <div class="card-header">
+      <h4 class="card-title">{{ getTemplate().getName()}}</h4>
+    </div>
+    <div class="card-block template-card" *ngIf="!isShowDetails()" style="padding: 0">
       <app-game-board [template]="getTemplatePromise()" [preview]="true" class="w-100 h-100"></app-game-board>
-  </div>
-  <div class="card-block template-card" *ngIf="isShowDetails()" style="overflow-y: auto;">
-    <app-template-detail [template]="getTemplate()"></app-template-detail>
-  </div>
-  <div class="card-footer clearfix">
-    <button type="button" [routerLink]="['/game-board', 'template', getTemplate().getFileName()]" class="btn btn-outline-primary float-left">
-      <i class="fa fa-th" aria-hidden="true"></i> Apply to Board
-    </button>
-    <button type="button" (click)="toggleDetails()" class="btn btn-outline-info float-right">
-      <i class="fa fa-info-circle" aria-hidden="true"></i> {{ isShowDetails() ? 'Hide' : 'Show' }} Details
-    </button>
-  </div>
+    </div>
+    <div class="card-block template-card" *ngIf="isShowDetails()" style="overflow-y: auto;">
+      <app-template-detail [template]="getTemplate()"></app-template-detail>
+    </div>
+    <div class="card-footer clearfix">
+      <button type="button" [routerLink]="['/game-board', 'template', getTemplate().getFileName()]"
+              class="btn btn-outline-primary float-left">
+        <i class="fa fa-th" aria-hidden="true"></i> Apply to Board
+      </button>
+      <button type="button" (click)="toggleDetails()" class="btn btn-outline-info float-right">
+        <i class="fa fa-info-circle" aria-hidden="true"></i> {{ isShowDetails() ? 'Hide' : 'Show' }} Details
+      </button>
+    </div>
+  </ng-container>
 </div>
+
+<h1 *ngIf="template == null && !templateWrapper" align="center">{{ loadingText }}</h1>
+<app-game-board *ngIf="template != null && !templateWrapper" [template]="getTemplatePromise()" [preview]="true" class="w-100 h-100"></app-game-board>

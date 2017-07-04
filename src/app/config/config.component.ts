@@ -25,7 +25,7 @@ export class ConfigComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     // The color picker will change "invalid values" sometimes causing additional themes to be created
-    // Disabling custom change detection prevents this.
+    // Disabling custom change detection prevents this until after ngAfterViewInit
     this.changeDetectionEnabled = true;
   }
 
