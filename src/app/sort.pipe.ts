@@ -11,7 +11,7 @@ export class SortPipe implements PipeTransform {
       return value;
     }
     value.sort((v1, v2) => {
-      return v1[propName] > v2[propName];
+      return v1[propName].localeCompare(v2[propName]);
     });
 
     return value;

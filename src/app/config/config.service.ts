@@ -5,14 +5,13 @@ import {Config} from './config';
 import {GameBoardStyleConfig} from './game-board-style-config';
 import {Theme} from './theme';
 export class ConfigService {
-
   private config: Config[] = [new GameBoardConfig(), new GameConfig(), new GameBoardStyleConfig()];
 
-  themes: Theme[];
-  _theme: Theme;
+  private _themes: Theme[];
+  private _theme: Theme;
 
   constructor() {
-    this.themes = [
+    this._themes = [
       new Theme({
         name: 'Default',
         generations: false,
@@ -128,6 +127,14 @@ export class ConfigService {
 
   get theme() {
     return this._theme;
+  }
+
+  get themes(): Theme[] {
+    return this._themes;
+  }
+
+  set themes(value: Theme[]) {
+    this._themes = value;
   }
 
   findTheme(name: string) {

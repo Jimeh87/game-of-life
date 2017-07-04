@@ -7,7 +7,7 @@
       <h4 class="card-title">{{ getTemplate().getName()}}</h4>
     </div>
     <div class="card-block template-card" *ngIf="!isShowDetails()" style="padding: 0">
-      <app-game-board [template]="getTemplatePromise()" [preview]="true" class="w-100 h-100"></app-game-board>
+      <app-game-board [template]="getTemplatePromise()" [preview]="preview" class="w-100 h-100"></app-game-board>
     </div>
     <div class="card-block template-card" *ngIf="isShowDetails()" style="overflow-y: auto;">
       <app-template-detail [template]="getTemplate()"></app-template-detail>
@@ -25,4 +25,4 @@
 </div>
 
 <h1 *ngIf="getTemplate() == null && !templateWrapper" align="center">{{ loadingText }}</h1>
-<app-game-board *ngIf="getTemplate() != null && !templateWrapper" [template]="getTemplatePromise()" [preview]="true" class="w-100 h-100"></app-game-board>
+<app-game-board *ngIf="getTemplate() != null && !templateWrapper" [template]="getTemplatePromise()" [preview]="preview" class="w-100 h-100"></app-game-board>

@@ -1,7 +1,7 @@
 {
   "name": "game-of-life",
   "version": "0.0.0",
-  "license": "MIT",
+  "license": "GNU GPLv3",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",

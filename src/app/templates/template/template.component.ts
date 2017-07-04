@@ -24,6 +24,9 @@ export class TemplateComponent implements OnInit {
   templateWrapper = true;
 
   @Input()
+  preview = true;
+
+  @Input()
   private template: Template;
 
   @Input()
@@ -51,6 +54,7 @@ export class TemplateComponent implements OnInit {
     }
     const gbStyle: GameBoardStyleConfig = <GameBoardStyleConfig> this.configService.getConfig(ConfigType.GAME_BOARD_STYLE);
     this.configService.applyTheme(this.configService.findTheme(this.theme));
+
   }
 
   public isShowDetails(): boolean {

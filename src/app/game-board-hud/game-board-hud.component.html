@@ -90,8 +90,10 @@
       </a>
     </div>
   </div>
-  {{ getRule().getName() != null ? getRule().getName() + ' - ' : '' }}
-  {{ getRule().getFormattedRuleString() }}
+  <span class='hidden-sm-down'>
+    {{ getRule().getName() != null ? getRule().getName() + ' - ' : '' }}
+    {{ getRule().getFormattedRuleString() }}
+  </span>
   <div ngbDropdown [up]="true" class="float-left">
     <i class="fa fa-gavel control" aria-hidden="true" title="Rule" ngbDropdownToggle></i>
     <div class="dropdown-menu">
