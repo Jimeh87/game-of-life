@@ -45,7 +45,7 @@ export class SortedDictionary<K, V> extends Dictionary<K, V> {
         entries.push(pair);
       }
     }
-    return entries.sort(this.compareFn);
+    return this.compareFn != null ? entries.sort(this.compareFn) : entries;
   }
 
   removeIf(shouldRemove: (value: V) => boolean) {
