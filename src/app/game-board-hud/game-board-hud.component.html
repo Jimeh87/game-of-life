@@ -56,10 +56,13 @@
      [title]="actionTitle[GCA.ZOOM_IN]"
      (click)="action(GCA.ZOOM_IN)"></i>
   <div class="float-left" ngbDropdown placement="top-left">
-    <i class="fa fa-clock-o control"
-       aria-hidden="true"
-       [title]="'Speed (' + actionTitle[getCurrentSpeed()] + ')'"
-       ngbDropdownToggle> </i>
+    <span ngbDropdownToggle class="control">
+      <i
+          class="fa fa-clock-o"
+          aria-hidden="true"
+          [title]="'Speed (' + actionTitle[getCurrentSpeed()] + ')'">
+      </i>
+    </span>
     <div ngbDropdownMenu class="dropdown-menu dropdown-menu-left">
       <a class="dropdown-item clickable" (click)=action(GCA.SPEED_VERY_SLOW)>
         <i class="fa"
@@ -97,7 +100,12 @@
     {{ getRule().getFormattedRuleString() }}
   </span>
   <div ngbDropdown placement="top-left" class="float-left">
-    <i class="fa fa-gavel control" aria-hidden="true" title="Rule" ngbDropdownToggle> </i>
+    <span ngbDropdownToggle class="control">
+      <i class="fa fa-gavel"
+         aria-hidden="true"
+         title="Rule">
+      </i>
+    </span>
     <div ngbDropdownMenu class="dropdown-menu">
       <a class="dropdown-item clickable" *ngFor="let r of rules(); let i = index" (click)=setRule(r.rule)>
         <i class="fa"
