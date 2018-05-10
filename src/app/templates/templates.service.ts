@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {GameOfLifeService} from '../game-of-life.service';
 import {Template} from './template';
-import {Observable} from 'rxjs/Observable';
 import {RleService} from './rle.service';
 import {Rle} from './rle';
 import {ArrayUtil} from '../algorithm/array-util';
+import {Observable} from 'rxjs/index';
+import {map} from 'rxjs/internal/operators';
 
 @Injectable()
 export class TemplatesService {
@@ -15,12 +15,10 @@ export class TemplatesService {
   private templatesCache: Template[];
 
   constructor(private rleService: RleService) {
-    this.templates = this.rleService.getRles().map((rleList: Rle[]) => {
-      if (this.templatesCache == null) {
-        this.templatesCache = ArrayUtil.shuffle(rleList.map((rle: Rle) => new Template(rle)));
-      }
+    this.templates = this.rleService.getRles().pipe(map((rleList: Rle[]) => {
+      this.templatesCache = this.templatesCache || ArrayUtil.shuffle(rleList.map((rle: Rle) => new Template(rle)));
       return this.templatesCache;
-    });
+    }));
   }
 
   public getTemplates(): Observable<Template[]> {
@@ -28,9 +26,8 @@ export class TemplatesService {
   }
 
   public getTemplate(rleFileName: string): Observable<Template> {
-    return this.templates.map((templates: Template[]) => {
-      return templates.find((template: Template) => template.getFileName() === rleFileName);
-    });
+    return this.templates.pipe(map((templates: Template[]) =>
+      templates.find((template: Template) => template.getFileName() === rleFileName)));
   }
 
 

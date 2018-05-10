@@ -11,15 +11,15 @@ import {
   ViewChild
 } from '@angular/core';
 import {GameOfLifeService} from 'app/game-of-life.service';
-import {Subscription} from 'rxjs/Subscription';
 import {Template} from '../templates/template';
-import {Observable} from 'rxjs/Observable';
 import {ConfigService} from '../config/config.service';
 import {GameBoardConfig} from '../config/game-board-config';
 import {ConfigType} from '../config/config-type';
 import {GameBoardStyleConfig} from '../config/game-board-style-config';
 import {Coordinate} from '../algorithm/coordinate';
 import {Generation} from '../algorithm/generation';
+import {Subscription} from 'rxjs/index';
+import {Observable} from 'rxjs/Rx';
 
 @Component({
   selector: 'app-game-board',
@@ -42,7 +42,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
   private ctx: CanvasRenderingContext2D;
 
   private mouseDown = false;
-  private lastSelectedCell: {x: number, y: number} = null;
+  private lastSelectedCell: { x: number, y: number } = null;
 
   private gbConfig: GameBoardConfig;
   private gbStyleConfig: GameBoardStyleConfig;
@@ -70,7 +70,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
         if (cell.x < this.gbConfig.columns + this.gbConfig.xScreenOffset && cell.y < this.gbConfig.rows + this.gbConfig.yScreenOffset) {
           let alive: boolean;
           let generation: number;
-          if (typeof(cell.value) ===  'boolean') {
+          if (typeof(cell.value) === 'boolean') {
             alive = cell.value;
             generation = null;
           } else {
@@ -150,7 +150,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     this.gbConfig.silent = false;
   }
 
-  canvasFitToBoundingBox(boundingBox: {x: number, y: number}) {
+  canvasFitToBoundingBox(boundingBox: { x: number, y: number }) {
     this.gbConfig.silent = true;
     const maxZoom = 10;
     this.gbConfig.zoom =
@@ -173,11 +173,11 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
 
     for (let x = 0; x < this.gbConfig.columns; x++) {
       for (let y = 0; y < this.gbConfig.rows; y++) {
-        const cellState: boolean|Generation<boolean> = this.gameOfLifeService.state(
+        const cellState: boolean | Generation<boolean> = this.gameOfLifeService.state(
           x + this.gbConfig.xScreenOffset,
           y + this.gbConfig.yScreenOffset
         );
-        if (typeof(cellState) ===  'boolean') {
+        if (typeof(cellState) === 'boolean') {
           this.drawCell(x, y, cellState, null);
         } else {
           this.drawCell(x, y, cellState.value, cellState.generation);
@@ -194,13 +194,13 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     const rectH = this.gbConfig.cellSize;
     const aliveColor = this.gbStyleConfig.aliveCellColors[
       Math.min(generation == null ? this.gbStyleConfig.aliveCellColors.length - 1 : generation,
-                this.gbStyleConfig.aliveCellColors.length - 1)
-    ];
+        this.gbStyleConfig.aliveCellColors.length - 1)
+      ];
     const baseDeadColor = this.gbStyleConfig.deadCellColors[this.gbStyleConfig.deadCellColors.length - 1];
     const deadColor = this.gbStyleConfig.deadCellColors[
       Math.min(generation == null ? this.gbStyleConfig.deadCellColors.length - 1 : generation,
-                this.gbStyleConfig.deadCellColors.length - 1)
-    ];
+        this.gbStyleConfig.deadCellColors.length - 1)
+      ];
     this.ctx.clearRect(rectX, rectY, rectW, rectH);
     this.ctx.fillStyle = baseDeadColor;
     this.ctx.fillRect(rectX, rectY, rectW, rectH);
@@ -253,7 +253,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     if (this.preview) {
       return;
     }
-    const cell: {x: number, y: number} = this.getSelectedCell(event);
+    const cell: { x: number, y: number } = this.getSelectedCell(event);
     this.toggleCell(cell.x + this.gbConfig.xScreenOffset, cell.y + this.gbConfig.yScreenOffset);
     this.lastSelectedCell = cell;
     this.mouseDown = true;
@@ -263,7 +263,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
 
   onCanvasMouseMove(event: MouseEvent) {
     if (this.mouseDown) {
-      const cell: {x: number, y: number} = this.getSelectedCell(event);
+      const cell: { x: number, y: number } = this.getSelectedCell(event);
       if (cell.x !== this.lastSelectedCell.x || cell.y !== this.lastSelectedCell.y) {
         this.toggleCell(cell.x + this.gbConfig.xScreenOffset, cell.y + this.gbConfig.yScreenOffset);
         this.lastSelectedCell = cell;
@@ -273,7 +273,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     return false;
   }
 
-  private getSelectedCell(event: MouseEvent): {x: number, y: number} {
+  private getSelectedCell(event: MouseEvent): { x: number, y: number } {
     let posX = 0;
     let posY = 0;
 

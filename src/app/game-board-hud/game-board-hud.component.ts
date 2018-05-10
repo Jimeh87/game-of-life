@@ -5,8 +5,8 @@ import {GameBoardConfig} from '../config/game-board-config';
 import {ConfigType} from '../config/config-type';
 import {GameControlAction, GameControlActionAware} from './game-control-action';
 import {Ticker} from '../algorithm/ticker';
-import {Subscription} from 'rxjs/Subscription';
 import {GolRule} from '../templates/gol-rule';
+import {Subscription} from 'rxjs/index';
 
 @Component({
   selector: 'app-game-board-hud',

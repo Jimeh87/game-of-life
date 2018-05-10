@@ -2,15 +2,12 @@ import {Injectable, OnDestroy} from '@angular/core';
 import {Template} from './templates/template';
 import {Ticker} from './algorithm/ticker';
 import {ListLife} from './algorithm/list-life';
-import {Observable} from 'rxjs/Observable';
 import {GolRule} from './templates/gol-rule';
-import {Coordinate} from './algorithm/coordinate';
-import {SortedSet} from './algorithm/sorted-set';
 import {Generation} from './algorithm/generation';
-import {Subscription} from 'rxjs/Subscription';
 import {ConfigService} from './config/config.service';
 import {GameBoardStyleConfig} from './config/game-board-style-config';
 import {ConfigType} from './config/config-type';
+import {Subscription} from 'rxjs/index';
 
 @Injectable()
 export class GameOfLifeService implements OnDestroy {

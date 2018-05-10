@@ -1,13 +1,10 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import {Component, Input, OnInit} from '@angular/core';
 import {Template} from '../template';
-import {Subscription} from 'rxjs/Subscription';
 import {GameOfLifeService} from '../../game-of-life.service';
 import {Router} from '@angular/router';
 import {ConfigService} from '../../config/config.service';
 import {ConfigType} from '../../config/config-type';
 import {GameBoardStyleConfig} from '../../config/game-board-style-config';
-import {RleService} from '../rle.service';
 import {TemplatesService} from '../templates.service';
 
 @Component({
@@ -43,7 +40,8 @@ export class TemplateComponent implements OnInit {
   constructor(private gol: GameOfLifeService,
               private templatesService: TemplatesService,
               private router: Router,
-              private configService: ConfigService) { }
+              private configService: ConfigService) {
+  }
 
   ngOnInit(): void {
     if (this.rleFile != null) {

@@ -3,12 +3,10 @@ import {IDictionaryPair} from 'typescript-collections/dist/lib/Dictionary';
 import {SortedSet} from './sorted-set';
 import {OnDestroy} from '@angular/core';
 import {Ticker} from './ticker';
-import {Subscription} from 'rxjs/Subscription';
-import {Subject} from 'rxjs/Subject';
-import {Observable} from 'rxjs/Observable';
 import {GolRule} from '../templates/gol-rule';
 import {Coordinate} from './coordinate';
 import {Generation} from './generation';
+import {Observable, Subject, Subscription} from 'rxjs/index';
 
 export class ListLife implements OnDestroy {
 

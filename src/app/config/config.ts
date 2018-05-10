@@ -1,6 +1,7 @@
-import {Observable} from 'rxjs/Observable';
 import {ConfigType} from './config-type';
-import {Subject} from 'rxjs/Subject';
+import {Observable, Subject} from 'rxjs/index';
+import {filter, map} from 'rxjs/internal/operators';
+
 export abstract class Config {
 
   private changeSubject: Subject<ConfigType> = new Subject();
@@ -18,7 +19,7 @@ export abstract class Config {
   }
 
   get observe(): Observable<Config> {
-    return this.changeSubject.filter(() => !this.silent).map(() => this);
+    return this.changeSubject.pipe(filter(() => !this.silent), map(() => this));
   }
 
   get silent(): boolean {

@@ -1,7 +1,7 @@
 import {Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {TemplatesService} from './templates.service';
 import {Template} from './template';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs/index';
 
 @Component({
   selector: 'app-templates',

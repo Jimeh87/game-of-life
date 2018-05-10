@@ -1,6 +1,5 @@
-import {Subject} from 'rxjs/Subject';
-import {Observable} from 'rxjs/Observable';
-import {observable} from 'rxjs/symbol/observable';
+import {Observable, Subject} from 'rxjs/index';
+
 export class Ticker {
   private interval;
   private started = false;
