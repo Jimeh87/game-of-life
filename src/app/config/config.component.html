@@ -16,14 +16,16 @@
 <div class="form-group row">
   <label class="col-md-2 col-form-label">Generations</label>
   <div class="col-sm-10">
-    <div class="btn-group" data-toggle="buttons">
+    <div class="btn-group btn-group-toggle">
       <label class="btn btn-outline-primary" [ngClass]="{ 'active': generations }">
         <input type="radio" name="options" autocomplete="off" [checked]="generations"
-               (click)="generations = true">On
+               (click)="generations = true">
+        On
       </label>
       <label class="btn btn-outline-primary" [ngClass]="{ 'active': !generations }">
         <input type="radio" name="options" autocomplete="off" [checked]="!generations"
-               (click)="generations = false">Off
+               (click)="generations = false">
+        Off
       </label>
     </div>
   </div>
@@ -96,14 +98,16 @@
   <div class="col">
     <h2>
       Border
-      <div class="btn-group btn-group-sm" data-toggle="buttons">
+      <div class="btn-group btn-group-toggle btn-group-sm">
         <label class="btn btn-outline-primary" [ngClass]="{ 'active': border }">
           <input type="radio" name="options" autocomplete="off" [checked]="border"
-                 (click)="border = true">On
+                 (click)="border = true">
+          On
         </label>
         <label class="btn btn-outline-primary" [ngClass]="{ 'active': !border }">
           <input type="radio" name="options" autocomplete="off" [checked]="!border"
-                 (click)="border = false">Off
+                 (click)="border = false">
+          Off
         </label>
       </div>
     </h2>

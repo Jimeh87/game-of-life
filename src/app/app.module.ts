@@ -24,13 +24,13 @@ import {AboutComponent} from './about/about.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {TemplateFilterPipe} from './template-filter.pipe';
 import {SpinnerComponent} from './spinner/spinner.component';
-import {Ng2PageScrollModule, PageScrollService} from 'ng2-page-scroll';
 import {ColorPickerModule} from 'ngx-color-picker';
-import { AboutMenuComponent } from './about/about-menu/about-menu.component';
-import { AboutGameOfLifeComponent } from './about/about-game-of-life/about-game-of-life.component';
-import { AboutTheSiteComponent } from './about/about-the-site/about-the-site.component';
-import { AboutLinksComponent } from './about/about-links/about-links.component';
-import { SortPipe } from './sort.pipe';
+import {AboutMenuComponent} from './about/about-menu/about-menu.component';
+import {AboutGameOfLifeComponent} from './about/about-game-of-life/about-game-of-life.component';
+import {AboutTheSiteComponent} from './about/about-the-site/about-the-site.component';
+import {AboutLinksComponent} from './about/about-links/about-links.component';
+import {SortPipe} from './sort.pipe';
+import {HttpClientModule} from '@angular/common/http';
 
 const appRoutes: Routes = [
     {
@@ -116,14 +116,13 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
     NgxPaginationModule,
-    Ng2PageScrollModule.forRoot(),
     ColorPickerModule
   ],
-  providers: [RleService, GameOfLifeService, TemplatesService, ConfigService, PageScrollService],
+  providers: [RleService, GameOfLifeService, TemplatesService, ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

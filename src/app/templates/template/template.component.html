@@ -6,10 +6,10 @@
     <div class="card-header">
       <h4 class="card-title">{{ getTemplate().getName()}}</h4>
     </div>
-    <div class="card-block template-card" *ngIf="!isShowDetails()" style="padding: 0">
+    <div class="card-body template-card" *ngIf="!isShowDetails()" style="padding: 0">
       <app-game-board [template]="getTemplatePromise()" [preview]="preview" class="w-100 h-100"></app-game-board>
     </div>
-    <div class="card-block template-card" *ngIf="isShowDetails()" style="overflow-y: auto;">
+    <div class="card-body template-card" *ngIf="isShowDetails()" style="overflow-y: auto;">
       <app-template-detail [template]="getTemplate()"></app-template-detail>
     </div>
     <div class="card-footer clearfix">

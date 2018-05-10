@@ -1,11 +1,11 @@
 <div id="templatesTop" class="row">
   <div class="col-12">
-    <label class="sr-only" for="inlineFormInputGroup">Filter</label>
     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-      <div class="input-group-addon"><i class="fa fa-filter" aria-hidden="true"></i></div>
+      <div class="input-group-prepend"><span class="fa fa-filter input-group-text" aria-hidden="true"></span></div>
       <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Filter" [(ngModel)]="filter">
     </div>
   </div>
+
 </div>
 <div class="row" *ngIf="loading" style="height: 50vh; display: flex; align-items: center;">
   <div class="col">
@@ -16,8 +16,7 @@
   <div class="col-lg-6 col-md-12 top-buffer bottom-buffer"
        *ngFor="let template of getTemplates() | templateFilter:filter | paginate: { itemsPerPage: 12,
                                                                                     currentPage: page
-                                                                                  }"
-  >
+                                                                                  }">
     <app-template [template]="template"></app-template>
   </div>
   <div class="col-12 top-buffer bottom-buffer">

@@ -1,25 +1,25 @@
 <div class="card text-left" style="overflow-wrap: break-word; border: 0">
-  <div class="card-block">
+  <div class="card-body">
     <h6 class="card-title">Rule</h6>
     <p class="card-text">{{ getTemplate().getRule().getFormattedRuleString() }}</p>
   </div>
-  <div class="card-block" *ngIf="getTemplate().getComments() != null">
+  <div class="card-body" *ngIf="getTemplate().getComments() != null">
     <h6 class="card-title">Notes</h6>
     <p class="card-text" [innerHtml]="getTemplate().getComments().join(' ') | linkify"></p>
   </div>
-  <div class="card-block" *ngIf="getTemplate().getAuthor() != null">
+  <div class="card-body" *ngIf="getTemplate().getAuthor() != null">
     <h6 class="card-title">Author</h6>
     <p class="card-text">{{ getTemplate().getAuthor() }}</p>
   </div>
-  <div class="card-block">
+  <div class="card-body">
     <h6 class="card-title">Bounding box</h6>
     <p class="card-text">x = {{ getTemplate().getBoundingBox().x }}, y = {{ getTemplate().getBoundingBox().y }}</p>
   </div>
-  <div class="card-block">
+  <div class="card-body">
     <h6 class="card-title">File name</h6>
     <p class="card-text">{{ getTemplate().getFileName() }}</p>
   </div>
-  <div class="card-block">
+  <div class="card-body">
     <h6 class="card-title">Pattern</h6>
     <p class="card-text" [innerHtml]="getTemplate().getPattern()"></p>
   </div>

@@ -1,9 +1,7 @@
-import {Component, ElementRef, Inject, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {TemplatesService} from './templates.service';
 import {Template} from './template';
 import {Subscription} from 'rxjs/Subscription';
-import {PageScrollInstance, PageScrollService} from 'ng2-page-scroll';
-import {DOCUMENT} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-templates',
@@ -19,9 +17,7 @@ export class TemplatesComponent implements OnInit, OnChanges, OnDestroy {
 
   private _filter = '';
 
-  constructor(private templatesService: TemplatesService,
-              private pageScrollService: PageScrollService,
-              @Inject(DOCUMENT) private document: any) {
+  constructor(private templatesService: TemplatesService) {
   }
 
   ngOnInit() {
@@ -38,8 +34,7 @@ export class TemplatesComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   toTemplatesTop() {
-    const pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#templatesTop');
-    this.pageScrollService.start(pageScrollInstance);
+    window.scroll(0, 0);
   }
 
   getTemplates() {

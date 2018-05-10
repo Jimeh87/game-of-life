@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit, AfterViewInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ConfigService} from './config.service';
 import {GameBoardStyleConfig} from './game-board-style-config';
 import {ConfigType} from './config-type';
