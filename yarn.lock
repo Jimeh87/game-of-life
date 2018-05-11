@@ -187,6 +187,12 @@
   dependencies:
     tslib "^1.9.0"
 
+"@angular/service-worker@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@angular/service-worker/-/service-worker-6.0.0.tgz#35a187554d33e05911544080fafc281ff1b322e0"
+  dependencies:
+    tslib "^1.9.0"
+
 "@ng-bootstrap/ng-bootstrap@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-2.0.0.tgz#65f78c7dd5a8ac424f44bb2050a9eab247cdeb0c"

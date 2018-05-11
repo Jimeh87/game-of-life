@@ -31,6 +31,8 @@ import {AboutTheSiteComponent} from './about/about-the-site/about-the-site.compo
 import {AboutLinksComponent} from './about/about-links/about-links.component';
 import {SortPipe} from './sort.pipe';
 import {HttpClientModule} from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const appRoutes: Routes = [
     {
@@ -120,7 +122,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
     NgxPaginationModule,
-    ColorPickerModule
+    ColorPickerModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [RleService, GameOfLifeService, TemplatesService, ConfigService],
   bootstrap: [AppComponent]
