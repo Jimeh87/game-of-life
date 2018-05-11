@@ -25,6 +25,7 @@
     "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/platform-server": "^6.0.0",
+    "@angular/pwa": "^0.6.1",
     "@angular/router": "^6.0.0",
     "@ng-bootstrap/ng-bootstrap": "^2.0.0",
     "@types/pegjs": "^0.10.0",
@@ -62,7 +63,7 @@
     "protractor": "^5.3.1",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
-    "typescript": "^2.7.2"
+    "typescript": "2.7.2"
   },
   "engines": {
     "node": "8.11.1",

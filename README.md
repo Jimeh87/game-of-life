@@ -13,6 +13,7 @@ I originally started on this site because I wanted to learn how to use the javas
 * Upgraded from Angular 4 to Angular 6.
 * Upgraded from the alpha build of bootstrap 4 to bootstrap 4.1.
 * Upgraded some random other packages.
+* Switched to Yarn from npm.
 
 ## Development server
 
