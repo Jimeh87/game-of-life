@@ -7,6 +7,20 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
+        "/favicon.ico",
+        "/index.html",
+        "/main.0597b357494d6d4424ef.js",
+        "/polyfills.62aa972f0228249f8449.js",
+        "/runtime.6afe30102d8fe7337431.js",
+        "/styles.2e3173f61b17a5a8795a.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
         "/assets/icons/android-chrome-192x192.png",
         "/assets/icons/apple-touch-icon.png",
         "/assets/icons/browserconfig.xml",
@@ -1573,24 +1587,24 @@
         "/assets/templates/ypentomino.rle",
         "/assets/templates/zhexomino.rle",
         "/assets/templates/zpentomino.rle",
-        "/assets/templates/zweiback.rle",
-        "/favicon.ico",
-        "/index.html",
-        "/main.0597b357494d6d4424ef.js",
-        "/polyfills.62aa972f0228249f8449.js",
-        "/runtime.6afe30102d8fe7337431.js",
-        "/styles.2e3173f61b17a5a8795a.css"
+        "/assets/templates/zweiback.rle"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
+    "/favicon.ico": "95cf7800a5daf9e2c65f5ef70bc7d3fe164a53be",
     "/assets/icons/android-chrome-192x192.png": "7844611b9857ee4b5629003581473a4e7f98ffa1",
+    "/index.html": "9bc9739890139a9ba282d55acc558d15229a416b",
     "/assets/icons/apple-touch-icon.png": "8095aabe1965ec5d6fba9c8b24a56746b446fd84",
+    "/main.0597b357494d6d4424ef.js": "d27f44bdf8b68ee96b47a1e9e8bf45cd33d96199",
     "/assets/icons/browserconfig.xml": "df0a52d340fe69ad29815c76ac8b55eb09364827",
+    "/polyfills.62aa972f0228249f8449.js": "fb1d25338305f2aaf10305cc70ce11521ab0546a",
     "/assets/icons/favicon-16x16.png": "8cba3628919c1eafb1f2f4f07f97f06fb6f41856",
+    "/runtime.6afe30102d8fe7337431.js": "078e320cc6fdaf355836c3b1c52b059cdd33fc7e",
     "/assets/icons/favicon-32x32.png": "47b012aaae80b90b7bb59b4b419591bf34919339",
+    "/styles.2e3173f61b17a5a8795a.css": "f22a19955ab93b290a31ccac593002a054110d79",
     "/assets/icons/mstile-150x150.png": "a314e9b976a5de93ce3a83b188a47be6eb19f5e7",
     "/assets/icons/mstile-310x150.png": "650cd980c6ddc389d6a930ed2128ce4b56de50d5",
     "/assets/icons/mstile-310x310.png": "5e58e737aa738b5c1f4702ecadd9014cf61b7a16",
@@ -3152,13 +3166,7 @@
     "/assets/templates/ypentomino.rle": "cc20d87b8cf5e980109f032d7da65335e444f945",
     "/assets/templates/zhexomino.rle": "57c4c3544b3cac68e0f400fcff4ba00976991985",
     "/assets/templates/zpentomino.rle": "4f64921d9eafc7bfedc5e8f5e6b6c71235dc8d61",
-    "/assets/templates/zweiback.rle": "1bc9155ed0ca2cfa2af78a567a742448142858c9",
-    "/favicon.ico": "95cf7800a5daf9e2c65f5ef70bc7d3fe164a53be",
-    "/index.html": "9bc9739890139a9ba282d55acc558d15229a416b",
-    "/main.0597b357494d6d4424ef.js": "d27f44bdf8b68ee96b47a1e9e8bf45cd33d96199",
-    "/polyfills.62aa972f0228249f8449.js": "fb1d25338305f2aaf10305cc70ce11521ab0546a",
-    "/runtime.6afe30102d8fe7337431.js": "078e320cc6fdaf355836c3b1c52b059cdd33fc7e",
-    "/styles.2e3173f61b17a5a8795a.css": "f22a19955ab93b290a31ccac593002a054110d79"
+    "/assets/templates/zweiback.rle": "1bc9155ed0ca2cfa2af78a567a742448142858c9"
   },
   "navigationUrls": [
     {
