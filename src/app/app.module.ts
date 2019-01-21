@@ -123,7 +123,7 @@ const appRoutes: Routes = [
     NgbModule.forRoot(),
     NgxPaginationModule,
     ColorPickerModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [RleService, GameOfLifeService, TemplatesService, ConfigService],
   bootstrap: [AppComponent]
