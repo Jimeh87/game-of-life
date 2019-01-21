@@ -119,7 +119,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, {useHash: true}),
     NgbModule.forRoot(),
     NgxPaginationModule,
     ColorPickerModule,
