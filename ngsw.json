@@ -7,20 +7,6 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "https://jimeh87.github.io/game-of-life/favicon.ico",
-        "https://jimeh87.github.io/game-of-life/index.html",
-        "https://jimeh87.github.io/game-of-life/main.0597b357494d6d4424ef.js",
-        "https://jimeh87.github.io/game-of-life/polyfills.62aa972f0228249f8449.js",
-        "https://jimeh87.github.io/game-of-life/runtime.6afe30102d8fe7337431.js",
-        "https://jimeh87.github.io/game-of-life/styles.2e3173f61b17a5a8795a.css"
-      ],
-      "patterns": []
-    },
-    {
-      "name": "assets",
-      "installMode": "lazy",
-      "updateMode": "prefetch",
-      "urls": [
         "https://jimeh87.github.io/game-of-life/assets/icons/android-chrome-192x192.png",
         "https://jimeh87.github.io/game-of-life/assets/icons/apple-touch-icon.png",
         "https://jimeh87.github.io/game-of-life/assets/icons/browserconfig.xml",
@@ -1587,24 +1573,24 @@
         "https://jimeh87.github.io/game-of-life/assets/templates/ypentomino.rle",
         "https://jimeh87.github.io/game-of-life/assets/templates/zhexomino.rle",
         "https://jimeh87.github.io/game-of-life/assets/templates/zpentomino.rle",
-        "https://jimeh87.github.io/game-of-life/assets/templates/zweiback.rle"
+        "https://jimeh87.github.io/game-of-life/assets/templates/zweiback.rle",
+        "https://jimeh87.github.io/game-of-life/favicon.ico",
+        "https://jimeh87.github.io/game-of-life/index.html",
+        "https://jimeh87.github.io/game-of-life/main.0597b357494d6d4424ef.js",
+        "https://jimeh87.github.io/game-of-life/polyfills.62aa972f0228249f8449.js",
+        "https://jimeh87.github.io/game-of-life/runtime.6afe30102d8fe7337431.js",
+        "https://jimeh87.github.io/game-of-life/styles.2e3173f61b17a5a8795a.css"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
-    "https://jimeh87.github.io/game-of-life/favicon.ico": "95cf7800a5daf9e2c65f5ef70bc7d3fe164a53be",
     "https://jimeh87.github.io/game-of-life/assets/icons/android-chrome-192x192.png": "7844611b9857ee4b5629003581473a4e7f98ffa1",
-    "https://jimeh87.github.io/game-of-life/index.html": "2eefb02cf647982a91b0f95ebf72cc052bd6a1eb",
     "https://jimeh87.github.io/game-of-life/assets/icons/apple-touch-icon.png": "8095aabe1965ec5d6fba9c8b24a56746b446fd84",
-    "https://jimeh87.github.io/game-of-life/main.0597b357494d6d4424ef.js": "d27f44bdf8b68ee96b47a1e9e8bf45cd33d96199",
     "https://jimeh87.github.io/game-of-life/assets/icons/browserconfig.xml": "df0a52d340fe69ad29815c76ac8b55eb09364827",
-    "https://jimeh87.github.io/game-of-life/polyfills.62aa972f0228249f8449.js": "fb1d25338305f2aaf10305cc70ce11521ab0546a",
     "https://jimeh87.github.io/game-of-life/assets/icons/favicon-16x16.png": "8cba3628919c1eafb1f2f4f07f97f06fb6f41856",
-    "https://jimeh87.github.io/game-of-life/runtime.6afe30102d8fe7337431.js": "078e320cc6fdaf355836c3b1c52b059cdd33fc7e",
     "https://jimeh87.github.io/game-of-life/assets/icons/favicon-32x32.png": "47b012aaae80b90b7bb59b4b419591bf34919339",
-    "https://jimeh87.github.io/game-of-life/styles.2e3173f61b17a5a8795a.css": "f22a19955ab93b290a31ccac593002a054110d79",
     "https://jimeh87.github.io/game-of-life/assets/icons/mstile-150x150.png": "a314e9b976a5de93ce3a83b188a47be6eb19f5e7",
     "https://jimeh87.github.io/game-of-life/assets/icons/mstile-310x150.png": "650cd980c6ddc389d6a930ed2128ce4b56de50d5",
     "https://jimeh87.github.io/game-of-life/assets/icons/mstile-310x310.png": "5e58e737aa738b5c1f4702ecadd9014cf61b7a16",
@@ -3166,7 +3152,13 @@
     "https://jimeh87.github.io/game-of-life/assets/templates/ypentomino.rle": "cc20d87b8cf5e980109f032d7da65335e444f945",
     "https://jimeh87.github.io/game-of-life/assets/templates/zhexomino.rle": "57c4c3544b3cac68e0f400fcff4ba00976991985",
     "https://jimeh87.github.io/game-of-life/assets/templates/zpentomino.rle": "4f64921d9eafc7bfedc5e8f5e6b6c71235dc8d61",
-    "https://jimeh87.github.io/game-of-life/assets/templates/zweiback.rle": "1bc9155ed0ca2cfa2af78a567a742448142858c9"
+    "https://jimeh87.github.io/game-of-life/assets/templates/zweiback.rle": "1bc9155ed0ca2cfa2af78a567a742448142858c9",
+    "https://jimeh87.github.io/game-of-life/favicon.ico": "95cf7800a5daf9e2c65f5ef70bc7d3fe164a53be",
+    "https://jimeh87.github.io/game-of-life/index.html": "2eefb02cf647982a91b0f95ebf72cc052bd6a1eb",
+    "https://jimeh87.github.io/game-of-life/main.0597b357494d6d4424ef.js": "d27f44bdf8b68ee96b47a1e9e8bf45cd33d96199",
+    "https://jimeh87.github.io/game-of-life/polyfills.62aa972f0228249f8449.js": "fb1d25338305f2aaf10305cc70ce11521ab0546a",
+    "https://jimeh87.github.io/game-of-life/runtime.6afe30102d8fe7337431.js": "078e320cc6fdaf355836c3b1c52b059cdd33fc7e",
+    "https://jimeh87.github.io/game-of-life/styles.2e3173f61b17a5a8795a.css": "f22a19955ab93b290a31ccac593002a054110d79"
   },
   "navigationUrls": [
     {
