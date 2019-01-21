@@ -6,7 +6,7 @@ cache:
 install:
   yarn
 script:
-  yarn build
+  yarn build:ghpages
 deploy:
   provider: pages
   skip-cleanup: true
