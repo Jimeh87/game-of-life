@@ -6,9 +6,9 @@ import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs/index';
 
 @Injectable()
-export class RleService { // TODO: Change to Asset or File service
+export class RleService {
 
-  private RLE_DATA = '/assets/parsed-rle-data.json'; // TODO: Figure out how to make constant...
+  private RLE_DATA = 'assets/parsed-rle-data.json';
 
   constructor(private http: HttpClient) {
   }
