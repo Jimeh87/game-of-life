@@ -8,7 +8,7 @@ import {Observable} from 'rxjs/index';
 @Injectable()
 export class RleService {
 
-  private RLE_DATA = './assets/parsed-rle-data.json';
+  private RLE_DATA = 'assets/parsed-rle-data.json';
 
   constructor(private http: HttpClient) {
   }
