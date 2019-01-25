@@ -97,16 +97,16 @@ export class GameBoardHudComponent implements OnInit, OnDestroy {
         this.gameBoardConfig.fullScreen = false;
         break;
       case GameControlAction.UP:
-        this.gameBoardConfig.yScreenOffset--;
+        this.gameBoardConfig.yScreenOffset = this.gameBoardConfig.yScreenOffset - this.calculateOffsetAmount();
         break;
       case GameControlAction.DOWN:
-        this.gameBoardConfig.yScreenOffset++;
+        this.gameBoardConfig.yScreenOffset = this.gameBoardConfig.yScreenOffset + this.calculateOffsetAmount();
         break;
       case GameControlAction.LEFT:
-        this.gameBoardConfig.xScreenOffset--;
+        this.gameBoardConfig.xScreenOffset = this.gameBoardConfig.xScreenOffset - this.calculateOffsetAmount();
         break;
       case GameControlAction.RIGHT:
-        this.gameBoardConfig.xScreenOffset++;
+        this.gameBoardConfig.xScreenOffset = this.gameBoardConfig.xScreenOffset + this.calculateOffsetAmount();
         break;
       case GameControlAction.SPEED_VERY_SLOW:
         this.gameOfLifeService.delay = 400;
@@ -129,6 +129,14 @@ export class GameBoardHudComponent implements OnInit, OnDestroy {
         this.currentSpeed = gca;
         break;
     }
+  }
+
+  private calculateOffsetAmount() {
+    if (this.gameBoardConfig.zoom >= 25) {
+      return 1;
+    }
+
+    return Math.ceil(.4 * (25 - this.gameBoardConfig.zoom));
   }
 
   holdAction(gca: GameControlAction, active: boolean) {
