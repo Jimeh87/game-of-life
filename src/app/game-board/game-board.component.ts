@@ -20,6 +20,7 @@ import {Coordinate} from '../algorithm/coordinate';
 import {Generation} from '../algorithm/generation';
 import {Subscription} from 'rxjs/index';
 import {Observable} from 'rxjs/Rx';
+import {Line} from "../algorithm/Line";
 
 @Component({
   selector: 'app-game-board',
@@ -212,8 +213,23 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     this.ctx.fillRect(rectX, rectY, rectW, rectH);
   }
 
-  toggleCell(x: number, y: number) {
-    this.gameOfLifeService.toggleCell(x, y);
+  toggleCell(cell: { x: number, y: number }) {
+    const toggleCellFn = (x, y) => this.gameOfLifeService.toggleCell(x + this.gbConfig.xScreenOffset, y + this.gbConfig.yScreenOffset);
+    if (this.cellMissed(cell)) {
+      Line.draw(
+        this.lastSelectedCell.x, this.lastSelectedCell.y,
+        cell.x, cell.y,
+        toggleCellFn);
+    } else {
+      toggleCellFn(cell.x, cell.y);
+    }
+
+    this.lastSelectedCell = cell;
+  }
+
+  private cellMissed(cell: { x: number, y: number }): boolean {
+    return this.lastSelectedCell
+      && (Math.abs(this.lastSelectedCell.x - cell.x) > 1 || Math.abs(this.lastSelectedCell.y - cell.y) > 1);
   }
 
   onCanvasEntered() {
@@ -222,10 +238,6 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     }
     this.gameOfLifeService.startGame();
 
-    return false;
-  }
-
-  onCanvasClick() {
     return false;
   }
 
@@ -253,9 +265,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     if (this.preview) {
       return;
     }
-    const cell: { x: number, y: number } = this.getSelectedCell(event);
-    this.toggleCell(cell.x + this.gbConfig.xScreenOffset, cell.y + this.gbConfig.yScreenOffset);
-    this.lastSelectedCell = cell;
+    this.toggleCell(this.getSelectedCell(event));
     this.mouseDown = true;
 
     return false;
@@ -265,8 +275,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     if (this.mouseDown) {
       const cell: { x: number, y: number } = this.getSelectedCell(event);
       if (cell.x !== this.lastSelectedCell.x || cell.y !== this.lastSelectedCell.y) {
-        this.toggleCell(cell.x + this.gbConfig.xScreenOffset, cell.y + this.gbConfig.yScreenOffset);
-        this.lastSelectedCell = cell;
+        this.toggleCell(cell);
       }
     }
 
