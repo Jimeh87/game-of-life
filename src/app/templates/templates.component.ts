@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TemplatesService} from './templates.service';
 import {Template} from './template';
 import {Subscription} from 'rxjs/index';
@@ -8,14 +8,13 @@ import {Subscription} from 'rxjs/index';
   templateUrl: './templates.component.html',
   styleUrls: ['./templates.component.css']
 })
-export class TemplatesComponent implements OnInit, OnChanges, OnDestroy {
+export class TemplatesComponent implements OnInit, OnDestroy {
 
   loading = true;
+  filter = '';
 
   private templates: Template[];
   private subscription: Subscription;
-
-  private _filter = '';
 
   constructor(private templatesService: TemplatesService) {
   }
@@ -26,11 +25,6 @@ export class TemplatesComponent implements OnInit, OnChanges, OnDestroy {
         this.templates = templates;
         this.loading = false;
     });
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['_filter'] != null && changes['_filter'].currentValue !== changes['_filter'].previousValue) {
-    }
   }
 
   toTemplatesTop() {
@@ -47,14 +41,6 @@ export class TemplatesComponent implements OnInit, OnChanges, OnDestroy {
 
   set page(value) {
     this.templatesService.page = value;
-  }
-
-  get filter(): string {
-    return this._filter;
-  }
-
-  set filter(value: string) {
-    this._filter = value;
   }
 
   ngOnDestroy() {
