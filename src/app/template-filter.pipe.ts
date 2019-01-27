@@ -11,6 +11,7 @@ export class TemplateFilterPipe implements PipeTransform {
   private minQueryLength = 4;
 
   transform(templates: Template[], templateQuery: TemplateQuery): any {
+    console.log(templateQuery);
     if (!this.allowSearch(templates, templateQuery)) {
       return templates;
     }
@@ -20,6 +21,7 @@ export class TemplateFilterPipe implements PipeTransform {
     return templates.filter((template: Template) => {
       return this.titleTagMatch(template, templateQuery)
         && this.patternTagMatch(template, templateQuery)
+        && this.authorTagMatch(template, templateQuery)
         && this.genericMatch(filter, regex, template);
     });
   }
@@ -38,6 +40,25 @@ export class TemplateFilterPipe implements PipeTransform {
       'pattern',
       template.getPattern(),
       (templateValue, tagValue) => templateValue.includes(tagValue));
+  }
+
+  private authorTagMatch(template: Template, templateQuery: TemplateQuery): boolean {
+    return this.tagMatch(
+      templateQuery,
+      'author',
+      template.getAuthor(),
+      (templateValue, tagValue) => {
+        if (!templateValue) {
+          return !tagValue;
+        }
+        let allMatch = true;
+        for (const name of tagValue.split(' ').filter(v => v)) {
+          if (!templateValue.toLowerCase().includes(name.toLowerCase())) {
+            allMatch = false;
+          }
+        }
+        return allMatch;
+      });
   }
 
   private tagMatch(templateQuery: TemplateQuery,

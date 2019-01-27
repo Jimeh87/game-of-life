@@ -4,6 +4,7 @@ import {Rle} from './rle';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs/index';
+import {Cacheable} from "ngx-cacheable";
 
 @Injectable()
 export class RleService {
@@ -13,9 +14,9 @@ export class RleService {
   constructor(private http: HttpClient) {
   }
 
+  @Cacheable()
   public getRles(): Observable<Rle[]> {
     return this.http.get<any>(this.RLE_DATA).pipe(map(rleData => rleData.map(datum => new Rle(datum))));
   }
-
 
 }

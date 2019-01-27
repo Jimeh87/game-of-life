@@ -11,7 +11,7 @@ export class TemplatesService {
 
   private _page = 1;
 
-  private templates: Observable<Template[]>;
+  private readonly templates: Observable<Template[]>;
   private templatesCache: Template[];
 
   constructor(private rleService: RleService) {

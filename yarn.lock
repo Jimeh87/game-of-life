@@ -220,9 +220,11 @@
   dependencies:
     tslib "^1.9.0"
 
-"@ng-bootstrap/ng-bootstrap@^2.0.0":
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-2.2.2.tgz#07c64badd48b563140eb5a6327b5516bf2226834"
+"@ng-bootstrap/ng-bootstrap@^3.0.0":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-3.3.1.tgz#435eebc57dd4a371d02f342f1e919d1c4bb522a2"
+  dependencies:
+    tslib "^1.9.0"
 
 "@ngtools/webpack@6.0.8":
   version "6.0.8"
@@ -463,8 +465,8 @@ ajv-errors@^1.0.0:
   resolved "https://registry.yarnpkg.com/ajv-errors/-/ajv-errors-1.0.1.tgz#f35986aceb91afadec4102fbd85014950cefa64d"
 
 ajv-keywords@^3.1.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.2.0.tgz#e86b819c602cf8821ad637413698f1dec021847a"
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.3.0.tgz#cb6499da9b83177af8bc1732b2f0a1a1a3aacf8c"
 
 ajv@6.4.0, ajv@~6.4.0:
   version "6.4.0"
@@ -4345,6 +4347,10 @@ negotiator@0.6.1:
 neo-async@^2.5.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
+
+ngx-cacheable@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/ngx-cacheable/-/ngx-cacheable-1.0.9.tgz#a08990c75489e5e27cf7b89465aa1f4b5673333e"
 
 ngx-color-picker@^6.0.0:
   version "6.8.0"

@@ -88,12 +88,18 @@ module.exports = function (grunt) {
     });
     var authors = [];
     allData.forEach(function (data) {
-      var authorName = data['author'];
-      if (!authorName) {
+      var rawAuthorName = data['author'];
+      if (!rawAuthorName || rawAuthorName.toLowerCase() === 'unknown') {
         return;
       }
-
-      var authorKey = authorName.toLowerCase();
+      var splitName = rawAuthorName.split(' ');
+      if (splitName.length > 3 || splitName.length < 1) {
+        grunt.log.writeln('Failed to parse author name [' + rawAuthorName + '] for file ' + data['filename'] + ' while building author pool.');
+        return;
+      }
+      var firstName = splitName.length > 1 ? splitName[0] : null;
+      var lastName = splitName[splitName.length - 1];
+      var authorKey = ((firstName ? firstName : '') + lastName).toLowerCase();
       var matchingAuthors = authors.filter(function (a) {
         return a.key === authorKey
       });
@@ -102,13 +108,15 @@ module.exports = function (grunt) {
       } else {
         authors.push({
           key: authorKey,
-          display: authorName,
+          display: rawAuthorName,
+          firstName: firstName,
+          lastName: lastName,
           count: 1
         });
       }
     });
 
-    authors.sort(function(a, b) {
+    authors.sort(function (a, b) {
       return b['count'] - a['count'];
     });
 
