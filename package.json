@@ -4,15 +4,13 @@
   "license": "GNU GPLv3",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
-    "serve": "ng serve",
+    "start": "ng serve",
     "build": "ng build --prod",
     "build:ghpages": "ng build --prod",
+    "grunt:rle": "grunt rle-parser",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "postinstall": "ng build --prod",
-    "deploy": "git push origin master && git push heroku master"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
