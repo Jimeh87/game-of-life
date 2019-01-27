@@ -3,10 +3,9 @@ export class Template {
 
   private rle: Rle;
 
-  private name: string;
-  private blueprint: {x: number, y: number}[];
-  private height: number;
-  private width: number;
+  private readonly blueprint: {x: number, y: number}[];
+  private readonly height: number;
+  private readonly width: number;
   private cells: boolean[][];
 
   constructor(rle: Rle) {

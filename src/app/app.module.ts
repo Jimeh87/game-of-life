@@ -32,6 +32,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {SearchComponent} from './templates/search/search.component';
+import {InputBadgeComponent} from './templates/search/input-badge/input-badge.component';
 
 const appRoutes: Routes = [
     {
@@ -113,7 +114,8 @@ const appRoutes: Routes = [
     AboutTheSiteComponent,
     AboutLinksComponent,
     SortPipe,
-    SearchComponent
+    SearchComponent,
+    InputBadgeComponent
   ],
   imports: [
     BrowserModule,
@@ -124,7 +126,7 @@ const appRoutes: Routes = [
     NgbModule.forRoot(),
     NgxPaginationModule,
     ColorPickerModule,
-    ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('./ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [RleService, GameOfLifeService, TemplatesService, ConfigService],
   bootstrap: [AppComponent]

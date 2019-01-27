@@ -1,30 +1,14 @@
 module.exports = function (grunt) {
-  //
-  // grunt.initConfig({
-  //   peg: {
-  //     rle : {
-  //       src: "src/assets/rle.pegjs",
-  //       dest: "src/assets/rle-parser.js"
-  //     }
-  //   }
-  // });
-
-  grunt.initConfig({
-    fileParser: {}
-  });
-
-  // grunt.task.loadTasks('./grunt-tasks');
-
-  grunt.registerTask('rle-parser', 'Converts list of files into JSON file', function() {
-    const allData = [];
+  grunt.registerTask('rle-parser', 'Converts list of RLE files into JSON file', function () {
+    var allData = [];
     grunt.file.recurse('./src/assets/templates', function callback(abspath, rootdir, subdir, filename) {
-      fileData = {};
+      var fileData = {};
       // grunt.log.writeln('processing: ' + filename);
-      const fileContents = grunt.file.read(abspath);
+      var fileContents = grunt.file.read(abspath);
 
       fileData['filename'] = filename;
 
-      const unformattedName = /#N\s?[^\n]*/.exec(fileContents);
+      var unformattedName = /#N\s?[^\n]*/.exec(fileContents);
       var name;
       if (unformattedName != null) {
         name = unformattedName[0].replace(/#N\s?/g, '').replace(/\r?\n|\r/g, '').trim();
@@ -33,22 +17,22 @@ module.exports = function (grunt) {
       }
       fileData['name'] = name;
 
-      const unformattedAuthor = /#O\s?[^\n]*/.exec(fileContents);
+      var unformattedAuthor = /#O\s?[^\n]*/.exec(fileContents);
       fileData['author'] = unformattedAuthor != null ? unformattedAuthor[0].replace(/#O\s?/g, '').replace(/\r?\n|\r/g, '').trim() : null;
 
       // Rule
-      const unformattedRule = /rule\s?\=\s?(B|S|b|s)?[0-9]+\/(B|S|b|s)?[0-9]+/.exec(fileContents);
-      const rule = unformattedRule != null ? unformattedRule[0].replace(/\r?\n|\r|\s/g, '').replace(/rule=/, '') : null;
+      var unformattedRule = /rule\s?\=\s?(B|S|b|s)?[0-9]+\/(B|S|b|s)?[0-9]+/.exec(fileContents);
+      var rule = unformattedRule != null ? unformattedRule[0].replace(/\r?\n|\r|\s/g, '').replace(/rule=/, '') : null;
       if (unformattedRule != null) {
         fileData['rule'] = rule;
       } else {
-        grunt.log.writeln('Failed to parse rule for file ' + filename);
+        grunt.log.writeln('Failed to parse rule for file ' + filename + ' while identifying rule.');
         return true;
       }
 
       // Comments
-      const comments = [];
-      const commentsPattern = /#(C|c)\s?[^\n]*/g;
+      var comments = [];
+      var commentsPattern = /#(C|c)\s?[^\n]*/g;
       var execArray;
       while (execArray = commentsPattern.exec(fileContents)) {
         comments.push(execArray[0].replace(/#C\s?/g, '').replace(/\r?\n|\r/g, '').replace(/^(?!http:\/\/)www\./g, 'http://www.'));
@@ -56,14 +40,14 @@ module.exports = function (grunt) {
       fileData['comments'] = comments;
 
       // Bounding box
-      const boundingBox = {x: null, y: null};
+      var boundingBox = {x: null, y: null};
       boundingBox['x'] = 1;
-      const findLinePattern = /(?!#C)x\s?\=\s?[0-9]+,\s?y\s?\=\s?[0-9]+/i;
-      const xyLine = findLinePattern.exec(fileContents)[0].replace(/[^0-9xXyY]/g, '');
+      var findLinePattern = /(?!#C)x\s?\=\s?[0-9]+,\s?y\s?\=\s?[0-9]+/i;
+      var xyLine = findLinePattern.exec(fileContents)[0].replace(/[^0-9xXyY]/g, '');
       var xyValue = '';
       var leadingCharacter = null;
       for (var i = 0; i < xyLine.length; i++) {
-        const char = xyLine[i];
+        var char = xyLine[i];
         if (char === 'x' || char === 'X' || char === 'y' || char === 'Y') {
           if (leadingCharacter != null) {
             boundingBox[leadingCharacter] = +xyValue;
@@ -76,26 +60,69 @@ module.exports = function (grunt) {
       }
       boundingBox[leadingCharacter] = +xyValue;
       if (boundingBox.x == null || boundingBox.y == null) {
-        grunt.log.writeln('Failed to parse pattern for file ' + filename);
+        grunt.log.writeln('Failed to parse pattern for file ' + filename + ' while identifying bounding box.');
         return true;
       }
       fileData['boundingBox'] = boundingBox;
 
       // Game board pattern
-      const unformattedPattern = /(\r?\n|\r)([0-9]|b|o|\$|\s|\n)*!/.exec(fileContents);
-      const pattern = unformattedPattern != null ? unformattedPattern[0].replace(/\r?\n|\r|\s/g, '') : null;
+      var unformattedPattern = /(\r?\n|\r)([0-9]|b|o|\$|\s|\n)*!/.exec(fileContents);
+      var pattern = unformattedPattern != null ? unformattedPattern[0].replace(/\r?\n|\r|\s/g, '') : null;
       if (pattern == null) {
-        grunt.log.writeln('Failed to parse pattern for file ' + filename);
+        grunt.log.writeln('Failed to parse pattern for file ' + filename + ' while identifying pattern.');
         return true;
       }
       fileData['pattern'] = pattern;
 
+      // fileData['tags'] = [];
+      // fileData['tags'].push({
+      //   'key': 'title',
+      //   'value': fileData['name']
+      // });
+      // fileData['tags'].push({
+      //   'key': 'pattern',
+      //   'value': fileData['pattern']
+      // });
 
       allData.push(fileData);
     });
+    var authors = [];
+    allData.forEach(function (data) {
+      var authorName = data['author'];
+      if (!authorName) {
+        return;
+      }
+
+      var authorKey = authorName.toLowerCase();
+      var matchingAuthors = authors.filter(function (a) {
+        return a.key === authorKey
+      });
+      if (matchingAuthors.length) {
+        matchingAuthors[0]['count']++;
+      } else {
+        authors.push({
+          key: authorKey,
+          display: authorName,
+          count: 1
+        });
+      }
+    });
+
+    authors.sort(function(a, b) {
+      return b['count'] - a['count'];
+    });
+
+
     grunt.file.write('./src/assets/parsed-rle-data.json', JSON.stringify(allData));
+    grunt.file.write('./src/assets/parsed-authors.json', JSON.stringify(authors));
   });
 
   grunt.registerTask('parse-rle', ['rle-parser']);
+};
 
+var groupBy = function (xs, key) {
+  return xs.reduce(function (rv, x) {
+    (rv[x[key]] = rv[x[key]] || []).push(x);
+    return rv;
+  }, {});
 };

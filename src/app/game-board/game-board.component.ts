@@ -20,7 +20,7 @@ import {Coordinate} from '../algorithm/coordinate';
 import {Generation} from '../algorithm/generation';
 import {Subscription} from 'rxjs/index';
 import {Observable} from 'rxjs/Rx';
-import {Line} from "../algorithm/Line";
+import {Line} from '../algorithm/line';
 
 @Component({
   selector: 'app-game-board',

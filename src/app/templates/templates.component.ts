@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TemplatesService} from './templates.service';
 import {Template} from './template';
 import {Subscription} from 'rxjs/index';
+import {TemplateQuery} from './search/template-query';
 
 @Component({
   selector: 'app-templates',
@@ -11,7 +12,7 @@ import {Subscription} from 'rxjs/index';
 export class TemplatesComponent implements OnInit, OnDestroy {
 
   loading = true;
-  filter = '';
+  templateQuery: TemplateQuery;
 
   private templates: Template[];
   private subscription: Subscription;
@@ -24,7 +25,7 @@ export class TemplatesComponent implements OnInit, OnDestroy {
       .subscribe((templates: Template[]) => {
         this.templates = templates;
         this.loading = false;
-    });
+      });
   }
 
   toTemplatesTop() {

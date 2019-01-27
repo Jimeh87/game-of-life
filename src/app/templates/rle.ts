@@ -1,14 +1,14 @@
 import {GolRule} from './gol-rule';
 export class Rle {
 
-  private fileName: string;
+  private readonly fileName: string;
   private rleString: string;
-  private name: string;
-  private author: string;
-  private pattern: string;
-  private rule: GolRule;
-  private comments: string[];
-  private boundingBox: { x: number, y: number };
+  private readonly name: string;
+  private readonly author: string;
+  private readonly pattern: string;
+  private readonly rule: GolRule;
+  private readonly comments: string[];
+  private readonly boundingBox: { x: number, y: number };
 
   constructor(rleData: { filename: string,
                          name: string,
