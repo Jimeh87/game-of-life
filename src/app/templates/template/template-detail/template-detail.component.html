@@ -11,6 +11,10 @@
     <h6 class="card-title">Author</h6>
     <p class="card-text">{{ getTemplate().getAuthor() }}</p>
   </div>
+  <div class="card-body" *ngIf="getTemplate().getCategories().length">
+    <h6 class="card-title">Categories</h6>
+    <p class="card-text">{{ getTemplate().getCategories().join(', ') }}</p>
+  </div>
   <div class="card-body">
     <h6 class="card-title">Bounding box</h6>
     <p class="card-text">x = {{ getTemplate().getBoundingBox().x }}, y = {{ getTemplate().getBoundingBox().y }}</p>

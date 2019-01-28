@@ -1,22 +1,26 @@
 import {GolRule} from './gol-rule';
+
 export class Rle {
 
   private readonly fileName: string;
-  private rleString: string;
   private readonly name: string;
   private readonly author: string;
   private readonly pattern: string;
   private readonly rule: GolRule;
   private readonly comments: string[];
   private readonly boundingBox: { x: number, y: number };
+  private readonly categories: string[];
 
-  constructor(rleData: { filename: string,
-                         name: string,
-                         author: string,
-                         rule: string,
-                         comments: string[],
-                         boundingBox: { x: number, y: number },
-                         pattern: string }) {
+  constructor(rleData: {
+    filename: string,
+    name: string,
+    author: string,
+    rule: string,
+    comments: string[],
+    boundingBox: { x: number, y: number },
+    pattern: string,
+    categories: string[]
+  }) {
     this.fileName = rleData.filename;
     this.name = rleData.name;
     this.author = rleData.author;
@@ -24,6 +28,7 @@ export class Rle {
     this.comments = rleData.comments;
     this.boundingBox = rleData.boundingBox;
     this.pattern = rleData.pattern;
+    this.categories = rleData.categories;
   }
 
   public getFileName(): string {
@@ -52,6 +57,10 @@ export class Rle {
 
   public getBoundingBox(): { x: number, y: number } {
     return this.boundingBox;
+  }
+
+  public getCategories(): string[] {
+    return this.categories;
   }
 
   // TODO: this can be faster.. ditch regex and do '!' last
@@ -98,87 +107,6 @@ export class Rle {
       }
     }
     return blueprint;
-  }
-
-  /*
-   * @deprecated - Parsed in grunt task now
-   */
-  private parsePatternFromRle(): string {
-    const pattern: string = /\n([0-9]|b|o|\$|\s|\n)*!/.exec(this.rleString)[0].replace(/\r?\n|\r|\s/g, '');
-    return pattern;
-  }
-
-  /*
-   * @deprecated - Parsed in grunt task now
-   */
-  private parseRuleFromRle(): string {
-    const rule: string = /rule\s?\=\s?(B|S|b|s)?[0-9]+\/(B|S|b|s)?[0-9]+/.exec(this.rleString)[0]
-      .replace(/\r?\n|\r|\s/g, '').replace(/rule=/, '');
-    return rule;
-  }
-
-  /*
-   * @deprecated - Parsed in grunt task now
-   */
-  private parseCommentsFromRle(): string[] {
-    const comments: string[] = [];
-    const pattern: RegExp = /#(C|c)\s?[^\n]*/g;
-    let execArray: RegExpExecArray;
-    while (execArray = pattern.exec(this.rleString)) {
-      comments.push(execArray[0].replace(/#C\s?/g, '').replace(/^(?!http:\/\/)www\./g, 'http://www.'));
-    }
-    return comments;
-  }
-
-  /*
-   * @deprecated - Parsed in grunt task now
-   */
-  private parseBoundingBoxFromRle(): { x: number, y: number } {
-    const boundingBox: { x: number, y: number } = {x: null, y: null};
-    boundingBox['x'] = 1;
-    const findLinePattern: RegExp = /(?!#C)x\s?\=\s?[0-9]+,\s?y\s?\=\s?[0-9]+/i;
-    const xyLine = findLinePattern.exec(this.rleString)[0].replace(/[^0-9xXyY]/g, '');
-    let xyValue = '';
-    let leadingCharacter: string = null;
-    for (let i = 0; i < xyLine.length; i++) {
-      const char: string = xyLine[i];
-      if (char === 'x' || char === 'X' || char === 'y' || char === 'Y') {
-        if (leadingCharacter != null) {
-          boundingBox[leadingCharacter] = +xyValue;
-          xyValue = '';
-        }
-        leadingCharacter = char.toLowerCase();
-      } else {
-        xyValue += char;
-      }
-    }
-    boundingBox[leadingCharacter] = +xyValue;
-    return boundingBox;
-  }
-
-  /*
-   * @deprecated - Parsed in grunt task now
-   */
-  private parseNameFromRle(): string {
-    let name: string;
-    const execArray: RegExpExecArray = /#N\s?[^\n]*/.exec(this.rleString);
-    if (execArray != null) {
-      name = execArray[0].replace(/#N\s?/g, '').trim();
-    } else {
-      name = this.fileName.slice(0, -4);
-    }
-    return name;
-  }
-
-  /*
-   * @deprecated - Parsed in grunt task now
-   */
-  private parseAuthorFromRle(): string {
-    const execArray: RegExpExecArray = /#O\s?[^\n]*/.exec(this.rleString);
-    if (execArray != null) {
-      return execArray[0].replace(/#O\s?/g, '').trim();
-    }
-    return null;
   }
 
 }

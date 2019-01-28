@@ -4,15 +4,17 @@ import {Observable} from 'rxjs/Observable';
 import {Author} from './author';
 import {Cacheable} from 'ngx-cacheable';
 import {Rule} from './rule';
+import {Category} from "./category";
 
 @Injectable()
 export class TypeaheadService {
 
   private AUTHOR_DATA = 'assets/parsed-authors.json';
+  private CATEGORY_DATA = 'assets/parsed-categories.json';
   private RULE_DATA = 'assets/parsed-rules.json';
 
 
-  private VALID_TAGS: string[] = ['author', 'pattern', 'rule', 'title'];
+  private VALID_TAGS: string[] = ['author', 'category', 'pattern', 'rule', 'title'];
 
 
   constructor(private http: HttpClient) {
@@ -26,6 +28,12 @@ export class TypeaheadService {
   getAuthors(): Observable<Author[]> {
     return this.http.get<Author[]>(this.AUTHOR_DATA);
   }
+
+  @Cacheable()
+  getCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>(this.CATEGORY_DATA);
+  }
+
 
   @Cacheable()
   getRules(): Observable<Rule[]> {

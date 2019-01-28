@@ -58,13 +58,6 @@ export class InputBadgeComponent implements OnInit, AfterViewInit {
     const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
 
     switch (this.tag.get('key').value) {
-      case 'rule':
-        return debouncedText$
-          .switchMap(term => this.typeaheadService.getRules().pipe(
-            map(rules => rules
-              .map(rule => rule.name)
-              .filter(name => name.indexOf(term) > -1))
-          ));
       case 'author':
         return debouncedText$.pipe(
           filter(term => term && term.length > 2))
@@ -72,6 +65,21 @@ export class InputBadgeComponent implements OnInit, AfterViewInit {
             map(authors => authors
               .map(author => author.display)
               .filter(author => author.toLowerCase().indexOf(term.toLowerCase()) > -1))
+          ));
+      case 'category':
+        return debouncedText$.pipe(
+          filter(term => term && term.length > 0))
+          .switchMap(term => this.typeaheadService.getCategories().pipe(
+            map(categories => categories
+              .map(category => category.name)
+              .filter(category => category.indexOf(term.toLowerCase()) > -1))
+          ));
+      case 'rule':
+        return debouncedText$
+          .switchMap(term => this.typeaheadService.getRules().pipe(
+            map(rules => rules
+              .map(rule => rule.name)
+              .filter(name => name.indexOf(term) > -1))
           ));
       default:
         return text$.pipe(

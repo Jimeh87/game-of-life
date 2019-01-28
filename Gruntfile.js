@@ -14,22 +14,96 @@ module.exports = function (grunt) {
         fileData['comments'] = extractComments(fileContents);
         fileData['boundingBox'] = extractBoundingBox(fileContents);
         fileData['pattern'] = extractPattern(fileContents);
-
+        fileData['categories'] = extractCategories(filename, fileContents);
         allData.push(fileData);
       } catch (error) {
-        grunt.log.writeln(error + ' | filename [' + filename + ']');
+        grunt.log.errorlns(error + ' | filename [' + filename + ']');
       }
     });
 
-    var authors = extractAuthors(allData, grunt);
-    var rules = extractRules(allData, grunt);
+    var authors = extractAuthorGroupings(allData, grunt);
+    var rules = extractRuleGroupings(allData, grunt);
+    var categories = extractCategoryGroupings(allData, grunt);
 
     grunt.file.write('./src/assets/parsed-rle-data.json', JSON.stringify(allData));
     grunt.file.write('./src/assets/parsed-authors.json', JSON.stringify(authors));
     grunt.file.write('./src/assets/parsed-rules.json', JSON.stringify(rules));
+    grunt.file.write('./src/assets/parsed-categories.json', JSON.stringify(categories));
   });
 
   grunt.registerTask('parse-rle', ['rle-parser']);
+};
+
+var extractCategories = function (filename, fileContents) {
+  var allCategories = [
+    {name: 'agar', aliases: []},
+    {name: 'conduit', aliases: ['herschel transmitter']},
+    {name: 'garden of eden', aliases: ['gardens of eden']},
+    {name: 'gun', aliases: []},
+    {name: 'methuselah', aliases: ['herschel']},
+    {name: 'oscillator', aliases: ['beacon', 'blinker', 'figure eight', 'blocker', 'pulsar', 'queen bee shuttle', 'basic shuttle', 'toad', 'twin bees shuttle', 'boring', 'ship on bipole', 'achim\'s other p16', 'period', 'diuresis', 'griddle', 'cyclic', 'pentadecathlon', '17columnheavyweightvolcano', '44P12.2']},
+    {name: 'puffer', aliases: []},
+    {name: 'sawtooth', aliases: []},
+    {name: 'spaceship', aliases: ['orthogonal', 'cordership', 'glider', 'flying', 'goose']},
+    {name: 'still life', aliases: ['cis-rotated hook', 'cis-mirrored worm siamese cis-mirrored worm', 'tub with cis-tail', 'omnibus', 'hungry hat', 'cthulhu', 'amphisbaena']},
+    {name: 'wick', aliases: []},
+    {name: 'breeder', aliases: []},
+    {name: 'caber tosser', aliases: []},
+    {name: 'converter', aliases: []},
+    {name: 'crawler', aliases: []},
+    {name: 'eater', aliases: []},
+    {name: 'fuse', aliases: []},
+    {name: 'growing spaceship', aliases: []},
+    {name: 'induction coil', aliases: ['racetrack']},
+    {name: 'infinite growth', aliases: ['infinite-growth']},
+    {name: 'memory cell', aliases: []},
+    {name: 'pseudo still life', aliases: []},
+    {name: 'puffer engine', aliases: []},
+    {name: 'pure glider generator', aliases: []},
+    {name: 'rake', aliases: []},
+    {name: 'reflector', aliases: []},
+    {name: 'spacefiller', aliases: []},
+    {name: 'spark', aliases: []},
+    {name: 'superstring', aliases: []},
+    {name: 'tagalong', aliases: []},
+    {name: 'unit cell', aliases: []},
+    {name: 'wave', aliases: []},
+    {name: 'wickstretcher', aliases: []},
+    {name: 'synth', aliases: []},
+    {name: 'barberpole', aliases: ['undecapole']},
+    {name: 'replicator', aliases: []},
+    {name: 'blinker', aliases: []},
+    {name: 'boat', aliases: []},
+    {name: 'pentomino', aliases: []}
+  ];
+
+  var categories = [];
+
+  var matches = function (category, data) {
+    return data.some(function (d) {
+      return d.toLowerCase().indexOf(category) > -1;
+    });
+  };
+  allCategories.forEach(function (category) {
+    if (matches(category.name, [filename, fileContents])) {
+      categories.push(category.name);
+      return;
+    }
+
+    for (var i = 0; i < category.aliases.length; i++) {
+      var alias = category.aliases[i];
+      if (matches(alias, [filename, fileContents])) {
+        categories.push(category.name);
+        return;
+      }
+    }
+  });
+
+  if (!categories.length) {
+    categories.push('miscellaneous');
+  }
+
+  return categories;
 };
 
 var extractPattern = function (fileContents) {
@@ -103,7 +177,35 @@ var extractAuthor = function (fileContents) {
   return unformattedAuthor != null ? unformattedAuthor[0].replace(/#O\s?/g, '').replace(/\r?\n|\r/g, '').trim() : null;
 };
 
-var extractAuthors = function (allData, grunt) {
+var extractCategoryGroupings = function (allData, grunt) {
+  var categories = [];
+
+  allData.forEach(function (data) {
+    var dataCategories = data['categories'];
+    dataCategories.forEach(function (category) {
+      var matchingCategories = categories.filter(function (c) {
+        return c.name === category;
+      });
+      if (matchingCategories.length) {
+        matchingCategories[0]['count']++;
+      } else {
+        categories.push({
+          name: category,
+          count: 1
+        });
+      }
+    });
+  });
+
+  categories.sort(function (a, b) {
+    return b['name'] - a['name'];
+  });
+
+
+  return categories;
+};
+
+var extractAuthorGroupings = function (allData, grunt) {
   var authors = [];
   allData.forEach(function (data) {
     var rawAuthorName = data['author'];
@@ -112,7 +214,7 @@ var extractAuthors = function (allData, grunt) {
     }
     var splitName = rawAuthorName.split(' ');
     if (splitName.length > 3 || splitName.length < 1) {
-      grunt.log.writeln('Failed to parse author name [' + rawAuthorName + '] for file ' + data['filename'] + ' while building author pool.');
+      // grunt.log.writeln('Failed to parse author name [' + rawAuthorName + '] for file ' + data['filename'] + ' while building author pool.');
       return;
     }
     var firstName = splitName.length > 1 ? splitName[0] : null;
@@ -141,7 +243,7 @@ var extractAuthors = function (allData, grunt) {
   return authors;
 };
 
-var extractRules = function (allData, grunt) {
+var extractRuleGroupings = function (allData, grunt) {
   var rules = [];
   allData.forEach(function (data) {
     var rule = toFormattedRuleString(data['rule'], grunt);
@@ -172,7 +274,7 @@ var toFormattedRuleString = function (rule, grunt) {
     var swap = matches[1];
     matches[1] = matches[2];
     matches[2] = swap;
-    grunt.log.writeln('Rule [' + matches.input + '] with backwards birth and survival parameters. Swapping them.');
+    // grunt.log.writeln('Rule [' + matches.input + '] with backwards birth and survival parameters. Swapping them.');
   }
   return 'B' + matches[1] + '/' + 'S' + matches[2];
 };

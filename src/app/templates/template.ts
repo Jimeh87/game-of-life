@@ -1,9 +1,10 @@
 import {Rle} from './rle';
+
 export class Template {
 
   private rle: Rle;
 
-  private readonly blueprint: {x: number, y: number}[];
+  private readonly blueprint: { x: number, y: number }[];
   private readonly height: number;
   private readonly width: number;
   private cells: boolean[][];
@@ -39,11 +40,15 @@ export class Template {
     return this.rle.getPattern();
   }
 
-  public getBoundingBox(): {x: number, y: number} {
+  public getBoundingBox(): { x: number, y: number } {
     return this.rle.getBoundingBox();
   }
 
-  public getBlueprint(): {x: number, y: number}[] {
+  public getCategories(): string[] {
+    return this.rle.getCategories();
+  }
+
+  public getBlueprint(): { x: number, y: number }[] {
     return this.blueprint;
   }
 

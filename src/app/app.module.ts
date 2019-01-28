@@ -20,7 +20,7 @@ import {ConfigComponent} from './config/config.component';
 import {ConfigService} from './config/config.service';
 import {AboutComponent} from './about/about.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {TemplateFilterPipe} from './template-filter.pipe';
+import {TemplateFilterPipe} from './templates/search/template-filter.pipe';
 import {SpinnerComponent} from './spinner/spinner.component';
 import {ColorPickerModule} from 'ngx-color-picker';
 import {AboutMenuComponent} from './about/about-menu/about-menu.component';
@@ -33,7 +33,7 @@ import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {SearchComponent} from './templates/search/search.component';
 import {InputBadgeComponent} from './templates/search/input-badge/input-badge.component';
-import {TypeaheadService} from "./templates/search/typeahead.service";
+import {TypeaheadService} from './templates/search/typeahead.service';
 
 const appRoutes: Routes = [
     {
