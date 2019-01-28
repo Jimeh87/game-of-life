@@ -1,14 +1,23 @@
-<div class="badge badge-primary" [formGroup]="tag">
+<div class="badge badge-primary w-100" [formGroup]="tag">
   <div class="form-group form-row mb-0">
-    <label class="col-5 mb-0">{{tag.get('key').value}}</label>
+    <label class="col-4 mb-0 my-auto">{{tag.get('key').value}}</label>
     <input formControlName="value"
            type="text"
-           class="form-control form-control-sm col-7"
-           id="title-input"
+           class="form-control form-control-sm col-md-7 col-6"
            [ngbTypeahead]="autoComplete"
            [focusFirst]="false"
            container="body"
            #typeahead="ngbTypeahead"
+           (keypress)="keyPressed($event)"
            #tagInput>
+    <div class="col-md-1 col-2">
+      <button type="button"
+              class="d-inline-flex align-items-center justify-content-center h-100 close"
+              aria-label="Close"
+              (click)="removeTag()">
+        <span class="fa fa-times"></span>
+      </button>
+    </div>
   </div>
+
 </div>

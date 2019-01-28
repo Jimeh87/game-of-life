@@ -24,6 +24,9 @@ export class SearchComponent implements OnInit, OnDestroy {
   @ViewChild('searchBox')
   searchBox: ElementRef;
 
+  @ViewChild('searchInput')
+  searchInput: ElementRef;
+
   @ViewChild('typeahead')
   typeahead: NgbTypeahead;
   focus$ = new Subject<string>();
@@ -63,7 +66,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   private monitorFormChanges() {
     this.subs.push(this.form.get('query').valueChanges.subscribe(() => this.formValueChanged.next()));
     this.subs.push(this.formValueChanged
-      .pipe(debounceTime(500))
+      .pipe(debounceTime(1000))
       .subscribe(() => this.query.next(Object.assign({}, this.form.value))));
   }
 
@@ -76,16 +79,40 @@ export class SearchComponent implements OnInit, OnDestroy {
       if (expressionResult) {
         const newTag = this.fb.group({
           key: expressionResult[1].toLowerCase(),
-          value: ''
+          value: '',
+          active: true
         });
+        this.deactivateAllTags();
         (this.form.get('tags') as FormArray).push(newTag);
 
         this.subs.push(newTag.get('value').valueChanges.subscribe(() => this.formValueChanged.next()));
         tagCreated = true;
+
       }
     } while (expressionResult);
 
     return tagCreated;
+  }
+
+  getActiveTags() {
+    return (this.form.get('tags') as FormArray).controls.filter(c => c.get('active').value);
+  }
+
+  geInactiveTags() {
+    return (this.form.get('tags') as FormArray).controls.filter(c => !c.get('active').value);
+  }
+
+  private deactivateAllTags() {
+    (this.form.get('tags') as FormArray).controls.filter(c => c.get('active').patchValue(false));
+  }
+
+  tagComplete() {
+    this.searchInput.nativeElement.focus();
+  }
+
+  removeTag(index: number) {
+    const tags = (this.form.get('tags') as FormArray);
+    tags.removeAt(index);
   }
 
   autoComplete = (text$: Observable<string>) => {

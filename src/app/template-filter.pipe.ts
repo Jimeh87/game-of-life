@@ -11,7 +11,6 @@ export class TemplateFilterPipe implements PipeTransform {
   private minQueryLength = 4;
 
   transform(templates: Template[], templateQuery: TemplateQuery): any {
-    console.log(templateQuery);
     if (!this.allowSearch(templates, templateQuery)) {
       return templates;
     }

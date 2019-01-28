@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs/operators';
@@ -15,13 +15,21 @@ export class InputBadgeComponent implements OnInit, AfterViewInit {
   @Input()
   tag: FormGroup;
   @Input()
+  index: number;
+  @Input()
   active = true;
+  @Output()
+  complete = new EventEmitter<FormGroup>();
+  @Output()
+  remove = new EventEmitter<number>();
 
   @ViewChild('typeahead')
   typeahead: NgbTypeahead;
 
   @ViewChild('tagInput')
   tagElementRef: ElementRef;
+
+  private enterKey = 13;
 
   constructor(private typeaheadService: TypeaheadService) {
   }
@@ -30,7 +38,20 @@ export class InputBadgeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.tagElementRef.nativeElement.focus();
+    if (this.tag.get('active').value) {
+      this.tagElementRef.nativeElement.focus();
+    }
+  }
+
+  keyPressed($event: KeyboardEvent) {
+    if ($event.keyCode === this.enterKey) {
+      this.tag.get('active').patchValue(false);
+      this.complete.next(this.tag);
+    }
+  }
+
+  removeTag() {
+    this.remove.next(this.index);
   }
 
   autoComplete = (text$: Observable<string>) => {

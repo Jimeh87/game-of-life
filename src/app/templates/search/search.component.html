@@ -1,16 +1,32 @@
-<div [formGroup]="form" class="input-group mb-2 mr-sm-2 mb-sm-0">
-  <div class="d-inline-flex m-0 p-0 wrapper-input form-control form-control-lg" #searchBox style="overflow-y: hidden">
-    <ng-container *ngFor="let tag of form.get('tags').controls">
-      <app-input-badge [tag]="tag"></app-input-badge>
-    </ng-container>
-    <input formControlName="query"
-           class="flex-grow-1 search-box-input form-control form-control-lg border-0"
-           [ngbTypeahead]="autoComplete"
-           [focusFirst]="false"
-           container="body"
-           (focus)="focus$.next($event.target.value)"
-           (click)="click$.next($event.target.value)"
-           #typeahead="ngbTypeahead"
-    />
+<div [formGroup]="form">
+  <div class="input-group">
+    <div class="d-inline-flex m-0 p-0 wrapper-input form-control form-control-lg" #searchBox style="overflow-y: hidden">
+      <div *ngFor="let tag of getActiveTags(); index as i;" class="active-tag-container">
+        <app-input-badge
+          [tag]="tag"
+          [index]="i"
+          (complete)="tagComplete()"
+          (remove)="removeTag($event)"></app-input-badge>
+      </div>
+      <input formControlName="query"
+             class="flex-grow-1 search-box-input form-control form-control-lg border-0"
+             [ngbTypeahead]="autoComplete"
+             [focusFirst]="false"
+             container="body"
+             (focus)="focus$.next($event.target.value)"
+             (click)="click$.next($event.target.value)"
+             #typeahead="ngbTypeahead"
+             #searchInput/>
+    </div>
+  </div>
+  <div class="d-flex flex-row justify-content-start flex-wrap row">
+    <div *ngFor="let tag of geInactiveTags(); index as i;" class="inactive-tag-container mt-2 col-6">
+      <app-input-badge
+        [tag]="tag"
+        [index]="i"
+        (complete)="tagComplete()"
+        (remove)="removeTag($event)"></app-input-badge>
+    </div>
   </div>
 </div>
+
