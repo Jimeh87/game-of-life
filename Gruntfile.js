@@ -86,6 +86,8 @@ module.exports = function (grunt) {
 
       allData.push(fileData);
     });
+
+    // Authors
     var authors = [];
     allData.forEach(function (data) {
       var rawAuthorName = data['author'];
@@ -101,7 +103,7 @@ module.exports = function (grunt) {
       var lastName = splitName[splitName.length - 1];
       var authorKey = ((firstName ? firstName : '') + lastName).toLowerCase();
       var matchingAuthors = authors.filter(function (a) {
-        return a.key === authorKey
+        return a.key === authorKey;
       });
       if (matchingAuthors.length) {
         matchingAuthors[0]['count']++;
@@ -120,17 +122,42 @@ module.exports = function (grunt) {
       return b['count'] - a['count'];
     });
 
+    // rules
+    var rules = [];
+    allData.forEach(function (data) {
+      var rule = toFormattedRuleString(data['rule'], grunt);
+      var matchingRules = rules.filter(function (a) {
+        return a.name === rule;
+      });
+      if (matchingRules.length) {
+        matchingRules[0]['count']++;
+      } else {
+        rules.push({
+          name: rule,
+          count: 1
+        });
+      }
+    });
+
+    rules.sort(function (a, b) {
+      return b['rule'] - a['rule'];
+    });
 
     grunt.file.write('./src/assets/parsed-rle-data.json', JSON.stringify(allData));
     grunt.file.write('./src/assets/parsed-authors.json', JSON.stringify(authors));
+    grunt.file.write('./src/assets/parsed-rules.json', JSON.stringify(rules));
   });
 
   grunt.registerTask('parse-rle', ['rle-parser']);
 };
 
-var groupBy = function (xs, key) {
-  return xs.reduce(function (rv, x) {
-    (rv[x[key]] = rv[x[key]] || []).push(x);
-    return rv;
-  }, {});
-};
+var toFormattedRuleString = function(rule, grunt) {
+  var matches = /[B|S]?([0-9]*)\/[B|S]?([0-9]*)/.exec(rule.toUpperCase());
+  if (matches.input.indexOf('B') > matches.input.indexOf('S')) {
+    var swap = matches[1];
+    matches[1] = matches[2];
+    matches[2] = swap;
+    grunt.log.writeln('Rule [' + matches.input + '] with backwards birth and survival parameters. Swapping them.');
+  }
+  return 'B' + matches[1] + '/' + 'S' + matches[2];
+}

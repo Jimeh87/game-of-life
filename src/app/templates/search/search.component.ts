@@ -24,7 +24,8 @@ export class SearchComponent implements OnInit, OnDestroy {
   @ViewChild('searchBox')
   searchBox: ElementRef;
 
-  @ViewChild('typeahead') typeahead: NgbTypeahead;
+  @ViewChild('typeahead')
+  typeahead: NgbTypeahead;
   focus$ = new Subject<string>();
   click$ = new Subject<string>();
 

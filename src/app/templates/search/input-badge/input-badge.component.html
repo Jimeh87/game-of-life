@@ -1,14 +1,14 @@
 <div class="badge badge-primary" [formGroup]="tag">
-  <div class="form-group form-row m-0">
-    <label class="col-4">{{tag.get('key').value}}</label>
+  <div class="form-group form-row mb-0">
+    <label class="col-5 mb-0">{{tag.get('key').value}}</label>
     <input formControlName="value"
            type="text"
-           class="form-control
-           form-control-sm col-8"
+           class="form-control form-control-sm col-7"
            id="title-input"
            [ngbTypeahead]="autoComplete"
-           [resultFormatter]="autoCompleteFormatter"
+           [focusFirst]="false"
            container="body"
+           #typeahead="ngbTypeahead"
            #tagInput>
   </div>
 </div>

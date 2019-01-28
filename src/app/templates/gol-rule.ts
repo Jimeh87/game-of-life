@@ -1,7 +1,8 @@
 import {SortedSet} from '../algorithm/sorted-set';
+
 export class GolRule {
 
-  static COMMON_RULES: {name: string, rule: string}[] = [
+  static COMMON_RULES: { name: string, rule: string }[] = [
     {name: 'Replicator', rule: 'B1357/S1357'},
     {name: 'Fredkin', rule: 'B1357/S02468'},
     {name: 'Seeds', rule: 'B2/S'},
@@ -17,11 +18,18 @@ export class GolRule {
     {name: 'Day & Night', rule: 'B3678/S34678'}
   ];
 
-  survival: SortedSet<number> = new SortedSet((a: number, b: number) => { return a - b; });
-  birth: SortedSet<number> = new SortedSet((a: number, b: number) => { return a - b; });
+  survival: SortedSet<number> = new SortedSet((a: number, b: number) => {
+    return a - b;
+  });
+  birth: SortedSet<number> = new SortedSet((a: number, b: number) => {
+    return a - b;
+  });
+
+  private readonly formattedRuleString;
 
   constructor(private ruleString) {
     this.parseRuleString();
+    this.formattedRuleString = this.toFormattedRuleString();
   }
 
   private parseRuleString() {
@@ -53,6 +61,10 @@ export class GolRule {
   }
 
   public getFormattedRuleString() {
+    return this.formattedRuleString;
+  }
+
+  private toFormattedRuleString() {
     let formattedRuleString = 'B';
     this.birth.forEach((n: number) => {
       formattedRuleString += n;
@@ -65,6 +77,6 @@ export class GolRule {
   }
 
   public isAliveNextGeneration(currentState: boolean, neighbours: number): boolean {
-    return (currentState && this.survival.has(neighbours)) || (!currentState && this.birth.has(neighbours));;
+    return (currentState && this.survival.has(neighbours)) || (!currentState && this.birth.has(neighbours));
   }
 }

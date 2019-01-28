@@ -22,6 +22,7 @@ export class TemplateFilterPipe implements PipeTransform {
       return this.titleTagMatch(template, templateQuery)
         && this.patternTagMatch(template, templateQuery)
         && this.authorTagMatch(template, templateQuery)
+        && this.ruleTagMatch(template, templateQuery)
         && this.genericMatch(filter, regex, template);
     });
   }
@@ -40,6 +41,14 @@ export class TemplateFilterPipe implements PipeTransform {
       'pattern',
       template.getPattern(),
       (templateValue, tagValue) => templateValue.includes(tagValue));
+  }
+
+  private ruleTagMatch(template: Template, templateQuery: TemplateQuery): boolean {
+    return this.tagMatch(
+      templateQuery,
+      'rule',
+      template.getRule().getFormattedRuleString(),
+      (templateValue, tagValue) => templateValue.includes(tagValue.toUpperCase()));
   }
 
   private authorTagMatch(template: Template, templateQuery: TemplateQuery): boolean {
@@ -94,13 +103,16 @@ export class TemplateFilterPipe implements PipeTransform {
     if (template.getFileName().search(filterRegex) !== -1) {
       return true;
     }
+    if (template.getRule().getFormattedRuleString().search(filterRegex) !== -1) {
+      return true;
+    }
     if (filter.toUpperCase() === template.getRule().getFormattedRuleString()) {
       return true;
     }
-
     if (template.getComments().join(' ').search(filterRegex) !== -1) {
       return true;
     }
+
     return false;
   }
 

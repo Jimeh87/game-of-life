@@ -6,6 +6,7 @@
     <input formControlName="query"
            class="flex-grow-1 search-box-input form-control form-control-lg border-0"
            [ngbTypeahead]="autoComplete"
+           [focusFirst]="false"
            container="body"
            (focus)="focus$.next($event.target.value)"
            (click)="click$.next($event.target.value)"
