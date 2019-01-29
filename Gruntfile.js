@@ -40,41 +40,67 @@ var extractCategories = function (filename, fileContents) {
     {name: 'conduit', aliases: ['herschel transmitter']},
     {name: 'garden of eden', aliases: ['gardens of eden']},
     {name: 'gun', aliases: []},
-    {name: 'methuselah', aliases: ['herschel']},
-    {name: 'oscillator', aliases: ['beacon', 'blinker', 'figure eight', 'blocker', 'pulsar', 'queen bee shuttle', 'basic shuttle', 'toad', 'twin bees shuttle', 'boring', 'ship on bipole', 'achim\'s other p16', 'period', 'diuresis', 'griddle', 'cyclic', 'pentadecathlon', '17columnheavyweightvolcano', '44P12.2']},
-    {name: 'puffer', aliases: []},
+    {
+      name: 'methuselah',
+      regex: ['[0-9]m'],
+      aliases: ['herschel', 'switch engine', 'corder engine', 'queen bee', 'jaydot', 'methusaleh', 'original gliders by the dozen']
+    },
+    {
+      name: 'oscillator',
+      regex: 'p[0-9]',
+      aliases: ['burloaferimeter', 'cha cha', '6 bits', 'circle of fire', 'emulator', 'floodgate', 'beacon', 'blinker', 'blonker', 'blink', 'figure eight', 'clock', 'unix', 'blocker', 'pulsar', 'queen bee shuttle', 'basic shuttle', 'toad', 'twin bees shuttle', 'boring', 'ship on bipole', 'achim\'s other p16', 'period', 'diuresis', 'griddle', 'cyclic', 'pentadecathlon', '17columnheavyweightvolcano', '44p12.2', 'octagon', 'test tube baby', 'do-see-do', 'rattlesnake', 'roteightor', 'loaflipflop', 'dinner table', 'voldiag']
+    },
+    {name: 'puffer', aliases: ['pony express']},
     {name: 'sawtooth', aliases: []},
-    {name: 'spaceship', aliases: ['orthogonal', 'cordership', 'glider', 'flying', 'goose']},
-    {name: 'still life', aliases: ['cis-rotated hook', 'cis-mirrored worm siamese cis-mirrored worm', 'tub with cis-tail', 'omnibus', 'hungry hat', 'cthulhu', 'amphisbaena']},
+    {
+      name: 'spaceship',
+      aliases: ['orthogonal', 'cordership', 'flying', 'goose', 'lobster', 'crab', 'tubstretcher', 'fireship', 'flotilla', 'lwss', 'tractor beam', 'brain perturbing glider']
+    },
+    {
+      name: 'still life',
+      aliases: []
+    },
     {name: 'wick', aliases: []},
-    {name: 'breeder', aliases: []},
+    {name: 'breeder', aliases: ['catacryst']},
     {name: 'caber tosser', aliases: []},
     {name: 'converter', aliases: []},
-    {name: 'crawler', aliases: []},
+    {name: 'crawler', aliases: ['c/9 reaction']},
     {name: 'eater', aliases: []},
     {name: 'fuse', aliases: []},
     {name: 'growing spaceship', aliases: []},
-    {name: 'induction coil', aliases: ['racetrack']},
-    {name: 'infinite growth', aliases: ['infinite-growth']},
+    {name: 'induction coil', aliases: ['racetrack', 'dove']},
+    {
+      name: 'infinite growth',
+      aliases: ['infinite-growth', 'infinitely growing', 'log(t)', 'mosquito', 'metacatacryst', 'quadratic growth', 'grows quadratically']
+    },
     {name: 'memory cell', aliases: []},
     {name: 'pseudo still life', aliases: []},
     {name: 'puffer engine', aliases: []},
-    {name: 'pure glider generator', aliases: []},
+    {name: 'glider generator', aliases: []},
     {name: 'rake', aliases: []},
     {name: 'reflector', aliases: []},
     {name: 'spacefiller', aliases: []},
     {name: 'spark', aliases: []},
     {name: 'superstring', aliases: []},
     {name: 'tagalong', aliases: []},
-    {name: 'unit cell', aliases: []},
+    {name: 'unit cell', aliases: ['unit life cell']},
     {name: 'wave', aliases: []},
     {name: 'wickstretcher', aliases: []},
     {name: 'synth', aliases: []},
-    {name: 'barberpole', aliases: ['undecapole']},
+    {name: 'barberpole', aliases: ['undecapole', 'tredecapole', 'decapole', 'duodecapole', 'octapole', 'nonapole']},
     {name: 'replicator', aliases: []},
-    {name: 'blinker', aliases: []},
+    {name: 'blinker', aliases: ['blink']},
     {name: 'boat', aliases: []},
-    {name: 'pentomino', aliases: []}
+    {
+      name: 'polyomino',
+      aliases: ['haplomino', 'domino', 'triomino', 'tetromino', 'pentomino', 'hexomino', 'heptomino', 'octomino']
+    },
+    {name: 'polyplet', aliases: ['triplets', 'tetraplet', 'pentaplet']},
+    {
+      name: 'still life',
+      unclassifiedOnly: true,
+      aliases: ['dock siamese carrier', 'integral with two tubs', 'long snake', 'loaf', 'long integral', 'cis-mirrored worm', 'and dock', 'and hook', 'carrier with feather', 'rotated c', 'long shillelagh', 'up wing on wing', 'prodigal', 'cis-rotated hook', 'long ship', 'hook with tail', 'long hook', 'cis-mirrored worm siamese cis-mirrored worm', 'tub with cis-tail', 'omnibus', 'canoe', 'hungry hat', 'cthulhu', 'amphisbaena', 'claw', 'barge', 'r-mango and house', 'skew r-bees', 'cloverleaf interchange']
+    }
   ];
 
   var categories = [];
@@ -85,6 +111,10 @@ var extractCategories = function (filename, fileContents) {
     });
   };
   allCategories.forEach(function (category) {
+    if (category.unclassifiedOnly && categories.length) {
+      return;
+    }
+
     if (matches(category.name, [filename, fileContents])) {
       categories.push(category.name);
       return;
@@ -93,6 +123,15 @@ var extractCategories = function (filename, fileContents) {
     for (var i = 0; i < category.aliases.length; i++) {
       var alias = category.aliases[i];
       if (matches(alias, [filename, fileContents])) {
+        categories.push(category.name);
+        return;
+      }
+    }
+
+    if (category.regex) {
+      var regex = new RegExp(category.regex, 'gi');
+      if (regex.test(filename)
+        || regex.test(fileContents)) {
         categories.push(category.name);
         return;
       }

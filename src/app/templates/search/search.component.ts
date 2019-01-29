@@ -67,7 +67,11 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.subs.push(this.form.get('query').valueChanges.subscribe(() => this.formValueChanged.next()));
     this.subs.push(this.formValueChanged
       .pipe(debounceTime(1000))
-      .subscribe(() => this.query.next(Object.assign({}, this.form.value))));
+      .subscribe(() => this.notifyQueryChange()));
+  }
+
+  private notifyQueryChange() {
+    this.query.next(Object.assign({}, this.form.value));
   }
 
   private createTagOnMatch(query: string): boolean {
@@ -113,6 +117,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   removeTag(index: number) {
     const tags = (this.form.get('tags') as FormArray);
     tags.removeAt(index);
+    this.formValueChanged.next();
   }
 
   autoComplete = (text$: Observable<string>) => {
