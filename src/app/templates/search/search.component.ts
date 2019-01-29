@@ -48,6 +48,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   private createForm() {
     if (this.saveSearchService.get()) {
       this.form = this.saveSearchService.get();
+      this.notifyQueryChange();
       return;
     }
 
