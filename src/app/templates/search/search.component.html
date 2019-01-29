@@ -15,8 +15,6 @@
              [focusFirst]="false"
              container="body"
              [showHint]="true"
-             (focus)="focus$.next($event.target.value)"
-             (click)="click$.next($event.target.value)"
              #typeahead="ngbTypeahead"
              #searchInput/>
     </div>

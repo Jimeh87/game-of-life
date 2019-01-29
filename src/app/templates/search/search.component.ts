@@ -27,8 +27,6 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   @ViewChild('typeahead')
   typeahead: NgbTypeahead;
-  focus$ = new Subject<string>();
-  click$ = new Subject<string>();
 
   form: FormGroup;
 
@@ -128,13 +126,11 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   autoComplete = (text$: Observable<string>) => {
     const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
-    const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.typeahead.isPopupOpen()));
-    const inputFocus$ = this.focus$;
 
-    return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
+    return debouncedText$.pipe(
       map(term =>
         this.typeaheadService.getTags()
-          .filter(v => term ? v.toLowerCase().indexOf(term.toLowerCase()) > -1 : true)
+          .filter(v => !term || v.toLowerCase().indexOf(term.toLowerCase()) > -1)
           .map(t => t + ':')
           .slice(0, 10)));
   }
