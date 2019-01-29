@@ -34,6 +34,7 @@ import {environment} from '../environments/environment';
 import {SearchComponent} from './templates/search/search.component';
 import {InputBadgeComponent} from './templates/search/input-badge/input-badge.component';
 import {TypeaheadService} from './templates/search/typeahead.service';
+import {SaveSearchService} from './templates/search/save-search.service';
 
 const appRoutes: Routes = [
     {
@@ -129,7 +130,7 @@ const appRoutes: Routes = [
     ColorPickerModule,
     ServiceWorkerModule.register('./ngsw-worker.js', {enabled: environment.production})
   ],
-  providers: [RleService, GameOfLifeService, TemplatesService, ConfigService, TypeaheadService],
+  providers: [RleService, GameOfLifeService, TemplatesService, ConfigService, TypeaheadService, SaveSearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

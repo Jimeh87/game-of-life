@@ -16,3 +16,12 @@
   margin-right: .5rem;
   width: 100%;
 }
+
+.search-icon {
+  float: right;
+  margin-right: 8px;
+  margin-top: -40px;
+  position: relative;
+  z-index: 2;
+  color: #007bff;
+}

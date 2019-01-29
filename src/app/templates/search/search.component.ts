@@ -8,6 +8,7 @@ import {Subject} from 'rxjs/Subject';
 import {TypeaheadService} from './typeahead.service';
 import {NgbTypeahead} from '@ng-bootstrap/ng-bootstrap';
 import {Observable} from 'rxjs/Observable';
+import {SaveSearchService} from './save-search.service';
 
 @Component({
   selector: 'app-search',
@@ -38,7 +39,9 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   private subs: Subscription[] = [];
 
-  constructor(private fb: FormBuilder, private typeaheadService: TypeaheadService) {
+  constructor(private fb: FormBuilder,
+              private typeaheadService: TypeaheadService,
+              private saveSearchService: SaveSearchService) {
   }
 
   ngOnInit() {
@@ -48,10 +51,16 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   private createForm() {
+    if (this.saveSearchService.get()) {
+      this.form = this.saveSearchService.get();
+      return;
+    }
+
     this.form = this.fb.group({
       query: null,
       tags: this.fb.array([])
     });
+    this.saveSearchService.save(this.form);
   }
 
   private wireTagCreation() {

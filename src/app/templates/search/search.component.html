@@ -10,15 +10,18 @@
       </div>
       <input formControlName="query"
              class="flex-grow-1 search-box-input form-control form-control-lg border-0"
+             autocomplete="false"
              [ngbTypeahead]="autoComplete"
              [focusFirst]="false"
              container="body"
+             [showHint]="true"
              (focus)="focus$.next($event.target.value)"
              (click)="click$.next($event.target.value)"
              #typeahead="ngbTypeahead"
              #searchInput/>
     </div>
   </div>
+  <span class="fa fa-2x fa-search search-icon"></span>
   <div class="d-flex flex-row justify-content-start flex-wrap row">
     <div *ngFor="let tag of geInactiveTags(); index as i;" class="inactive-tag-container mt-2 col-6">
       <app-input-badge

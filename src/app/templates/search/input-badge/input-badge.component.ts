@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
-import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 import {TypeaheadService} from '../typeahead.service';
 import {NgbTypeahead} from '@ng-bootstrap/ng-bootstrap';
 
@@ -56,30 +56,27 @@ export class InputBadgeComponent implements OnInit, AfterViewInit {
 
   autoComplete = (text$: Observable<string>) => {
     const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
-
     switch (this.tag.get('key').value) {
       case 'author':
-        return debouncedText$.pipe(
-          filter(term => term && term.length > 2))
+        return debouncedText$
           .switchMap(term => this.typeaheadService.getAuthors().pipe(
             map(authors => authors
               .map(author => author.display)
-              .filter(author => author.toLowerCase().indexOf(term.toLowerCase()) > -1))
+              .filter(author => !author || author.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
           ));
       case 'category':
-        return debouncedText$.pipe(
-          filter(term => term && term.length > 0))
+        return debouncedText$
           .switchMap(term => this.typeaheadService.getCategories().pipe(
             map(categories => categories
               .map(category => category.name)
-              .filter(category => category.indexOf(term.toLowerCase()) > -1))
+              .filter(category => !category || category.indexOf(term.toLowerCase()) > -1).slice(0, 10))
           ));
       case 'rule':
         return debouncedText$
           .switchMap(term => this.typeaheadService.getRules().pipe(
             map(rules => rules
               .map(rule => rule.name)
-              .filter(name => name.indexOf(term) > -1))
+              .filter(name => !name || name.indexOf(term) > -1).slice(0, 10))
           ));
       default:
         return text$.pipe(

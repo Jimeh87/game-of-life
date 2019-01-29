@@ -237,7 +237,7 @@ var extractCategoryGroupings = function (allData, grunt) {
   });
 
   categories.sort(function (a, b) {
-    return b['name'] - a['name'];
+    return b['count'] - a['count'];
   });
 
 
@@ -301,7 +301,7 @@ var extractRuleGroupings = function (allData, grunt) {
 
 
   rules.sort(function (a, b) {
-    return b['rule'] - a['rule'];
+    return b['count'] - a['count'];
   });
 
   return rules;
