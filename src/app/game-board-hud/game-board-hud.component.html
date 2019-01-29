@@ -58,9 +58,9 @@
   <div class="float-left" ngbDropdown placement="top-left">
     <span ngbDropdownToggle class="control">
       <i
-          class="fa fa-clock-o"
-          aria-hidden="true"
-          [title]="'Speed (' + actionTitle[getCurrentSpeed()] + ')'">
+        class="fa fa-clock-o"
+        aria-hidden="true"
+        [title]="'Speed (' + actionTitle[getCurrentSpeed()] + ')'">
       </i>
     </span>
     <div ngbDropdownMenu class="dropdown-menu dropdown-menu-left">
@@ -107,11 +107,27 @@
       </i>
     </span>
     <div ngbDropdownMenu class="dropdown-menu">
-      <a class="dropdown-item clickable" *ngFor="let r of rules(); let i = index" (click)=setRule(r.rule)>
+      <a class="dropdown-item clickable" *ngFor="let r of rules()" (click)=setRule(r.rule)>
         <i class="fa"
            [ngClass]="{'fa-circle-o': getRule().getFormattedRuleString() !== r.rule, 'fa-check-circle-o': getRule().getFormattedRuleString() === r.rule}">
         </i>
         {{ r.name }} - {{ r.rule }}
+      </a>
+    </div>
+  </div>
+  <div ngbDropdown placement="top-left" class="float-left">
+    <span ngbDropdownToggle class="control">
+      <i class="fa fa-paint-brush"
+         aria-hidden="true"
+         title="Theme">
+      </i>
+    </span>
+    <div ngbDropdownMenu class="dropdown-menu">
+      <a class="dropdown-item clickable" *ngFor="let theme of themes()" (click)=setTheme(theme)>
+        <i class="fa"
+           [ngClass]="{'fa-circle-o': getTheme() !== theme, 'fa-check-circle-o': getTheme() === theme}">
+        </i>
+        {{ theme.name }}
       </a>
     </div>
   </div>

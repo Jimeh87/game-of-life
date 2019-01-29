@@ -7,6 +7,7 @@ import {GameControlAction} from './game-control-action';
 import {Ticker} from '../algorithm/ticker';
 import {GolRule} from '../templates/gol-rule';
 import {Subscription} from 'rxjs';
+import {Theme} from "../config/theme";
 
 @Component({
   selector: 'app-game-board-hud',
@@ -173,6 +174,18 @@ export class GameBoardHudComponent implements OnInit, OnDestroy {
 
   rules() {
     return GolRule.COMMON_RULES;
+  }
+
+  getTheme() {
+    return this.configService.theme;
+  }
+
+  themes() {
+    return this.configService.themes;
+  }
+
+  setTheme(theme: Theme) {
+    this.configService.theme = theme;
   }
 
   ngOnDestroy() {

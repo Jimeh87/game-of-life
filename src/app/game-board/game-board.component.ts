@@ -18,7 +18,7 @@ import {ConfigType} from '../config/config-type';
 import {GameBoardStyleConfig} from '../config/game-board-style-config';
 import {Coordinate} from '../algorithm/coordinate';
 import {Generation} from '../algorithm/generation';
-import {fromEvent, Subscription} from 'rxjs';
+import {fromEvent, merge, Subscription} from 'rxjs';
 import {Line} from '../algorithm/line';
 import {throttleTime} from 'rxjs/operators';
 
@@ -105,7 +105,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
       this.gameOfLifeService.clearTemplate();
     }
 
-    this.gameBoardConfigSubscription = this.gbConfig.observe.subscribe(() => {
+    this.gameBoardConfigSubscription = merge(this.gbConfig.observe, this.gbStyleConfig.observe).subscribe(() => {
       this.canvasFillContainer();
       this.drawWorld();
     });
@@ -119,7 +119,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     });
   }
 
-    ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(changes: SimpleChanges): void {
     if (changes['fullScreen'] != null && !changes['fullScreen'].firstChange
       && changes['fullScreen'].currentValue !== changes['fullScreen'].previousValue) {
       this.onScreenResize();
