@@ -7,13 +7,12 @@
            autocomplete="false"
            [ngbTypeahead]="autoComplete"
            container="body"
-           [showHint]="true"
            #typeahead="ngbTypeahead"
            (keypress)="keyPressed($event)"
            #tagInput>
     <div class="col-lg-1 col-md-1 col-2">
       <button type="button"
-              class="d-inline-flex align-items-center justify-content-center h-100 close"
+              class="d-inline-flex align-items-center justify-content-center h-100 w-100 close"
               aria-label="Close"
               (click)="removeTag()">
         <span class="fa fa-times"></span>

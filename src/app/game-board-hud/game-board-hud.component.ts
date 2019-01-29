@@ -7,7 +7,7 @@ import {GameControlAction} from './game-control-action';
 import {Ticker} from '../algorithm/ticker';
 import {GolRule} from '../templates/gol-rule';
 import {Subscription} from 'rxjs';
-import {Theme} from "../config/theme";
+import {Theme} from '../config/theme';
 
 @Component({
   selector: 'app-game-board-hud',
