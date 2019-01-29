@@ -71,7 +71,7 @@ export class InputBadgeComponent implements OnInit, AfterViewInit {
           switchMap(term => this.typeaheadService.getCategories().pipe(
             map((categories: Category[]) => categories
               .map(category => category.name)
-              .filter(category => !category || category.indexOf(term.toLowerCase()) > -1).slice(0, 10)))));
+              .filter(category => !category || category.indexOf(term.toLowerCase()) > -1)))));
       case 'rule':
         return debouncedText$.pipe(
           switchMap(term => this.typeaheadService.getRules().pipe(
