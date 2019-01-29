@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {Author} from './author';
 import {Cacheable} from 'ngx-cacheable';
 import {Rule} from './rule';
-import {Category} from "./category";
+import {Category} from './category';
 
 @Injectable()
 export class TypeaheadService {

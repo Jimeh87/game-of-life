@@ -3,8 +3,8 @@ import {Template} from './template';
 import {RleService} from './rle.service';
 import {Rle} from './rle';
 import {ArrayUtil} from '../algorithm/array-util';
-import {Observable} from 'rxjs/index';
-import {map} from 'rxjs/internal/operators';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export class TemplatesService {

@@ -1,4 +1,4 @@
-import {Observable, Subject} from 'rxjs/index';
+import {Observable, Subject} from 'rxjs';
 
 export class Ticker {
   private interval;

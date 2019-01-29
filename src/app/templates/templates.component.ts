@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TemplatesService} from './templates.service';
 import {Template} from './template';
-import {Subscription} from 'rxjs/index';
+import {Subscription} from 'rxjs';
 import {TemplateQuery} from './search/template-query';
 
 @Component({

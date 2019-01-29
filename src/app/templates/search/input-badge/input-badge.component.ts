@@ -1,9 +1,12 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {FormGroup} from '@angular/forms';
-import {Observable} from 'rxjs/Observable';
-import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, map, switchMap} from 'rxjs/operators';
 import {TypeaheadService} from '../typeahead.service';
 import {NgbTypeahead} from '@ng-bootstrap/ng-bootstrap';
+import {Observable} from 'rxjs';
+import {Author} from '../author';
+import {Category} from '../category';
+import {Rule} from '../rule';
 
 @Component({
   selector: 'app-input-badge',
@@ -58,26 +61,23 @@ export class InputBadgeComponent implements OnInit, AfterViewInit {
     const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
     switch (this.tag.get('key').value) {
       case 'author':
-        return debouncedText$
-          .switchMap(term => this.typeaheadService.getAuthors().pipe(
-            map(authors => authors
+        return debouncedText$.pipe(
+          switchMap(term => this.typeaheadService.getAuthors().pipe(
+            map((authors: Author[]) => authors
               .map(author => author.display)
-              .filter(author => !author || author.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
-          ));
+              .filter(author => !author || author.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10)))));
       case 'category':
-        return debouncedText$
-          .switchMap(term => this.typeaheadService.getCategories().pipe(
-            map(categories => categories
+        return debouncedText$.pipe(
+          switchMap(term => this.typeaheadService.getCategories().pipe(
+            map((categories: Category[]) => categories
               .map(category => category.name)
-              .filter(category => !category || category.indexOf(term.toLowerCase()) > -1).slice(0, 10))
-          ));
+              .filter(category => !category || category.indexOf(term.toLowerCase()) > -1).slice(0, 10)))));
       case 'rule':
-        return debouncedText$
-          .switchMap(term => this.typeaheadService.getRules().pipe(
-            map(rules => rules
+        return debouncedText$.pipe(
+          switchMap(term => this.typeaheadService.getRules().pipe(
+            map((rules: Rule[]) => rules
               .map(rule => rule.name)
-              .filter(name => !name || name.indexOf(term) > -1).slice(0, 10))
-          ));
+              .filter(name => !name || name.indexOf(term) > -1).slice(0, 10)))));
       default:
         return text$.pipe(
           map(() => [])

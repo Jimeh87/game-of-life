@@ -1,10 +1,9 @@
-import 'rxjs/Rx';
 import {Injectable} from '@angular/core';
 import {Rle} from './rle';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
-import {Observable} from 'rxjs/index';
-import {Cacheable} from "ngx-cacheable";
+import {Observable} from 'rxjs';
+import {Cacheable} from 'ngx-cacheable';
 
 @Injectable()
 export class RleService {

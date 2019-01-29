@@ -1,6 +1,6 @@
 import {ConfigType} from './config-type';
-import {Observable, Subject} from 'rxjs/index';
-import {filter, map} from 'rxjs/internal/operators';
+import {Observable, Subject} from 'rxjs';
+import {filter, map} from 'rxjs/operators';
 
 export abstract class Config {
 

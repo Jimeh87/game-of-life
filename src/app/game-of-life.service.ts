@@ -7,7 +7,7 @@ import {Generation} from './algorithm/generation';
 import {ConfigService} from './config/config.service';
 import {GameBoardStyleConfig} from './config/game-board-style-config';
 import {ConfigType} from './config/config-type';
-import {Subscription} from 'rxjs/index';
+import {Subscription} from 'rxjs';
 
 @Injectable()
 export class GameOfLifeService implements OnDestroy {

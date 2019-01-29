@@ -6,7 +6,7 @@ import {Ticker} from './ticker';
 import {GolRule} from '../templates/gol-rule';
 import {Coordinate} from './coordinate';
 import {Generation} from './generation';
-import {Observable, Subject, Subscription} from 'rxjs/index';
+import {Observable, Subject, Subscription} from 'rxjs';
 
 export class ListLife implements OnDestroy {
 

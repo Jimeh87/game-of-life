@@ -1,13 +1,10 @@
 import {Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
-import {Subscription} from 'rxjs/Subscription';
 import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs/operators';
-import {merge} from 'rxjs';
+import {merge, Observable, Subject, Subscription} from 'rxjs';
 import {TemplateQuery} from './template-query';
-import {Subject} from 'rxjs/Subject';
 import {TypeaheadService} from './typeahead.service';
 import {NgbTypeahead} from '@ng-bootstrap/ng-bootstrap';
-import {Observable} from 'rxjs/Observable';
 import {SaveSearchService} from './save-search.service';
 
 @Component({

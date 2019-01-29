@@ -18,9 +18,9 @@ import {ConfigType} from '../config/config-type';
 import {GameBoardStyleConfig} from '../config/game-board-style-config';
 import {Coordinate} from '../algorithm/coordinate';
 import {Generation} from '../algorithm/generation';
-import {Subscription} from 'rxjs/index';
-import {Observable} from 'rxjs/Rx';
+import {Subscription, fromEvent} from 'rxjs';
 import {Line} from '../algorithm/line';
+import {throttleTime} from 'rxjs/operators';
 
 @Component({
   selector: 'app-game-board',
@@ -111,8 +111,8 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     });
 
     this.ngZone.runOutsideAngular(() => {
-      Observable.fromEvent(window, 'resize')
-        .throttleTime(100)
+      fromEvent(window, 'resize')
+        .pipe(throttleTime(100))
         .subscribe(() => {
           this.onScreenResize();
         });
