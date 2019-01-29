@@ -18,7 +18,7 @@ import {ConfigType} from '../config/config-type';
 import {GameBoardStyleConfig} from '../config/game-board-style-config';
 import {Coordinate} from '../algorithm/coordinate';
 import {Generation} from '../algorithm/generation';
-import {Subscription, fromEvent} from 'rxjs';
+import {fromEvent, Subscription} from 'rxjs';
 import {Line} from '../algorithm/line';
 import {throttleTime} from 'rxjs/operators';
 
@@ -57,8 +57,8 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
   }
 
   ngOnInit() {
-    this.gbConfig = <GameBoardConfig> this.configService.getConfig(ConfigType.GAME_BOARD);
-    this.gbStyleConfig = <GameBoardStyleConfig> this.configService.getConfig(ConfigType.GAME_BOARD_STYLE);
+    this.gbConfig = <GameBoardConfig>this.configService.getConfig(ConfigType.GAME_BOARD);
+    this.gbStyleConfig = <GameBoardStyleConfig>this.configService.getConfig(ConfigType.GAME_BOARD_STYLE);
   }
 
   ngAfterViewInit() {
@@ -71,7 +71,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
         if (cell.x < this.gbConfig.columns + this.gbConfig.xScreenOffset && cell.y < this.gbConfig.rows + this.gbConfig.yScreenOffset) {
           let alive: boolean;
           let generation: number;
-          if (typeof(cell.value) === 'boolean') {
+          if (typeof (cell.value) === 'boolean') {
             alive = cell.value;
             generation = null;
           } else {
@@ -119,7 +119,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     });
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+    ngOnChanges(changes: SimpleChanges): void {
     if (changes['fullScreen'] != null && !changes['fullScreen'].firstChange
       && changes['fullScreen'].currentValue !== changes['fullScreen'].previousValue) {
       this.onScreenResize();
@@ -178,7 +178,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
           x + this.gbConfig.xScreenOffset,
           y + this.gbConfig.yScreenOffset
         );
-        if (typeof(cellState) === 'boolean') {
+        if (typeof (cellState) === 'boolean') {
           this.drawCell(x, y, cellState, null);
         } else {
           this.drawCell(x, y, cellState.value, cellState.generation);
@@ -294,13 +294,13 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
       posY = event.clientY + document.body.scrollTop + document.documentElement.scrollTop;
     }
 
-    let element: HTMLElement = <HTMLElement> event.target;
+    let element: HTMLElement = <HTMLElement>event.target;
     let left = 0;
     let top = 0;
     while (element.offsetParent) {
       left += element.offsetLeft;
       top += element.offsetTop;
-      element = <HTMLElement> element.offsetParent;
+      element = <HTMLElement>element.offsetParent;
     }
 
     const x = Math.ceil(((posX - left) / (this.gbConfig.cellSize + this.gbConfig.cellSpace)) - 1);

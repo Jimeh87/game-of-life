@@ -18,7 +18,3 @@ export enum GameControlAction {
   SPEED_SLOW,
   SPEED_VERY_SLOW
 }
-
-export function GameControlActionAware(constructor: Function) {
-  constructor.prototype.GameControlAction = GameControlAction;
-}

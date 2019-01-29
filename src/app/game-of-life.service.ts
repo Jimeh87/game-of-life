@@ -15,7 +15,7 @@ export class GameOfLifeService implements OnDestroy {
   private defaultRule = new GolRule('B3/S23');
   private template: Template;
 
-  private ticker: Ticker;
+  private readonly ticker: Ticker;
   private listLife: ListLife;
   private gbStyle: GameBoardStyleConfig;
   private gbStyleSubscription: Subscription;

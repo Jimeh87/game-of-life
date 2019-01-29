@@ -3,7 +3,7 @@ import {GameOfLifeService} from '../game-of-life.service';
 import {ConfigService} from '../config/config.service';
 import {GameBoardConfig} from '../config/game-board-config';
 import {ConfigType} from '../config/config-type';
-import {GameControlAction, GameControlActionAware} from './game-control-action';
+import {GameControlAction} from './game-control-action';
 import {Ticker} from '../algorithm/ticker';
 import {GolRule} from '../templates/gol-rule';
 import {Subscription} from 'rxjs';
@@ -13,7 +13,6 @@ import {Subscription} from 'rxjs';
   templateUrl: './game-board-hud.component.html',
   styleUrls: ['./game-board-hud.component.css']
 })
-@GameControlActionAware // TODO: This doesn't seem to work
 export class GameBoardHudComponent implements OnInit, OnDestroy {
 
   GCA = GameControlAction;
@@ -22,7 +21,6 @@ export class GameBoardHudComponent implements OnInit, OnDestroy {
   private currentAction: GameControlAction = null;
   private subscription: Subscription;
 
-  private menuHidden = false;
   private gameBoardConfig: GameBoardConfig;
   private currentSpeed = GameControlAction.SPEED_NORMAL;
   private _actionTitle = {};
@@ -31,7 +29,7 @@ export class GameBoardHudComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.gameBoardConfig = <GameBoardConfig> this.configService.getConfig(ConfigType.GAME_BOARD);
+    this.gameBoardConfig = <GameBoardConfig>this.configService.getConfig(ConfigType.GAME_BOARD);
 
     this._actionTitle[GameControlAction.START_GAME] = 'Start Game';
     this._actionTitle[GameControlAction.STOP_GAME] = 'Stop Game';
@@ -157,16 +155,8 @@ export class GameBoardHudComponent implements OnInit, OnDestroy {
     return this.gameOfLifeService.isGameStarted();
   }
 
-  isMenuHidden() {
-    return this.menuHidden;
-  }
-
   isFullScreen() {
     return this.gameBoardConfig.fullScreen;
-  }
-
-  toggleMenu() {
-    this.menuHidden = !this.menuHidden;
   }
 
   isRefreshable() {
