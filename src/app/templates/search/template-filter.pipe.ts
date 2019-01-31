@@ -15,7 +15,7 @@ export class TemplateFilterPipe implements PipeTransform {
       return templates;
     }
 
-    const filter = templateQuery.query.trim();
+    const filter = templateQuery.query ? templateQuery.query.trim() : '';
     const regex: RegExp = new RegExp(filter, 'i');
     return templates.filter((template: Template) => {
       return this.titleTagMatch(template, templateQuery)
