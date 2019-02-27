@@ -1,7 +1,7 @@
 export class ArrayUtil {
 
   // Fisher-Yates (aka Knuth) Shuffle
-  public static shuffle(array: any[]) {
+  public static shuffle<T>(array: T[]): T[] {
     let currentIndex = array.length, temporaryValue, randomIndex;
 
     // While there remain elements to shuffle...

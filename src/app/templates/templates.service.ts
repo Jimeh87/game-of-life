@@ -11,22 +11,18 @@ export class TemplatesService {
 
   private _page = 1;
 
-  private readonly templates: Observable<Template[]>;
-  private templatesCache: Template[];
+  private readonly templates$ = this.rleService.getRles()
+    .pipe(map((rleList: Rle[]) => rleList.map((rle: Rle) => new Template(rle))));
 
   constructor(private rleService: RleService) {
-    this.templates = this.rleService.getRles().pipe(map((rleList: Rle[]) => {
-      this.templatesCache = this.templatesCache || ArrayUtil.shuffle(rleList.map((rle: Rle) => new Template(rle)));
-      return this.templatesCache;
-    }));
   }
 
   public getTemplates(): Observable<Template[]> {
-    return this.templates;
+    return this.templates$;
   }
 
   public getTemplate(rleFileName: string): Observable<Template> {
-    return this.templates.pipe(map((templates: Template[]) =>
+    return this.templates$.pipe(map((templates: Template[]) =>
       templates.find((template: Template) => template.getFileName() === rleFileName)));
   }
 

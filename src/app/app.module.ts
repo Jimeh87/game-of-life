@@ -20,7 +20,6 @@ import {ConfigComponent} from './config/config.component';
 import {ConfigService} from './config/config.service';
 import {AboutComponent} from './about/about.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {TemplateFilterPipe} from './templates/search/template-filter.pipe';
 import {SpinnerComponent} from './spinner/spinner.component';
 import {ColorPickerModule} from 'ngx-color-picker';
 import {AboutMenuComponent} from './about/about-menu/about-menu.component';
@@ -35,6 +34,7 @@ import {SearchComponent} from './templates/search/search.component';
 import {InputBadgeComponent} from './templates/search/input-badge/input-badge.component';
 import {TypeaheadService} from './templates/search/typeahead.service';
 import {SaveSearchService} from './templates/search/save-search.service';
+import {TemplateFilterPipe} from './templates/search/template-filter.pipe';
 
 const appRoutes: Routes = [
     {

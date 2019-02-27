@@ -1,7 +1,7 @@
 import {Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
-import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs/operators';
-import {merge, Observable, Subject, Subscription} from 'rxjs';
+import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
+import {Observable, Subject, Subscription} from 'rxjs';
 import {TemplateQuery} from './template-query';
 import {TypeaheadService} from './typeahead.service';
 import {NgbTypeahead} from '@ng-bootstrap/ng-bootstrap';
@@ -125,16 +125,19 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.formValueChanged.next();
   }
 
+  showTypeahaead() {
+    this.searchInput.nativeElement.dispatchEvent(new Event('input'));
+    this.searchInput.nativeElement.focus();
+  }
+
   autoComplete = (text$: Observable<string>) => {
     const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
-
     return debouncedText$.pipe(
-      map(term =>
-        this.typeaheadService.getTags()
-          .filter(v => !term || v.toLowerCase().indexOf(term.toLowerCase()) > -1)
-          .map(t => t + ':')
-          .slice(0, 10)));
-  }
+      map(term => this.typeaheadService.getTags()
+        .filter(v => !term || v.toLowerCase().indexOf(term.toLowerCase()) > -1)
+        .map(t => t + ':')
+        .slice(0, 10)));
+  };
 
   ngOnDestroy(): void {
     this.subs.forEach(s => s.unsubscribe());
