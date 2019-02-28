@@ -119,9 +119,9 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.searchInput.nativeElement.focus();
   }
 
-  removeTag(index: number) {
+  removeTag(formGroup: FormGroup) {
     const tags = (this.form.get('tags') as FormArray);
-    tags.removeAt(index);
+    tags.removeAt(tags.value.indexOf(formGroup));
     this.formValueChanged.next();
   }
 

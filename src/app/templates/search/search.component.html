@@ -9,7 +9,6 @@
       <div *ngFor="let tag of getActiveTags(); index as i;" class="active-tag-container col-10 col-sm-7 col-md-6 p-0">
         <app-input-badge
           [tag]="tag"
-          [index]="i"
           (complete)="tagComplete()"
           (remove)="removeTag($event)"></app-input-badge>
       </div>
@@ -29,7 +28,6 @@
     <div *ngFor="let tag of geInactiveTags(); index as i;" class="inactive-tag-container mt-2 col-12 col-sm-6">
       <app-input-badge
         [tag]="tag"
-        [index]="i"
         (complete)="tagComplete()"
         (remove)="removeTag($event)"></app-input-badge>
     </div>

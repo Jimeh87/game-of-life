@@ -18,13 +18,11 @@ export class InputBadgeComponent implements OnInit, AfterViewInit {
   @Input()
   tag: FormGroup;
   @Input()
-  index: number;
-  @Input()
   active = true;
   @Output()
   complete = new EventEmitter<FormGroup>();
   @Output()
-  remove = new EventEmitter<number>();
+  remove = new EventEmitter<FormGroup>();
 
   @ViewChild('typeahead')
   typeahead: NgbTypeahead;
@@ -54,7 +52,7 @@ export class InputBadgeComponent implements OnInit, AfterViewInit {
   }
 
   removeTag() {
-    this.remove.next(this.index);
+    this.remove.next(this.tag);
   }
 
   autoComplete = (text$: Observable<string>) => {
