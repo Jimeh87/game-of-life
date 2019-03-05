@@ -1,5 +1,5 @@
 import {Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import {AbstractControl, FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 import {Observable, Subject, Subscription} from 'rxjs';
 import {TemplateQuery} from './template-query';
@@ -73,6 +73,11 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.subs.push(this.formValueChanged
       .pipe(debounceTime(1000))
       .subscribe(() => this.notifyQueryChange()));
+    (this.form.get('tags') as FormArray).controls.forEach(t => this.monitorTagForChanges(t));
+  }
+
+  private monitorTagForChanges(tag: AbstractControl) {
+    tag.get('sub').patchValue(tag.get('value').valueChanges.subscribe(() => this.formValueChanged.next()));
   }
 
   private notifyQueryChange() {
@@ -97,8 +102,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         });
         this.deactivateAllTags();
         (this.form.get('tags') as FormArray).push(newTag);
-
-        newTag.get('sub').patchValue(newTag.get('value').valueChanges.subscribe(() => this.formValueChanged.next()));
+        this.monitorTagForChanges(newTag);
         tagCreated = true;
 
       }
@@ -151,6 +155,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   };
 
   ngOnDestroy(): void {
+    (this.form.get('tags') as FormArray).controls.forEach(t => t.get('sub').value.unsubscribe());
     this.subs.forEach(s => s.unsubscribe());
   }
 
