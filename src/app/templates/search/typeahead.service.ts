@@ -14,14 +14,40 @@ export class TypeaheadService {
   private RULE_DATA = 'assets/parsed-rules.json';
 
 
-  private VALID_TAGS: string[] = ['author', 'category', 'pattern', 'rule', 'title'];
+  private VALID_TAGS: Tag[] = [
+    {
+      key: 'author',
+      type: TagType.TYPE_AHEAD
+    },
+    {
+      key: 'category',
+      type: TagType.DROP_DOWN
+    },
+    {
+      key: 'pattern',
+      type: TagType.TEXT
+    },
+    {
+      key: 'rule',
+      type: TagType.DROP_DOWN
+    },
+    {
+      key: 'title',
+      type: TagType.TEXT
+    }
+  ];
 
+  private TAG_KEYS: string[] = this.VALID_TAGS.map(t => t.key);
 
   constructor(private http: HttpClient) {
   }
 
-  getTags(): string[] {
-    return this.VALID_TAGS;
+  getTagKeys(): string[] {
+    return this.TAG_KEYS;
+  }
+
+  getTagType(key: string): TagType {
+    return this.VALID_TAGS.find(t => t.key === key).type;
   }
 
   @Cacheable()
@@ -41,3 +67,15 @@ export class TypeaheadService {
   }
 
 }
+
+interface Tag {
+  key: string;
+  type: TagType;
+}
+
+export enum TagType {
+  TYPE_AHEAD,
+  DROP_DOWN,
+  TEXT
+}
+

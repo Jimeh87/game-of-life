@@ -14,7 +14,7 @@ import {SaveSearchService} from './save-search.service';
 })
 export class SearchComponent implements OnInit, OnDestroy {
 
-  private tagRegex = new RegExp('(' + this.typeaheadService.getTags().join('|') + '*):', 'ig');
+  private tagRegex = new RegExp('(' + this.typeaheadService.getTagKeys().join('|') + '*):', 'ig');
 
   @Output()
   query = new EventEmitter<TemplateQuery>();
@@ -86,8 +86,11 @@ export class SearchComponent implements OnInit, OnDestroy {
     do {
       expressionResult = this.tagRegex.exec(query);
       if (expressionResult) {
+        const key = expressionResult[1].toLowerCase();
         const newTag = this.fb.group({
-          key: expressionResult[1].toLowerCase(),
+          id: this.nextTagId(),
+          key: key,
+          type: this.typeaheadService.getTagType(key),
           value: '',
           active: true
         });
@@ -101,6 +104,10 @@ export class SearchComponent implements OnInit, OnDestroy {
     } while (expressionResult);
 
     return tagCreated;
+  }
+
+  private nextTagId(): number {
+    return Math.max.apply(Math, (this.form.get('tags') as FormArray).controls.map(c => c.value.id)) + 1;
   }
 
   getActiveTags() {
@@ -121,7 +128,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   removeTag(formGroup: FormGroup) {
     const tags = (this.form.get('tags') as FormArray);
-    tags.removeAt(tags.value.indexOf(formGroup));
+    tags.removeAt(tags.value.findIndex(t => t.id === formGroup.value.id));
     this.formValueChanged.next();
   }
 
@@ -133,8 +140,8 @@ export class SearchComponent implements OnInit, OnDestroy {
   autoComplete = (text$: Observable<string>) => {
     const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
     return debouncedText$.pipe(
-      map(term => this.typeaheadService.getTags()
-        .filter(v => !term || v.toLowerCase().indexOf(term.toLowerCase()) > -1)
+      map(term => this.typeaheadService.getTagKeys()
+        .filter(t => !term || t.indexOf(term.toLowerCase()) > -1)
         .map(t => t + ':')
         .slice(0, 10)));
   };
