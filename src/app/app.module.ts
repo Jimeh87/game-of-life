@@ -34,7 +34,6 @@ import {SearchComponent} from './templates/search/search.component';
 import {InputBadgeComponent} from './templates/search/input-badge/input-badge.component';
 import {TypeaheadService} from './templates/search/typeahead.service';
 import {SaveSearchService} from './templates/search/save-search.service';
-import {TemplateFilterPipe} from './templates/search/template-filter.pipe';
 
 const appRoutes: Routes = [
     {
@@ -109,7 +108,6 @@ const appRoutes: Routes = [
     GameBoardHudComponent,
     ConfigComponent,
     AboutComponent,
-    TemplateFilterPipe,
     SpinnerComponent,
     AboutMenuComponent,
     AboutGameOfLifeComponent,

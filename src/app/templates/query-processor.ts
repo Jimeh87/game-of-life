@@ -1,16 +1,17 @@
-import {Pipe, PipeTransform} from '@angular/core';
-import {Template} from '../template';
-import {TemplateQuery} from './template-query';
+import {Template} from './template';
+import {TemplateQuery} from './search/template-query';
+import {Observable, of} from 'rxjs';
 
-@Pipe({
-  name: 'templateFilter'
-})
-export class TemplateFilterPipe implements PipeTransform {
+export class QueryProcessor {
 
-  private minTagLength = 3;
-  private minQueryLength = 4;
+  private static minTagLength = 3;
+  private static minQueryLength = 4;
 
-  transform(templates: Template[], templateQuery: TemplateQuery): any {
+  public static process(templates: Template[], templateQuery: TemplateQuery): Observable<Template[]> {
+    return of(this.processSync(templates, templateQuery));
+  }
+
+  private static processSync(templates: Template[], templateQuery: TemplateQuery): Template[] {
     if (!this.allowSearch(templates, templateQuery)) {
       return templates;
     }
@@ -27,11 +28,11 @@ export class TemplateFilterPipe implements PipeTransform {
     });
   }
 
-  private allowSearch(templates: Template[], templateQuery: TemplateQuery): boolean {
+  private static allowSearch(templates: Template[], templateQuery: TemplateQuery): boolean {
     return !!templates && !!templateQuery;
   }
 
-  private titleTagMatch(template: Template, templateQuery: TemplateQuery): boolean {
+  private static titleTagMatch(template: Template, templateQuery: TemplateQuery): boolean {
     return this.tagMatch<string>(
       templateQuery,
       'title',
@@ -39,7 +40,7 @@ export class TemplateFilterPipe implements PipeTransform {
       (t: string, tag: string) => t.search(new RegExp(tag, 'i')) !== -1);
   }
 
-  private patternTagMatch(template: Template, templateQuery: TemplateQuery): boolean {
+  private static patternTagMatch(template: Template, templateQuery: TemplateQuery): boolean {
     return this.tagMatch<string>(
       templateQuery,
       'pattern',
@@ -47,7 +48,7 @@ export class TemplateFilterPipe implements PipeTransform {
       (templateValue, tagValue) => templateValue.includes(tagValue));
   }
 
-  private ruleTagMatch(template: Template, templateQuery: TemplateQuery): boolean {
+  private static ruleTagMatch(template: Template, templateQuery: TemplateQuery): boolean {
     return this.tagMatch<string>(
       templateQuery,
       'rule',
@@ -55,7 +56,7 @@ export class TemplateFilterPipe implements PipeTransform {
       (templateValue, tagValue) => templateValue.includes(tagValue.toUpperCase()));
   }
 
-  private authorTagMatch(template: Template, templateQuery: TemplateQuery): boolean {
+  private static authorTagMatch(template: Template, templateQuery: TemplateQuery): boolean {
     return this.tagMatch<string>(
       templateQuery,
       'author',
@@ -74,7 +75,7 @@ export class TemplateFilterPipe implements PipeTransform {
       });
   }
 
-  private categoryTagMatch(template: Template, templateQuery: TemplateQuery): boolean {
+  private static categoryTagMatch(template: Template, templateQuery: TemplateQuery): boolean {
     return this.tagMatch<string[]>(
       templateQuery,
       'category',
@@ -82,10 +83,10 @@ export class TemplateFilterPipe implements PipeTransform {
       (templateValue, tagValue) => !!templateValue.filter(v => v.indexOf(tagValue.toLowerCase()) > -1).length);
   }
 
-  private tagMatch<T>(templateQuery: TemplateQuery,
-                      key: string,
-                      templateValue: T,
-                      equalityFn: (templateValue: T, tagValue: string) => boolean): boolean {
+  private static tagMatch<T>(templateQuery: TemplateQuery,
+                             key: string,
+                             templateValue: T,
+                             equalityFn: (templateValue: T, tagValue: string) => boolean): boolean {
     const tagValues = templateQuery.tags
       .filter(t => t.key === key)
       .filter(t => t.value.length >= this.minTagLength)
@@ -100,7 +101,7 @@ export class TemplateFilterPipe implements PipeTransform {
     return tagMatched;
   }
 
-  private genericMatch(filter: string, filterRegex: RegExp, template: Template) {
+  private static genericMatch(filter: string, filterRegex: RegExp, template: Template) {
     if (!filter || filter.length < this.minQueryLength) {
       return true;
     }
