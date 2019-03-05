@@ -123,7 +123,7 @@
       </i>
     </span>
     <div ngbDropdownMenu class="dropdown-menu">
-      <a class="dropdown-item clickable" *ngFor="let theme of themes()" (click)=setTheme(theme)>
+      <a class="dropdown-item clickable" *ngFor="let theme of themes() | sort:'name';" (click)=setTheme(theme)>
         <i class="fa"
            [ngClass]="{'fa-circle-o': getTheme() !== theme, 'fa-check-circle-o': getTheme() === theme}">
         </i>

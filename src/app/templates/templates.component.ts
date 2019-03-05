@@ -14,7 +14,7 @@ export class TemplatesComponent implements OnInit, OnDestroy {
   loading = true;
   templateQuery: TemplateQuery;
 
-  private templates: Template[];
+  templates: Template[];
   private subscription: Subscription;
 
   constructor(private templatesService: TemplatesService) {
@@ -30,10 +30,6 @@ export class TemplatesComponent implements OnInit, OnDestroy {
 
   toTemplatesTop() {
     window.scroll(0, 0);
-  }
-
-  getTemplates() {
-    return this.templates;
   }
 
   get page(): number {

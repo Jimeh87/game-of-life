@@ -10,7 +10,7 @@
 </div>
 <div class="row" *ngIf="!loading">
   <div class="col-lg-6 col-md-12 top-buffer bottom-buffer"
-       *ngFor="let template of getTemplates() | templateFilter:templateQuery | paginate: { itemsPerPage: 12,
+       *ngFor="let template of templates | templateFilter:templateQuery | paginate: { itemsPerPage: 12,
                                                                                     currentPage: page }">
     <app-template [template]="template"></app-template>
   </div>
