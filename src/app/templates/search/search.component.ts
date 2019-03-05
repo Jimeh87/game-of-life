@@ -107,7 +107,8 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   private nextTagId(): number {
-    return Math.max.apply(Math, (this.form.get('tags') as FormArray).controls.map(c => c.value.id)) + 1;
+    const ids = (this.form.get('tags') as FormArray).controls.map(c => c.value.id);
+    return ids.length ? Math.max(...ids) + 1 : 0;
   }
 
   getActiveTags() {
