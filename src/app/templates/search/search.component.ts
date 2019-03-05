@@ -92,12 +92,13 @@ export class SearchComponent implements OnInit, OnDestroy {
           key: key,
           type: this.typeaheadService.getTagType(key),
           value: '',
-          active: true
+          active: true,
+          sub: null
         });
         this.deactivateAllTags();
         (this.form.get('tags') as FormArray).push(newTag);
 
-        this.subs.push(newTag.get('value').valueChanges.subscribe(() => this.formValueChanged.next()));
+        newTag.get('sub').patchValue(newTag.get('value').valueChanges.subscribe(() => this.formValueChanged.next()));
         tagCreated = true;
 
       }
@@ -129,7 +130,9 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   removeTag(formGroup: FormGroup) {
     const tags = (this.form.get('tags') as FormArray);
-    tags.removeAt(tags.value.findIndex(t => t.id === formGroup.value.id));
+    const tagIndex = tags.value.findIndex(t => t.id === formGroup.value.id);
+    tags.controls[tagIndex].get('sub').value.unsubscribe();
+    tags.removeAt(tagIndex);
     this.formValueChanged.next();
   }
 
