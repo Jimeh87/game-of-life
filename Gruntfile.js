@@ -308,12 +308,32 @@ var extractRuleGroupings = function (allData, grunt) {
 };
 
 var toFormattedRuleString = function (rule, grunt) {
-  var matches = /[B|S]?([0-9]*)\/[B|S]?([0-9]*)/.exec(rule.toUpperCase());
-  if (matches.input.indexOf('B') > matches.input.indexOf('S')) {
-    var swap = matches[1];
-    matches[1] = matches[2];
-    matches[2] = swap;
-    // grunt.log.writeln('Rule [' + matches.input + '] with backwards birth and survival parameters. Swapping them.');
+  var survival = [];
+  var birth = [];
+  var selectedRuleSet = survival;
+  for (var i = 0; i < rule.length; i++) {
+    var char = rule[i];
+    if (char >= '0' && char <= '9') {
+      selectedRuleSet.push(+char);
+    } else if (char === 'S' || char === 's') {
+      selectedRuleSet = survival;
+    } else if (char === 'B' || char === 'b') {
+      selectedRuleSet = birth;
+    } else if (char === '/') {
+      selectedRuleSet = birth;
+    } else {
+      throw new Error('Index: ' + i + ' Unknown character: ' + char + ' on rule string: ' + rule);
+    }
   }
-  return 'B' + matches[1] + '/' + 'S' + matches[2];
+
+  var formattedRuleString = 'B';
+  birth.forEach(function (n) {
+    formattedRuleString += n;
+  });
+  formattedRuleString += '/S';
+  survival.forEach(function (n) {
+    formattedRuleString += n;
+  });
+
+  return formattedRuleString;
 };
