@@ -152,7 +152,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         .filter(t => !term || t.indexOf(term.toLowerCase()) > -1)
         .map(t => t + ':')
         .slice(0, 10)));
-  };
+  }
 
   ngOnDestroy(): void {
     (this.form.get('tags') as FormArray).controls.forEach(t => t.get('sub').value.unsubscribe());
