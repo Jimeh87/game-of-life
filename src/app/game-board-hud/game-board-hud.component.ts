@@ -8,6 +8,7 @@ import {Ticker} from '../algorithm/ticker';
 import {GolRule} from '../templates/gol-rule';
 import {Subscription} from 'rxjs';
 import {Theme} from '../config/theme';
+import {ThemeService} from '../config/theme.service';
 
 @Component({
   selector: 'app-game-board-hud',
@@ -26,7 +27,9 @@ export class GameBoardHudComponent implements OnInit, OnDestroy {
   private currentSpeed = GameControlAction.SPEED_NORMAL;
   private _actionTitle = {};
 
-  constructor(private gameOfLifeService: GameOfLifeService, private configService: ConfigService) {
+  constructor(private gameOfLifeService: GameOfLifeService,
+              private configService: ConfigService,
+              private themeService: ThemeService) {
   }
 
   ngOnInit() {
@@ -177,15 +180,15 @@ export class GameBoardHudComponent implements OnInit, OnDestroy {
   }
 
   getTheme() {
-    return this.configService.theme;
+    return this.themeService.activeTheme;
   }
 
   themes() {
-    return this.configService.themes;
+    return this.themeService.themes;
   }
 
   setTheme(theme: Theme) {
-    this.configService.theme = theme;
+    this.themeService.activeTheme = theme;
   }
 
   ngOnDestroy() {

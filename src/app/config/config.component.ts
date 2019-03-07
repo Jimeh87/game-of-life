@@ -4,6 +4,7 @@ import {GameBoardStyleConfig} from './game-board-style-config';
 import {ConfigType} from './config-type';
 import {GameBoardConfig} from './game-board-config';
 import {Theme} from './theme';
+import {ThemeService} from './theme.service';
 
 @Component({
   selector: 'app-config',
@@ -16,11 +17,13 @@ export class ConfigComponent implements OnInit, AfterViewInit {
   private gbConfig: GameBoardConfig;
   private changeDetectionEnabled = false;
 
-  constructor(private configService: ConfigService) { }
+  constructor(private configService: ConfigService,
+              private themeService: ThemeService) {
+  }
 
   ngOnInit() {
-    this.gbStyleConfig = <GameBoardStyleConfig> this.configService.getConfig(ConfigType.GAME_BOARD_STYLE);
-    this.gbConfig = <GameBoardConfig> this.configService.getConfig(ConfigType.GAME_BOARD);
+    this.gbStyleConfig = <GameBoardStyleConfig>this.configService.getConfig(ConfigType.GAME_BOARD_STYLE);
+    this.gbConfig = <GameBoardConfig>this.configService.getConfig(ConfigType.GAME_BOARD);
   }
 
   ngAfterViewInit() {
@@ -30,104 +33,88 @@ export class ConfigComponent implements OnInit, AfterViewInit {
   }
 
   get themes(): Theme[] {
-    return this.configService.themes;
+    return this.themeService.themes;
   }
 
   get name(): string {
-    return this.configService.theme.name;
+    return this.themeService.activeTheme.name;
   }
 
   set name(value: string) {
-    this.configService.theme = this.configService.findTheme(value);
+    this.themeService.activeTheme = this.themeService.findTheme(value);
   }
 
   get generations(): boolean {
-    return this.configService.theme.generations;
+    return this.themeService.activeTheme.generations;
   }
 
   set generations(value: boolean) {
-    this.cloneIfNotMutable();
-    this.configService.theme.generations = value;
-    this.configService.applyCurrentTheme();
+    this.mutateTheme((theme) => theme.generations = value);
   }
 
   get alive(): string[] {
-    return this.configService.theme.alive;
+    return this.themeService.activeTheme.alive;
   }
 
   setAlive(index: number, value: string) {
-    this.cloneIfNotMutable();
-    this.configService.theme.alive[index] = value;
-    this.configService.applyCurrentTheme();
+    this.mutateTheme((theme) => theme.alive[index] = value);
   }
 
   pushAlive(value: string) {
-    this.cloneIfNotMutable();
-    this.configService.theme.alive.push(value);
-    this.configService.applyCurrentTheme();
+    this.mutateTheme((theme) => theme.alive.push(value));
   }
 
   removeAlive(index: number) {
-    this.cloneIfNotMutable();
-    this.configService.theme.alive.splice(index, 1);
-    this.configService.applyCurrentTheme();
+    this.mutateTheme((theme) => theme.alive.splice(index, 1));
   }
 
   get dead(): string[] {
-    return this.configService.theme.dead;
+    return this.themeService.activeTheme.dead;
   }
 
   setDead(index: number, value: string) {
-    this.cloneIfNotMutable();
-    this.configService.theme.dead[index] = value;
-    this.configService.applyCurrentTheme();
+    this.mutateTheme((theme) => theme.dead[index] = value);
   }
 
   pushDead(value: string) {
-    this.cloneIfNotMutable();
-    this.configService.theme.dead.push(value);
-    this.configService.applyCurrentTheme();
+    this.mutateTheme((theme) => theme.dead.push(value));
   }
 
   removeDead(index: number) {
-    this.cloneIfNotMutable();
-    this.configService.theme.dead.splice(index, 1);
-    this.configService.applyCurrentTheme();
+    this.mutateTheme((theme) => theme.dead.splice(index, 1));
   }
 
   get border(): boolean {
-    return this.configService.theme.border;
+    return this.themeService.activeTheme.border;
   }
 
   set border(value: boolean) {
-    this.cloneIfNotMutable();
-    this.configService.theme.border = value;
-    this.configService.applyCurrentTheme();
+    this.mutateTheme((theme) => theme.border = value);
   }
 
   get borderColor(): string {
-    return this.configService.theme.borderColor;
+    return this.themeService.activeTheme.borderColor;
   }
 
   set borderColor(value: string) {
-    this.cloneIfNotMutable();
-    this.configService.theme.borderColor = value;
-    this.configService.applyCurrentTheme();
+    this.mutateTheme((theme) => theme.borderColor = value);
   }
 
-  private cloneIfNotMutable() {
-    if (this.changeDetectionEnabled && !this.configService.theme.mutable) {
-      const theme: Theme = this.configService.theme;
+  private mutateTheme(mutateFn: (Theme) => void) {
+    let theme: Theme = this.themeService.activeTheme;
+    if (this.changeDetectionEnabled && !this.themeService.activeTheme.mutable) {
       let index = 0;
       let customName: string;
       do {
         index++;
         customName = theme.name + ' (' + index + ')';
-      } while (this.configService.findTheme(customName) != null);
+      } while (this.themeService.findTheme(customName) != null);
       const customTheme = theme.clone(customName, true);
-      this.configService.themes.push(customTheme);
-      this.configService.theme = customTheme;
+      this.themeService.addTheme(customTheme);
+      theme = customTheme;
     }
+    mutateFn(theme);
+    this.themeService.activeTheme = theme;
   }
 
   trackBy(index, item) {

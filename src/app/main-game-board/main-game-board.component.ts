@@ -19,7 +19,8 @@ export class MainGameBoardComponent implements OnInit, OnDestroy {
 
   constructor(private configService: ConfigService,
               private templatesService: TemplatesService,
-              private route: ActivatedRoute) {};
+              private route: ActivatedRoute) {
+  };
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -28,7 +29,7 @@ export class MainGameBoardComponent implements OnInit, OnDestroy {
       }
     );
 
-    this.gameBoardConfig = <GameBoardConfig> this.configService.getConfig(ConfigType.GAME_BOARD);
+    this.gameBoardConfig = <GameBoardConfig>this.configService.getConfig(ConfigType.GAME_BOARD);
   }
 
   public getTemplatePromise(): Promise<Template> {

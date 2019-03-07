@@ -34,6 +34,8 @@ import {SearchComponent} from './templates/search/search.component';
 import {InputBadgeComponent} from './templates/search/input-badge/input-badge.component';
 import {TypeaheadService} from './templates/search/typeahead.service';
 import {SaveSearchService} from './templates/search/save-search.service';
+import { ViewModeButtonComponent } from './templates/view-mode-button/view-mode-button.component';
+import { ThemeButtonComponent } from './templates/theme-button/theme-button.component';
 
 const appRoutes: Routes = [
     {
@@ -115,7 +117,9 @@ const appRoutes: Routes = [
     AboutLinksComponent,
     SortPipe,
     SearchComponent,
-    InputBadgeComponent
+    InputBadgeComponent,
+    ViewModeButtonComponent,
+    ThemeButtonComponent
   ],
   imports: [
     BrowserModule,

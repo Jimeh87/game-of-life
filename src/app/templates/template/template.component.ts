@@ -3,15 +3,14 @@ import {Template} from '../template';
 import {GameOfLifeService} from '../../game-of-life.service';
 import {Router} from '@angular/router';
 import {ConfigService} from '../../config/config.service';
-import {ConfigType} from '../../config/config-type';
-import {GameBoardStyleConfig} from '../../config/game-board-style-config';
 import {TemplatesService} from '../templates.service';
+import {ThemeService} from '../../config/theme.service';
 
 @Component({
   selector: 'app-template',
   templateUrl: './template.component.html',
   styleUrls: ['./template.component.css'],
-  providers: [GameOfLifeService, ConfigService]
+  providers: [GameOfLifeService, ConfigService, ThemeService]
 })
 export class TemplateComponent implements OnInit {
 
@@ -40,7 +39,8 @@ export class TemplateComponent implements OnInit {
   constructor(private gol: GameOfLifeService,
               private templatesService: TemplatesService,
               private router: Router,
-              private configService: ConfigService) {
+              private configService: ConfigService,
+              private themeService: ThemeService) {
   }
 
   ngOnInit(): void {
@@ -50,9 +50,7 @@ export class TemplateComponent implements OnInit {
         this.template = template;
       });
     }
-    const gbStyle: GameBoardStyleConfig = <GameBoardStyleConfig> this.configService.getConfig(ConfigType.GAME_BOARD_STYLE);
-    this.configService.applyTheme(this.configService.findTheme(this.theme));
-
+    this.themeService.activeTheme = this.themeService.findTheme(this.theme);
   }
 
   public isShowDetails(): boolean {

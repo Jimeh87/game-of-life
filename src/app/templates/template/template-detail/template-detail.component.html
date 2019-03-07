@@ -1,4 +1,8 @@
-<div class="card text-left" style="overflow-wrap: break-word; border: 0">
+<div class="card text-left px-5" style="overflow-wrap: break-word; border: 0">
+  <div class="card-body">
+    <h6 class="card-title">Title</h6>
+    <p class="card-text">{{ getTemplate().getName() }}</p>
+  </div>
   <div class="card-body">
     <h6 class="card-title">Rule</h6>
     <p class="card-text">{{ getTemplate().getRule().getFormattedRuleString() }}</p>
