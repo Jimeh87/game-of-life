@@ -1,4 +1,4 @@
-<div class="card text-center shadow" *ngIf="getTemplate() != null && templateWrapper">
+<div class="card text-center shadow rounded-0" *ngIf="getTemplate() != null && templateWrapper">
   <div class="template-card card-body p-0 m-0" [ngClass]="{'template-detail': isShowDetails()}">
     <ng-container *ngIf="isShowDetails(); else showTemplate">
       <app-template-detail [template]="getTemplate()"></app-template-detail>
@@ -7,7 +7,7 @@
       <app-game-board [template]="getTemplatePromise()" [preview]="preview" class="w-100 h-100"></app-game-board>
       <div ngbDropdown container="body" class="title shadow p-1 rounded">
         <span ngbDropdownToggle>{{ getTemplate().getName() }}</span>
-        <div ngbDropdownMenu class="dropdown-menu">
+        <div ngbDropdownMenu class="dropdown-menu mt-2">
           <button ngbDropdownItem
                   class="dropdown-item clickable"
                   (click)="toggleDetails()">
