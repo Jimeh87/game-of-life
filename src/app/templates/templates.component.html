@@ -1,6 +1,7 @@
 <div id="templatesTop" class="row">
   <div class="col-12">
-    <app-search (query)="queryChanged($event)" [loading]="!(filteredTemplates$ | async) || (updatingPage$ | async)"></app-search>
+    <app-search (query)="queryChanged($event)"
+                [loading]="!(filteredTemplates$ | async) || (updatingPage$ | async)"></app-search>
   </div>
 </div>
 
@@ -8,7 +9,8 @@
   <div class="row">
     <div class="col-12">
       <hr class="mb-0">
-      <app-view-mode-button (mode)="changeActiveViewMode($event)" class="top-buffer pull-left"></app-view-mode-button>
+      <app-view-mode-button class="top-buffer pull-left mr-2"></app-view-mode-button>
+      <app-theme-button class="top-buffer pull-left mr-2"></app-theme-button>
       <span class="text-monospace pull-right">
         <ng-container *ngIf="filteredTemplates.length">{{ filteredTemplates.length }} </ng-container>
         <ng-container *ngIf="!filteredTemplates.length">No </ng-container>
@@ -22,7 +24,7 @@
       <div class="top-buffer bottom-buffer"
            [ngClass]="{'col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12': wideViewMode, 'col-lg-6 col-md-12': !wideViewMode}"
            *ngFor="let template of filteredTemplates | paginate: { itemsPerPage: 12, currentPage: page }">
-        <app-template [template]="template"></app-template>
+        <app-template [template]="template" [theme]="theme"></app-template>
       </div>
       <div class="col-12 top-buffer bottom-buffer">
         <pagination-template #p="paginationApi"

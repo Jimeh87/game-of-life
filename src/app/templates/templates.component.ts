@@ -24,7 +24,8 @@ export class TemplatesComponent implements OnInit, OnDestroy {
     .pipe(
       delay(50),
       mergeMap(([templates, query]) => QueryProcessor.process(templates, query).pipe(delay(50))));
-  wideViewMode = false;
+  wideViewMode = this.templatesConfig.viewMode === ViewMode.WIDE;
+  theme = this.templatesConfig.theme;
   configSubscription: Subscription;
 
   constructor(private templatesService: TemplatesService,
@@ -32,8 +33,9 @@ export class TemplatesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.wideViewMode = this.templatesConfig.viewMode === ViewMode.WIDE;
-    this.configSubscription = this.templatesConfig.observe.subscribe(() => this.changeActiveViewMode(this.templatesConfig.viewMode));
+    this.configSubscription = this.templatesConfig.observe.subscribe(() => {
+      this.onConfigChange();
+    });
   }
 
   queryChanged(templateQuery: TemplateQuery) {
@@ -44,9 +46,10 @@ export class TemplatesComponent implements OnInit, OnDestroy {
     window.scroll(0, 0);
   }
 
-  changeActiveViewMode(viewMode: ViewMode) {
+  private onConfigChange() {
     this._updatingPage$.next(true);
-    this.wideViewMode = viewMode === ViewMode.WIDE;
+    this.wideViewMode = this.templatesConfig.viewMode === ViewMode.WIDE;
+    this.theme = this.templatesConfig.theme;
     this._updatingPage$.next(false);
   }
 
