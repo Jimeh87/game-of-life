@@ -12,12 +12,9 @@
   </div>
   <div class="card-body template-card p-0 m-0" *ngIf="isShowDetails()" style="overflow-y: auto;">
     <app-template-detail [template]="getTemplate()"></app-template-detail>
-    <div class="controls text-center">
-      <span class="control" (click)="toggleDetails()">
-        <span class="fa fa-fw fa-arrow-left"></span>
-        <span>Back</span>
-      </span>
-    </div>
+    <button class="btn btn-sm btn-outline-dark back-button" (click)="toggleDetails()"><span
+      class="fa fa-fw fa-arrow-left"></span> Back
+    </button>
   </div>
 </div>
 

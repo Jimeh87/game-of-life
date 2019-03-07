@@ -1,6 +1,7 @@
 div.fixed-content {
   overflow-y: auto;
 }
+
 div.template-card {
   height: 18em;
 }
@@ -17,6 +18,12 @@ div.template-card {
 .control {
   color: rgb(255, 255, 255);
   padding: .4rem;
+}
+
+.back-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
 
 .control:hover {
