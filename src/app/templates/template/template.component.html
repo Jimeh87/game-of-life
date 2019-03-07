@@ -2,6 +2,9 @@
   <div class="template-card card-body p-0 m-0" [ngClass]="{'template-detail': isShowDetails()}">
     <ng-container *ngIf="isShowDetails(); else showTemplate">
       <app-template-detail [template]="getTemplate()"></app-template-detail>
+      <button class="btn btn-sm btn-outline-dark back-button" (click)="toggleDetails()">
+        <span class="fa fa-fw fa-arrow-left"></span> Back
+      </button>
     </ng-container>
     <ng-template #showTemplate>
       <app-game-board [template]="getTemplatePromise()" [preview]="preview" class="w-100 h-100"></app-game-board>
