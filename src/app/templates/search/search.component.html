@@ -23,7 +23,7 @@
       />
     </div>
   </div>
-  <span class="fa fa-2x fa-search search-icon"></span>
+  <span class="fa fa-2x search-icon" [ngClass]="loading ? 'fa-spinner fa-pulse' : 'fa-search'"></span>
   <div class="d-flex flex-row justify-content-start flex-wrap row">
     <div *ngFor="let tag of geInactiveTags()" class="inactive-tag-container mt-2 col-12 col-sm-6">
       <app-input-badge

@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {AbstractControl, FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 import {Observable, Subject, Subscription} from 'rxjs';
@@ -18,13 +18,13 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   @Output()
   query = new EventEmitter<TemplateQuery>();
+  @Input()
+  loading = false;
 
   @ViewChild('searchBox')
   searchBox: ElementRef;
-
   @ViewChild('searchInput')
   searchInput: ElementRef;
-
   @ViewChild('typeahead')
   typeahead: NgbTypeahead;
 

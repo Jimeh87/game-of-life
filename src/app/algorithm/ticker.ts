@@ -25,10 +25,6 @@ export class Ticker {
     }
   }
 
-  get maxDelay() {
-    return this.maxDelay;
-  }
-
   public start() {
     this.stop();
     this.interval = setInterval(() => {

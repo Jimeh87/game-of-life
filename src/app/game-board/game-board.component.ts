@@ -3,7 +3,6 @@ import {
   Component,
   ElementRef,
   Input,
-  NgZone,
   OnChanges,
   OnDestroy,
   OnInit,
@@ -18,9 +17,9 @@ import {ConfigType} from '../config/config-type';
 import {GameBoardStyleConfig} from '../config/game-board-style-config';
 import {Coordinate} from '../algorithm/coordinate';
 import {Generation} from '../algorithm/generation';
-import {fromEvent, merge, Subscription} from 'rxjs';
+import {merge, Subscription} from 'rxjs';
 import {Line} from '../algorithm/line';
-import {throttleTime} from 'rxjs/operators';
+import {WindowService} from "../window.service";
 
 @Component({
   selector: 'app-game-board',
@@ -50,9 +49,10 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
 
   private cellStateSubscription: Subscription;
   private gameBoardConfigSubscription: Subscription;
+  private windowSizeSubscription: Subscription;
 
   constructor(private gameOfLifeService: GameOfLifeService,
-              private ngZone: NgZone,
+              private windowService: WindowService,
               private configService: ConfigService) {
   }
 
@@ -110,13 +110,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
       this.drawWorld();
     });
 
-    this.ngZone.runOutsideAngular(() => {
-      fromEvent(window, 'resize')
-        .pipe(throttleTime(100))
-        .subscribe(() => {
-          this.onScreenResize();
-        });
-    });
+    this.windowSizeSubscription = this.windowService.sizeChanges().subscribe(() => this.onScreenResize());
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -127,9 +121,6 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
   }
 
   onScreenResize() {
-    if (this.preview) {
-      return;
-    }
     this.canvasFillContainer();
     this.drawWorld();
   }
