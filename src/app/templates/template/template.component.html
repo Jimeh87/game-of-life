@@ -8,16 +8,16 @@
     </ng-container>
     <ng-template #showTemplate>
       <app-game-board [template]="getTemplatePromise()" [preview]="preview" class="w-100 h-100"></app-game-board>
-      <div ngbDropdown container="body" class="title shadow p-1 rounded">
+      <div ngbDropdown placement="top" container="body" class="title shadow p-1 rounded">
         <span ngbDropdownToggle>{{ getTemplate().getName() }}</span>
-        <div ngbDropdownMenu class="dropdown-menu mt-2">
+        <div ngbDropdownMenu class="title-dropdown dropdown-menu mb-2">
           <button ngbDropdownItem
-                  class="dropdown-item clickable"
+                  class="title-dropdown-item dropdown-item clickable"
                   (click)="toggleDetails()">
             <span class="fa fa-fw fa-info-circle"></span> About
           </button>
           <button ngbDropdownItem
-                  class="dropdown-item clickable"
+                  class="title-dropdown-item dropdown-item clickable"
                   [routerLink]="['/game-board', 'template', getTemplate().getFileName()]">
             <span class="fa fa-fw fa-pencil-square-o"></span> Editor
           </button>
