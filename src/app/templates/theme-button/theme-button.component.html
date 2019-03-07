@@ -1,11 +1,9 @@
-<div ngbDropdown class="d-inline-block" [formGroup]="formGroup">
+<div ngbDropdown [formGroup]="formGroup">
   <button class="btn btn-sm btn-light" id="themes" ngbDropdownToggle>Theme: {{ getActive() }}</button>
-  <div ngbDropdownMenu aria-labelledby="themes">
-    <div ngbDropdownMenu class="dropdown-menu">
-      <a class="dropdown-item clickable" *ngFor="let theme of getThemes() | sort:'name'" (click)=setTheme(theme.name)>
-        <i class="fa" [ngClass]="theme.name !== formGroup.get('theme').value ? 'fa-circle-o' : 'fa-check-circle-o'"></i>
-        {{ theme.name }}
-      </a>
-    </div>
+  <div ngbDropdownMenu class="dropdown-menu">
+    <a ngbDropdownItem class="dropdown-item clickable" *ngFor="let theme of getThemes() | sort:'name'" (click)=setTheme(theme.name)>
+      <i class="fa" [ngClass]="theme.name !== formGroup.get('theme').value ? 'fa-circle-o' : 'fa-check-circle-o'"></i>
+      {{ theme.name }}
+    </a>
   </div>
 </div>

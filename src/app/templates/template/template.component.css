@@ -1,32 +1,31 @@
-div.fixed-content {
-  overflow-y: auto;
-}
-
 div.template-card {
   height: 18em;
 }
 
-.controls {
+.title {
   position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: auto;
-  background-color: rgba(0, 0, 0, 0.8);
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
   color: #ffffff;
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.control {
-  color: rgb(255, 255, 255);
-  padding: .4rem;
+.title:hover {
+  color: #DCDCDC;
+  cursor: pointer;
 }
 
 .back-button {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 1em;
+  right: 3em;
 }
 
-.control:hover {
-  color: #337ab7;
-  cursor: pointer;
+.template-detail {
+  overflow-y: auto;
 }

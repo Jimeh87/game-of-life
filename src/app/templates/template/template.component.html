@@ -1,20 +1,26 @@
-<div class="card text-center" *ngIf="getTemplate() != null && templateWrapper">
-  <div class="template-card card-body p-0 m-0" *ngIf="!isShowDetails()">
-    <app-game-board [template]="getTemplatePromise()" [preview]="preview" class="w-100 h-100"></app-game-board>
-    <div class="controls text-center">
-      <span class="fa fa-fw fa-pencil-square-o control pull-left"
-            [routerLink]="['/game-board', 'template', getTemplate().getFileName()]"></span>
-      <span class="control" (click)="toggleDetails()">
-        <span>{{ getTemplate().getName() }}</span>
-        <span class="fa fa-fw fa-info-circle"></span>
-      </span>
-    </div>
-  </div>
-  <div class="card-body template-card p-0 m-0" *ngIf="isShowDetails()" style="overflow-y: auto;">
-    <app-template-detail [template]="getTemplate()"></app-template-detail>
-    <button class="btn btn-sm btn-outline-dark back-button" (click)="toggleDetails()"><span
-      class="fa fa-fw fa-arrow-left"></span> Back
-    </button>
+<div class="card text-center shadow rounded-0" *ngIf="getTemplate() != null && templateWrapper">
+  <div class="template-card card-body p-0 m-0" [ngClass]="{'template-detail': isShowDetails()}">
+    <ng-container *ngIf="isShowDetails(); else showTemplate">
+      <app-template-detail [template]="getTemplate()"></app-template-detail>
+    </ng-container>
+    <ng-template #showTemplate>
+      <app-game-board [template]="getTemplatePromise()" [preview]="preview" class="w-100 h-100"></app-game-board>
+      <div ngbDropdown container="body" class="title shadow p-1 rounded">
+        <span ngbDropdownToggle>{{ getTemplate().getName() }}</span>
+        <div ngbDropdownMenu class="dropdown-menu mt-2">
+          <button ngbDropdownItem
+                  class="dropdown-item clickable"
+                  (click)="toggleDetails()">
+            <span class="fa fa-fw fa-info-circle"></span> About
+          </button>
+          <button ngbDropdownItem
+                  class="dropdown-item clickable"
+                  [routerLink]="['/game-board', 'template', getTemplate().getFileName()]">
+            <span class="fa fa-fw fa-pencil-square-o"></span> Editor
+          </button>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </div>
 
