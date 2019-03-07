@@ -1,28 +1,39 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TemplatesService} from './templates.service';
-import {BehaviorSubject, combineLatest} from 'rxjs';
+import {BehaviorSubject, combineLatest, interval, Subscription} from 'rxjs';
 import {TemplateQuery} from './search/template-query';
 import {ViewMode} from './view-mode-button/view-mode.enum';
-import {delay, mergeMap} from 'rxjs/operators';
+import {delay, delayWhen, mergeMap} from 'rxjs/operators';
 import {QueryProcessor} from './query-processor';
+import {ConfigService} from '../config/config.service';
+import {TemplatesConfig} from '../config/templates-config';
+import {ConfigType} from '../config/config-type';
 
 @Component({
   selector: 'app-templates',
   templateUrl: './templates.component.html',
   styleUrls: ['./templates.component.css']
 })
-export class TemplatesComponent {
+export class TemplatesComponent implements OnInit, OnDestroy {
 
+  private templatesConfig: TemplatesConfig = <TemplatesConfig>this.configService.getConfig(ConfigType.TEMPLATES);
+  private _updatingPage$ = new BehaviorSubject(false);
+  updatingPage$ = this._updatingPage$.pipe(delayWhen(v => v ? interval(0) : interval(500)));
   private query$ = new BehaviorSubject<TemplateQuery>(null);
-  private forceReload$ = new BehaviorSubject<any>(null);
-  filteredTemplates$ = combineLatest(this.templatesService.getTemplates(), this.query$, this.forceReload$)
+  filteredTemplates$ = combineLatest(this.templatesService.getTemplates(), this.query$)
     .pipe(
       delay(50),
-      mergeMap(([templates, query, forceReload]) => QueryProcessor.process(templates, query).pipe(delay(50)))
-    );
+      mergeMap(([templates, query]) => QueryProcessor.process(templates, query).pipe(delay(50))));
   wideViewMode = false;
+  configSubscription: Subscription;
 
-  constructor(private templatesService: TemplatesService) {
+  constructor(private templatesService: TemplatesService,
+              private configService: ConfigService) {
+  }
+
+  ngOnInit() {
+    this.wideViewMode = this.templatesConfig.viewMode === ViewMode.WIDE;
+    this.configSubscription = this.templatesConfig.observe.subscribe(() => this.changeActiveViewMode(this.templatesConfig.viewMode));
   }
 
   queryChanged(templateQuery: TemplateQuery) {
@@ -34,8 +45,9 @@ export class TemplatesComponent {
   }
 
   changeActiveViewMode(viewMode: ViewMode) {
+    this._updatingPage$.next(true);
     this.wideViewMode = viewMode === ViewMode.WIDE;
-    this.forceReload$.next(null);
+    this._updatingPage$.next(false);
   }
 
   get page(): number {
@@ -44,6 +56,10 @@ export class TemplatesComponent {
 
   set page(value) {
     this.templatesService.page = value;
+  }
+
+  ngOnDestroy(): void {
+    this.configSubscription.unsubscribe();
   }
 
 }

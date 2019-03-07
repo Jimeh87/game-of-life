@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {ViewMode} from './view-mode.enum';
 import {ConfigService} from '../../config/config.service';
 import {ConfigType} from '../../config/config-type';
+import {TemplatesConfig} from '../../config/templates-config';
 
 @Component({
   selector: 'app-view-mode-button',
@@ -10,9 +11,6 @@ import {ConfigType} from '../../config/config-type';
   styleUrls: ['./view-mode-button.component.css']
 })
 export class ViewModeButtonComponent implements OnInit {
-
-  @Output()
-  mode = new EventEmitter<ViewMode>();
 
   viewModes = [
     {
@@ -31,12 +29,13 @@ export class ViewModeButtonComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.configService.getConfig(ConfigType.GAME_BOARD)
+    const templatesConfig: TemplatesConfig = <TemplatesConfig>this.configService.getConfig(ConfigType.TEMPLATES);
     this.formGroup = this.fb.group({
-      mode: ViewMode.STANDARD
+      mode: templatesConfig.viewMode
     });
-    this.mode.emit(this.formGroup.get('mode').value);
-    this.formGroup.get('mode').valueChanges.subscribe(v => this.mode.emit(v));
+    this.formGroup.get('mode').valueChanges.subscribe(v => {
+      templatesConfig.viewMode = v;
+    });
   }
 
   getActive() {
