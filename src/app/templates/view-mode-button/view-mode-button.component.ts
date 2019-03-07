@@ -1,6 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ViewMode} from './view-mode.enum';
+import {ConfigService} from '../../config/config.service';
+import {ConfigType} from '../../config/config-type';
 
 @Component({
   selector: 'app-view-mode-button',
@@ -19,18 +21,19 @@ export class ViewModeButtonComponent implements OnInit {
     },
     {
       key: ViewMode.WIDE,
-      name: 'Full Width'
+      name: 'Wide'
     }
   ];
 
   formGroup: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private configService: ConfigService) {
   }
 
   ngOnInit() {
+    this.configService.getConfig(ConfigType.GAME_BOARD)
     this.formGroup = this.fb.group({
-      mode: ViewMode.WIDE
+      mode: ViewMode.STANDARD
     });
     this.mode.emit(this.formGroup.get('mode').value);
     this.formGroup.get('mode').valueChanges.subscribe(v => this.mode.emit(v));
