@@ -10,7 +10,7 @@ export class ThemeDataService {
     new Theme({
       name: 'Default',
       generations: false,
-      alive: ['#5cb85c'],
+      alive: ['rgba(103, 128, 159, 1)'],
       dead: ['#f1f3f3'],
       border: true,
       borderColor: '#bbc4c4',
@@ -37,7 +37,7 @@ export class ThemeDataService {
     new Theme({
       name: 'Preview',
       generations: false,
-      alive: ['#5bc0de'],
+      alive: ['rgba(103, 128, 159, 1)'],
       dead: ['#fff'],
       border: true,
       borderColor: '#fff',

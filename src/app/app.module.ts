@@ -22,7 +22,6 @@ import {AboutComponent} from './about/about.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {SpinnerComponent} from './spinner/spinner.component';
 import {ColorPickerModule} from 'ngx-color-picker';
-import {AboutMenuComponent} from './about/about-menu/about-menu.component';
 import {AboutGameOfLifeComponent} from './about/about-game-of-life/about-game-of-life.component';
 import {AboutTheSiteComponent} from './about/about-the-site/about-the-site.component';
 import {AboutLinksComponent} from './about/about-links/about-links.component';
@@ -111,7 +110,6 @@ const appRoutes: Routes = [
     ConfigComponent,
     AboutComponent,
     SpinnerComponent,
-    AboutMenuComponent,
     AboutGameOfLifeComponent,
     AboutTheSiteComponent,
     AboutLinksComponent,

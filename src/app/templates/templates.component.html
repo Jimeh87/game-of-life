@@ -1,4 +1,4 @@
-<div id="templatesTop" class="row">
+<div id="templatesTop" class="row top-buffer">
   <div class="col-12">
     <app-search (query)="queryChanged($event)"
                 [loading]="!(filteredTemplates$ | async) || (updatingPage$ | async)"></app-search>

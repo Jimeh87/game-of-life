@@ -1,18 +1,43 @@
-<div class="row bottom-buffer">
-  <div class="col">
-    <ul class="nav nav-tabs nav-fill">
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/game-board"><i class="fa fa-th" aria-hidden="true"></i> Board</a>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="/about/site" (click)="toggleNav()">
+    <img src="/assets/logo.png"
+         width="30"
+         height="30"
+         class="d-inline-block align-top"
+         alt="">
+  </a>
+  <button class="navbar-toggler hidden-sm-up"
+          type="button"
+          (click)="toggleNav()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div [ngbCollapse]="navbarCollapsed" class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto pull-right">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/game-board" (click)="toggleNav()">
+          <i class="fa fa-fw fa-pencil-square-o" aria-hidden="true"></i> Editor
+        </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="templates"><i class="fa fa-picture-o" aria-hidden="true"></i> Templates</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/templates" (click)="toggleNav()">
+          <i class="fa fa-fw fa-picture-o" aria-hidden="true"></i> Templates
+        </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="themes"><i class="fa fa-paint-brush" aria-hidden="true"></i> Themes</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/themes" (click)="toggleNav()">
+          <i class="fa fa-fw fa-paint-brush" aria-hidden="true"></i> Themes
+        </a>
       </li>
-      <li class="nav-item d-none d-md-block">
-        <a class="nav-link" routerLinkActive="active" routerLink="about"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a>
+      <li class="nav-item dropdown clickable" routerLinkActive="active" ngbDropdown>
+        <a class="nav-link dropdown-toggle" ngbDropdownToggle>
+          <i class="fa fa-fw fa-info-circle" aria-hidden="true"></i> About
+        </a>
+        <div class="dropdown-menu" ngbDropdownMenu>
+          <a class="dropdown-item" routerLink="/about/site" (click)="toggleNav()">Site</a>
+          <a class="dropdown-item" routerLink="/about/game-of-life" (click)="toggleNav()">Game of life</a>
+          <a class="dropdown-item" routerLink="/about/links" (click)="toggleNav()">Links</a>
+        </div>
       </li>
     </ul>
   </div>
-</div>
+</nav>
