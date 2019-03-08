@@ -43,15 +43,15 @@ const appRoutes: Routes = [
       pathMatch: 'full'
     },
     {
-      path: 'game-board',
+      path: 'editor',
       component: MainGameBoardComponent
     },
     {
-      path: 'game-board/template/:rle',
+      path: 'editor/template/:rle',
       component: MainGameBoardComponent
     },
     {
-      path: 'templates',
+      path: 'patterns',
       component: TemplatesComponent
     },
     {
