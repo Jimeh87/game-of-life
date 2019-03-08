@@ -40,7 +40,7 @@ import { ListModeTemplateComponent } from './templates/list-mode-template/list-m
 const appRoutes: Routes = [
     {
       path: '',
-      redirectTo: '/game-board',
+      redirectTo: '/editor',
       pathMatch: 'full'
     },
     {
