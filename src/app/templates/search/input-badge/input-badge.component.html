@@ -1,4 +1,4 @@
-<div class="badge badge-primary w-100" [formGroup]="tag">
+<div class="badge badge-dark w-100" [formGroup]="tag">
   <div class="form-group form-row mb-0">
     <label class="col-lg-2 col-4 mb-0 my-auto">{{tag.get('key').value}}</label>
     <input *ngIf="[tagType.TYPE_AHEAD, tagType.TEXT].includes(tag.get('type').value)"
