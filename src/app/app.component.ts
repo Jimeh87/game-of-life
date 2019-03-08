@@ -1,5 +1,4 @@
-import {AfterContentInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
-import {GameOfLifeService} from './game-of-life.service';
+import {Component, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 
 declare var ga: any;
