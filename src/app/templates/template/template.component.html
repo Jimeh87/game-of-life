@@ -1,4 +1,4 @@
-<div class="card text-center shadow rounded-0" *ngIf="getTemplate() != null && templateWrapper">
+<div class="card text-center shadow rounded-0" *ngIf="getTemplate() != null">
   <div class="template-card card-body p-0 m-0" [ngClass]="{'template-detail': isShowDetails()}">
     <ng-container *ngIf="isShowDetails(); else showTemplate">
       <app-template-detail [template]="getTemplate()"></app-template-detail>
@@ -26,6 +26,3 @@
     </ng-template>
   </div>
 </div>
-
-<app-game-board *ngIf="getTemplate() != null && !templateWrapper" [template]="getTemplatePromise()" [preview]="preview"
-                class="w-100 h-100"></app-game-board>

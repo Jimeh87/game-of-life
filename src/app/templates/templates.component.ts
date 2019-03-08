@@ -24,7 +24,8 @@ export class TemplatesComponent implements OnInit, OnDestroy {
     .pipe(
       delay(50),
       mergeMap(([templates, query]) => QueryProcessor.process(templates, query).pipe(delay(50))));
-  wideViewMode = this.templatesConfig.viewMode === ViewMode.WIDE;
+  viewMode = this.templatesConfig.viewMode;
+  viewModeType = ViewMode;
   theme = this.templatesConfig.theme;
   configSubscription: Subscription;
 
@@ -48,7 +49,7 @@ export class TemplatesComponent implements OnInit, OnDestroy {
 
   private onConfigChange() {
     this._updatingPage$.next(true);
-    this.wideViewMode = this.templatesConfig.viewMode === ViewMode.WIDE;
+    this.viewMode = this.templatesConfig.viewMode;
     this.theme = this.templatesConfig.theme;
     this._updatingPage$.next(false);
   }

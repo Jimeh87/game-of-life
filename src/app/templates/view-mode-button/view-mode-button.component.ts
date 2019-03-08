@@ -14,6 +14,10 @@ export class ViewModeButtonComponent implements OnInit {
 
   viewModes = [
     {
+      key: ViewMode.LIST,
+      name: 'List'
+    },
+    {
       key: ViewMode.STANDARD,
       name: 'Standard'
     },

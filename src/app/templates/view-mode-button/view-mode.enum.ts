@@ -1,3 +1,3 @@
 export enum ViewMode {
-  STANDARD, WIDE
+  LIST, STANDARD, WIDE
 }

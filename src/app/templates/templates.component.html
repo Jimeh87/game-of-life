@@ -20,11 +20,17 @@
     </div>
   </div>
   <ng-container *ngIf="!(updatingPage$ | async)">
-    <div class="row" [ngClass]="{'full-width': wideViewMode}">
+    <div class="row" [ngClass]="{'full-width': viewMode === viewModeType.WIDE}">
       <div class="top-buffer bottom-buffer"
-           [ngClass]="{'col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12': wideViewMode, 'col-lg-6 col-md-12': !wideViewMode}"
+           [ngClass]="{
+              'col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12': viewMode === viewModeType.WIDE,
+              'col-lg-6 col-md-12': viewMode === viewModeType.STANDARD,
+              'col-12': viewMode === viewModeType.LIST
+           }"
            *ngFor="let template of filteredTemplates | paginate: { itemsPerPage: 12, currentPage: page }">
-        <app-template [template]="template" [theme]="theme"></app-template>
+        <app-template *ngIf="viewMode !== viewModeType.LIST" [template]="template" [theme]="theme"></app-template>
+        <app-list-mode-template *ngIf="viewMode === viewModeType.LIST" [template]="template"
+                                [theme]="theme"></app-list-mode-template>
       </div>
       <div class="col-12 top-buffer bottom-buffer">
         <pagination-template #p="paginationApi"

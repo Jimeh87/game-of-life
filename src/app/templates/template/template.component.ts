@@ -17,9 +17,6 @@ export class TemplateComponent implements OnInit {
   private templatePromise: Promise<Template> = new Promise<Template>((resolve) => resolve(this.template));
 
   @Input()
-  templateWrapper = true;
-
-  @Input()
   preview = true;
 
   @Input()
@@ -30,9 +27,6 @@ export class TemplateComponent implements OnInit {
 
   @Input()
   private theme = 'Preview';
-
-  @Input()
-  loadingText = 'Loading...';
 
   private showDetails = false;
 
