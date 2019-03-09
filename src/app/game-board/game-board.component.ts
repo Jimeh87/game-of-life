@@ -274,31 +274,20 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
   }
 
   private getSelectedCell(event: MouseEvent): { x: number, y: number } {
-    let posX = 0;
-    let posY = 0;
-
-    if (event.pageX || event.pageY) {
-      posX = event.pageX;
-      posY = event.pageY;
-    } else if (event.clientX || event.clientY) {
-      posX = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-      posY = event.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-    }
-
-    let element: HTMLElement = <HTMLElement>event.target;
-    let left = 0;
-    let top = 0;
-    while (element.offsetParent) {
-      left += element.offsetLeft;
-      top += element.offsetTop;
-      element = <HTMLElement>element.offsetParent;
-    }
-
-    const x = Math.ceil(((posX - left) / (this.gbConfig.cellSize + this.gbConfig.cellSpace)) - 1);
-    const y = Math.ceil(((posY - top) / (this.gbConfig.cellSize + this.gbConfig.cellSpace)) - 1);
+    const pos = this.getMousePos(event);
+    const x = Math.ceil(((pos.x) / (this.gbConfig.cellSize + this.gbConfig.cellSpace)) - 1);
+    const y = Math.ceil(((pos.y) / (this.gbConfig.cellSize + this.gbConfig.cellSpace)) - 1);
 
     return {x: x, y: y};
   };
+
+  getMousePos(event) {
+    const rect = this.canvas.getBoundingClientRect();
+    return {
+      x: (event.clientX - rect.left) / (rect.right - rect.left) * this.canvas.width,
+      y: (event.clientY - rect.top) / (rect.bottom - rect.top) * this.canvas.height
+    };
+  }
 
   ngOnDestroy(): void {
     if (this.cellStateSubscription != null) {

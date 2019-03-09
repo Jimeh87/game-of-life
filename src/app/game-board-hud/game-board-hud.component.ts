@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {GameOfLifeService} from '../game-of-life.service';
 import {ConfigService} from '../config/config.service';
 import {GameBoardConfig} from '../config/game-board-config';
@@ -16,6 +16,9 @@ import {ThemeService} from '../config/theme.service';
   styleUrls: ['./game-board-hud.component.css']
 })
 export class GameBoardHudComponent implements OnInit, OnDestroy {
+
+  @Input()
+  dismissFn: () => void;
 
   GCA = GameControlAction;
 

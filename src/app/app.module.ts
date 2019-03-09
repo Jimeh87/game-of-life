@@ -35,7 +35,8 @@ import {TypeaheadService} from './templates/search/typeahead.service';
 import {SaveSearchService} from './templates/search/save-search.service';
 import {ViewModeButtonComponent} from './templates/view-mode-button/view-mode-button.component';
 import {ThemeButtonComponent} from './templates/theme-button/theme-button.component';
-import { ListModeTemplateComponent } from './templates/list-mode-template/list-mode-template.component';
+import {ListModeTemplateComponent} from './templates/list-mode-template/list-mode-template.component';
+import {TemplatePreviewModalComponent} from './templates/template-preview-modal/template-preview-modal.component';
 
 const appRoutes: Routes = [
     {
@@ -119,7 +120,8 @@ const appRoutes: Routes = [
     InputBadgeComponent,
     ViewModeButtonComponent,
     ThemeButtonComponent,
-    ListModeTemplateComponent
+    ListModeTemplateComponent,
+    TemplatePreviewModalComponent
   ],
   imports: [
     BrowserModule,
@@ -133,7 +135,8 @@ const appRoutes: Routes = [
     ServiceWorkerModule.register('./ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [RleService, GameOfLifeService, TemplatesService, ConfigService, TypeaheadService, SaveSearchService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [TemplatePreviewModalComponent]
 })
 export class AppModule {
   constructor() {
