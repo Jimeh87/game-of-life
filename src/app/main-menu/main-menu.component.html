@@ -11,7 +11,7 @@
           (click)="toggleNav()">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div [ngbCollapse]="navbarCollapsed" class="collapse navbar-collapse">
+  <div [ngbCollapse]="navbarCollapsed" class="collapse navbar-collapse d-flex justify-content-between">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/editor" (click)="toggleNav()">
@@ -39,5 +39,37 @@
         </div>
       </li>
     </ul>
+    <button class="btn btn-dark d-none d-md-block"
+            [ngbPopover]="helpContent"
+            [popoverTitle]="helpTitle"
+            container="body"
+            placement="bottom-right"
+            title="What is this all about?">
+      <i class="fa fa-question-circle"></i>
+    </button>
+    <ng-template #helpTitle>What is this all about?</ng-template>
+    <ng-template #helpContent>
+      <p>
+        This is a cellular automation zero-player game invented by mathamatician John
+        Conway in 1970 called Conway's game of life.
+      </p>
+      <p>
+        The universe of this game is an infinite 2D grid of cells that can be either alive or dead. On each turn, the
+        neighbours of a given cell determine if the cell is alive or dead based on a series of rules. For a more
+        in-depth explanation, check out
+        <a href="https://www.youtube.com/watch?v=CgOcEZinQ2I" target="_blank">this video</a>
+        or the <a href="http://www.conwaylife.com/wiki/Conway%27s_Game_of_Life" target="_blank">LifeWiki page</a>.
+      </p>
+      <p>
+        Try clicking on some cells on the <a routerLink="/editor">editor</a> and then hit the play button to see how
+        they interact together.
+      </p>
+      <p>
+        Check out what other CGoL creators have already created by going to <a routerLink="/patterns">patterns</a>.
+      </p>
+      <p>
+        Go <a routerLink="/about/site">here</a> for more information on this site.
+      </p>
+    </ng-template>
   </div>
 </nav>
