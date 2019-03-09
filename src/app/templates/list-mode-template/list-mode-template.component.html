@@ -7,12 +7,13 @@
       </button>
     </ng-container>
     <ng-template #showTemplate>
-      <div class="row">
+      <div class="row" (dblclick)="openPreview()">
         <div class="col-10">
           <div>
-            <h5>{{ getTemplate().getName() }}
+            <h5>{{ getTemplate().getName() }}</h5>
+            <h5>
+              <small class="text-muted" [innerHTML]="getTemplate().getComments().join(' ') | linkify"></small>
             </h5>
-            <h5><small class="text-muted" [innerHTML]="getTemplate().getComments().join(' ') | linkify"></small></h5>
           </div>
           <div *ngIf="getTemplate().getAuthor()">
             <small class="text-muted">- {{ getTemplate().getAuthor() }}</small>
@@ -33,9 +34,15 @@
             </button>
             <button ngbDropdownItem
                     class="title-dropdown-item dropdown-item clickable"
+                    placement="left"
+                    container="body"
+                    [ngbTooltip]="doubleClick"
                     (click)="openPreview()">
               <span class="fa fa-fw fa-window-maximize"></span> Preview
             </button>
+            <ng-template #doubleClick>
+              <span class="fa fa-fw fa-mouse-pointer"></span> Double click
+            </ng-template>
           </div>
         </div>
       </div>

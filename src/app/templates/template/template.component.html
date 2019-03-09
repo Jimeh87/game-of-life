@@ -7,15 +7,22 @@
       </button>
     </ng-container>
     <ng-template #showTemplate>
-      <app-game-board [template]="getTemplatePromise()" [preview]="preview" class="w-100 h-100"></app-game-board>
+      <app-game-board [template]="getTemplatePromise()" [preview]="preview" class="w-100 h-100"
+                      (dblclick)="openPreview()"></app-game-board>
       <div ngbDropdown placement="top" container="body" class="title shadow p-1 rounded">
-        <span ngbDropdownToggle>{{ getTemplate().getName() }}</span>
+        <span class="unselectable" ngbDropdownToggle>{{ getTemplate().getName() }}</span>
         <div ngbDropdownMenu class="title-dropdown dropdown-menu mb-2">
           <button ngbDropdownItem
                   class="title-dropdown-item dropdown-item clickable"
-                  (click)="toggleDetails()">
-            <span class="fa fa-fw fa-info-circle"></span> About
+                  placement="right"
+                  container="body"
+                  (click)="openPreview()"
+                  [ngbTooltip]="doubleClick">
+            <span class="fa fa-fw fa-window-maximize"></span> Preview
           </button>
+          <ng-template #doubleClick>
+            <span class="fa fa-fw fa-mouse-pointer"></span> Double click
+          </ng-template>
           <button ngbDropdownItem
                   class="title-dropdown-item dropdown-item clickable"
                   [routerLink]="['/editor', 'template', getTemplate().getFileName()]">
@@ -23,8 +30,8 @@
           </button>
           <button ngbDropdownItem
                   class="title-dropdown-item dropdown-item clickable"
-                  (click)="openPreview()">
-            <span class="fa fa-fw fa-window-maximize"></span> Preview
+                  (click)="toggleDetails()">
+            <span class="fa fa-fw fa-info-circle"></span> About
           </button>
         </div>
       </div>
