@@ -13,3 +13,12 @@
 body {
   overflow-x: hidden;
 }
+
+.template-preview-modal > .modal-dialog {
+  max-width: 90% !important;
+  width: 90% !important;
+}
+
+.template-preview-modal > .modal-dialog > .modal-content {
+  border-radius: 0 !important;
+}

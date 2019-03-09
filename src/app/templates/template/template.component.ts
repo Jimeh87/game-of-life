@@ -5,6 +5,8 @@ import {Router} from '@angular/router';
 import {ConfigService} from '../../config/config.service';
 import {TemplatesService} from '../templates.service';
 import {ThemeService} from '../../config/theme.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {TemplatePreviewModalComponent} from '../template-preview-modal/template-preview-modal.component';
 
 @Component({
   selector: 'app-template',
@@ -34,7 +36,8 @@ export class TemplateComponent implements OnInit {
               private templatesService: TemplatesService,
               private router: Router,
               private configService: ConfigService,
-              private themeService: ThemeService) {
+              private themeService: ThemeService,
+              private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
@@ -63,4 +66,12 @@ export class TemplateComponent implements OnInit {
     return new Promise<Template>((resolve) => resolve(this.template));
   }
 
+  openPreview() {
+    const modalRef = this.modalService.open(TemplatePreviewModalComponent, {
+      centered: true,
+      windowClass: 'template-preview-modal'
+    });
+    modalRef.componentInstance.template = this.template;
+    modalRef.componentInstance.theme = this.themeService.activeTheme;
+  }
 }

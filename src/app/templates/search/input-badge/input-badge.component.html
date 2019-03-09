@@ -12,10 +12,10 @@
            (keypress)="keyPressed($event)"
            #tagInput>
     <select *ngIf="tagType.DROP_DOWN === tag.get('type').value"
-           formControlName="value"
-           class="form-control form-control-sm custom-select custom-select-sm col-lg-9 col-md-7 col-6"
-           (keypress)="keyPressed($event)"
-           #tagInput>
+            formControlName="value"
+            class="form-control form-control-sm custom-select custom-select-sm col-lg-9 col-md-7 col-6"
+            (keypress)="keyPressed($event)"
+            #tagInput>
       <option [ngValue]="''">
         Select {{tag.get('key').value}}
       </option>
@@ -28,7 +28,7 @@
               class="d-inline-flex align-items-center justify-content-center h-100 w-100 close"
               aria-label="Close"
               (click)="removeTag()">
-        <span class="fa fa-times"></span>
+        <span class="fa fa-times text-white"></span>
       </button>
     </div>
   </div>

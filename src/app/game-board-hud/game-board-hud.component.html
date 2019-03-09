@@ -37,6 +37,10 @@
   </div>
 </div>
 
+<div id="close-control" *ngIf="dismissFn" (click)="dismissFn()" style="position: absolute; top: 10px; right: 10px;">
+  <i class="fa control fa-times"></i>
+</div>
+
 <div class="controls text-center">
   <i class="fa control float-left"
      [title]="isGameStarted() ? actionTitle[GCA.STOP_GAME] : actionTitle[GCA.START_GAME]"

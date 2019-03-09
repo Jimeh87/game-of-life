@@ -21,6 +21,11 @@
                   [routerLink]="['/editor', 'template', getTemplate().getFileName()]">
             <span class="fa fa-fw fa-pencil-square-o"></span> Editor
           </button>
+          <button ngbDropdownItem
+                  class="title-dropdown-item dropdown-item clickable"
+                  (click)="openPreview()">
+            <span class="fa fa-fw fa-window-maximize"></span> Preview
+          </button>
         </div>
       </div>
     </ng-template>
