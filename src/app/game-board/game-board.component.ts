@@ -19,7 +19,7 @@ import {Coordinate} from '../algorithm/coordinate';
 import {Generation} from '../algorithm/generation';
 import {merge, Subscription} from 'rxjs';
 import {Line} from '../algorithm/line';
-import {WindowService} from "../window.service";
+import {WindowService} from '../window.service';
 
 @Component({
   selector: 'app-game-board',
@@ -37,7 +37,8 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
   @Input()
   private fullScreen = false;
 
-  @ViewChild('golCanvas') canvasRef: ElementRef;
+  @ViewChild('golCanvas')
+  private canvasRef: ElementRef;
   private canvas: HTMLCanvasElement;
   private ctx: CanvasRenderingContext2D;
 
