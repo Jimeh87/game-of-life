@@ -1,5 +1,5 @@
 <div ngbDropdown [formGroup]="formGroup">
-  <button class="btn btn-sm btn-light" id="themes" ngbDropdownToggle>Theme: {{ getActive() }}</button>
+  <button class="btn btn-sm btn-light" id="themes" ngbDropdownToggle>Theme<span class="d-none d-sm-inline-block">: {{ getActive() }}</span></button>
   <div ngbDropdownMenu class="dropdown-menu">
     <a ngbDropdownItem class="dropdown-item clickable" *ngFor="let theme of getThemes() | sort:'name'" (click)=setTheme(theme.name)>
       <i class="fa" [ngClass]="theme.name !== formGroup.get('theme').value ? 'fa-circle-o' : 'fa-check-circle-o'"></i>

@@ -1,5 +1,5 @@
 <div ngbDropdown class="d-inline-block" [formGroup]="formGroup">
-  <button class="btn btn-sm btn-light" id="viewMode" ngbDropdownToggle>View Mode: {{ getActive() }}</button>
+  <button class="btn btn-sm btn-light" id="viewMode" ngbDropdownToggle>View mode<span class="d-none d-sm-inline-block">: {{ getActive() }}</span></button>
   <div ngbDropdownMenu class="dropdown-menu">
     <a ngbDropdownItem class="dropdown-item clickable" *ngFor="let viewMode of viewModes" (click)=setMode(viewMode.key)>
       <i class="fa"
