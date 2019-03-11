@@ -105,6 +105,15 @@ export class ThemeDataService {
       border: true,
       borderColor: 'rgba(1,21,146,0)',
       mutable: false
+    }),
+    new Theme({
+      name: 'Bumble Bee',
+      generations: true,
+      alive: ['#fdef17', '#2a2519', '#fdef17', '#2a2519', '#fdef17'],
+      dead: ['#7db249'],
+      border: true,
+      borderColor: '#38610e',
+      mutable: false
     })
   ];
 
