@@ -18,7 +18,6 @@ import {GameBoardStyleConfig} from '../config/game-board-style-config';
 import {Coordinate} from '../algorithm/coordinate';
 import {Generation} from '../algorithm/generation';
 import {merge, Subscription} from 'rxjs';
-import {Line} from '../algorithm/line';
 import {WindowService} from '../window.service';
 
 @Component({
@@ -42,7 +41,6 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
   private canvas: HTMLCanvasElement;
   private ctx: CanvasRenderingContext2D;
 
-  private mouseDown = false;
   private lastSelectedCell: { x: number, y: number } = null;
 
   private gbConfig: GameBoardConfig;
@@ -121,12 +119,12 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     }
   }
 
-  onScreenResize() {
+  private onScreenResize() {
     this.canvasFillContainer();
     this.drawWorld();
   }
 
-  initCanvas() {
+  private initCanvas() {
     this.canvas = this.canvasRef.nativeElement;
     this.ctx = this.canvas.getContext('2d');
   }
@@ -143,7 +141,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     this.gbConfig.silent = false;
   }
 
-  canvasFitToBoundingBox(boundingBox: { x: number, y: number }) {
+  private canvasFitToBoundingBox(boundingBox: { x: number, y: number }) {
     this.gbConfig.silent = true;
     const maxZoom = 10;
     this.gbConfig.zoom =
@@ -157,7 +155,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     this.gbConfig.silent = false;
   }
 
-  drawWorld() {
+  private drawWorld() {
     this.gbConfig.silent = true;
 
     // Fill background
@@ -180,7 +178,7 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     this.gbConfig.silent = false;
   }
 
-  drawCell(x: number, y: number, alive: boolean, generation: number) {
+  private drawCell(x: number, y: number, alive: boolean, generation: number) {
     const rectX = this.gbConfig.cellSpace + (this.gbConfig.cellSpace * x) + (this.gbConfig.cellSize * x);
     const rectY = this.gbConfig.cellSpace + (this.gbConfig.cellSpace * y) + (this.gbConfig.cellSize * y);
     const rectW = this.gbConfig.cellSize;
@@ -205,23 +203,9 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     this.ctx.fillRect(rectX, rectY, rectW, rectH);
   }
 
-  toggleCell(cell: { x: number, y: number }) {
-    const toggleCellFn = (x, y) => this.gameOfLifeService.toggleCell(x + this.gbConfig.xScreenOffset, y + this.gbConfig.yScreenOffset);
-    if (this.cellMissed(cell)) {
-      Line.draw(
-        this.lastSelectedCell.x, this.lastSelectedCell.y,
-        cell.x, cell.y,
-        toggleCellFn);
-    } else {
-      toggleCellFn(cell.x, cell.y);
-    }
-
+  private toggleCell(cell: { x: number, y: number }) {
+    this.gameOfLifeService.toggleCell(cell.x + this.gbConfig.xScreenOffset, cell.y + this.gbConfig.yScreenOffset);
     this.lastSelectedCell = cell;
-  }
-
-  private cellMissed(cell: { x: number, y: number }): boolean {
-    return this.lastSelectedCell
-      && (Math.abs(this.lastSelectedCell.x - cell.x) > 1 || Math.abs(this.lastSelectedCell.y - cell.y) > 1);
   }
 
   onCanvasEntered() {
@@ -233,16 +217,8 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     return false;
   }
 
-  onCanvasMouseUp(event: MouseEvent) {
-    this.mouseDown = false;
-    this.lastSelectedCell = null;
-
-    return false;
-  }
-
   onCanvasExited() {
     if (!this.preview) {
-      this.mouseDown = false;
       return;
     }
     this.gameOfLifeService.clear();
@@ -253,42 +229,26 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
     return false;
   }
 
-  onCanvasMouseDown(event: MouseEvent) {
+  onDraw(position: { x: number; y: number }) {
     if (this.preview) {
       return;
     }
-    this.toggleCell(this.getSelectedCell(event));
-    this.mouseDown = true;
-
-    return false;
-  }
-
-  onCanvasMouseMove(event: MouseEvent) {
-    if (this.mouseDown) {
-      const cell: { x: number, y: number } = this.getSelectedCell(event);
-      if (cell.x !== this.lastSelectedCell.x || cell.y !== this.lastSelectedCell.y) {
-        this.toggleCell(cell);
-      }
+    const cell = this.getSelectedCell(position);
+    if (!this.lastSelectedCell || cell.x !== this.lastSelectedCell.x || cell.y !== this.lastSelectedCell.y) {
+      this.toggleCell(cell);
     }
-
-    return false;
   }
 
-  private getSelectedCell(event: MouseEvent): { x: number, y: number } {
-    const pos = this.getMousePos(event);
-    const x = Math.ceil(((pos.x) / (this.gbConfig.cellSize + this.gbConfig.cellSpace)) - 1);
-    const y = Math.ceil(((pos.y) / (this.gbConfig.cellSize + this.gbConfig.cellSpace)) - 1);
+  onPencilUp() {
+    this.lastSelectedCell = null;
+  }
+
+  private getSelectedCell(position: { x: number; y: number }): { x: number, y: number } {
+    const x = Math.ceil(((position.x) / (this.gbConfig.cellSize + this.gbConfig.cellSpace)) - 1);
+    const y = Math.ceil(((position.y) / (this.gbConfig.cellSize + this.gbConfig.cellSpace)) - 1);
 
     return {x: x, y: y};
   };
-
-  getMousePos(event) {
-    const rect = this.canvas.getBoundingClientRect();
-    return {
-      x: (event.clientX - rect.left) / (rect.right - rect.left) * this.canvas.width,
-      y: (event.clientY - rect.top) / (rect.bottom - rect.top) * this.canvas.height
-    };
-  }
 
   ngOnDestroy(): void {
     if (this.cellStateSubscription != null) {
@@ -298,5 +258,4 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
       this.gameBoardConfigSubscription.unsubscribe();
     }
   }
-
 }

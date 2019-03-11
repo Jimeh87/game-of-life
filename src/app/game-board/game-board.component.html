@@ -1,8 +1,6 @@
 <canvas class="clickable" #golCanvas
-        (mouseenter)="onCanvasEntered();"
-        (mouseleave)="onCanvasExited();"
-        (mousedown)="onCanvasMouseDown($event);"
-        (mouseup)="onCanvasMouseUp($event);"
-        (mousemove)="onCanvasMouseMove($event);"
-        (click)="false"
+        (mouseenter)="onCanvasEntered()"
+        (mouseleave)="onCanvasExited()"
+        (appPencil)="onDraw($event)"
+        (pencilUp)="onPencilUp()"
 ></canvas>

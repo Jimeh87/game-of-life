@@ -37,6 +37,7 @@ import {ViewModeButtonComponent} from './templates/view-mode-button/view-mode-bu
 import {ThemeButtonComponent} from './templates/theme-button/theme-button.component';
 import {ListModeTemplateComponent} from './templates/list-mode-template/list-mode-template.component';
 import {TemplatePreviewModalComponent} from './templates/template-preview-modal/template-preview-modal.component';
+import { PencilDirective } from './pencil/pencil.directive';
 
 const appRoutes: Routes = [
     {
@@ -121,7 +122,8 @@ const appRoutes: Routes = [
     ViewModeButtonComponent,
     ThemeButtonComponent,
     ListModeTemplateComponent,
-    TemplatePreviewModalComponent
+    TemplatePreviewModalComponent,
+    PencilDirective
   ],
   imports: [
     BrowserModule,
