@@ -1,13 +1,14 @@
-import {Directive, ElementRef, EventEmitter, HostListener, Output} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, HostListener, Input, Output} from '@angular/core';
 import {Line} from '../algorithm/line';
 
 @Directive({
   selector: '[appPencil]'
 })
 export class PencilDirective {
+  @Input()
+  pencilDisabled = false;
   @Output('appPencil')
   pencilPositionEvent = new EventEmitter<{ x: number, y: number }>();
-
   @Output()
   pencilUp = new EventEmitter<void>();
 
@@ -36,12 +37,18 @@ export class PencilDirective {
 
   @HostListener('mouseleave')
   onMouseLeave() {
+    if (this.pencilDisabled) {
+      return;
+    }
     this.mouseDown = false;
     return false;
   }
 
   @HostListener('mousedown', ['$event'])
   private onMouseDown(event: MouseEvent) {
+    if (this.pencilDisabled) {
+      return;
+    }
     this.mouseDown = true;
     this.updatePencilPosition(event);
     return false;
@@ -49,12 +56,18 @@ export class PencilDirective {
 
   @HostListener('mouseup')
   private onMouseUp() {
+    if (this.pencilDisabled) {
+      return;
+    }
     this.mouseDown = false;
     return false;
   }
 
   @HostListener('mousemove', ['$event'])
   private onMouseMove(event: MouseEvent) {
+    if (this.pencilDisabled) {
+      return;
+    }
     if (this.mouseDown) {
       this.updatePencilPosition(event);
     }
@@ -63,6 +76,9 @@ export class PencilDirective {
 
   @HostListener('touchstart', ['$event'])
   private onTouchStart(event: TouchEvent) {
+    if (this.pencilDisabled) {
+      return;
+    }
     this.mouseDown = true;
     this.updatePencilPosition(event);
     event.stopPropagation();
@@ -71,6 +87,9 @@ export class PencilDirective {
 
   @HostListener('touchmove', ['$event'])
   private onTouchMove(event: TouchEvent) {
+    if (this.pencilDisabled) {
+      return;
+    }
     if (this.mouseDown) {
       this.updatePencilPosition(event);
     }
@@ -80,6 +99,9 @@ export class PencilDirective {
 
   @HostListener('touchend', ['$event'])
   private onTouchEnd(event: MouseEvent) {
+    if (this.pencilDisabled) {
+      return;
+    }
     this.mouseDown = false;
     event.stopPropagation();
     return false;
@@ -87,6 +109,9 @@ export class PencilDirective {
 
   @HostListener('click')
   private onClick() {
+    if (this.pencilDisabled) {
+      return;
+    }
     return false;
   }
 

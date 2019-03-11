@@ -28,7 +28,7 @@ import {WindowService} from '../window.service';
 export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
 
   @Input()
-  private preview = false;
+  preview = false;
 
   @Input()
   private template: Promise<Template>;
@@ -230,9 +230,6 @@ export class GameBoardComponent implements OnInit, AfterViewInit, OnChanges, OnD
   }
 
   onDraw(position: { x: number; y: number }) {
-    if (this.preview) {
-      return;
-    }
     const cell = this.getSelectedCell(position);
     if (!this.lastSelectedCell || cell.x !== this.lastSelectedCell.x || cell.y !== this.lastSelectedCell.y) {
       this.toggleCell(cell);
