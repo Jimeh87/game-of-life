@@ -1,6 +1,6 @@
-#N Game of life
+#N Game of Life
 #O Jim Rennie
-#C The game of life title.
+#C The Game of Life title.
 x = 79, y = 9, rule = B3678/S34678
 b5o3b5o3b5o3b5o4b5o3b5o4b3o5b3o3b5o3b5o$o5bobo5bobo2bo2bobo5bo2bo5bobo
 5bo2bo3bo3bo3bobo5bobo5bo$o5bobo5bobo2bo2bobo5bo2bo5bobo5bo2bo3bo3bo3b
