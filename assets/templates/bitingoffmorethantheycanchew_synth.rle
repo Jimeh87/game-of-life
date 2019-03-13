@@ -1,7 +1,7 @@
 #N Biting off more than they can chew_synth
 #O Mark D. Niemiec
 #C Glider synthesis of biting off more than they can chew.
-#C http://home.interserv.com/~mniemiec/objname.htm#B
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#B
 x = 122, y = 108, rule = 23/3
 98bo23b$98bobo21b$98b2o2b2o18b$30b2o18b2o18b2o18b2o9b2o7b2o10b$31bo19b
 o19bo19bo11bo7bo7bo2b$10b2o19bobo17bobo17bobo4bo12bobo4bo12bobo4bobob$

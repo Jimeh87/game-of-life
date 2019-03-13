@@ -1,7 +1,7 @@
 #N Loop_synth
 #O Mark D. Niemiec
 #C Glider synthesis of loop.
-#C http://home.interserv.com/~mniemiec/objname.htm#C
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#C
 x = 79, y = 111, rule = 23/3
 13bo42bo22b$14bo39bobo7bo14b$12b3o40b2o6bo10b2ob2o$63b3o9bobob$10b2o
 63bo2bo$9bobo24b3o17b3o2b2o13b2ob$11bo48b2o17b$62bo16b10$11b2o66b$10bo

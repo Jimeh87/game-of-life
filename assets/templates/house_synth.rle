@@ -1,7 +1,7 @@
 #N House_synth
 #O Mark D. Niemiec
 #C Glider syntheses of house.
-#C http://home.interserv.com/~mniemiec/2gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-2.htm
 x = 147, y = 68, rule = 23/3
 22b3o16bobo18b3o16bobo18b3o37b3o2b$b2o19bo2bo16b2o18bo2bo16b2o18bo2bo
 36bo2bob$obo20bo2bo15bo22bo16bo64b$2bo59bo37bo41bo4b$22bo19b2o18bobo

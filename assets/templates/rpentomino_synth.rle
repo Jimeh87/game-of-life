@@ -1,7 +1,7 @@
 #N R-pentomino_synth
 #O Mark D. Niemiec
 #C Glider synthesis of R-pentominoes.
-#C http://home.interserv.com/~mniemiec/3gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-3.htm
 x = 113, y = 108, rule = 23/3
 49bo63b$50bo62b$48b3o62b4$28b3o19b3o15b3o42b$28bo2bo18bo17bo2bo41b$11b
 obo15bo21bo17bo43b$7bo3b2o100b$8b2o2bo35b3o62b$7b2o41bo62b$49bo63b2$

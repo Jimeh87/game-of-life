@@ -1,7 +1,7 @@
 #N Buckaroo_synth
 #O Mark D. Niemiec
 #C Glider synthesis of buckaroo.
-#C http://home.interserv.com/~mniemiec/objname.htm#B
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#B
 x = 107, y = 45, rule = 23/3
 53bo53b$54b2o51b$53b2o52b$24b2o18b2o12bo11bo13b2o21b$25bo19bo11bo12bob
 o12bo21b$4b2o19bobo17bobo9b3o10b2o13bobo6bo12b$5b2o19b2o18b2o38b2o4bob

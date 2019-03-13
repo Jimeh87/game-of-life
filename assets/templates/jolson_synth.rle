@@ -1,7 +1,7 @@
 #N Jolson_synth
 #O Mark D. Niemiec
 #C Glider syntheses of Jolson.
-#C http://home.interserv.com/~mniemiec/objname.htm#a
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#a
 x = 100, y = 100, rule = 23/3
 64bo35b$64bobob3o22b2o2b2ob$64b2o2bo24b2o2b2ob$69bo30b2$59b2o39b$58bob
 o39b$60bo39b10$7bo92b$5b2o93b$6b2o44bo47b$bobo49b2o45b$2b2o48b2o46b$2b

@@ -1,7 +1,7 @@
 #N Great on off_synth
 #O Mark D. Niemiec
 #C Glider synthesis of pincers.
-#C http://home.interserv.com/~mniemiec/objname.htm#P
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#P
 x = 80, y = 98, rule = 23/3
 76bo3b$25b3o17b3o28b3ob$6bo72bo$4bobo16bo5bo13bo5bo26b2obo$b2o2b2o16bo
 5bo13bo5bo22b2obo2bob$obo20bo5bo13bo5bo23bobo4b$2bo70bo2bo3b$25b3o17b

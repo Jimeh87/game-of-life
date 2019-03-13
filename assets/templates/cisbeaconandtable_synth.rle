@@ -1,7 +1,7 @@
 #N Cis-beacon and table_synth
 #O Mark D. Niemiec
 #C Glider synthesis of cis-beacon and table.
-#C http://home.interserv.com/~mniemiec/p2osc.htm
+#C http://www.conwaylife.com/ref/mniemiec/p2osc.htm
 x = 107, y = 49, rule = 23/3
 39b2o66b$38b2o46bo3bo16b$35b2o3bo46bobo17b$34bobo8bo5bo33b3ob3o15b$36b
 o7b2o3b2o12b2o38b2o2b$44bobo3b2o11bo39bo3b$66bo16b2o21bo$65b2o17b2o19b

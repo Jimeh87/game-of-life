@@ -1,7 +1,7 @@
 #N Unicycle_synth
 #O Mark D. Niemiec
 #C Glider synthesis of unicycle.
-#C http://home.interserv.com/~mniemiec/objname.htm#U
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#U
 x = 146, y = 91, rule = 23/3
 20bo125b$18bobo125b$19b2o125b$13bo132b$14b2o5bo124b$13b2o6bobo122b$21b
 2o18b2o28b2o18b2o28b2o18b2o3b$25bo11b2obo26b2obo16b2obo26b2obo16b2obo

@@ -1,7 +1,7 @@
 #N Moose antlers_synth
 #O Mark D. Niemiec
 #C Glider syntheses of moose antlers.
-#C http://home.interserv.com/~mniemiec/4gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-4.htm
 x = 142, y = 114, rule = 23/3
 88bo53b$89b2o49b2o$88b2o49bobo$139bo2b$138b2o2b$137bo4b$138b2o2b$139bo
 2b$139bobo$140b2o3$90b3o2b2o45b$92bob2o46b$91bo4bo45b42$134b2o6b$134bo

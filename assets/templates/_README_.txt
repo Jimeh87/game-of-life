@@ -1,8 +1,8 @@
 == CONWAYLIFE.COM PATTERN DATABASE ==
-Database compiled on: Sun, May 14 2017
+Database compiled on: Tue, Mar 12 2019
 Downloaded from: www.conwaylife.com/patterns/all.zip
 
-This pattern database contains 1555 pattern files for several hundred patterns in Conway's Game of Life and related cellular automata. All small patterns are provided in the RLE file format, and most patterns are provided in multiple other file formats as well. Large patterns are provided in macrocell file format. The file formats are:
+This pattern database contains 2243 pattern files for several hundred patterns in Conway's Game of Life and related cellular automata. All small patterns are provided in the RLE file format, and most patterns are provided in multiple other file formats as well. Large patterns are provided in macrocell file format. The file formats are:
 
 RLE (.rle): A short way on encoding patterns, but not very human-readable. See www.conwaylife.com/wiki/RLE
 Macrocell (.mc): A very efficient format for storing large patterns. See www.conwaylife.com/wiki/Macrocell

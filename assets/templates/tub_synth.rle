@@ -1,7 +1,7 @@
 #N Tub_synth
 #O Mark D. Niemiec
 #C Glider synthesis of tubs.
-#C http://home.interserv.com/~mniemiec/3gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-3.htm
 x = 147, y = 74, rule = 23/3
 125bo21b$126b2o19b$3bo3bo35bo3bo77b2o20b$4b2obobo34b2obobo97b$3b2o2b2o
 16bo17b2o2b2o16bo39bo18bo4b3o13bob$24bobo37bobo18bobo16bobo17b2o3bo14b

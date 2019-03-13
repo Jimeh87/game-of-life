@@ -1,7 +1,7 @@
 #N Long long hook with tail_synth
 #O Mark D. Niemiec
 #C Glider synthesis of long long hook with tail.
-#C http://home.interserv.com/~mniemiec/still.htm
+#C http://www.conwaylife.com/ref/mniemiec/still.htm
 x = 108, y = 91, rule = 23/3
 39bo68b$37bobo68b$38b2o68b$45bo62b$45bobo60b$45b2o61b$61b2o3b2o13b2o3b
 2o13b2o3b2o$46bo15bo2bobo14bo2bobo14bo2bobo$36b2o8b2o3bo10bobobo15bobo

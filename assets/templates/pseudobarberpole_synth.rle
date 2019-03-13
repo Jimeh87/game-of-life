@@ -1,10 +1,10 @@
-#N Pseudo-barberpole_synth
-#O Goldtiger997
-#C Glider synthesis of the pseudo-barberpole.
-#C http://conwaylife.com/wiki/Pseudo-barberpole
-#C http://www.conwaylife.com/forums/viewtopic.php?p=42887#p42887
-x = 63, y = 67, rule = B3/S23
-2bo$3b2o$2b2o2$60bo$60bobo$60b2o$50bo$48b2o$49b2o2$12bo$13b2o$12b2o3$
-7bobo$8b2o$8bo2$42bo$43bo$41b3o6$45bo$45bobob3o$45b2o2bo$50bo3$35bo$
-34bo$31b2ob3o$30bobo$32bo7$18bo$16bobo$17b2o2$24b3o$26bo$25bo$4bo$4b2o
-19b2o$3bobo19bobo$25bo2$53b2o$53bobo$53bo5$3o$2bo$bo!
+ #N pseudobarberpole_synth
+ #O Martin Grant
+ #C 13-glider synthesis of Pseudo-barberpole
+ #C http://www.conwaylife.com/wiki/Pseudo_barberpole
+ x = 106, y = 27, rule = B3/S23
+ 72bo$70b2o$71b2o4$70bo$59bo7bo2bobo$60b2o3bobo2b2o$16bo42b2o5b2o$15bo$
+ 15b3o$43b2o28b2o29b2o$14bo29bo29bo30bo$5bobo5b2o26b3o15bo11b3o28b2o$6b
+ 2o5bobo25bo18bo10bo$6bo30b2o19b3o6b2o31bobo$9bo27b2o28b2o$8b2o88bobo$
+ 8bobo41bo4b3o$35b2o15b2o5bo5b2o29bobo$35bo15bobo4bo6bo30bo$5b2o26bobo
+ 27bobo28bo$4b2o27b2o28b2o29b2o$b2o3bo$obo$2bo!

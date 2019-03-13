@@ -1,7 +1,7 @@
 #N Shillelagh_synth
 #O Mark D. Niemiec
 #C Glider syntheses of shillelaghs.
-#C http://home.interserv.com/~mniemiec/4gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-4.htm
 x = 154, y = 118, rule = 23/3
 151b3o$11bo141bo$2bo6b2o141bob$3b2o5b2o142b$2b2o150b$23b2o38b2o38b2o
 38b2o9b$3bo3b2o15bo39bo39bo39bo9b$3b2o2bobo13bo17b2o2b2o16bo19bo19bo

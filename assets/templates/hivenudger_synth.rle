@@ -1,7 +1,7 @@
 #N Hivenudger_synth
 #O Mark D. Niemiec
 #C Glider synthesis of a hivenudger.
-#C http://home.interserv.com/~mniemiec/sship.htm
+#C http://www.conwaylife.com/ref/mniemiec/sship.htm
 x = 154, y = 109, rule = 23/3
 37bo116b$35b2o117b$36b2o116b6$bo152b$2bo151b$3o151b5$10bo143b$10b2o2b
 3o137b$9bobo2bo139b$15bo116bo21b$130b2o22b$90bo40b2o21b$89bo64b$89b3o

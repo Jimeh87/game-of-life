@@ -1,7 +1,7 @@
 #N Paperclip_synth
 #O Mark D. Niemiec
 #C Glider synthesis of paperclips.
-#C http://home.interserv.com/~mniemiec/3gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-3.htm
 x = 149, y = 57, rule = 23/3
 45bo103b$44bo104b$44b3o41bo60b$87bo61b$87b3o59b$131bo17b$84bobo42bo3bo
 15b$7bo17b2o13bobo22b2o18b2o18b2o21bo16b2o2b$8b2o14bo2bo12b2o22bo2bo

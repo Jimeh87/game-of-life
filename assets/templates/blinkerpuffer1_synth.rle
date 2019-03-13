@@ -1,7 +1,7 @@
 #N Blinker puffer 1_synth
 #O Mark D. Niemiec
 #C Glider synthesis of Robert Wainwright's blinker puffer 1.
-#C http://home.interserv.com/~mniemiec/objname.htm#W
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#W
 x = 79, y = 53, rule = 23/3
 35bobo41b$35b2o42b$36bo42b5$19bo59b$2bo17b2o57b$obo16b2o58b$b2o76b$36b
 o42b$35bo43b$35b3o41b$10b2o2b2o63b$11b2obobo62b$10bo3bo64b14$17b2o60b$

@@ -1,7 +1,7 @@
 #N Middleweight spaceship_synth
 #O Mark D. Niemiec
 #C Glider synthesis of middleweight spaceships.
-#C http://home.interserv.com/~mniemiec/3gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-3.htm
 x = 156, y = 105, rule = 23/3
 48bobo105b$49b2o105b$49bo106b$9bobo77bobo64b$10b2o78b2o64b$10bo79bo65b
 $130bobo23b$49b2o80b2o23b$31b3o15b2o2bobo15b3o18bo18b3o17bo19b3o2b$10b

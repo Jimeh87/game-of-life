@@ -1,7 +1,7 @@
 #N Carrier siamese carrier_synth
 #O Mark D. Niemiec
 #C Glider synthesis of carrier siamese carrier.
-#C http://home.interserv.com/~mniemiec/objname.htm#C
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#C
 x = 89, y = 83, rule = 23/3
 8bo80b$9b2o78b$8b2o79b3$69bo19b$68bo20b$64bo3b3o18b$65b2o22b$64b2o23b
 4$42b2o17b2o19b2o5b$42bo2b2o13bobo19bo2b2o2b$44b2o2bo13bo21b2o2bo$47b

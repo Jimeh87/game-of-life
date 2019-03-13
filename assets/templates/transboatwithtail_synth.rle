@@ -1,7 +1,7 @@
 #N Trans-boat with tail_synth
 #O Mark D. Niemiec
 #C Glider syntheses of trans-boat with tails.
-#C http://home.interserv.com/~mniemiec/4gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-4.htm
 x = 148, y = 73, rule = 23/3
 2bo42bobo100b$obo43b2o100b$b2o3bo39bo101b$4b2o17b2o24bobo11b2o38b2o18b
 2o18b2o3b$5b2o4b2o11bo24b2o13bo39bo19bo19bo3b$11bobo10bobo17bobo3bo13b

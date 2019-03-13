@@ -1,7 +1,7 @@
 #N Blockade_synth
 #O Mark D. Niemiec
 #C Glider syntheses of lumps of muck/blockade.
-#C http://home.interserv.com/~mniemiec/2gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-2.htm
 x = 134, y = 96, rule = 23/3
 84bo49b$31b2o50bo27b2o21b$2bo28b2o50b3o25b2o21b$obo131b$b2o131b$32b2o
 17b2o28b2o2b2o25b2o17b2ob$3b2o27b2o17b2o27bobob2o26b2o17b2ob$4b2o76bo

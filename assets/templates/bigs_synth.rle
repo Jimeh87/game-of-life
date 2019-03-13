@@ -1,7 +1,7 @@
 #N Big S_synth
 #O Mark D. Niemiec
 #C Glider syntheses of big S.
-#C http://home.interserv.com/~mniemiec/4gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-4.htm
 x = 152, y = 77, rule = 23/3
 obo39bo109b$b2o40bo108b$bo39b3o108b2$89bo62b$27b2o38b2o20bobo15b2o38b
 2o3b$26bobo37bobo20b2o2b3o10bobo37bobo3b$26bo39bo14bobo9bo12bo20bobo5b

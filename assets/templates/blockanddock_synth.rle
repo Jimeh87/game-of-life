@@ -1,7 +1,7 @@
 #N Block and dock_synth
 #O Mark D. Niemiec
 #C Glider syntheses of block on docks.
-#C http://home.interserv.com/~mniemiec/4gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-4.htm
 x = 120, y = 106, rule = 23/3
 96bo23b$94bobo23b$95b2o23b2$97bo6bo15b$97bobo2b2o16b$97b2o4b2o15b$55bo
 2bo15b2o2b2o34b2o2b2o$53bobo2bobo13bo4bo34bo4bo$54b2o2b2o15b4o36b4ob$

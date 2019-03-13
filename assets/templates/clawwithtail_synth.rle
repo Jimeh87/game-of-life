@@ -1,7 +1,7 @@
 #N Claw with tail_synth
 #O Mark D. Niemiec
 #C Glider syntheses of claw with tail.
-#C http://home.interserv.com/~mniemiec/4gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-4.htm
 x = 106, y = 98, rule = 23/3
 60b2o18b2o18b2o4b$61bo19bo19bo4b$40b2o19bobo17bobo17bob2ob$41b2o19b2o
 18b2o18bo2bo$40bo3b2o40bobo15b2o$44bobo39b2o18b$44bo42bo18b2$88b2o16b$

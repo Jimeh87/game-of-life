@@ -1,7 +1,7 @@
 #N $rats_synth
 #O Mark D. Niemiec
 #C Glider syntheses of $rats.
-#C http://home.interserv.com/~mniemiec/objname.htm#symbol
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#symbol
 x = 154, y = 116, rule = 23/3
 7bo146b$7bobo115bo28b$7b2o117bo27b$5bo118b3o27b$3bobo44bo34bo4bo42bo
 20b$4b2o44bobo30bobo2b2o41b2o21b$44bo5b2o28b2o2b2o3b2o41b2o20b$27b2o

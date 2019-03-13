@@ -1,7 +1,7 @@
 #N Block_synth
 #O Mark D. Niemiec
 #C Block glider synthesis.
-#C http://home.interserv.com/~mniemiec/2gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-2.htm
 x = 148, y = 74, rule = 23/3
 6bo39bo101b$4bobo19b2o16bobo19b2o19bo18b2o38b2o$5b2o19b2o17b2o19b2o14b
 o2bobo18b2o18b2o18b2o$2b2o78b2o2b2o35bob2o21b$bobo38b3o36bobo37bobo3bo

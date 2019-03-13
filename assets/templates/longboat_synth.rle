@@ -1,7 +1,7 @@
 #N Long boat_synth
 #O Mark D. Niemiec
 #C Glider synthesis of long boats.
-#C http://home.interserv.com/~mniemiec/3gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-3.htm
 x = 157, y = 112, rule = 23/3
 12bo144b$12bobo75bo37bo28b$12b2o19b2o38b2o14bo23b2o12bo25b2o2b$33bobo
 17bobo17bobo13b3o21bobo7bo3b3o23bobob$11bo3b2o17bobo12bo3b2o19bobo10bo

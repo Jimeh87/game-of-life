@@ -1,7 +1,7 @@
 #N Integral sign_synth
 #O Mark D. Niemiec
 #C Glider syntheses of integral signs.
-#C http://home.interserv.com/~mniemiec/4gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-4.htm
 x = 141, y = 101, rule = 23/3
 117bo23b$118b2o21b$100bo16b2o22b$101b2o38b$100b2o39b4$99bo41b$100b2o
 39b$99b2o40b2$60bo56bo23b$58b2o56b2o23b$59b2o55bobo22b$29bobo109b$30b

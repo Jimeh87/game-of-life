@@ -1,7 +1,7 @@
 #N Table on table_synth
 #O Mark D. Niemiec
 #C Glider syntheses of table on tables.
-#C http://home.interserv.com/~mniemiec/4gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-4.htm
 x = 118, y = 103, rule = 23/3
 42bo75b$42bobo73b$42b2o74b$95bo22b$37b3o3bo50bo23b$16bobo20bo2b2o50b3o
 21b$16b2o20bo3bobo73b$17bo6bo2bo36bo2bo35b2o9bo2bo$24b4o36b4o4b3o2b2o

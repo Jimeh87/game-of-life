@@ -1,7 +1,7 @@
 #N Block on table_synth
 #O Mark D. Niemiec
 #C Glider syntheses of block on table.
-#C http://home.interserv.com/~mniemiec/4gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-4.htm
 x = 109, y = 51, rule = 23/3
 87bo21b$85bobo21b$86b2o21b2$88bo20b$88bobo18b$80b2o6b2o15bo2bo$81b2o
 22b4o$80bo28b$105b2o2b$83bo21b2o2b$83b2o24b$82bobo24b8$90bo18b$41b2o

@@ -1,7 +1,7 @@
 #N Puffer 2_synth
 #O Mark D. Niemiec
 #C Glider synthesis of puffer 2.
-#C http://home.interserv.com/~mniemiec/objname.htm#P
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#P
 x = 105, y = 117, rule = 23/3
 78bo26b$76b2o27b$77b2o26b2$69bobo33b$69b2o34b$70bo34b2$12bo92b$10bobo
 29b2o28b2o31b$11b2o29b2o28b2o31b$8b2o95b$7bobo95b$9bo95b2$80b2o23b$57b

@@ -1,7 +1,7 @@
 #N Coe ship_synth
 #O Mark D. Niemiec
 #C Glider synthesis of Coe ship.
-#C http://home.interserv.com/~mniemiec/objname.htm#C
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#C
 x = 109, y = 154, rule = b3/s23
 39bobo67b$bo38b2o67b$2bo37bo6bo12b3o4bo5bobo4b3o4bo12b3o4bob$3o43b3o
 11bo2bo2b3o5b2o4bo2bo2b3o11bo2bo2b3o$20b2o18b2o3b2obo11bo4b2obo5bo5bo

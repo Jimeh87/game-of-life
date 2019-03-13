@@ -1,7 +1,7 @@
 #N Crown_synth
 #O Mark D. Niemiec
 #C Glider synthesis of crown.
-#C http://home.interserv.com/~mniemiec/objname.htm#C
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#C
 x = 118, y = 117, rule = 23/3
 89bo28b$89bobo26b$89b2o27b3$90bo27b$90bobo25b$29bobo58b2o26b$29b2o39bo
 bo45b$30bo40b2o13bo31b$22bo48bo13b2o31b$20bobo2bo59bobo30b$21b2o2bobo

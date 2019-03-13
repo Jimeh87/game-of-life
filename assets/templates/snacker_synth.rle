@@ -1,7 +1,7 @@
 #N Snacker_synth
 #O Mark D. Niemiec
 #C Glider synthesis of snacker.
-#C http://home.interserv.com/~mniemiec/objname.htm#S
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#S
 x = 150, y = 137, rule = 23/3
 20b2o18b2o18b2o88b$21bo19bo19bo88b$2o19bobo17bobo17bobo86b$b2o19b2o18b
 2o18b2o86b$o3b2o113bo30b$4bobo111bo31b$4bo113b3o29b$62b2o86b$61bobo86b

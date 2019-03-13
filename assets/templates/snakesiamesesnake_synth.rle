@@ -1,7 +1,7 @@
 #N Snake siamese snake_synth
 #O Mark D. Niemiec
 #C Glider synthesis of snake siamese snake.
-#C http://home.interserv.com/~mniemiec/objname.htm#S
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#S
 x = 141, y = 117, rule = 23/3
 2bo138b$3bo137b$b3o40bo96b$44bobo94b$44b2o95b10$77bo44bo18b$78b2o40b2o
 4bo14b$77b2o42b2o2bo15b$125b3o13b2$45bo80bo14b$44bo80b2o14b$44b3o34b3o

@@ -1,7 +1,7 @@
 #N Trans-mirrored R-bee_synth
 #O Mark D. Niemiec
 #C Glider syntheses of trans-mirrored R-bees.
-#C http://home.interserv.com/~mniemiec/4gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-4.htm
 x = 107, y = 23, rule = 23/3
 88bobo16b$39bobo46b2o17b$40b2o47bo17b$40bo66b2$81bo25b$79bobo2bo22b$5b
 o30b2o42b2o2bobo20b$5bobo15b2o10bobo25b2o19b2o17b2o2b$2bo2b2o15bo2bo

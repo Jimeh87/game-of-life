@@ -1,7 +1,7 @@
 #N Ship_synth
 #O Mark D. Niemiec
 #C Glider synthesis of ships.
-#C http://home.interserv.com/~mniemiec/3gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-3.htm
 x = 148, y = 104, rule = 23/3
 130b2o16b$130bobo15b$25b2o38b2o38b2o23bo14b2ob$5b2o18bobo37bobo15bo21b
 obo18b3o16bobo$3ob2o20b2o19b2o17b2o13bobo3bo18b2o20bo17b2o$2bo3bo36b2o

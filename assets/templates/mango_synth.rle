@@ -1,7 +1,7 @@
 #N Mango_synth
 #O Mark D. Niemiec
 #C Glider synthesis of mangos.
-#C http://home.interserv.com/~mniemiec/3gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-3.htm
 x = 157, y = 106, rule = 23/3
 137bo19b$113b2o21bo16b2o2b$112bo2bo17b2ob3o13bo2bob$93bo19bo2bo15bobo
 18bo2bo$89bob2o21b2o18bo19b2ob$87bobo2b2o63b$47bo40b2o67b$48b2o84b3o

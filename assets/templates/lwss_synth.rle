@@ -1,7 +1,7 @@
 #N Lightweight spaceship_synth
 #O Mark D. Niemiec
 #C Glider synthesis of lightweight spaceships.
-#C http://home.interserv.com/~mniemiec/3gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-3.htm
 x = 149, y = 103, rule = 23/3
 87bobo59b$83bo3b2o30bo29b$48b2o34bo3bo31b2o27b$7b2o39bobo31b3o34b2o28b
 $7bobo29bo8bo38b3o59b$obo4bo32b2o45bo61b$b2o22b3o11b2o3bo20b3o20bo16b

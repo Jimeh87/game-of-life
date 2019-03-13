@@ -1,7 +1,7 @@
 #N Bi-loaf 2_synth
 #O Mark D. Niemiec
 #C Glider syntheses of bi-loaf 2s.
-#C http://home.interserv.com/~mniemiec/4gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-4.htm
 x = 152, y = 46, rule = 23/3
 o34bobo114b$b2o33b2o114b$2o34bo115b2$89bo62b$88bo39b2o22b$6bo20bo39bo
 20b3o16bo18b2ob2o16bo4b$5bo20bobo37bobo37bobo17b4o16bobo3b$5b3o17bo2bo

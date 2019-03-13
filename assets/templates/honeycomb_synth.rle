@@ -1,7 +1,7 @@
 #N Honeycomb_synth
 #O Mark D. Niemiec
 #C Glider synthesis of honeycomb (aka. superbeehive).
-#C http://home.interserv.com/~mniemiec/objname.htm#S
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#S
 x = 116, y = 116, rule = 23/3
 52bobo61b$52b2o62b$53bo62b$92bo23b$52b3o35bobo23b$52bo38b2o23b$53bo62b
 $97bo18b$98b2o16b$87b2o8b2o4bo9bo2b$74bo13b2o4bo7bo9bobob$73bobo11bo5b

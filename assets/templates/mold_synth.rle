@@ -1,7 +1,7 @@
 #N Mold_synth
 #O Mark D. Niemiec
 #C Glider synthesis of mold.
-#C http://home.interserv.com/~mniemiec/objname.htm#M
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#M
 x = 146, y = 106, rule = 23/3
 118bo27b$119bo26b$117b3o26b2$119bo26b$45bo73b2o25b$43b2o36bo36bobo25b$
 37bo6b2o8bo24b2o65b$35bobo14b2o7b2o17b2o20bo19bo4bobo11b2o3b$36b2o10bo

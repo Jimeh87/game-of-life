@@ -1,7 +1,7 @@
 #N Heptapole_synth
 #O Mark D. Niemiec
 #C Glider synthesis of heptapole.
-#C http://home.interserv.com/~mniemiec/p2osc.htm
+#C http://www.conwaylife.com/ref/mniemiec/p2osc.htm
 x = 119, y = 53, rule = 23/3
 2bo15bo100b$obo14bo101b$b2o14b3o99b3$6bobobobo11bo94b$7b2ob2o11bo5b2o
 18b2o18b2o48b$7bo3bo11b3o3bobo17bobo17bobo47b$9bo109b$8b2o21bobo17bobo

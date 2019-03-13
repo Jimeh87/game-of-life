@@ -1,7 +1,7 @@
 #N A for all_synth
 #O Mark D. Niemiec
 #C Glider syntheses of a for alls.
-#C http://home.interserv.com/~mniemiec/objname.htm#a
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#a
 x = 98, y = 97, rule = 23/3
 63bo34b$63b2o2b2o29b$62bobo2bobo28b$48bobo16bo7bobo20b$49b2o24b2o21b$
 49bo26bo21b$65b2o31b$64bobo31b$66bo25b2o4b$91bo2bo3b$91b4o3b$89bobo2bo

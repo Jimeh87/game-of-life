@@ -1,7 +1,7 @@
 #N Schick engine_synth
 #O Mark D. Niemiec
 #C Glider synthesis of Schick engine.
-#C http://home.interserv.com/~mniemiec/objname.htm#S
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#S
 x = 126, y = 76, rule = 23/3
 84bobo9bobo27b$85b2o9b2o28b$85bo6bo4bo28b$90bobo33b$91b2o2bo30b$27bo
 66bo31b$25bobo29b2o28b2o5b3o29b$26b2o29b2o28b2o37b$23b2o92b3o3b3o$22bo

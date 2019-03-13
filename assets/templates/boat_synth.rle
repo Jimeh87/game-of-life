@@ -1,7 +1,7 @@
 #N Boat_synth
 #O Mark D. Niemiec
 #C Glider syntheses of boats.
-#C http://home.interserv.com/~mniemiec/2gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-2.htm
 x = 152, y = 105, rule = 23/3
 10bo141b$11bo140b$9b3o114bo25b$29b2o23bo14b2o21bo16b2o16bo21b2ob$11bo
 17bobo20b2o15bobo14bo4bo17bobo13b3o21bobo$10b2o18bo22b2o15bo13bobo4b3o

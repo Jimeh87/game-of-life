@@ -1,7 +1,7 @@
 #N Integral with hook_synth
 #O Mark D. Niemiec
 #C Glider synthesis of integral with hook.
-#C http://home.interserv.com/~mniemiec/objname.htm#I
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#I
 x = 145, y = 103, rule = 23/3
 128bobo14b$99b2o27b2o9b2o4b$86bo12bobo27bo9bobo3b$86bobo12bo39bo3b$76b
 3o7b2o13bob2o36bob2o$71bo6bo23bobo37bobo$69bobo5bo36b2o29b$70b2o10b2o

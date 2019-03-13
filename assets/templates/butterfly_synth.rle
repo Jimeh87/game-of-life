@@ -1,7 +1,7 @@
 #N Butterfly_synth
 #O Mark D. Niemiec
 #C Glider synthesis of butterflies.
-#C http://home.interserv.com/~mniemiec/3gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-3.htm
 x = 151, y = 75, rule = 23/3
 3bo82bo41bo22b$b2o25b2o38b2o14b2o22b2o16b2o20b2ob$2b2o23bo2bo11bobo7bo
 14bo2bo14b2o20bo2bo16b2o18bo2bo$28b2o13b2o6bo16b2o23bo14b2o38b2ob$43bo

@@ -1,7 +1,7 @@
 #N Extra extra long snake_synth
 #O Mark D. Niemiec
 #C Glider synthesis of extra extra long snake.
-#C http://home.interserv.com/~mniemiec/objname.htm#E
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#E
 x = 70, y = 73, rule = 23/3
 34bo35b$32bobo35b$33b2o3b2o30b$37bobo22b2o6b$39bo9bo12bobo5b$41b3o6bo
 14bo4b$41bo6b3o15bo3b$42bo9bo14bobo$52bobo13b2o$52b2o3b2o11b$57bobo10b

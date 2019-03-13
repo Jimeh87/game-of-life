@@ -1,7 +1,7 @@
 #N Block on boat_synth
 #O Mark D. Niemiec
 #C Glider synthesis of block on boats.
-#C http://home.interserv.com/~mniemiec/3gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-3.htm
 x = 144, y = 94, rule = 23/3
 119bo24b$79bo40b2o22b$40bo39bo38b2o2bo20b$o37bobo37b3o42bobo18b$b2o19b
 o16b2o21bo39bo20b2o17bob$2o19bobo37bobo37bobo37bobo$22b2o38b2o38b2o38b

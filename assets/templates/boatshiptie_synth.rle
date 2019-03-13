@@ -1,7 +1,7 @@
 #N Boat-ship-tie_synth
 #O Mark D. Niemiec
 #C Glider syntheses of boat-ship-ties.
-#C http://home.interserv.com/~mniemiec/4gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-4.htm
 x = 143, y = 112, rule = 23/3
 131bo11b$129b2o12b$130b2o11b5$75bo67b$75bobo28bo36b$75b2o27bobo36b$
 105b2o36b2$71bo71b$37bo19b2o12b2o24b2o15bo22b2o4b$35bobo2b3o14bobo10bo

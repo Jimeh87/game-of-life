@@ -1,7 +1,7 @@
 #N Eater plug_synth
 #O Mark D. Niemiec
 #C Glider synthesis of eater plug.
-#C http://home.interserv.com/~mniemiec/objname.htm#C
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#C
 x = 118, y = 67, rule = 23/3
 22bo77bo17b$20b2o76bobo17b$21b2o76b2o17b2$24bobo16bobo55bo16b$24b2o18b
 2o55bobo14b$15bo9bo18bo10bo45b2o15b$3bo12b2o36bo63b$4bo10b2o37b3o49bo

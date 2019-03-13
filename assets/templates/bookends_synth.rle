@@ -1,7 +1,7 @@
 #N Bookends_synth
 #O Mark D. Niemiec
 #C Glider syntheses of bookends.
-#C http://home.interserv.com/~mniemiec/4gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-4.htm
 x = 126, y = 91, rule = 23/3
 42bo83b$40bobo83b$41b2o83b$45bo80b$43b2o46b2o2b2o29b$44b2o16b2o26bobob
 2o26b2o2b$62bo2bo26bo3bo25bo2bo$63b3o57b3o2$63b3o57b3o$62bo2bo56bo2bo$

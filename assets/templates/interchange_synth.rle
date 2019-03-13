@@ -1,7 +1,7 @@
 #N Interchange_synth
 #O Mark D. Niemiec
 #C Glider syntheses of interchanges.
-#C http://home.interserv.com/~mniemiec/2gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-2.htm
 x = 76, y = 106, rule = 23/3
 24b3o4b3o30b3o4b3o2b2$6b2o2b2o10bo12bo26bo12bo$5bobo2bobo9bo12bo26bo
 12bo$7bo2bo11bo12bo26bo12bo$49bo26b$24b3o4b3o10bo3b3o13b3o4b3o2b$45bob

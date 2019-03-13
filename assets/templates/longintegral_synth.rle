@@ -1,7 +1,7 @@
 #N Long integral_synth
 #O Mark D. Niemiec
 #C Glider synthesis of long integral.
-#C http://home.interserv.com/~mniemiec/objname.htm#L
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#L
 x = 70, y = 73, rule = 23/3
 23bobo44b$24b2o44b$24bo45b17$41bo24b2o2b$42bo23bobob$40b3o25bob$67bo2b
 $43bo23bobo$43b2o23b2o$42bobo5bo19b$49b2o19b$49bobo18b15$23b3o44b$25bo

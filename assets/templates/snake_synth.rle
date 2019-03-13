@@ -1,7 +1,7 @@
 #N Snake_synth
 #O Mark D. Niemiec
 #C Glider syntheses of snakes.
-#C http://home.interserv.com/~mniemiec/4gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-4.htm
 x = 98, y = 74, rule = 23/3
 79bobo16b$79b2o17b$70bo9bo17b$27bobo41bo2bo23b$28b2o39b3o3b2o2bo18b$
 28bo45b2o2bo19b$30bo13b2obo30b3o13b2obo$25b2o2bo14bob2o46bob2o$24b2o3b
