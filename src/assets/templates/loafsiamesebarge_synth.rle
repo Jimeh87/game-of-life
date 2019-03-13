@@ -1,7 +1,7 @@
 #N Loaf siamese barge_synth
 #O Mark D. Niemiec
 #C Glider synthesis of loaf siamese barge.
-#C http://home.interserv.com/~mniemiec/objname.htm#L
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#L
 x = 148, y = 104, rule = 23/3
 129b2o17b$127bobobo16b$125bobobo18b$40bobo83b2o20b$41b2o19bo19bo19bo
 19bo25b$41bo19bobo17bobo17bobo17bobo24b$62b2o18b2o3bo14b2o18b2o20b2o2b

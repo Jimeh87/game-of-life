@@ -1,7 +1,7 @@
 #N Tub with long tail_synth
 #O Mark D. Niemiec
 #C Glider synthesis of tub with long tail.
-#C http://home.interserv.com/~mniemiec/objname.htm#T
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#T
 x = 145, y = 105, rule = 23/3
 83bobo59b$83b2o60b$84bo60b$80bo48bo15b$81bo38bo6b2o16b$79b3o39b2o5b2o
 15b$120b2o23b$101b2o38b2o2b$102bo18bo3b2o15bo2b$101bo19b2o2bobo13bo3b$

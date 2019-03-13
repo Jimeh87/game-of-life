@@ -1,7 +1,7 @@
 #N Middleweight emulator_synth
 #O Mark D. Niemiec
 #C Glider synthesis of middleweight emulator.
-#C http://home.interserv.com/~mniemiec/objname.htm#M
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#M
 x = 127, y = 54, rule = 23/3
 85bo41b$86b2o39b$85b2o40b$91bo35b$4bo84bobo35b$5bo84b2o3bo31b$3b3o3bo
 83b2o32b$7b2o85b2o31b$8b2o117b2$24b2o18b2o18b2o18b2o28b2o7b2o2b$7b2o

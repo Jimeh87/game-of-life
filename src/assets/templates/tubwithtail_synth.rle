@@ -1,7 +1,7 @@
 #N Tub with tail_synth
 #O Mark D. Niemiec
 #C Glider syntheses of tub with tails.
-#C http://home.interserv.com/~mniemiec/4gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-4.htm
 x = 107, y = 104, rule = 23/3
 100b2o5b$99bo2bo4b$76bo23b2o5b$74bobo30b$obo38bo33b2o30b$b2o39b2o38bo
 24b$bo4bo34b2o40bo23b$5bo16b2o21bo16b2o13bo3b3o18b2o3b$5b3o15bo21bobo

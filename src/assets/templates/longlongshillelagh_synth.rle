@@ -1,7 +1,7 @@
 #N Long long shillelagh_synth
 #O Mark D. Niemiec
 #C Glider synthesis of long long shillelagh.
-#C http://home.interserv.com/~mniemiec/still.htm
+#C http://www.conwaylife.com/ref/mniemiec/still.htm
 x = 107, y = 56, rule = 23/3
 84bo22b$3bobo39bo36b2o23b$4b2o37b2o38b2o22b$4bo39b2o61b$34bo72b$8bo26b
 2o70b$7bo26b2o71b$7b3o35bo61b$11b3o29bobo35b2o24b$11bo13b2o17b2o19b2o

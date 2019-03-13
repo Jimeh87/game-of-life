@@ -1,7 +1,7 @@
 #N Eater 1_synth
 #O Mark D. Niemiec
 #C Glider syntheses of eater 1s.
-#C http://home.interserv.com/~mniemiec/2gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-2.htm
 x = 150, y = 105, rule = 23/3
 68bo81b$69bo80b$67b3o80b6$72bobo75b$73b2o75b$73bo61bobo12b$135b2o13b$
 136bo13b2$87bo62b$87bobo60b$40bo46b2o61b$41b2o41bo46bobo16b$40b2o43b2o

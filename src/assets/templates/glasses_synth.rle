@@ -1,7 +1,7 @@
 #N Glasses_synth
 #O Mark D. Niemiec
 #C Glider synthesis of glasses.
-#C http://home.interserv.com/~mniemiec/objname.htm#G
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#G
 x = 132, y = 39, rule = 23/3
 23bo14bo93b$22bo13b2o94b$22b3o12b2o93b2$10bo121b$11bo120b$9b3o14bo105b
 $27bo104b$25b3o12bo63bo27b$38b2o63bo28b$39b2o62b3o26b$69b3o27b3o30b2$

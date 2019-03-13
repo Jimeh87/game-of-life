@@ -1,7 +1,7 @@
 #N Jack_synth
 #O Mark D. Niemiec
 #C Glider synthesis of jack.
-#C http://home.interserv.com/~mniemiec/objname.htm#J
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#J
 x = 114, y = 106, rule = 23/3
 90bo23b$90bobo21b$82bobo5b2o22b$44bo33bo3b2o30b$40bo3bobo32b2o2bo30b$
 41b2ob2o32b2o34b$5bo34b2o24b2o18b2o26b$6bo12bo7b2o3b2o13b2o3b2o11bo2bo

@@ -1,7 +1,7 @@
 #N Loaf_synth
 #O Mark D. Niemiec
 #C Glider syntheses of loaves.
-#C http://home.interserv.com/~mniemiec/2gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-2.htm
 x = 148, y = 111, rule = 23/3
 5bo39bo102b$5bobo17b2o18bo19b2o38b2o38b2ob$b3ob2o17bo2bo17bo18bo2bo18b
 o17bo2bo20bo15bo2bo$3bo20bobo37bobo19b2o2b3o11bobo16b2o2bo16bobob$2bo

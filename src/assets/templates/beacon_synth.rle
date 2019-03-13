@@ -1,7 +1,7 @@
 #N Beacon_synth
 #O Mark D. Niemiec
 #C Glider synthesis of beacons.
-#C http://home.interserv.com/~mniemiec/3gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-3.htm
 x = 151, y = 106, rule = 23/3
 76bobo72b$8bobo15b2o15bobo20b2o9b2o27b2o20bo17b2o3b$8b2o16bo8bo8b2o20b
 o10bo3bo24bo22b2o15bo4b$5bo3bo19bo6b2o6bo24bo11bobo25bo18b2o19bob$3bob

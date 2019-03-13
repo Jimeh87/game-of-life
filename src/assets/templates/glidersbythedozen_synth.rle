@@ -1,7 +1,7 @@
 #N Gliders by the dozen_synth
 #O Mark D. Niemiec
 #C Glider synthesis of gliders by the dozen.
-#C http://home.interserv.com/~mniemiec/metheus.htm
+#C http://www.conwaylife.com/ref/mniemiec/metheus.htm
 x = 110, y = 15, rule = 23/3
 46bo63b$44bobo63b$8bo36b2o63b$6bobo39bo61b$7b2o17b3o19bobo15b3o37b3ob$
 25bo3bo18b2o15bo3bo13b2o20bo3bo$9bo15b5o35b5o13bobobo17b5o$8bo77b2o22b

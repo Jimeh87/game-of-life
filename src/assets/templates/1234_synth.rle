@@ -1,7 +1,7 @@
 #N 1-2-3-4_synth
 #O Mark D. Niemiec
 #C Glider syntheses of 1-2-3-4.
-#C http://home.interserv.com/~mniemiec/objname.htm#symbol
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#symbol
 x = 158, y = 120, rule = 23/3
 128bobo27b$128b2o28b$129bo28b2$124bo33b$122bobo33b$123b2o3bo29b$47bo
 78b2o30b$40bobo2b2o80b2o29b$5bo35b2o3b2o14bo19bo19bo29bo19bo5b$6bo34bo

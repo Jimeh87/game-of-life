@@ -1,7 +1,7 @@
 #N Bakery_synth
 #O Mark D. Niemiec
 #C Glider synthesis of bakeries.
-#C http://home.interserv.com/~mniemiec/3gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-3.htm
 x = 151, y = 104, rule = 23/3
 118bobo30b$118b2o31b$38bobo37bobo38bo31b$39b2o38b2o70b$25b2o12bo25b2o
 12bo25b2o11b3o24b2o4b$24bo2bo36bo2bo36bo2bo10bo25bo2bo3b$25bobo37bobo

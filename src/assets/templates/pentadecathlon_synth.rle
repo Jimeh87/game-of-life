@@ -1,7 +1,7 @@
 #N Pentadecathlon_synth
 #O Mark D. Niemiec
 #C Glider synthesis of pentadecathlons.
-#C http://home.interserv.com/~mniemiec/3gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-3.htm
 x = 157, y = 101, rule = 23/3
 131bo25b$132b2o23b$5bobo8bobo26bobo8bobo37bobo32b2o24b$6b2o8b2o28b2o8b
 2o27bo10b2o27bo31b$6bo10bo28bo10bo28bo10bo28bo30b$84b3o37b3o30b2$29bo

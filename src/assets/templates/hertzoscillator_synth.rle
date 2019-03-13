@@ -1,7 +1,7 @@
 #N Hertz oscillator_synth
 #O Mark D. Niemiec
 #C Glider synthesis of Hertz oscillator.
-#C http://home.interserv.com/~mniemiec/objname.htm#H
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#H
 x = 137, y = 73, rule = 23/3
 42bo59bo34b$40b2o58b2o35b$41b2o46bobo9b2o34b$90b2o45b$35bo54bo4bo41b$
 36b2o58b2o39b$35b2o58b2o40b$88bo48b$89bo47b$51bo15b2ob2o15b3o21bo18b2o

@@ -1,7 +1,7 @@
 #N Honey farm_synth
 #O Mark D. Niemiec
 #C Glider syntheses of honey farms.
-#C http://home.interserv.com/~mniemiec/2gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-2.htm
 x = 152, y = 73, rule = 23/3
 25bo39bo39bo39bo6b$24bobo37bobo37bobo37bobo5b$24bobo18bo18bobo17bo19bo
 bo37bobo5b$25bo17bobo19bo19b2o18bo39bo6b$44b2o38b2o36bo29b$20b2o7b2o

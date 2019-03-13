@@ -1,7 +1,7 @@
 #N Worker bee_synth
 #O Mark D. Niemiec
 #C Glider synthesis of worker bee (aka. lonely bee).
-#C http://home.interserv.com/~mniemiec/objname.htm
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm
 x = 156, y = 111, rule = 23/3
 20b2o18b2o8bobo17b2o28b2o28b2o24b$21bo19bo8b2o19bo29bo29bo24b$2o19bobo
 17bobo7bo19bobo4b2o21bobo4b2o21bobo4b2o16b$b2o19b2o18b2o28b2o4b2o22b2o

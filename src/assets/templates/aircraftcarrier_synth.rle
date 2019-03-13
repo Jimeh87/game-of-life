@@ -1,7 +1,7 @@
 #N Aircraft carrier_synth
 #O Mark D. Niemiec
 #C Glider syntheses of aircraft carriers.
-#C http://home.interserv.com/~mniemiec/4gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-4.htm
 x = 146, y = 90, rule = 23/3
 126bo19b$126bobo17b$o125b2o18b$obo143b$2o122b2o20b$81bo6bo34b2o21b$b2o
 39bo6bo32b2o3bo37bo20b$obo19b2o16bobo6bobo10b2o17b2o4b3o12b2o38b2o2b$

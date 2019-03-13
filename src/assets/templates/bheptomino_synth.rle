@@ -1,7 +1,7 @@
 #N B-heptomino_synth
 #O Mark D. Niemiec
 #C Glider syntheses of B-heptominoes.
-#C http://home.interserv.com/~mniemiec/2gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-2.htm
 x = 147, y = 79, rule = 23/3
 3bobo17bo19bobo17bo83b$3b2o17b3o18b2o17b3o38b3o41b$4bo16b2obo19bo16b2o
 bo20bo16bo2bo41b$85bobo13bo45b$3b2o38b2o40b2o60b$3bobo36bobo60bo41b$3b

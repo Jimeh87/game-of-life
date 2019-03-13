@@ -1,7 +1,7 @@
 #N Pulsar_synth
 #O Mark D. Niemiec
 #C Glider synthesis of pulsars.
-#C http://home.interserv.com/~mniemiec/3gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-3.htm
 x = 152, y = 118, rule = 23/3
 128bo23b$129bo22b$127b3o22b$21b3o3b3o31b3o3b3o31b3o3b3o31b3o3b3o2b$8bo
 143b$6b2o11bo4bobo4bo27bo4bobo4bo27bo4bobo4bo14b3o10bo4bobo4bo$3bo3b2o

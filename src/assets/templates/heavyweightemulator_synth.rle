@@ -1,7 +1,7 @@
 #N Heavyweight emulator_synth
 #O Mark D. Niemiec
 #C Glider synthesis of heavyweight emulator.
-#C http://home.interserv.com/~mniemiec/objname.htm#H
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#H
 x = 128, y = 64, rule = 23/3
 86bo41b$87b2o39b$86b2o40b$92bo35b$4bo85bobo35b$5bo85b2o3bo31b$3b3o3bo
 84b2o32b$7b2o86b2o31b$8b2o118b2$24b2o18b2o18b2o18b2o28b2o8b2o2b$7b2o

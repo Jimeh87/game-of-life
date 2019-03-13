@@ -1,7 +1,7 @@
 #N Figure eight_synth
 #O Mark D. Niemiec
 #C Glider syntheses of figure eights.
-#C http://home.interserv.com/~mniemiec/4gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-4.htm
 x = 82, y = 98, rule = 23/3
 57bo24b$56bo25b$56b3o23b4$71b2o9b$71b2obo7b$59bo15bo6b$58b2o12bo9b$58b
 obo12bob2o5b$75b2o5b2$43b2o37b$42bobo37b$44bo37b3$47b3o32b$49bo32b$48b

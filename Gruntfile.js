@@ -17,7 +17,7 @@ module.exports = function (grunt) {
         fileData['categories'] = extractCategories(filename, fileContents);
         allData.push(fileData);
       } catch (error) {
-        grunt.log.errorlns(error + ' | filename [' + filename + ']');
+        grunt.log.errorlns(error + ' in file ' + filename);
       }
     });
 

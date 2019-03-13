@@ -1,7 +1,7 @@
 #N Clock_synth
 #O Mark D. Niemiec
 #C Glider syntheses of clocks.
-#C http://home.interserv.com/~mniemiec/4gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-4.htm
 x = 145, y = 108, rule = 23/3
 124bo20b$125bo19b$83bobo37b3o19b$83b2o60b$84bo36b2o22b$120bobo22b$80bo
 41bo22b$81b2o19bo39bo2b$80b2o20bobo37bobo$84b2o15bobo37bobob$83b2o18bo

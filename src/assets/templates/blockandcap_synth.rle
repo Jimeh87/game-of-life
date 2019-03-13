@@ -1,7 +1,7 @@
 #N Block and cap_synth
 #O Mark D. Niemiec
 #C Glider syntheses of block and caps.
-#C http://home.interserv.com/~mniemiec/4gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-4.htm
 x = 107, y = 113, rule = 23/3
 70b2o35b$70bobo34b$40bo25bo4bobo33b$38b2o25bobo4b2o33b$39b2o24bobo39b$
 66bo40b$38bo68b$39bo31b2o34b$37b3o31b2o34b5$40b3o44bobo17b$42bo38bo5b

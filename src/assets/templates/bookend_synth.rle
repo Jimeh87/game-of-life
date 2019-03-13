@@ -1,7 +1,7 @@
 #N Bookend_synth
 #O Mark D. Niemiec
 #C Glider synthesis of bookend.
-#C http://home.interserv.com/~mniemiec/3gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-3.htm
 x = 118, y = 77, rule = 23/3
 12bo105b$11bo106b$11b3o15b3o37b3o17bo19b3o6b$28bo2bo36bo3bo16bobo16bo
 3bo5b$15bobo10b2o38b2o19b2o17b2o8b$15b2o17bo16b2o18bo2bo18bo19bo4b$16b

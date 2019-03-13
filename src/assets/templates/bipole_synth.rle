@@ -1,7 +1,7 @@
 #N Bipole_synth
 #O Mark D. Niemiec
 #C Glider synthesis of bipole.
-#C http://home.interserv.com/~mniemiec/objname.htm#B
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#B
 x = 157, y = 49, rule = 23/3
 14bo79bo62b$13bo79bo63b$13b3o77b3o61b$27bo129b$14bo3b2o6bo67bo3b2o17b
 2o18b2o18b$14b2o2bobo5b3o65b2o2bobo15bo2bo16bo2bo17b$13bobo2bo13b2o18b

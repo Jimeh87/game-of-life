@@ -1,7 +1,7 @@
 #N Carrier siamese snake_synth
 #O Mark D. Niemiec
 #C Glider synthesis of carrier siamese snake.
-#C http://home.interserv.com/~mniemiec/objname.htm#C
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#C
 x = 151, y = 92, rule = 23/3
 31bo119b$30bo120b$30b3o118b4$o132bobo15b$b2o131b2o15b$2o132bo16b5$44b
 2ob2o15b2ob2o15b2ob2o41b2o2b3o7b2ob2o2b$44bob2o2bo13bob2o2bo13bob2o2bo

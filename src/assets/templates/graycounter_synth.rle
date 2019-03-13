@@ -1,7 +1,7 @@
 #N Gray counter_synth
 #O Mark D. Niemiec
 #C Glider synthesis of Gray counter.
-#C http://home.interserv.com/~mniemiec/objname.htm#G
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#G
 x = 144, y = 111, rule = 23/3
 31bo112b$29bobo112b$30b2o74bobo35b$37bobo67b2o35b$37b2o68bo36b$38bo
 105b2$72bo71b$35bo21bo12bobo4bo14b2o3bo14b2o3bo19bo6b$o3bo31bo19bobo

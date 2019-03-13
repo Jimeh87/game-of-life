@@ -1,7 +1,7 @@
 #N Hustler II_synth
 #O Mark D. Niemiec
 #C Glider synthesis of hustler II.
-#C http://home.interserv.com/~mniemiec/objname.htm#H
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#H
 x = 155, y = 119, rule = 23/3
 65bo89b$63bobo89b$15bo4bo43b2o89b$13bobo2b2o53bo81b$10b2o2b2o3b2o51bo
 82b$11b2o46bobo10b3o80b$10bo26bo22b2o5bo87b$16b2o18bobo21bo5bobo19b2o

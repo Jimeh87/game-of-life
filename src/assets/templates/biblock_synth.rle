@@ -1,7 +1,7 @@
 #N Bi-block_synth
 #O Mark D. Niemiec
 #C Glider syntheses of bi-blocks.
-#C http://home.interserv.com/~mniemiec/2gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-2.htm
 x = 105, y = 92, rule = 23/3
 81bo23b$43bo37b2o22b$3bo38bo37bobo22b$bobo19b2o17b3o18b2o20b3o15b2o$2b
 2o19b2o14b2o22b2o20bo17b2o$38bobo45bo18b$2b2o19b2o15bo3bo18b2o18b2o18b

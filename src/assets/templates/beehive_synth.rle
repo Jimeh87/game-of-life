@@ -1,7 +1,7 @@
 #N Beehive_synth
 #O Mark D. Niemiec
 #C Syntheses of beehives.
-#C home.interserv.com/~mniemiec/2gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-2.htm
 x = 156, y = 60, rule = 23/3
 57bobo96b$58b2o96b$58bo97b2$59bo96b$33b2o25bo12b2o38b2o38b2ob$12b2o18b
 o2bo22b3o11bo2bo11bo12bo11bo2bo18b2o16bo2bo$11bobo19b2o38b2o13b2o8b2o

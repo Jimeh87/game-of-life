@@ -1,7 +1,7 @@
 #N Trice tongs_synth
 #O Mark D. Niemiec
 #C Glider synthesis of trice tongs.
-#C http://home.interserv.com/~mniemiec/objname.htm#T
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#T
 x = 146, y = 66, rule = 23/3
 40bo105b$40bobo15b2o18b2o18b2o18b2o18b2o6b$35b2o3b2o15bo2bo2b2o12bo2bo
 2b2o12bo2bo2b2o12bo2bo2b2o12bo2bo2b2ob$36b2o5b3o11bo2bo2b2o12bo2bo2b2o

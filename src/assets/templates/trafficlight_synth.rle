@@ -1,7 +1,7 @@
 #N Traffic light_synth
 #O Mark D. Niemiec
 #C Glider syntheses of traffic lights.
-#C http://home.interserv.com/~mniemiec/2gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-2.htm
 x = 109, y = 29, rule = 23/3
 24b3o37b3o37b3o2b$45bo63b$3bobo16bo5bo14bobo16bo5bo33bo5bo$4b2o16bo5bo
 11b2o2b2o16bo5bo12bo3b2o15bo5bo$4bo17bo5bo10bobo20bo5bo13b2obobo14bo5b

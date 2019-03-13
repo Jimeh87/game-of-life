@@ -1,7 +1,7 @@
 #N Teardrop_synth
 #O Mark D. Niemiec
 #C Syntheses of teardrops.
-#C home.interserv.com/~mniemiec/2gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-2.htm
 x = 108, y = 49, rule = 23/3
 77bobo28b$78b2o28b$78bo29b2$41bobo64b$3bo37b2o65b$4bo21bo15bo23bo39bob
 $2b3o20bobo37bobo37bobo$25bobo11b2o24bobo13b2o22bobo$bo24bo11b2o26bo

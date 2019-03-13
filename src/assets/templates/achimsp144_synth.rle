@@ -1,7 +1,7 @@
 #N Achim's p144_synth
 #O Mark D. Niemiec
 #C Glider syntheses of Achim's p144.
-#C http://home.interserv.com/~mniemiec/objname.htm#a
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#a
 x = 106, y = 109, rule = 23/3
 4bo17bo37bo45b$5bo17bo35bo46b$3b3o15b3o35b3o44b$50bo55b$49bo56b$49b3o
 54b3$17bobo86b$18b2o86b$18bo87b5$62bo15b2o24b2o$61bo16b2o24b2o$61b3o

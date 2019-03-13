@@ -1,7 +1,7 @@
 #N Pond on pond_synth
 #O Mark D. Niemiec
 #C Glider syntheses of pond on ponds.
-#C http://home.interserv.com/~mniemiec/4gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-4.htm
 x = 105, y = 70, rule = 23/3
 78bo26b$79bo3bo18b2ob$77b3ob2o18bo2bo$82b2o17bo2bo$102b2ob2$102b2ob$
 82b2o17bo2bo$77b3ob2o18bo2bo$79bo3bo18b2ob$78bo26b15$40bo43bo20b$41bo

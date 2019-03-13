@@ -1,7 +1,7 @@
 #N Fleet_synth
 #O Mark D. Niemiec
 #C Glider synthesis of fleets.
-#C http://home.interserv.com/~mniemiec/3gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-3.htm
 x = 149, y = 111, rule = 23/3
 3bo76bo68b$2bo20b2o38b2o13bobo7bobo12b2o38b2o4b$2b3o3bo14bobo37bobo13b
 2o3bo3b2o13bobo37bobo3b$7bo16b2o38b2o16b2o5bo14b2o38b2o3b$4bo2b3o16b2o

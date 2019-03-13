@@ -1,7 +1,7 @@
 #N Boat-tie_synth
 #O Mark D. Niemiec
 #C Glider syntheses of boat-ties.
-#C http://home.interserv.com/~mniemiec/4gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-4.htm
 x = 153, y = 86, rule = 23/3
 obo150b$b2o85bobo36bo25b$bo86b2o38b2o23b$28bo39bo20bo18bo18b2o19bo4b$
 8bo18bobo37bobo16bo20bobo37bobo3b$6b2o20b2o38b2o16b2o4bobo13b2o38b2o3b

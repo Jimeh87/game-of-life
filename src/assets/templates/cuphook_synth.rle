@@ -1,7 +1,7 @@
 #N Cuphook_synth
 #O Mark D. Niemiec
 #C Glider synthesis of cuphook.
-#C http://home.interserv.com/~mniemiec/objname.htm#C
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#C
 x = 120, y = 77, rule = 23/3
 31b2o18b2o18b2o18b2o18b2o7b$32bo19bo19bo19bo19bo7b$11b2o19bobo17bobo
 17bob2o16bob2o16bob2o4b$12b2o19b2o18b2o18bo2bo16bo2bo16bo2bo3b$11bo3b

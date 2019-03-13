@@ -1,20 +1,22 @@
-#N Mini pressure cooker_synth
-#C A 27-glider synthesis of mini pressure cooker
-x = 134, y = 76, rule = b3/s23
-50bo15bo67b$51bo13bo68b$49b3o6bo6b3o66b$56bobo43bo31b$57b2o44bo3bo18b
-2o6b$101b3ob2o18bo2bo5b$59bo46b2o17bo2bo5b$59bobo64b2o6b$59b2o73b6$4bo
-80bo5bo13bo5bo13bo5bo2b$5bo78bobo3bobo11bobo3bobo11bobo3bobob$3b3o79bo
-2bo2bo13bo2bo2bo13bo2bo2bo2b$42b2o29b2o11b2ob2o15b2ob2o15b2ob2o3b$b2o
-40b2o27b2o13bobo17bobo17bobo4b$obo24b3o12bo14b3o14bo12bobo17bobo17bobo
-4b$2bo85bo19bo19bo5b8$59b2o73b$59bobo72b$59bo74b2$47bo9b2o10bo64b$47b
-2o7bobo9b2o64b$46bobo9bo9bobo63b17$49bo58bo25b$50bo55b2o26b$48b3o56b2o
-25b$6b2o90bo35b$5bo2bo48bobo39bo34b$5bo2bo3bo44b2o38b3o34b$6b2o2b2o40b
-o5bo45bobo27b$11b2o37bobo51b2o28b$51b2o52bo28b2$28bo19bo29bo29bo19bo5b
-$27bobo17bobo27bobo27bobo17bobo4b$28bo19bo29bobo16bo10bobo15bobobo3b$
-5bo5bo13bo5bo13bo5bo6bobo14bo4bo17bo6bo4bo15bo3bo3b$4bobo3bobo11bobo3b
-obo11bobo3bobo5b2o14bobo2b2ob2o12b3o5bobo2b2ob2o9b2obobobob2o$5bo2bo2b
-o13bo2bo2bo13bo2bo2bo7bo15bo2bo2bobo21bo2bo2bobo9bobo5bobo$6b2ob2o15b
-2ob2o15b2ob2o25b2ob2o25b2ob2o15b2ob2o3b$7bobo17bobo17bobo11bo15bobo13b
-obo11bobo17bobo4b$7bobo17bobo17bobo11bobo13bobo14b2o11bobo17bobo4b$8bo
-19bo19bo12b2o15bo15bo13bo19bo5b2$60bo73b$59b2o34b3o36b$59bobo35bo36b$
-96bo!
+#N minipressurecooker_synth
+#O David Buckingham, Goldtiger997
+#C Glider synthesis of Mini Pressure Cooker
+#C http://conwaylife.com/wiki/Mini_pressure_cooker
+x = 448, y = 150, rule = B3/S23
+174bo$175b2o$174b2o6$210bo$208bobo$209b2o2$281bobo$194bo86b2o$192bobo
+87bo$193b2o25$230bo$231b2o$230b2o$234b2o$233bobo$224bo10bo$225b2o$224b
+2o2$232b2o3bo$233b2ob2o$232bo3bobo$247bo$246b2o$246bobo12$232b2o$227b
+3ob2o$229bo3bo$228bo17$18bo$16bobo$17b2o264b2o$261b3o19bobo$261bo21bo$
+2bo259bo$obo278bo$b2o277b2o$280bobo5$201b2o$172b3o25bobo$174bo27bo77bo
+$173bo105b2o$279bobo$175b2o$176b2o20b3o$175bo24bo$199bo4$277b3o$277bo$
+176b2o100bo$177b2o$176bo$280b2o$280bobo$38bo241bo$39b2o$38b2o$42b2o$
+41bobo$32bo10bo$33b2o$32b2o316bo$293bobo55bo$40b2o3bo247b2o54b3o$41b2o
+b2o248bo$40bo3bobo$55bo66bo79bo79bo12b2o51bo13bo79bo$54b2o65bobo77bobo
+77bobo11bobo50b2o11bobo77bobo$54bobo64bobo77bobo77bobo11bo51bobo11bobo
+77bobo$120b2ob2o75b2ob2o75b2ob2o75b2ob2o75b2ob2o$119bo2bo2bo73bo2bo2bo
+73bo2bo2bo7bo65bo2bo2bobo69bobo5bobo$118bobo3bobo71bobo3bobo71bobo3bob
+o5b2o56b3o5bobo2b2ob2o69b2obobobob2o$119bo5bo73bo5bo73bo5bo6bobo57bo6b
+o4bo75bo3bo$282bo68bo10bobo75bobobo$281bobo77bobo77bobo$282bo79bo79bo
+2$285b2o72bo$205b2o77bobo71b2o$200b2o2b2o80bo5bo65bobo$120b2o77bo2bo3b
+o84b2o58b3o$115b3ob2o78bo2bo88bobo59bo$117bo3bo78b2o150bo$116bo165b3o
+76b2o$284bo75b2o$283bo78bo!

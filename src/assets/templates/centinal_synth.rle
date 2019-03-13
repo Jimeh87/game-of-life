@@ -1,7 +1,7 @@
 #N Centinal_synth
 #O Mark D. Niemiec
 #C Glider synthesis of centinal.
-#C http://home.interserv.com/~mniemiec/objname.htm#C
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#C
 x = 112, y = 104, rule = 23/3
 60b2o50b$61bo50b$2o59bobo48b$b2o59b2o48b$o3b2o106b$4bobo105b$4bo107b4$
 47bo64b$45bobo64b$46b2o3bo60b$49b2o57b2o2b$50b2o56bobob$110bob$110b2o

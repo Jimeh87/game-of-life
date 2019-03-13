@@ -1,7 +1,7 @@
 #N Heavyweight spaceship_synth
 #O Mark D. Niemiec
 #C Glider synthesis of heavyweight spaceships.
-#C http://home.interserv.com/~mniemiec/3gliders.htm
+#C http://www.conwaylife.com/ref/mniemiec/glider-3.htm
 x = 151, y = 105, rule = 23/3
 46bo104b$44bobo104b$45b2o78bo25b$4bobo76bo42bo24b$5b2o40bo35b2o39b3o
 24b$5bo39b2o35bobo2b2o62b$46b2o39bobo61b$43b2o42bo38b2o23b$2bobo21b3o

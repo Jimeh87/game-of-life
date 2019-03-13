@@ -1,7 +1,7 @@
 #N Confused eaters_synth
 #O Mark D. Niemiec
 #C Glider synthesis of confused eaters.
-#C http://home.interserv.com/~mniemiec/objname.htm#C
+#C http://www.conwaylife.com/ref/mniemiec/objname.htm#C
 x = 131, y = 104, rule = 23/3
 89bobo39b$80bo8b2o40b$81bo8bo3bo6bo29b$79b3o11bo6bo30b$93b3o4b3o28b2$
 78bo52b$76bobo52b$77b2o52b$83bo47b$81bobo47b$obo73bobo3b2o47b$b2o19bo
