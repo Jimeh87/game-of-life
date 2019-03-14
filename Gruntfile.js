@@ -191,7 +191,7 @@ var extractComments = function (fileContents) {
 };
 
 var extractRule = function (fileContents) {
-  var unformattedRule = /rule\s?\=\s?(B|S|b|s)?[0-9]+\/(B|S|b|s)?[0-9]+/.exec(fileContents);
+  var unformattedRule = /rule\s?\=\s?(B|S|b|s)?[0-9]*\/(B|S|b|s)?[0-9]*/.exec(fileContents);
   var rule = unformattedRule != null ? unformattedRule[0].replace(/\r?\n|\r|\s/g, '').replace(/rule=/, '') : null;
   if (unformattedRule == null) {
     throw 'Failed to parse rule';
