@@ -1,6 +1,0 @@
-<div class="modal-body p-0">
-  <div [ngClass]="{'gb-standard': !isFullScreen(), 'gb-full-screen': isFullScreen()}">
-    <app-game-board [template]="getTemplatePromise()" [fullScreen]="isFullScreen()"></app-game-board>
-    <app-game-board-hud [dismissFn]="dismissFunction()"></app-game-board-hud>
-  </div>
-</div>

@@ -1,7 +1,7 @@
 module.exports = function (grunt) {
   grunt.registerTask('rle-parser', 'Converts list of RLE files into JSON file', function () {
     var allData = [];
-    grunt.file.recurse('./src/assets/templates', function callback(abspath, rootdir, subdir, filename) {
+    grunt.file.recurse('./src/assets/patterns', function callback(abspath, rootdir, subdir, filename) {
       var fileData = {};
       // grunt.log.writeln('processing: ' + filename);
       var fileContents = grunt.file.read(abspath);

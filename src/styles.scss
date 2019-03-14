@@ -16,13 +16,13 @@ body {
 
 
 @media (min-width: 768px) {
-  .template-preview-modal > .modal-dialog {
+  .pattern-preview-modal > .modal-dialog {
     width: 90%;
     max-width: 1200px;
   }
 }
 
-.template-preview-modal > .modal-dialog > .modal-content {
+.pattern-preview-modal > .modal-dialog > .modal-content {
   border-radius: 0 !important;
 }
 

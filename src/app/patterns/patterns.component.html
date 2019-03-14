@@ -1,0 +1,67 @@
+<div class="row top-buffer">
+  <div class="col-12">
+    <app-search (query)="queryChanged($event)"
+                [loading]="!(filteredPatterns$ | async) || (updatingPage$ | async)"></app-search>
+  </div>
+</div>
+
+<ng-container *ngIf="filteredPatterns$ | async as filteredPatterns">
+  <div class="row">
+    <div class="col-12">
+      <hr class="mb-0">
+      <app-view-mode-button class="top-buffer pull-left mr-2"></app-view-mode-button>
+      <app-theme-button class="top-buffer pull-left mr-2"></app-theme-button>
+      <span class="text-monospace pull-right">
+        <ng-container *ngIf="filteredPatterns.length">{{ filteredPatterns.length }} </ng-container>
+        <ng-container *ngIf="!filteredPatterns.length">No </ng-container>
+        <ng-container *ngIf="filteredPatterns.length !== 1">results</ng-container>
+        <ng-container *ngIf="filteredPatterns.length === 1">result</ng-container>
+      </span>
+    </div>
+  </div>
+  <ng-container *ngIf="!(updatingPage$ | async)">
+    <div class="row" [ngClass]="{'full-width': viewMode === viewModeType.WIDE}">
+      <div class="top-buffer bottom-buffer"
+           [ngClass]="{
+              'col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12': viewMode === viewModeType.WIDE,
+              'col-lg-6 col-md-12': viewMode === viewModeType.STANDARD,
+              'col-12': viewMode === viewModeType.LIST
+           }"
+           *ngFor="let pattern of filteredPatterns | paginate: { itemsPerPage: 12, currentPage: page }">
+        <app-pattern *ngIf="viewMode !== viewModeType.LIST" [pattern]="pattern" [theme]="theme"></app-pattern>
+        <app-list-mode-pattern *ngIf="viewMode === viewModeType.LIST" [pattern]="pattern"
+                               [theme]="theme"></app-list-mode-pattern>
+      </div>
+      <div class="col-12 top-buffer bottom-buffer">
+        <pagination-template #p="paginationApi"
+                             (pageChange)="page = $event">
+          <nav aria-label="Page navigation">
+            <ul class="pagination pagination justify-content-center">
+              <li class="page-item" [ngClass]="{'disabled': p.isFirstPage()}">
+                <a class="page-link clickable" (click)="p.previous(); toPatternsTop()" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li *ngFor="let pagination of p.pages"
+                  class="page-item"
+                  [ngClass]="{'active': p.getCurrent() === pagination.value, 'disabled': pagination.label === '...'}">
+                <a class="page-link clickable"
+                   (click)="p.setCurrent(pagination.value); toPatternsTop()">
+                  {{ pagination.label }}
+                </a>
+              </li>
+              <li class="page-item" [ngClass]="{'disabled': p.isLastPage()}">
+                <a class="page-link clickable" (click)="p.next(); toPatternsTop()" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </pagination-template>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
+

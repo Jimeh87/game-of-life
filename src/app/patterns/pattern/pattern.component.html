@@ -1,0 +1,40 @@
+<div class="card text-center shadow rounded-0" *ngIf="getPattern() != null">
+  <div class="pattern-card card-body p-0 m-0" [ngClass]="{'pattern-detail': isShowDetails()}">
+    <ng-container *ngIf="isShowDetails(); else showPattern">
+      <app-pattern-detail [pattern]="getPattern()"></app-pattern-detail>
+      <button class="btn btn-sm btn-outline-dark back-button" (click)="toggleDetails()">
+        <span class="fa fa-fw fa-arrow-left"></span> Back
+      </button>
+    </ng-container>
+    <ng-template #showPattern>
+      <app-editor [pattern]="getPatternPromise()" [preview]="preview" class="w-100 h-100"
+                  (dblclick)="openPreview()"></app-editor>
+      <div ngbDropdown placement="top" container="body" class="title shadow p-1 rounded">
+        <span class="unselectable" ngbDropdownToggle>{{ getPattern().getName() }}</span>
+        <div ngbDropdownMenu class="title-dropdown dropdown-menu mb-2">
+          <button ngbDropdownItem
+                  class="title-dropdown-item dropdown-item clickable"
+                  placement="right"
+                  container="body"
+                  (click)="openPreview()"
+                  [ngbTooltip]="doubleClick">
+            <span class="fa fa-fw fa-window-maximize"></span> Preview
+          </button>
+          <ng-template #doubleClick>
+            <span class="fa fa-fw fa-mouse-pointer"></span> Double click
+          </ng-template>
+          <button ngbDropdownItem
+                  class="title-dropdown-item dropdown-item clickable"
+                  [routerLink]="['/editor', 'pattern', getPattern().getFileName()]">
+            <span class="fa fa-fw fa-pencil-square-o"></span> Editor
+          </button>
+          <button ngbDropdownItem
+                  class="title-dropdown-item dropdown-item clickable"
+                  (click)="toggleDetails()">
+            <span class="fa fa-fw fa-info-circle"></span> About
+          </button>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

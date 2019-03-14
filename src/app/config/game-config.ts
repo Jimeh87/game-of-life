@@ -1,4 +1,4 @@
-import {GolRule} from 'app/templates/gol-rule';
+import {GolRule} from 'app/patterns/gol-rule';
 import {Config} from './config';
 import {ConfigType} from './config-type';
 

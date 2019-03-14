@@ -2,25 +2,24 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
-import {MainGameBoardComponent} from './main-game-board/main-game-board.component';
+import {MainEditorComponent} from './editor/main-editor/main-editor.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {GameOfLifeService} from './game-of-life.service';
-import {TemplatesComponent} from './templates/templates.component';
+import {PatternsComponent} from './patterns/patterns.component';
 import {ErrorPageComponent} from './error-page/error-page.component';
 import {RouterModule, Routes} from '@angular/router';
 import {MainMenuComponent} from './main-menu/main-menu.component';
-import {RleService} from './templates/rle.service';
-import {TemplateComponent} from './templates/template/template.component';
-import {GameBoardComponent} from './game-board/game-board.component';
-import {TemplatesService} from './templates/templates.service';
-import {TemplateDetailComponent} from './templates/template/template-detail/template-detail.component';
+import {RleService} from './patterns/rle.service';
+import {PatternComponent} from './patterns/pattern/pattern.component';
+import {EditorComponent} from './editor/editor.component';
+import {PatternsService} from './patterns/patterns.service';
+import {PatternDetailComponent} from './patterns/pattern/pattern-detail/pattern-detail.component';
 import {LinkifyPipe} from './linkify.pipe';
-import {GameBoardHudComponent} from './game-board-hud/game-board-hud.component';
+import {EditorHudComponent} from './editor/editor-hud/editor-hud.component';
 import {ConfigComponent} from './config/config.component';
 import {ConfigService} from './config/config.service';
 import {AboutComponent} from './about/about.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {SpinnerComponent} from './spinner/spinner.component';
 import {ColorPickerModule} from 'ngx-color-picker';
 import {AboutGameOfLifeComponent} from './about/about-game-of-life/about-game-of-life.component';
 import {AboutTheSiteComponent} from './about/about-the-site/about-the-site.component';
@@ -29,15 +28,15 @@ import {SortPipe} from './sort.pipe';
 import {HttpClientModule} from '@angular/common/http';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
-import {SearchComponent} from './templates/search/search.component';
-import {InputBadgeComponent} from './templates/search/input-badge/input-badge.component';
-import {TypeaheadService} from './templates/search/typeahead.service';
-import {SaveSearchService} from './templates/search/save-search.service';
-import {ViewModeButtonComponent} from './templates/view-mode-button/view-mode-button.component';
-import {ThemeButtonComponent} from './templates/theme-button/theme-button.component';
-import {ListModeTemplateComponent} from './templates/list-mode-template/list-mode-template.component';
-import {TemplatePreviewModalComponent} from './templates/template-preview-modal/template-preview-modal.component';
-import { PencilDirective } from './pencil/pencil.directive';
+import {SearchComponent} from './patterns/search/search.component';
+import {InputBadgeComponent} from './patterns/search/input-badge/input-badge.component';
+import {TypeaheadService} from './patterns/search/typeahead.service';
+import {SaveSearchService} from './patterns/search/save-search.service';
+import {ViewModeButtonComponent} from './patterns/view-mode-button/view-mode-button.component';
+import {ThemeButtonComponent} from './patterns/theme-button/theme-button.component';
+import {ListModePatternComponent} from './patterns/list-mode-pattern/list-mode-pattern.component';
+import {PatternPreviewModalComponent} from './patterns/pattern-preview-modal/pattern-preview-modal.component';
+import {PencilDirective} from './editor/pencil/pencil.directive';
 
 const appRoutes: Routes = [
     {
@@ -47,15 +46,15 @@ const appRoutes: Routes = [
     },
     {
       path: 'editor',
-      component: MainGameBoardComponent
+      component: MainEditorComponent
     },
     {
-      path: 'editor/template/:rle',
-      component: MainGameBoardComponent
+      path: 'editor/pattern/:rle',
+      component: MainEditorComponent
     },
     {
       path: 'patterns',
-      component: TemplatesComponent
+      component: PatternsComponent
     },
     {
       path: 'themes',
@@ -101,18 +100,17 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    MainGameBoardComponent,
-    TemplatesComponent,
+    MainEditorComponent,
+    PatternsComponent,
     ErrorPageComponent,
     MainMenuComponent,
-    TemplateComponent,
-    GameBoardComponent,
-    TemplateDetailComponent,
+    PatternComponent,
+    EditorComponent,
+    PatternDetailComponent,
     LinkifyPipe,
-    GameBoardHudComponent,
+    EditorHudComponent,
     ConfigComponent,
     AboutComponent,
-    SpinnerComponent,
     AboutGameOfLifeComponent,
     AboutTheSiteComponent,
     AboutLinksComponent,
@@ -121,8 +119,8 @@ const appRoutes: Routes = [
     InputBadgeComponent,
     ViewModeButtonComponent,
     ThemeButtonComponent,
-    ListModeTemplateComponent,
-    TemplatePreviewModalComponent,
+    ListModePatternComponent,
+    PatternPreviewModalComponent,
     PencilDirective
   ],
   imports: [
@@ -136,9 +134,9 @@ const appRoutes: Routes = [
     ColorPickerModule,
     ServiceWorkerModule.register('./ngsw-worker.js', {enabled: environment.production})
   ],
-  providers: [RleService, GameOfLifeService, TemplatesService, ConfigService, TypeaheadService, SaveSearchService],
+  providers: [RleService, GameOfLifeService, PatternsService, ConfigService, TypeaheadService, SaveSearchService],
   bootstrap: [AppComponent],
-  entryComponents: [TemplatePreviewModalComponent]
+  entryComponents: [PatternPreviewModalComponent]
 })
 export class AppModule {
   constructor() {

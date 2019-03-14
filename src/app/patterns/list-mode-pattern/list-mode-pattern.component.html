@@ -1,0 +1,51 @@
+<div class="card shadow rounded-0" *ngIf="getPattern() != null">
+  <div class="card-body" [ngClass]="{'pattern-detail p-0 m-0': showDetails}">
+    <ng-container *ngIf="showDetails; else showPattern">
+      <app-pattern-detail [pattern]="getPattern()"></app-pattern-detail>
+      <button class="btn btn-sm btn-outline-dark back-button" (click)="showDetails = !showDetails">
+        <span class="fa fa-fw fa-arrow-left"></span> Back
+      </button>
+    </ng-container>
+    <ng-template #showPattern>
+      <div class="row" (dblclick)="openPreview()">
+        <div class="col-10">
+          <div>
+            <h5>{{ getPattern().getName() }}</h5>
+            <h5>
+              <small class="text-muted" [innerHTML]="getPattern().getComments().join(' ') | linkify"></small>
+            </h5>
+          </div>
+          <div *ngIf="getPattern().getAuthor()">
+            <small class="text-muted">- {{ getPattern().getAuthor() }}</small>
+          </div>
+        </div>
+        <div ngbDropdown placement="left" container="body" class="col-2">
+          <button class="btn btn-light pull-right" id="themes" ngbDropdownToggle>Options</button>
+          <div ngbDropdownMenu class="title-dropdown dropdown-menu mb-2">
+            <button ngbDropdownItem
+                    class="title-dropdown-item dropdown-item clickable"
+                    (click)="showDetails = !showDetails">
+              <span class="fa fa-fw fa-info-circle"></span> About
+            </button>
+            <button ngbDropdownItem
+                    class="title-dropdown-item dropdown-item clickable"
+                    [routerLink]="['/editor', 'pattern', getPattern().getFileName()]">
+              <span class="fa fa-fw fa-pencil-square-o"></span> Editor
+            </button>
+            <button ngbDropdownItem
+                    class="title-dropdown-item dropdown-item clickable"
+                    placement="left"
+                    container="body"
+                    [ngbTooltip]="doubleClick"
+                    (click)="openPreview()">
+              <span class="fa fa-fw fa-window-maximize"></span> Preview
+            </button>
+            <ng-template #doubleClick>
+              <span class="fa fa-fw fa-mouse-pointer"></span> Double click
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

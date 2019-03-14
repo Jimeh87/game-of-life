@@ -1,9 +1,9 @@
-import {SortedDictionary} from './sorted-dictionary';
+import {SortedDictionary} from '../util/sorted-dictionary';
 import {IDictionaryPair} from 'typescript-collections/dist/lib/Dictionary';
-import {SortedSet} from './sorted-set';
+import {SortedSet} from '../util/sorted-set';
 import {OnDestroy} from '@angular/core';
-import {Ticker} from './ticker';
-import {GolRule} from '../templates/gol-rule';
+import {Ticker} from '../editor/ticker';
+import {GolRule} from '../patterns/gol-rule';
 import {Coordinate} from './coordinate';
 import {Generation} from './generation';
 import {Observable, Subject, Subscription} from 'rxjs';

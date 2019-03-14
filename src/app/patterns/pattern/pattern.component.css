@@ -1,0 +1,44 @@
+div.pattern-card {
+  height: 18em;
+}
+
+.title {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title-dropdown {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.title-dropdown-item {
+  color: #ffffff;
+}
+
+.title-dropdown-item:hover {
+  color: #DCDCDC;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.title:hover {
+  color: #DCDCDC;
+  cursor: pointer;
+}
+
+.back-button {
+  position: absolute;
+  top: 1em;
+  right: 3em;
+}
+
+.pattern-detail {
+  overflow-y: auto;
+}

@@ -1,0 +1,10 @@
+.pattern-detail {
+  height: 18em;
+  overflow-y: auto;
+}
+
+.back-button {
+  position: absolute;
+  top: 1em;
+  right: 3em;
+}

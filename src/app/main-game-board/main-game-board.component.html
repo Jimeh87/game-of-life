@@ -1,8 +1,0 @@
-<div class="row">
-  <div class="col-12">
-    <div [ngClass]="{'gb-standard': !isFullScreen(), 'gb-full-screen': isFullScreen()}">
-      <app-game-board [template]="getTemplatePromise()" [fullScreen]="isFullScreen()"></app-game-board>
-      <app-game-board-hud></app-game-board-hud>
-    </div>
-  </div>
-</div>
