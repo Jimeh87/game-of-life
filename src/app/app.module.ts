@@ -36,7 +36,7 @@ import {ViewModeButtonComponent} from './patterns/view-mode-button/view-mode-but
 import {ThemeButtonComponent} from './patterns/theme-button/theme-button.component';
 import {ListModePatternComponent} from './patterns/list-mode-pattern/list-mode-pattern.component';
 import {PatternPreviewModalComponent} from './patterns/pattern-preview-modal/pattern-preview-modal.component';
-import {PencilDirective} from './editor/pencil/pencil.directive';
+import {PencilModule} from '@jimeh87/pencil';
 
 const appRoutes: Routes = [
     {
@@ -121,7 +121,6 @@ const appRoutes: Routes = [
     ThemeButtonComponent,
     ListModePatternComponent,
     PatternPreviewModalComponent,
-    PencilDirective
   ],
   imports: [
     BrowserModule,
@@ -132,7 +131,8 @@ const appRoutes: Routes = [
     NgbModule,
     NgxPaginationModule,
     ColorPickerModule,
-    ServiceWorkerModule.register('./ngsw-worker.js', {enabled: environment.production})
+    ServiceWorkerModule.register('./ngsw-worker.js', {enabled: environment.production}),
+    PencilModule
   ],
   providers: [RleService, GameOfLifeService, PatternsService, ConfigService, TypeaheadService, SaveSearchService],
   bootstrap: [AppComponent],

@@ -14,7 +14,7 @@ The purpose of this project is to allow users to explore the phenomenon of cellu
 * Converted site to PWA!
 
 ## Development [![Build Status](https://travis-ci.com/Jimeh87/game-of-life.svg?branch=master)](https://travis-ci.com/Jimeh87/game-of-life)
-This is a casual project for me. If for unexplained reasons you feel like contributing send me a message and I will help you get setup.
+This is a casual project for me. If you feel like contributing send me a message and I will help you get setup.
 #### Commands
 * `yarn start` - Starts the application locally
 * `yarn build` - Builds the application locally
