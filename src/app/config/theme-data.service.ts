@@ -9,8 +9,8 @@ export class ThemeDataService {
   private themes = [
     new Theme({
       name: 'Default',
-      generations: false,
-      alive: ['rgba(103, 128, 159, 1)'],
+      generations: true,
+      alive: ['#67809f', '#3c5a80', '#234774', '#1f3c60', '#162a43', '#172639'],
       dead: ['#f1f3f3'],
       border: true,
       borderColor: '#bbc4c4',
@@ -36,8 +36,8 @@ export class ThemeDataService {
     }),
     new Theme({
       name: 'Preview',
-      generations: false,
-      alive: ['rgba(103, 128, 159, 1)'],
+      generations: true,
+      alive: ['#67809f', '#3c5a80', '#234774', '#1f3c60', '#162a43', '#172639'],
       dead: ['#fff'],
       border: true,
       borderColor: '#fff',
@@ -113,6 +113,25 @@ export class ThemeDataService {
       dead: ['#7db249'],
       border: true,
       borderColor: '#38610e',
+      mutable: false
+    }),
+    new Theme({
+      name: 'Black and White',
+      generations: false,
+      alive: ['#000000'],
+      dead: ['#ffffff'],
+      border: true,
+      borderColor: '#eeeeee',
+      mutable: false
+    }),
+    new Theme({
+      name: 'Shadows',
+      generations: true,
+      alive: ['#1a0445'],
+      dead: ['#6e6e6e', '#727272', '#7a7a7a', '#808080', '#898989', '#999999', '#a3a3a3', '#ababab', '#b4b4b4',
+        '#b8b8b8', '#bababa', '#c2c2c2', '#ffffff'],
+      border: false,
+      borderColor: '#eeeeee',
       mutable: false
     })
   ];
