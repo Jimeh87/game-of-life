@@ -10,6 +10,7 @@ jobs:
     steps:
       - run: mkdir -p "dist" && touch "hello.txt"
       - run: pwd
+      - run: ls -lA
       - persist_to_workspace:
           root: .
           paths:
