@@ -40,7 +40,7 @@ workflows:
       - test
       - deploy:
           requires:
-            - node/run
+            - test
           filters:
             branches:
               only: circleci-project-setup
