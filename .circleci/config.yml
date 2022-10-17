@@ -12,20 +12,14 @@ jobs:
       - run: ./scripts/github-pages-deploy.sh
 
 workflows:
-  ci_cd:
+  ci-cd:
     jobs:
       - node/run:
           filters:
             branches:
               ignore: gh-pages
           version: '8.17.0'
-          pgk-manager: yarn
-          steps:
-            - checkout
-            - yarn-run: build
-            - persist_to_workspace:
-                root: .
-                paths: dist/*
+          yarn-run: build
       - deploy:
           filters:
             branches:
