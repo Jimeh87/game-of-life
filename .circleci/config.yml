@@ -32,7 +32,7 @@ workflows:
             - persist_to_workspace:
                 root: .
                 paths:
-                  - .circleci/config.yml
+                  - .circleci/*
                   - dist/*
       - deploy:
           requires:
