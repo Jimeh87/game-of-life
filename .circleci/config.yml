@@ -19,6 +19,7 @@ workflows:
             branches:
               ignore: gh-pages
           version: '8.17.0'
+          pkg-manager: yarn
           yarn-run: build
       - deploy:
           requires:
