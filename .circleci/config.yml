@@ -10,7 +10,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: dist
+          at: dist/dist
       - add_ssh_keys:
           fingerprints:
             - "ec:46:2b:fe:a9:8f:e4:68:26:6a:87:08:e3:87:61:03"
