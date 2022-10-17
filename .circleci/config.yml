@@ -4,17 +4,6 @@ orbs:
   node: circleci/node@5.0.3
 
 jobs:
-  test:
-    docker:
-      - image: cimg/base:2022.10
-    steps:
-      - run: mkdir -p "dist" && touch "dist/hello.txt"
-      - run: pwd
-      - run: ls -lA
-      - persist_to_workspace:
-          root: .
-          paths:
-            - dist/*
   deploy:
     docker:
       - image: cimg/base:2022.10
@@ -30,45 +19,23 @@ jobs:
 workflows:
   ci-cd:
     jobs:
-#      - node/run:
-#          filters:
-#            branches:
-#              ignore: gh-pages
-#          version: '8.17.0'
-#          pkg-manager: yarn
-#          yarn-run: build
-#          post-steps:
-#            - persist_to_workspace:
-#                root: /artifact
-#                paths:
-#                  - dist/*
-      - test
+      - node/run:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - gh-pages-test
+          version: '8.17.0'
+          pkg-manager: yarn
+          yarn-run: build
+          post-steps:
+            - persist_to_workspace:
+                root: .
+                paths:
+                  - dist/*
       - deploy:
           requires:
-            - test
+            - node/run
           filters:
             branches:
               only: circleci-project-setup
-
-#      - node/run:
-#          filters:
-#            branches:
-#              only: master
-#          version: '8.17.0'
-#          pgk-manager: yarn
-#          steps:
-#            - checkout
-#            - attach_workspace:
-#                at: artifact
-#            - yarn-run: install -g --silent gh-pages@2.0.1
-#            - run: Configure git
-#              command: |
-#                git config user.email "ci@gameoflife.xyz"
-#                git config user.name "ci"
-#            - run: gh-pages --dist dist
-
-
-
-
-
-
