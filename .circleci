@@ -1,0 +1,42 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@5.0.3
+
+jobs:
+  deploy:
+    docker:
+      - image: cimg/base:2022.10
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - add_ssh_keys:
+          fingerprints:
+            - "ec:46:2b:fe:a9:8f:e4:68:26:6a:87:08:e3:87:61:03"
+      - run: sh ./scripts/github-pages-deploy.sh dist gameoflife.xyz
+
+workflows:
+  build-and-deploy:
+    jobs:
+      - node/run:
+          name: build
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+          version: '8.17.0'
+          pkg-manager: yarn
+          yarn-run: build
+          post-steps:
+            - persist_to_workspace:
+                root: .
+                paths:
+                  - .circleci/config.yml
+                  - dist/*
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
