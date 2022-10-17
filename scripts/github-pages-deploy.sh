@@ -52,7 +52,7 @@ echo "$fqdn" > CNAME
 # stage any changes and new files
 git add -A
 # now commit, ignoring branch gh-pages doesn't seem to work, so trying skip
-git commit --allow-empty -m "Deploying build $CIRCLE_BUILD_NUM" -m "$CIRCLE_BUILD_URL"
+git commit --allow-empty -m "Deploying build $CIRCLE_BUILD_NUM [ci skip]" -m "$CIRCLE_BUILD_URL"
 # and push, but send any output to /dev/null to hide anything sensitive
 git push --force --quiet origin gh-pages > /dev/null 2>&1
 
