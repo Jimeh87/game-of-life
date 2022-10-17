@@ -10,16 +10,16 @@ jobs:
     steps:
       - run: mkdir -p "dist" && touch "hello.txt"
       - persist_to_workspace:
-          root: /artifact
+          root: dist
           paths:
-            - dist/*
+            - *
   deploy:
     docker:
       - image: cimg/base:2022.10
     steps:
       - checkout
       - attach_workspace:
-          at: artifact
+          at: dist
       - run: sh ./scripts/github-pages-deploy.sh dist
 
 workflows:
