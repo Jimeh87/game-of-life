@@ -10,9 +10,9 @@ jobs:
     steps:
       - run: mkdir -p "dist" && touch "hello.txt"
       - persist_to_workspace:
-          root: dist
+          root: .
           paths:
-            - *
+            - dist/*
   deploy:
     docker:
       - image: cimg/base:2022.10
