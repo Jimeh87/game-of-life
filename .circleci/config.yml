@@ -4,29 +4,35 @@ orbs:
   node: circleci/node@5.0.3
 
 jobs:
+  test:
+    docker:
+      - image: cimg/base:2022.10
+    steps:
+      - run: echo "hello world"
   deploy:
     docker:
       - image: cimg/base:2022.10
     steps:
       - checkout
-      - run: ./scripts/github-pages-deploy.sh "dist"
+      - run: ./scripts/github-pages-deploy.sh dist
 
 workflows:
   ci-cd:
     jobs:
-      - node/run:
-          filters:
-            branches:
-              ignore: gh-pages
-          version: '8.17.0'
-          pkg-manager: yarn
-          yarn-run: build
-      - deploy:
-          requires:
-            - node/run
-          filters:
-            branches:
-              only: circleci-project-setup
+      - test
+#      - node/run:
+#          filters:
+#            branches:
+#              ignore: gh-pages
+#          version: '8.17.0'
+#          pkg-manager: yarn
+#          yarn-run: build
+#      - deploy:
+#          requires:
+#            - node/run
+#          filters:
+#            branches:
+#              only: circleci-project-setup
 
 #      - node/run:
 #          filters:
