@@ -43,7 +43,7 @@ else
 fi
 
 # copy over or recompile the new site
-la -la "../${siteSource}/."
+ls -la "../${siteSource}/."
 
 cp -a "../${siteSource}/." .
 
