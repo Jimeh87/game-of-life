@@ -9,6 +9,7 @@ jobs:
       - image: cimg/base:2022.10
     steps:
       - run: mkdir -p "dist" && touch "hello.txt"
+      - run: pwd
       - persist_to_workspace:
           root: .
           paths:
