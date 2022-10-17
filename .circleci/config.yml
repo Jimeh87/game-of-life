@@ -20,6 +20,7 @@ workflows:
   ci-cd:
     jobs:
       - test
+      - deploy
 #      - node/run:
 #          filters:
 #            branches:
