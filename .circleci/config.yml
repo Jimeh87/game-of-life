@@ -36,7 +36,7 @@ workflows:
                   - dist/*
       - deploy:
           requires:
-            - node/run
+            - build
           filters:
             branches:
               only: circleci-project-setup
