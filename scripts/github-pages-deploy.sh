@@ -27,7 +27,7 @@ mkdir gh-pages-branch
 cd gh-pages-branch
 # now lets setup a new repo so we can update the gh-pages branch
 git config --global user.email "ci@gameoflife.xyz" > /dev/null 2>&1
-git config --global user.name "ci" > /dev/null 2>&1
+git config --global user.name "CircleCI" > /dev/null 2>&1
 git init
 git remote add --fetch origin "$remote"
 
@@ -43,6 +43,8 @@ else
 fi
 
 # copy over or recompile the new site
+la -la "../${siteSource}/."
+
 cp -a "../${siteSource}/." .
 
 # stage any changes and new files
