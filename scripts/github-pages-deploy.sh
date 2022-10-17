@@ -8,12 +8,17 @@ pwd
 
 remote=$(git config remote.origin.url)
 
+if [ ! -d "$1" ]
+then
+    echo "Usage: $0 <site source dir>"
+    exit 1
+fi
+
 siteSource="$1"
 
 if [ ! -d "$siteSource" ]
 then
-    echo "Usage: $0 <site source dir>"
-    echo "Param: $1"
+    echo "Directory $siteSource not found"
     exit 1
 fi
 

@@ -8,19 +8,23 @@ jobs:
     docker:
       - image: cimg/base:2022.10
     steps:
-      - run: echo "hello world"
+      - run: mkdir -p "dist" && touch "hello.txt"
+      - persist_to_workspace:
+          root: /artifact
+          paths:
+            - dist/*
   deploy:
     docker:
       - image: cimg/base:2022.10
     steps:
       - checkout
+      - attach_workspace:
+          at: artifact
       - run: sh ./scripts/github-pages-deploy.sh dist
 
 workflows:
   ci-cd:
     jobs:
-      - test
-      - deploy
 #      - node/run:
 #          filters:
 #            branches:
@@ -28,12 +32,18 @@ workflows:
 #          version: '8.17.0'
 #          pkg-manager: yarn
 #          yarn-run: build
-#      - deploy:
-#          requires:
-#            - node/run
-#          filters:
-#            branches:
-#              only: circleci-project-setup
+#          post-steps:
+#            - persist_to_workspace:
+#                root: /artifact
+#                paths:
+#                  - dist/*
+      - test
+      - deploy:
+          requires:
+            - node/run
+          filters:
+            branches:
+              only: circleci-project-setup
 
 #      - node/run:
 #          filters:
@@ -44,7 +54,7 @@ workflows:
 #          steps:
 #            - checkout
 #            - attach_workspace:
-#                at: dist
+#                at: artifact
 #            - yarn-run: install -g --silent gh-pages@2.0.1
 #            - run: Configure git
 #              command: |
