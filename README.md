@@ -7,10 +7,11 @@ The purpose of this project is to allow users to explore the phenomenon of cellu
 [https://gameoflife.xyz](https://gameoflife.xyz)
 
 ## Latest updates
+* Switched to CircleCI from TravisCI.
 * Upgraded the nav menu and colour schemes.
 * Upgraded from Angular 6 to Angular 7.
-* Updated template search to be faster and more user friendly.
-* Switched to using github pages and started using the domain I bought for this site several months ago.
+* Updated template search to be faster and more user-friendly.
+* Switched to using GitHub pages and started using the domain `gameoflife.xyz`.
 * Converted site to PWA!
 
 ## Development [![CircleCI](https://dl.circleci.com/status-badge/img/gh/Jimeh87/game-of-life/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Jimeh87/game-of-life/tree/master)
