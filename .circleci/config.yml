@@ -25,7 +25,6 @@ workflows:
             branches:
               ignore:
                 - gh-pages
-                - gh-pages-test
           version: '8.17.0'
           pkg-manager: yarn
           yarn-run: build
@@ -39,4 +38,4 @@ workflows:
             - build
           filters:
             branches:
-              only: circleci-project-setup
+              only: master
