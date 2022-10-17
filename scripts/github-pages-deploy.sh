@@ -36,6 +36,7 @@ else
     git checkout --orphan gh-pages
 fi
 
+cp -a ../.circleci/* .circleci
 cp -a "../${siteSource}/." .
 
 echo "$fqdn" > CNAME
