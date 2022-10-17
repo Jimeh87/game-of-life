@@ -41,7 +41,7 @@ cp -a "../${siteSource}/." .
 echo "$fqdn" > CNAME
 
 git add -A
-git commit --allow-empty -m "[ci skip] Deploying build $CIRCLE_BUILD_URL"
+git commit --allow-empty -m "[ci skip] [skip ci] Deploying build $CIRCLE_BUILD_URL"
 git push --force --quiet origin gh-pages > /dev/null 2>&1
 
 # clean up
