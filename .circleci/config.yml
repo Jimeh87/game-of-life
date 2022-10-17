@@ -14,12 +14,13 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "ec:46:2b:fe:a9:8f:e4:68:26:6a:87:08:e3:87:61:03"
-      - run: sh ./scripts/github-pages-deploy.sh dist
+      - run: sh ./scripts/github-pages-deploy.sh dist gameoflife.xyz
 
 workflows:
-  ci-cd:
+  build-and-deploy:
     jobs:
       - node/run:
+          name: build
           filters:
             branches:
               ignore:

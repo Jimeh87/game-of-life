@@ -8,13 +8,14 @@ pwd
 
 remote=$(git config remote.origin.url)
 
-if [ ! -d "$1" ]
+if [ -z "$1" ] || [ -z "$2" ]
 then
     echo "Usage: $0 <site source dir>"
     exit 1
 fi
 
 siteSource="$1"
+fqdn="$2"
 
 if [ ! -d "$siteSource" ]
 then
@@ -43,9 +44,10 @@ else
 fi
 
 # copy over or recompile the new site
-ls -la "../${siteSource}/."
 
 cp -a "../${siteSource}/." .
+
+echo "$fqdn" > CNAME
 
 # stage any changes and new files
 git add -A
