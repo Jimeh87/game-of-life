@@ -6,7 +6,6 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
-    "build:ghpages": "ng build --prod",
     "grunt:rle": "grunt rle-parser",
     "test": "ng test",
     "lint": "ng lint",
@@ -62,7 +61,7 @@
     "typescript": "3.2.4"
   },
   "engines": {
-    "node": "8.17.0",
+    "node": "14.18.3",
     "npm": "6.0.0"
   }
 }
