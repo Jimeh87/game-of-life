@@ -22,6 +22,9 @@ jobs:
       - checkout
       - attach_workspace:
           at: dist
+      - add_ssh_keys:
+          fingerprints:
+            - "ec:46:2b:fe:a9:8f:e4:68:26:6a:87:08:e3:87:61:03"
       - run: sh ./scripts/github-pages-deploy.sh dist
 
 workflows:
